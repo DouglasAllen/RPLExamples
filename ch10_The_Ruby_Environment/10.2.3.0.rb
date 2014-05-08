@@ -1,0 +1,1 @@
+ruby -e 'puts global_variables.sort'

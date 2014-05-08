@@ -1,0 +1,1 @@
+ruby [options] [--] program [arguments]

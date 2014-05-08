@@ -1,0 +1,7 @@
+>C:\jruby-1.7.11\bin\jruby.bat 1.1.2.4.rb
+io/console not supported; tty will not be manipulated
+Errno::ENOENT: No such file or directory - data.txt
+  initialize at org/jruby/RubyFile.java:361
+        open at org/jruby/RubyIO.java:1178
+      (root) at 1.1.2.4.rb:1
+>Exit code: 1

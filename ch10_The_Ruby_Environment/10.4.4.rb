@@ -1,0 +1,1 @@
+fail "Unknown option #{switch}"

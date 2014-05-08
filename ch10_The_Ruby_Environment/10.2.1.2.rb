@@ -1,0 +1,9 @@
+ArgumentError           NameError               SignalException
+EOFError                NoMemoryError           StandardError
+Exception               NoMethodError           SyntaxError
+FloatDomainError        NotImplementedError     SystemCallError
+IOError                 RangeError              SystemExit
+IndexError              RegexpError             SystemStackError
+Interrupt               RuntimeError            ThreadError
+LoadError               ScriptError             TypeError
+LocalJumpError          SecurityError           ZeroDivisionError
