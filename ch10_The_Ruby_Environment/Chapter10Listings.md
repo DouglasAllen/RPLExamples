@@ -176,7 +176,7 @@ $SAFE=0 # SecurityError! you can't do it
 ---------------------------
 Thread.start { # Create a "sandbox" thread
   $SAFE = 4 # Restrict execution in this thread only
-  ... # Untrusted code can be run here
+  # ... Untrusted code can be run here
 }
 ---------------------------
 10.5.2.3 Safe level 2
@@ -190,10 +190,10 @@ File.flock Kernel.syscall
 File.lstat Kernel.trap
 ---------------------------
 def safe_eval(str)
-Thread.start { # Start sandbox thread
-  $SAFE = 4 # Upgrade safe level
-  eval(str) # Eval in the sandbox
-}.value # Retrieve result
+  Thread.start { # Start sandbox thread
+    $SAFE = 4 # Upgrade safe level
+    eval(str) # Eval in the sandbox
+  }.value # Retrieve result
 end
 ---------------------------
 ```
