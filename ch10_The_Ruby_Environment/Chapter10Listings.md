@@ -3,10 +3,11 @@ The Ruby Environment
 
 ---------------------------
 10.1 Invoking the Ruby Interpreter
-ruby [<replaceable>options</replaceable>] [--] <replaceable>program</replaceable> [<replaceable>arguments</replaceable>]
+from $ ruby -h
+Usage: ruby [switches] [--] [programfile] [arguments]
 ---------------------------
 10.1.1 Common Options
-require '<replaceable>library</replaceable>'
+require 'library'
 ---------------------------
 10.1.4 Text Processing Options
 while gets # Read a line of input into $_
