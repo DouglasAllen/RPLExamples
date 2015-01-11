@@ -129,10 +129,10 @@ puts "Hello from the parent process: #$$"
 ---------------------------
 pid = fork
 if (pid)
-puts "Hello from parent process: #$$"
-puts "Created child process #{pid}"
+  puts "Hello from parent process: #$$"
+  puts "Created child process #{pid}"
 else
-puts Hello from child process: #$$"
+  puts Hello from child process: #$$"
 end
 ---------------------------
 open("|-", "r+") do |child|
