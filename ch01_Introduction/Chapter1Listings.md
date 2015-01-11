@@ -1,45 +1,45 @@
 ```ruby
 ---------------------------
 1.1.1 Ruby Is Object-Oriented
-1.class # => Fixnum: the number 1 is a Fixnum
-0.0.class # => Float: floating-point numbers have class Float
-true.class # => TrueClass: true is a the singleton instance of TrueClass
+1.class     # => Fixnum: the number 1 is a Fixnum
+0.0.class   # => Float: floating-point numbers have class Float
+true.class  # => TrueClass: true is a the singleton instance of TrueClass
 false.class # => FalseClass
-nil.class # => NilClass
+nil.class   # => NilClass
 ---------------------------
 1.1.2 Blocks and Iterators
 3.times { print "Ruby! " } # Prints "Ruby! Ruby! Ruby! "
-1.upto(9) {|x| print x } # Prints "123456789"
+1.upto(9) {|x| print x }   # Prints "123456789"
 ---------------------------
-a = [3, 2, 1] # This is an array literal
-a[3] = a[2] - 1 # Use square brackets to query and set array elements
-a.each do |elt| # each is an iterator. The block has a parameter elt
-print elt+1 # Prints "4321"
-end # This block was delimited with do/end instead of {}
+a = [3, 2, 1]       # This is an array literal
+a[3] = a[2] - 1     # Use square brackets to query and set array elements
+a.each do |elt|     # each is an iterator. The block has a parameter elt
+  print elt+1       # Prints "4321"
+end                 # This block was delimited with do/end instead of {}
 ---------------------------
-a = [1,2,3,4] # Start with an array
-b = a.map {|x| x*x } # Square elements: b is [1,4,9,16]
+a = [1,2,3,4]              # Start with an array
+b = a.map {|x| x*x }       # Square elements: b is [1,4,9,16]
 c = a.select {|x| x%2==0 } # Select even elements: c is [2,4]
-a.inject do |sum,x| # Compute the sum of the elements => 10
-sum + x
+a.inject do |sum,x|        # Compute the sum of the elements => 10
+  sum + x
 end
 ---------------------------
-h = { # A hash that maps number names to digits
-:one => 1, # The "arrows" show mappings: key=>value
-:two => 2 # The colons indicate Symbol literals
+h = {                       # A hash that maps number names to digits
+:one => 1,                  # The "arrows" show mappings: key=>value
+:two => 2                   # The colons indicate Symbol literals
 }
-h[:one] # => 1. Access a value by key
-h[:three] = 3 # Add a new key/value pair to the hash
-h.each do |key,value| # Iterate through the key/value pairs
-print "#{value}:#{key}; " # Note variables substituted into string
-end # Prints "1:one; 2:two; 3:three; "
+h[:one]                     # => 1. Access a value by key
+h[:three] = 3               # Add a new key/value pair to the hash
+h.each do |key,value|       # Iterate through the key/value pairs
+  print "#{value}:#{key}; " # Note variables substituted into string
+end                         # Prints "1:one; 2:two; 3:three; "
 ---------------------------
 File.open("data.txt") do |f| # Open named file and pass stream to block
-line = f.readline # Use the stream to read from the file
-end # Stream automatically closed at block end
-t = Thread.new do # Run this block in a new thread
-File.read("data.txt") # Read a file in the background
-end # File contents available as thread value
+  line = f.readline          # Use the stream to read from the file
+end                          # Stream automatically closed at block end
+t = Thread.new do            # Run this block in a new thread
+  File.read("data.txt")      # Read a file in the background
+end                          # File contents available as thread value
 ---------------------------
 print "#{value}:#{key}; " # Note variables substituted into string
 ---------------------------
