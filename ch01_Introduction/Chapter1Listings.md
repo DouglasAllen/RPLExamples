@@ -57,11 +57,11 @@ max = x > y ? x : y # The conditional operator
 ---------------------------
 1.1.4 Methods
 def square(x) # Define a method named square with one parameter x
-x*x # Return x squared
+  x*x # Return x squared
 end # End of the method
 ---------------------------
 def Math.square(x) # Define a class method of the Math module
-x*x
+  x*x
 end
 ---------------------------
 1.1.5 Assignment
@@ -76,9 +76,9 @@ x,y,z = [1,2,3] # Array elements automatically assigned to variables
 ---------------------------
 # Define a method to convert Cartesian (x,y) coordinates to Polar
 def polar(x,y)
-theta = Math.atan2(y,x) # Compute the angle
-r = Math.hypot(x,y) # Compute the distance
-[r, theta] # The last expression is the return value
+  theta = Math.atan2(y,x) # Compute the angle
+  r = Math.hypot(x,y) # Compute the distance
+  [r, theta] # The last expression is the return value
 end
 # Here's how we use this method with parallel assignment
 distance, angle = polar(2,2)
@@ -95,23 +95,23 @@ o.x = 1 # Method invocation through assignment
 # Determine US generation name based on birth year
 # Case expression tests ranges with ===
 generation = case birthyear
-when 1946..1963: "Baby Boomer"
-when 1964..1976: "Generation X"
-when 1978..2000: "Generation Y"
-else nil
+  when 1946..1963: "Baby Boomer"
+  when 1964..1976: "Generation X"
+  when 1978..2000: "Generation Y"
+  else nil
 end
 # A method to ask the user to confirm something
 def are_you_sure? # Define a method. Note question mark!
-while true # Loop until we explicitly return
-print "Are you sure? [y/n]: " # Ask the user a question
-response = gets # Get her answer
-case response # Begin case conditional
-when /^[yY]/ # If response begins with y or Y
-return true # Return true from the method
-when /^[nN]/, /^$/ # If response begins with n,N or is empty
-return false # Return false
-end
-end
+  while true # Loop until we explicitly return
+  print "Are you sure? [y/n]: " # Ask the user a question
+  response = gets # Get her answer
+  case response # Begin case conditional
+    when /^[yY]/ # If response begins with y or Y
+      return true # Return true from the method
+    when /^[nN]/, /^$/ # If response begins with n,N or is empty
+      return false # Return false
+    end
+  end
 end
 ---------------------------
 1.1.8 Classes and Modules
@@ -124,48 +124,55 @@ end
 # x = from + n*by, where n is an integer
 #
 class Sequence
-# This is an enumerable class; it defines an each iterator below.
-include Enumerable # Include the methods of this module in this class
-# The initialize method is special; it is automatically invoked to
-# initialize newly created instances of the class
-def initialize(from, to, by)
-# Just save our parameters into instance variables for later use
-@from, @to, @by = from, to, by # Note parallel assignment and @ prefix
-end
-# This is the iterator required by the Enumerable module
-def each
-x = @from # Start at the starting point
-while x <= @to # While we haven't reached the end
-yield x # Pass x to the block associated with the iterator
-x += @by # Increment x
-end
-end
-# Define the length method (following arrays) to return the number of
-# values in the sequence
-def length
-return 0 if @from > @to # Note if used as a statement modifier
-Integer((@to-@from)/@by) + 1 # Compute and return length of sequence
-end
-# Define another name for the same method.
-# It is common for methods to have multiple names in Ruby
-alias size length # size is now a synonym for length
-# Override the array-access operator to give random access to the sequence
-def[](index)
-return nil if index < 0 # Return nil for negative indexes
-v = @from + index*@by # Compute the value
-if v <= @to # If it is part of the sequence
-v # Return it
-else # Otherwise...
-nil # Return nil
-end
-end
-# Override arithmetic operators to return new Sequence objects
-def *(factor)
-Sequence.new(@from*factor, @to*factor, @by*factor)
-end
-def +(offset)
-Sequence.new(@from+offset, @to+offset, @by)
-end
+  # This is an enumerable class; it defines an each iterator below.
+  include Enumerable # Include the methods of this module in this class
+  
+  # The initialize method is special; it is automatically invoked to
+  # initialize newly created instances of the class
+  def initialize(from, to, by)
+    # Just save our parameters into instance variables for later use
+    @from, @to, @by = from, to, by # Note parallel assignment and @ prefix
+  end
+  
+  # This is the iterator required by the Enumerable module
+  def each
+    x = @from # Start at the starting point
+    while x <= @to # While we haven't reached the end
+      yield x # Pass x to the block associated with the iterator
+      x += @by # Increment x
+    end
+  end
+  
+  # Define the length method (following arrays) to return the number of
+  # values in the sequence
+  def length
+    return 0 if @from > @to # Note if used as a statement modifier
+    Integer((@to-@from)/@by) + 1 # Compute and return length of sequence
+  end
+  
+  # Define another name for the same method.
+  # It is common for methods to have multiple names in Ruby
+  alias size length # size is now a synonym for length
+  
+  # Override the array-access operator to give random access to the sequence
+  def[](index)
+    return nil if index < 0 # Return nil for negative indexes
+    v = @from + index*@by # Compute the value
+    if v <= @to # If it is part of the sequence
+      v # Return it
+    else # Otherwise...
+      nil # Return nil
+    end
+  end
+  
+  # Override arithmetic operators to return new Sequence objects
+  def *(factor)
+    Sequence.new(@from*factor, @to*factor, @by*factor)
+  end
+  
+  def +(offset)
+    Sequence.new(@from+offset, @to+offset, @by)
+  end
 end
 ---------------------------
 s = Sequence.new(1, 10, 2) # From 1 to 10 by 2's
