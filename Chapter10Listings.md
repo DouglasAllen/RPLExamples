@@ -96,8 +96,8 @@ chomp!  chop!   gsub!   split   sub!
 ---------------------------
 10.2.4.3 OS methods
 
-`       fork    select  system  trap
-exec    open    syscall test
+# `       fork    select  system  trap
+# exec    open    syscall test
 ---------------------------
 10.2.4.4 Warnings, failures, and exiting
 
