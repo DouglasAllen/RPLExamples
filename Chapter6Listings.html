@@ -1,0 +1,1179 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  <title>Practicing Ruby</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    <h1 class="logo">Practicing Ruby</h1>
+    <img class="logo" src="../../assets/images/header.png" />
+    <div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers">  <a href="#n1" name="n1">1</a></span><span style="color:#036;font-weight:bold">The</span> <span style="color:#036;font-weight:bold">Ruby</span> <span style="color:#036;font-weight:bold">Programming</span> <span style="color:#036;font-weight:bold">Language</span>
+<span class="line-numbers">  <a href="#n2" name="n2">2</a></span><span style="color:#036;font-weight:bold">CHAPTER</span> <span style="color:#00D">6</span>
+<span class="line-numbers">  <a href="#n3" name="n3">3</a></span><span style="color:#036;font-weight:bold">Methods</span>, <span style="color:#036;font-weight:bold">Procs</span>, <span style="color:#036;font-weight:bold">Lambdas</span>, <span style="color:#080;font-weight:bold">and</span> <span style="color:#036;font-weight:bold">Closures</span>
+<span class="line-numbers">  <a href="#n4" name="n4">4</a></span>---------------------------
+<span class="line-numbers">  <a href="#n5" name="n5">5</a></span><span style="color:#60E">6.1</span> <span style="color:#036;font-weight:bold">Defining</span> <span style="color:#036;font-weight:bold">Simple</span> <span style="color:#036;font-weight:bold">Methods</span>
+<span class="line-numbers">  <a href="#n6" name="n6">6</a></span>
+<span class="line-numbers">  <a href="#n7" name="n7">7</a></span><span style="color:#777"># Define a method named 'factorial' with a single parameter 'n'</span>
+<span class="line-numbers">  <a href="#n8" name="n8">8</a></span><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">factorial</span>(n)
+<span class="line-numbers">  <a href="#n9" name="n9">9</a></span>  <span style="color:#080;font-weight:bold">if</span> n &lt; <span style="color:#00D">1</span>                <span style="color:#777"># Test the argument value for validity</span>
+<span class="line-numbers"> <strong><a href="#n10" name="n10">10</a></strong></span>    raise <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">argument must be &gt; 0</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"> <a href="#n11" name="n11">11</a></span>  <span style="color:#080;font-weight:bold">elsif</span> n == <span style="color:#00D">1</span>            <span style="color:#777"># If the argument is 1</span>
+<span class="line-numbers"> <a href="#n12" name="n12">12</a></span>    <span style="color:#00D">1</span>                     <span style="color:#777"># then the value of the method invocation is 1</span>
+<span class="line-numbers"> <a href="#n13" name="n13">13</a></span>  <span style="color:#080;font-weight:bold">else</span>                    <span style="color:#777"># Otherwise, the factorial of n is n times</span>
+<span class="line-numbers"> <a href="#n14" name="n14">14</a></span>    n * factorial(n-<span style="color:#00D">1</span>)    <span style="color:#777"># the factorial of n-1</span>
+<span class="line-numbers"> <a href="#n15" name="n15">15</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"> <a href="#n16" name="n16">16</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"> <a href="#n17" name="n17">17</a></span>---------------------------
+<span class="line-numbers"> <a href="#n18" name="n18">18</a></span><span style="color:#60E">6.1</span>.<span style="color:#F00;background-color:#FAA">1</span> <span style="color:#036;font-weight:bold">Method</span> <span style="color:#036;font-weight:bold">Return</span> <span style="color:#036;font-weight:bold">Value</span>
+<span class="line-numbers"> <a href="#n19" name="n19">19</a></span>
+<span class="line-numbers"> <strong><a href="#n20" name="n20">20</a></strong></span><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">factorial</span>(n)
+<span class="line-numbers"> <a href="#n21" name="n21">21</a></span>  raise <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">bad argument</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">if</span> n &lt; <span style="color:#00D">1</span>
+<span class="line-numbers"> <a href="#n22" name="n22">22</a></span>  <span style="color:#080;font-weight:bold">return</span> <span style="color:#00D">1</span> <span style="color:#080;font-weight:bold">if</span> n == <span style="color:#00D">1</span>
+<span class="line-numbers"> <a href="#n23" name="n23">23</a></span>  n * factorial(n-<span style="color:#00D">1</span>)
+<span class="line-numbers"> <a href="#n24" name="n24">24</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"> <a href="#n25" name="n25">25</a></span>---------------------------
+<span class="line-numbers"> <a href="#n26" name="n26">26</a></span><span style="color:#777"># Convert the Cartesian point (x,y) to polar (magnitude, angle) coordinates</span>
+<span class="line-numbers"> <a href="#n27" name="n27">27</a></span><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">polar</span>(x,y)
+<span class="line-numbers"> <a href="#n28" name="n28">28</a></span>  <span style="color:#080;font-weight:bold">return</span> <span style="color:#036;font-weight:bold">Math</span>.hypot(y,x), <span style="color:#036;font-weight:bold">Math</span>.atan2(y,x)
+<span class="line-numbers"> <a href="#n29" name="n29">29</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"> <strong><a href="#n30" name="n30">30</a></strong></span>---------------------------
+<span class="line-numbers"> <a href="#n31" name="n31">31</a></span><span style="color:#777"># Convert polar coordinates to Cartesian coordinates</span>
+<span class="line-numbers"> <a href="#n32" name="n32">32</a></span><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">cartesian</span>(magnitude, angle)
+<span class="line-numbers"> <a href="#n33" name="n33">33</a></span>  [magnitude*<span style="color:#036;font-weight:bold">Math</span>.cos(angle), magnitude*<span style="color:#036;font-weight:bold">Math</span>.sin(angle)]
+<span class="line-numbers"> <a href="#n34" name="n34">34</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"> <a href="#n35" name="n35">35</a></span>---------------------------
+<span class="line-numbers"> <a href="#n36" name="n36">36</a></span>distance, theta = polar(x,y)
+<span class="line-numbers"> <a href="#n37" name="n37">37</a></span>x,y = cartesian(distance,theta)
+<span class="line-numbers"> <a href="#n38" name="n38">38</a></span>---------------------------
+<span class="line-numbers"> <a href="#n39" name="n39">39</a></span><span style="color:#60E">6.1</span>.<span style="color:#F00;background-color:#FAA">3</span> <span style="color:#036;font-weight:bold">Invoking</span> a <span style="color:#036;font-weight:bold">Method</span> on an <span style="color:#036;font-weight:bold">Object</span>
+<span class="line-numbers"> <strong><a href="#n40" name="n40">40</a></strong></span>
+<span class="line-numbers"> <a href="#n41" name="n41">41</a></span>first = text.index(pattern)
+<span class="line-numbers"> <a href="#n42" name="n42">42</a></span>---------------------------
+<span class="line-numbers"> <a href="#n43" name="n43">43</a></span><span style="color:#60E">6.1</span>.<span style="color:#F00;background-color:#FAA">4</span> <span style="color:#036;font-weight:bold">Defining</span> <span style="color:#036;font-weight:bold">Singleton</span> <span style="color:#036;font-weight:bold">Methods</span>
+<span class="line-numbers"> <a href="#n44" name="n44">44</a></span>
+<span class="line-numbers"> <a href="#n45" name="n45">45</a></span>o = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">message</span><span style="color:#710">&quot;</span></span>    <span style="color:#777"># A string is an object</span>
+<span class="line-numbers"> <a href="#n46" name="n46">46</a></span><span style="color:#080;font-weight:bold">def</span> o.<span style="color:#06B;font-weight:bold">printme</span>    <span style="color:#777"># Define a singleton method for this object</span>
+<span class="line-numbers"> <a href="#n47" name="n47">47</a></span>  puts <span style="color:#069">self</span>
+<span class="line-numbers"> <a href="#n48" name="n48">48</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"> <a href="#n49" name="n49">49</a></span>o.printme        <span style="color:#777"># Invoke the singleton </span>
+<span class="line-numbers"> <strong><a href="#n50" name="n50">50</a></strong></span>---------------------------
+<span class="line-numbers"> <a href="#n51" name="n51">51</a></span><span style="color:#60E">6.1</span>.<span style="color:#F00;background-color:#FAA">5</span> <span style="color:#036;font-weight:bold">Undefining</span> <span style="color:#036;font-weight:bold">Methods</span>
+<span class="line-numbers"> <a href="#n52" name="n52">52</a></span>
+<span class="line-numbers"> <a href="#n53" name="n53">53</a></span><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">sum</span>(x,y); x+y; <span style="color:#080;font-weight:bold">end</span>      <span style="color:#777"># Define a method</span>
+<span class="line-numbers"> <a href="#n54" name="n54">54</a></span>puts sum(<span style="color:#00D">1</span>,<span style="color:#00D">2</span>)               <span style="color:#777"># Use it</span>
+<span class="line-numbers"> <a href="#n55" name="n55">55</a></span><span style="color:#080;font-weight:bold">undef</span> <span style="color:#06B;font-weight:bold">sum</span>                   <span style="color:#777"># And undefine it</span>
+<span class="line-numbers"> <a href="#n56" name="n56">56</a></span>---------------------------
+<span class="line-numbers"> <a href="#n57" name="n57">57</a></span><span style="color:#60E">6.2</span>.<span style="color:#F00;background-color:#FAA">1</span> <span style="color:#036;font-weight:bold">Operator</span> <span style="color:#036;font-weight:bold">Methods</span>
+<span class="line-numbers"> <a href="#n58" name="n58">58</a></span>
+<span class="line-numbers"> <a href="#n59" name="n59">59</a></span><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">+</span>(other)               <span style="color:#777"># Define binary plus operator: x+y is x.+(y)</span>
+<span class="line-numbers"> <strong><a href="#n60" name="n60">60</a></strong></span>  <span style="color:#069">self</span>.concatenate(other)
+<span class="line-numbers"> <a href="#n61" name="n61">61</a></span><span style="color:#080;font-weight:bold">end</span>       
+<span class="line-numbers"> <a href="#n62" name="n62">62</a></span>---------------------------
+<span class="line-numbers"> <a href="#n63" name="n63">63</a></span><span style="color:#60E">6.2</span>.<span style="color:#F00;background-color:#FAA">2</span> <span style="color:#036;font-weight:bold">Method</span> <span style="color:#036;font-weight:bold">Aliases</span>
+<span class="line-numbers"> <a href="#n64" name="n64">64</a></span>
+<span class="line-numbers"> <a href="#n65" name="n65">65</a></span><span style="color:#080;font-weight:bold">alias</span> <span style="color:#06B;font-weight:bold">aka</span> <span style="color:#06B;font-weight:bold">also_known_as</span>   <span style="color:#777"># alias new_name existing_name</span>
+<span class="line-numbers"> <a href="#n66" name="n66">66</a></span>---------------------------
+<span class="line-numbers"> <a href="#n67" name="n67">67</a></span><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">hello</span>                       <span style="color:#777"># A nice simple method</span>
+<span class="line-numbers"> <a href="#n68" name="n68">68</a></span>  puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello World</span><span style="color:#710">&quot;</span></span>            <span style="color:#777"># Suppose we want to augment it...</span>
+<span class="line-numbers"> <a href="#n69" name="n69">69</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"> <strong><a href="#n70" name="n70">70</a></strong></span>
+<span class="line-numbers"> <a href="#n71" name="n71">71</a></span><span style="color:#080;font-weight:bold">alias</span> <span style="color:#06B;font-weight:bold">original_hello</span> <span style="color:#06B;font-weight:bold">hello</span>      <span style="color:#777"># Give the method a backup name</span>
+<span class="line-numbers"> <a href="#n72" name="n72">72</a></span>
+<span class="line-numbers"> <a href="#n73" name="n73">73</a></span><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">hello</span>                       <span style="color:#777"># Now we define a new method with the old name</span>
+<span class="line-numbers"> <a href="#n74" name="n74">74</a></span>  puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Your attention please</span><span style="color:#710">&quot;</span></span>  <span style="color:#777"># That does some stuff</span>
+<span class="line-numbers"> <a href="#n75" name="n75">75</a></span>  original_hello                <span style="color:#777"># Then calls the original method</span>
+<span class="line-numbers"> <a href="#n76" name="n76">76</a></span>  puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">This has been a test</span><span style="color:#710">&quot;</span></span>   <span style="color:#777"># Then does some more stuff</span>
+<span class="line-numbers"> <a href="#n77" name="n77">77</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"> <a href="#n78" name="n78">78</a></span>---------------------------
+<span class="line-numbers"> <a href="#n79" name="n79">79</a></span><span style="color:#60E">6.3</span>.<span style="color:#F00;background-color:#FAA">1</span> <span style="color:#036;font-weight:bold">Optional</span> <span style="color:#036;font-weight:bold">Parentheses</span>
+<span class="line-numbers"> <strong><a href="#n80" name="n80">80</a></strong></span>
+<span class="line-numbers"> <a href="#n81" name="n81">81</a></span>puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello World</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"> <a href="#n82" name="n82">82</a></span>puts(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello World</span><span style="color:#710">&quot;</span></span>)
+<span class="line-numbers"> <a href="#n83" name="n83">83</a></span>---------------------------
+<span class="line-numbers"> <a href="#n84" name="n84">84</a></span>greeting = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"> <a href="#n85" name="n85">85</a></span>size = greeting.length
+<span class="line-numbers"> <a href="#n86" name="n86">86</a></span>---------------------------
+<span class="line-numbers"> <a href="#n87" name="n87">87</a></span>size = greeting.length()
+<span class="line-numbers"> <a href="#n88" name="n88">88</a></span>---------------------------
+<span class="line-numbers"> <a href="#n89" name="n89">89</a></span>x = <span style="color:#00D">3</span>              <span style="color:#777"># x is a number</span>
+<span class="line-numbers"> <strong><a href="#n90" name="n90">90</a></strong></span>x.between? <span style="color:#00D">1</span>,<span style="color:#00D">5</span>     <span style="color:#777"># same as x.between?(1,5)</span>
+<span class="line-numbers"> <a href="#n91" name="n91">91</a></span>---------------------------
+<span class="line-numbers"> <a href="#n92" name="n92">92</a></span><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">sum</span> x, y
+<span class="line-numbers"> <a href="#n93" name="n93">93</a></span>  x+y
+<span class="line-numbers"> <a href="#n94" name="n94">94</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"> <a href="#n95" name="n95">95</a></span>---------------------------
+<span class="line-numbers"> <a href="#n96" name="n96">96</a></span><span style="color:#60E">6.3</span>.<span style="color:#F00;background-color:#FAA">2</span> <span style="color:#036;font-weight:bold">Required</span> <span style="color:#036;font-weight:bold">Parentheses</span>
+<span class="line-numbers"> <a href="#n97" name="n97">97</a></span>
+<span class="line-numbers"> <a href="#n98" name="n98">98</a></span>puts sum <span style="color:#00D">2</span>, <span style="color:#00D">2</span>
+<span class="line-numbers"> <a href="#n99" name="n99">99</a></span>---------------------------
+<span class="line-numbers"><strong><a href="#n100" name="n100">100</a></strong></span>puts sum(<span style="color:#00D">2</span>,<span style="color:#00D">2</span>)
+<span class="line-numbers"><a href="#n101" name="n101">101</a></span>---------------------------
+<span class="line-numbers"><a href="#n102" name="n102">102</a></span>puts(sum <span style="color:#00D">2</span>,<span style="color:#00D">2</span>)   <span style="color:#777"># Does this mean puts(sum(2,2)) or puts(sum(2), 2)?</span>
+<span class="line-numbers"><a href="#n103" name="n103">103</a></span>---------------------------
+<span class="line-numbers"><a href="#n104" name="n104">104</a></span>puts factorial x   <span style="color:#777"># This can only mean puts(factorial(x))</span>
+<span class="line-numbers"><a href="#n105" name="n105">105</a></span>---------------------------
+<span class="line-numbers"><a href="#n106" name="n106">106</a></span>puts <span style="color:#00D">4</span>, sum <span style="color:#00D">2</span>,<span style="color:#00D">2</span>   <span style="color:#777"># Error: does the second comma go with the 1st or 2nd method?</span>
+<span class="line-numbers"><a href="#n107" name="n107">107</a></span>[sum <span style="color:#00D">2</span>,<span style="color:#00D">2</span>]         <span style="color:#777"># Error: two array elements or one?</span>
+<span class="line-numbers"><a href="#n108" name="n108">108</a></span>---------------------------
+<span class="line-numbers"><a href="#n109" name="n109">109</a></span>square(<span style="color:#00D">2</span>+<span style="color:#00D">2</span>)*<span style="color:#00D">2</span>    <span style="color:#777"># square(4)*2 = 16*2 = 32</span>
+<span class="line-numbers"><strong><a href="#n110" name="n110">110</a></strong></span>square (<span style="color:#00D">2</span>+<span style="color:#00D">2</span>)*<span style="color:#00D">2</span>   <span style="color:#777"># square(4*2) = square(8) = 64</span>
+<span class="line-numbers"><a href="#n111" name="n111">111</a></span>---------------------------
+<span class="line-numbers"><a href="#n112" name="n112">112</a></span>square((<span style="color:#00D">2</span>+<span style="color:#00D">2</span>)*<span style="color:#00D">2</span>)
+<span class="line-numbers"><a href="#n113" name="n113">113</a></span>---------------------------
+<span class="line-numbers"><a href="#n114" name="n114">114</a></span>puts(sum <span style="color:#00D">2</span>,<span style="color:#00D">2</span>)   <span style="color:#777"># Does this mean puts(sum(2,2)) or puts(sum(2), 2)?</span>
+<span class="line-numbers"><a href="#n115" name="n115">115</a></span>---------------------------
+<span class="line-numbers"><a href="#n116" name="n116">116</a></span>puts (sum <span style="color:#00D">2</span>,<span style="color:#00D">2</span>)   
+<span class="line-numbers"><a href="#n117" name="n117">117</a></span>---------------------------
+<span class="line-numbers"><a href="#n118" name="n118">118</a></span><span style="color:#60E">6.4</span>.<span style="color:#F00;background-color:#FAA">1</span> <span style="color:#036;font-weight:bold">Parameter</span> <span style="color:#036;font-weight:bold">Defaults</span>
+<span class="line-numbers"><a href="#n119" name="n119">119</a></span>
+<span class="line-numbers"><strong><a href="#n120" name="n120">120</a></strong></span><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">prefix</span>(s, len=<span style="color:#00D">1</span>)
+<span class="line-numbers"><a href="#n121" name="n121">121</a></span>  s[<span style="color:#00D">0</span>,len]
+<span class="line-numbers"><a href="#n122" name="n122">122</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n123" name="n123">123</a></span>---------------------------
+<span class="line-numbers"><a href="#n124" name="n124">124</a></span>prefix(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Ruby</span><span style="color:#710">&quot;</span></span>, <span style="color:#00D">3</span>)    <span style="color:#777"># =&gt; &quot;Rub&quot;</span>
+<span class="line-numbers"><a href="#n125" name="n125">125</a></span>prefix(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Ruby</span><span style="color:#710">&quot;</span></span>)       <span style="color:#777"># =&gt; &quot;R&quot;</span>
+<span class="line-numbers"><a href="#n126" name="n126">126</a></span>---------------------------
+<span class="line-numbers"><a href="#n127" name="n127">127</a></span><span style="color:#777"># Return the last character of s or the substring from index to the end</span>
+<span class="line-numbers"><a href="#n128" name="n128">128</a></span><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">suffix</span>(s, index=s.size-<span style="color:#00D">1</span>)
+<span class="line-numbers"><a href="#n129" name="n129">129</a></span>  s[index, s.size-index]
+<span class="line-numbers"><strong><a href="#n130" name="n130">130</a></strong></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n131" name="n131">131</a></span>---------------------------
+<span class="line-numbers"><a href="#n132" name="n132">132</a></span><span style="color:#777"># Append the value x to the array a, return a.</span>
+<span class="line-numbers"><a href="#n133" name="n133">133</a></span><span style="color:#777"># If no array is specified, start with an empty one.</span>
+<span class="line-numbers"><a href="#n134" name="n134">134</a></span><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">append</span>(x, a=[])
+<span class="line-numbers"><a href="#n135" name="n135">135</a></span>  a &lt;&lt; x
+<span class="line-numbers"><a href="#n136" name="n136">136</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n137" name="n137">137</a></span>---------------------------
+<span class="line-numbers"><a href="#n138" name="n138">138</a></span><span style="color:#60E">6.4</span>.<span style="color:#F00;background-color:#FAA">2</span> <span style="color:#036;font-weight:bold">Variable</span>-<span style="color:#036;font-weight:bold">Length</span> <span style="color:#036;font-weight:bold">Argument</span> <span style="color:#036;font-weight:bold">Lists</span> <span style="color:#080;font-weight:bold">and</span> <span style="color:#036;font-weight:bold">Arrays</span>
+<span class="line-numbers"><a href="#n139" name="n139">139</a></span>
+<span class="line-numbers"><strong><a href="#n140" name="n140">140</a></strong></span><span style="color:#777"># Return the largest of the one or more arguments passed</span>
+<span class="line-numbers"><a href="#n141" name="n141">141</a></span><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">max</span>(first, *rest)
+<span class="line-numbers"><a href="#n142" name="n142">142</a></span>  <span style="color:#777"># Assume that the required first argument is the largest</span>
+<span class="line-numbers"><a href="#n143" name="n143">143</a></span>  max = first
+<span class="line-numbers"><a href="#n144" name="n144">144</a></span>  <span style="color:#777"># Now loop through each of the optional arguments looking for bigger ones</span>
+<span class="line-numbers"><a href="#n145" name="n145">145</a></span>  rest.each {|x| max = x <span style="color:#080;font-weight:bold">if</span> x &gt; max }
+<span class="line-numbers"><a href="#n146" name="n146">146</a></span>  <span style="color:#777"># Return the largest one we found</span>
+<span class="line-numbers"><a href="#n147" name="n147">147</a></span>  max
+<span class="line-numbers"><a href="#n148" name="n148">148</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n149" name="n149">149</a></span>---------------------------
+<span class="line-numbers"><strong><a href="#n150" name="n150">150</a></strong></span>max(<span style="color:#00D">1</span>)       <span style="color:#777"># first=1, rest=[]   </span>
+<span class="line-numbers"><a href="#n151" name="n151">151</a></span>max(<span style="color:#00D">1</span>,<span style="color:#00D">2</span>)     <span style="color:#777"># first=1, rest=[2]  </span>
+<span class="line-numbers"><a href="#n152" name="n152">152</a></span>max(<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">3</span>)   <span style="color:#777"># first=1, rest=[2,3]</span>
+<span class="line-numbers"><a href="#n153" name="n153">153</a></span>---------------------------
+<span class="line-numbers"><a href="#n154" name="n154">154</a></span><span style="color:#60E">6.4</span>.<span style="color:#F00;background-color:#FAA">2.1</span> <span style="color:#036;font-weight:bold">Passing</span> arrays to methods
+<span class="line-numbers"><a href="#n155" name="n155">155</a></span>
+<span class="line-numbers"><a href="#n156" name="n156">156</a></span>data = [<span style="color:#00D">3</span>, <span style="color:#00D">2</span>, <span style="color:#00D">1</span>]
+<span class="line-numbers"><a href="#n157" name="n157">157</a></span>m = max(*data)   <span style="color:#777"># first = 3, rest=[2,1] =&gt; 3</span>
+<span class="line-numbers"><a href="#n158" name="n158">158</a></span>---------------------------
+<span class="line-numbers"><a href="#n159" name="n159">159</a></span>m = max(data)   <span style="color:#777"># first = [3,2,1], rest=[] =&gt; [3,2,1]</span>
+<span class="line-numbers"><strong><a href="#n160" name="n160">160</a></strong></span>---------------------------
+<span class="line-numbers"><a href="#n161" name="n161">161</a></span><span style="color:#777"># Convert the point (x,y) to Polar coordinates, then back to Cartesian</span>
+<span class="line-numbers"><a href="#n162" name="n162">162</a></span>x,y = cartesian(*polar(x, y))
+<span class="line-numbers"><a href="#n163" name="n163">163</a></span>---------------------------
+<span class="line-numbers"><a href="#n164" name="n164">164</a></span>max(*<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">hello world</span><span style="color:#710">&quot;</span></span>.each_char)  <span style="color:#777"># =&gt; 'w'</span>
+<span class="line-numbers"><a href="#n165" name="n165">165</a></span>---------------------------
+<span class="line-numbers"><a href="#n166" name="n166">166</a></span><span style="color:#60E">6.4</span>.<span style="color:#F00;background-color:#FAA">4</span> <span style="color:#036;font-weight:bold">Hashes</span> <span style="color:#080;font-weight:bold">for</span> <span style="color:#036;font-weight:bold">Named</span> <span style="color:#036;font-weight:bold">Arguments</span>
+<span class="line-numbers"><a href="#n167" name="n167">167</a></span>
+<span class="line-numbers"><a href="#n168" name="n168">168</a></span><span style="color:#777"># This method returns an array a of n numbers. For any index i, 0 &lt;= i &lt; n,</span>
+<span class="line-numbers"><a href="#n169" name="n169">169</a></span><span style="color:#777"># the value of element a[i] is m*i+c. Arguments n, m, and c are passed</span>
+<span class="line-numbers"><strong><a href="#n170" name="n170">170</a></strong></span><span style="color:#777"># as keys in a hash, so that it is not necessary to remember their order.</span>
+<span class="line-numbers"><a href="#n171" name="n171">171</a></span><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">sequence</span>(args)
+<span class="line-numbers"><a href="#n172" name="n172">172</a></span>  <span style="color:#777"># Extract the arguments from the hash.</span>
+<span class="line-numbers"><a href="#n173" name="n173">173</a></span>  <span style="color:#777"># Note the use of the || operator to specify defaults used</span>
+<span class="line-numbers"><a href="#n174" name="n174">174</a></span>  <span style="color:#777"># if the hash does not define a key that we are interested in.</span>
+<span class="line-numbers"><a href="#n175" name="n175">175</a></span>  n = args[<span style="color:#A60">:n</span>] || <span style="color:#00D">0</span>
+<span class="line-numbers"><a href="#n176" name="n176">176</a></span>  m = args[<span style="color:#A60">:m</span>] || <span style="color:#00D">1</span>
+<span class="line-numbers"><a href="#n177" name="n177">177</a></span>  c = args[<span style="color:#A60">:c</span>] || <span style="color:#00D">0</span>
+<span class="line-numbers"><a href="#n178" name="n178">178</a></span>
+<span class="line-numbers"><a href="#n179" name="n179">179</a></span>  a = []                      <span style="color:#777"># Start with an empty array</span>
+<span class="line-numbers"><strong><a href="#n180" name="n180">180</a></strong></span>  n.times {|i| a &lt;&lt; m*i+c }   <span style="color:#777"># Calculate the value of each array element</span>
+<span class="line-numbers"><a href="#n181" name="n181">181</a></span>  a                           <span style="color:#777"># Return the array</span>
+<span class="line-numbers"><a href="#n182" name="n182">182</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n183" name="n183">183</a></span>---------------------------
+<span class="line-numbers"><a href="#n184" name="n184">184</a></span>sequence({<span style="color:#A60">:n</span>=&gt;<span style="color:#00D">3</span>, <span style="color:#A60">:m</span>=&gt;<span style="color:#00D">5</span>})      <span style="color:#777"># =&gt; [0, 5, 10]</span>
+<span class="line-numbers"><a href="#n185" name="n185">185</a></span>---------------------------
+<span class="line-numbers"><a href="#n186" name="n186">186</a></span>sequence(<span style="color:#A60">:m</span>=&gt;<span style="color:#00D">3</span>, <span style="color:#A60">:n</span>=&gt;<span style="color:#00D">5</span>)        <span style="color:#777"># =&gt; [0, 3, 6, 9, 12]</span>
+<span class="line-numbers"><a href="#n187" name="n187">187</a></span>---------------------------
+<span class="line-numbers"><a href="#n188" name="n188">188</a></span><span style="color:#777"># Ruby 1.9 hash syntax</span>
+<span class="line-numbers"><a href="#n189" name="n189">189</a></span>sequence <span style="color:#606">c</span>:<span style="color:#00D">1</span>, <span style="color:#606">m</span>:<span style="color:#00D">3</span>, <span style="color:#606">n</span>:<span style="color:#00D">5</span>        <span style="color:#777"># =&gt; [1, 4, 7, 10, 13]</span>
+<span class="line-numbers"><strong><a href="#n190" name="n190">190</a></strong></span>---------------------------
+<span class="line-numbers"><a href="#n191" name="n191">191</a></span>sequence {<span style="color:#A60">:m</span>=&gt;<span style="color:#00D">3</span>, <span style="color:#A60">:n</span>=&gt;<span style="color:#00D">5</span>}       <span style="color:#777"># Syntax error!</span>
+<span class="line-numbers"><a href="#n192" name="n192">192</a></span>---------------------------
+<span class="line-numbers"><a href="#n193" name="n193">193</a></span><span style="color:#60E">6.4</span>.<span style="color:#F00;background-color:#FAA">5</span> <span style="color:#036;font-weight:bold">Block</span> <span style="color:#036;font-weight:bold">Arguments</span>
+<span class="line-numbers"><a href="#n194" name="n194">194</a></span>
+<span class="line-numbers"><a href="#n195" name="n195">195</a></span><span style="color:#777"># Generate a sequence of n numbers m*i + c and pass them to the block</span>
+<span class="line-numbers"><a href="#n196" name="n196">196</a></span><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">sequence2</span>(n, m, c) 
+<span class="line-numbers"><a href="#n197" name="n197">197</a></span>  i = <span style="color:#00D">0</span>
+<span class="line-numbers"><a href="#n198" name="n198">198</a></span>  <span style="color:#080;font-weight:bold">while</span>(i &lt; n)         <span style="color:#777"># loop n times</span>
+<span class="line-numbers"><a href="#n199" name="n199">199</a></span>    <span style="color:#080;font-weight:bold">yield</span> i*m + c      <span style="color:#777"># pass next element of the sequence to the block</span>
+<span class="line-numbers"><strong><a href="#n200" name="n200">200</a></strong></span>    i += <span style="color:#00D">1</span>
+<span class="line-numbers"><a href="#n201" name="n201">201</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n202" name="n202">202</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n203" name="n203">203</a></span>
+<span class="line-numbers"><a href="#n204" name="n204">204</a></span><span style="color:#777"># Here is how you might use this version of the method</span>
+<span class="line-numbers"><a href="#n205" name="n205">205</a></span>sequence2(<span style="color:#00D">5</span>, <span style="color:#00D">2</span>, <span style="color:#00D">2</span>) {|x| puts x }  <span style="color:#777"># Print numbers 2, 4, 6, 8, 10</span>
+<span class="line-numbers"><a href="#n206" name="n206">206</a></span>---------------------------
+<span class="line-numbers"><a href="#n207" name="n207">207</a></span><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">sequence3</span>(n, m, c, &amp;b) <span style="color:#777"># Explicit argument to get block as a Proc</span>
+<span class="line-numbers"><a href="#n208" name="n208">208</a></span>  i = <span style="color:#00D">0</span>
+<span class="line-numbers"><a href="#n209" name="n209">209</a></span>  <span style="color:#080;font-weight:bold">while</span>(i &lt; n)
+<span class="line-numbers"><strong><a href="#n210" name="n210">210</a></strong></span>    b.call(i*m + c)        <span style="color:#777"># Invoke the Proc with its call method</span>
+<span class="line-numbers"><a href="#n211" name="n211">211</a></span>    i += <span style="color:#00D">1</span>
+<span class="line-numbers"><a href="#n212" name="n212">212</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n213" name="n213">213</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n214" name="n214">214</a></span>
+<span class="line-numbers"><a href="#n215" name="n215">215</a></span><span style="color:#777"># Note that the block is still passed outside of the parentheses</span>
+<span class="line-numbers"><a href="#n216" name="n216">216</a></span>sequence3(<span style="color:#00D">5</span>, <span style="color:#00D">2</span>, <span style="color:#00D">2</span>) {|x| puts x }
+<span class="line-numbers"><a href="#n217" name="n217">217</a></span>---------------------------
+<span class="line-numbers"><a href="#n218" name="n218">218</a></span><span style="color:#777"># This version expects an explicitly-created Proc object, not a block</span>
+<span class="line-numbers"><a href="#n219" name="n219">219</a></span><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">sequence4</span>(n, m, c, b)  <span style="color:#777"># No ampersand used for argument b</span>
+<span class="line-numbers"><strong><a href="#n220" name="n220">220</a></strong></span>  i = <span style="color:#00D">0</span>
+<span class="line-numbers"><a href="#n221" name="n221">221</a></span>  <span style="color:#080;font-weight:bold">while</span>(i &lt; n)
+<span class="line-numbers"><a href="#n222" name="n222">222</a></span>    b.call(i*m + c)        <span style="color:#777"># Proc is called explicitly</span>
+<span class="line-numbers"><a href="#n223" name="n223">223</a></span>    i += <span style="color:#00D">1</span>
+<span class="line-numbers"><a href="#n224" name="n224">224</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n225" name="n225">225</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n226" name="n226">226</a></span>
+<span class="line-numbers"><a href="#n227" name="n227">227</a></span>p = <span style="color:#036;font-weight:bold">Proc</span>.new {|x| puts x }  <span style="color:#777"># Explicitly create a Proc object </span>
+<span class="line-numbers"><a href="#n228" name="n228">228</a></span>sequence4(<span style="color:#00D">5</span>, <span style="color:#00D">2</span>, <span style="color:#00D">2</span>, p)       <span style="color:#777"># And pass it as an ordinary argument</span>
+<span class="line-numbers"><a href="#n229" name="n229">229</a></span>---------------------------
+<span class="line-numbers"><strong><a href="#n230" name="n230">230</a></strong></span><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">sequence5</span>(args, &amp;b) <span style="color:#777"># Pass arguments as a hash and follow with a block</span>
+<span class="line-numbers"><a href="#n231" name="n231">231</a></span>  n, m, c = args[<span style="color:#A60">:n</span>], args[<span style="color:#A60">:m</span>], args[<span style="color:#A60">:c</span>]
+<span class="line-numbers"><a href="#n232" name="n232">232</a></span>  i = <span style="color:#00D">0</span>
+<span class="line-numbers"><a href="#n233" name="n233">233</a></span>  <span style="color:#080;font-weight:bold">while</span>(i &lt; n)
+<span class="line-numbers"><a href="#n234" name="n234">234</a></span>    b.call(i*m + c)
+<span class="line-numbers"><a href="#n235" name="n235">235</a></span>    i += <span style="color:#00D">1</span>
+<span class="line-numbers"><a href="#n236" name="n236">236</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n237" name="n237">237</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n238" name="n238">238</a></span>
+<span class="line-numbers"><a href="#n239" name="n239">239</a></span><span style="color:#777"># Expects one or more arguments, followed by a block</span>
+<span class="line-numbers"><strong><a href="#n240" name="n240">240</a></strong></span><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">max</span>(first, *rest, &amp;block) 
+<span class="line-numbers"><a href="#n241" name="n241">241</a></span>  max = first
+<span class="line-numbers"><a href="#n242" name="n242">242</a></span>  rest.each {|x| max = x <span style="color:#080;font-weight:bold">if</span> x &gt; max }
+<span class="line-numbers"><a href="#n243" name="n243">243</a></span>  block.call(max)
+<span class="line-numbers"><a href="#n244" name="n244">244</a></span>  max
+<span class="line-numbers"><a href="#n245" name="n245">245</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n246" name="n246">246</a></span>---------------------------
+<span class="line-numbers"><a href="#n247" name="n247">247</a></span><span style="color:#60E">6.4</span>.<span style="color:#F00;background-color:#FAA">5.1</span> <span style="color:#036;font-weight:bold">Using</span> &amp; <span style="color:#080;font-weight:bold">in</span> method invocation
+<span class="line-numbers"><a href="#n248" name="n248">248</a></span>
+<span class="line-numbers"><a href="#n249" name="n249">249</a></span>a, b = [<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">3</span>], [<span style="color:#00D">4</span>,<span style="color:#00D">5</span>]                     <span style="color:#777"># Start with some data.</span>
+<span class="line-numbers"><strong><a href="#n250" name="n250">250</a></strong></span>sum = a.inject(<span style="color:#00D">0</span>) {|total,x| total+x }    <span style="color:#777"># =&gt; 6. Sum elements of a.</span>
+<span class="line-numbers"><a href="#n251" name="n251">251</a></span>sum = b.inject(sum) {|total,x| total+x }  <span style="color:#777"># =&gt; 15. Add the elements of b in.</span>
+<span class="line-numbers"><a href="#n252" name="n252">252</a></span>---------------------------
+<span class="line-numbers"><a href="#n253" name="n253">253</a></span>a, b = [<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">3</span>], [<span style="color:#00D">4</span>,<span style="color:#00D">5</span>]                     <span style="color:#777"># Start with some data.</span>
+<span class="line-numbers"><a href="#n254" name="n254">254</a></span>summation = <span style="color:#036;font-weight:bold">Proc</span>.new {|total,x| total+x } <span style="color:#777"># A Proc object for summations.</span>
+<span class="line-numbers"><a href="#n255" name="n255">255</a></span>sum = a.inject(<span style="color:#00D">0</span>, &amp;summation)             <span style="color:#777"># =&gt; 6</span>
+<span class="line-numbers"><a href="#n256" name="n256">256</a></span>sum = b.inject(sum, &amp;summation)           <span style="color:#777"># =&gt; 15</span>
+<span class="line-numbers"><a href="#n257" name="n257">257</a></span>---------------------------
+<span class="line-numbers"><a href="#n258" name="n258">258</a></span>words = [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">and</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">but</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">car</span><span style="color:#710">'</span></span>]     <span style="color:#777"># An array of words</span>
+<span class="line-numbers"><a href="#n259" name="n259">259</a></span>uppercase = words.map &amp;<span style="color:#A60">:upcase</span>    <span style="color:#777"># Convert to uppercase with String.upcase</span>
+<span class="line-numbers"><strong><a href="#n260" name="n260">260</a></strong></span>upper = words.map {|w| w.upcase } <span style="color:#777"># This is the equivalent code with a block</span>
+<span class="line-numbers"><a href="#n261" name="n261">261</a></span>---------------------------
+<span class="line-numbers"><a href="#n262" name="n262">262</a></span><span style="color:#60E">6.5</span>.<span style="color:#F00;background-color:#FAA">1</span> <span style="color:#036;font-weight:bold">Creating</span> <span style="color:#036;font-weight:bold">Procs</span>
+<span class="line-numbers"><a href="#n263" name="n263">263</a></span>
+<span class="line-numbers"><a href="#n264" name="n264">264</a></span><span style="color:#777"># This method creates a proc from a block</span>
+<span class="line-numbers"><a href="#n265" name="n265">265</a></span><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">makeproc</span>(&amp;p)  <span style="color:#777"># Convert associated block to a Proc and store in p</span>
+<span class="line-numbers"><a href="#n266" name="n266">266</a></span>  p               <span style="color:#777"># Return the Proc object</span>
+<span class="line-numbers"><a href="#n267" name="n267">267</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n268" name="n268">268</a></span>---------------------------
+<span class="line-numbers"><a href="#n269" name="n269">269</a></span>adder = makeproc {|x,y| x+y }
+<span class="line-numbers"><strong><a href="#n270" name="n270">270</a></strong></span>---------------------------
+<span class="line-numbers"><a href="#n271" name="n271">271</a></span>sum = adder.call(<span style="color:#00D">2</span>,<span style="color:#00D">2</span>)  <span style="color:#777"># =&gt; 4</span>
+<span class="line-numbers"><a href="#n272" name="n272">272</a></span>---------------------------
+<span class="line-numbers"><a href="#n273" name="n273">273</a></span><span style="color:#60E">6.5</span>.<span style="color:#F00;background-color:#FAA">1.1</span> <span style="color:#036;font-weight:bold">Proc</span>.new
+<span class="line-numbers"><a href="#n274" name="n274">274</a></span>
+<span class="line-numbers"><a href="#n275" name="n275">275</a></span>p = <span style="color:#036;font-weight:bold">Proc</span>.new {|x,y| x+y }
+<span class="line-numbers"><a href="#n276" name="n276">276</a></span>---------------------------
+<span class="line-numbers"><a href="#n277" name="n277">277</a></span><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">invoke</span>(&amp;b)     <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">invoke</span>
+<span class="line-numbers"><a href="#n278" name="n278">278</a></span>  b.call             <span style="color:#036;font-weight:bold">Proc</span>.new.call
+<span class="line-numbers"><a href="#n279" name="n279">279</a></span><span style="color:#080;font-weight:bold">end</span>                <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><strong><a href="#n280" name="n280">280</a></strong></span>---------------------------
+<span class="line-numbers"><a href="#n281" name="n281">281</a></span><span style="color:#60E">6.5</span>.<span style="color:#F00;background-color:#FAA">1.2</span> <span style="color:#036;font-weight:bold">Kernel</span>.lambda
+<span class="line-numbers"><a href="#n282" name="n282">282</a></span>
+<span class="line-numbers"><a href="#n283" name="n283">283</a></span>is_positive = lambda {|x| x &gt; <span style="color:#00D">0</span> }
+<span class="line-numbers"><a href="#n284" name="n284">284</a></span>---------------------------
+<span class="line-numbers"><a href="#n285" name="n285">285</a></span><span style="color:#60E">6.5</span>.<span style="color:#F00;background-color:#FAA">1.4</span> <span style="color:#036;font-weight:bold">Lambda</span> <span style="color:#036;font-weight:bold">Literals</span>
+<span class="line-numbers"><a href="#n286" name="n286">286</a></span>
+<span class="line-numbers"><a href="#n287" name="n287">287</a></span>succ = lambda {|x| x+<span style="color:#00D">1</span>}
+<span class="line-numbers"><a href="#n288" name="n288">288</a></span>---------------------------
+<span class="line-numbers"><a href="#n289" name="n289">289</a></span>succ = -&gt;(x){ x+<span style="color:#00D">1</span> }
+<span class="line-numbers"><strong><a href="#n290" name="n290">290</a></strong></span>---------------------------
+<span class="line-numbers"><a href="#n291" name="n291">291</a></span>succ.call(<span style="color:#00D">2</span>)    <span style="color:#777"># =&gt; 3</span>
+<span class="line-numbers"><a href="#n292" name="n292">292</a></span>---------------------------
+<span class="line-numbers"><a href="#n293" name="n293">293</a></span><span style="color:#777"># This lambda takes 2 args and declares 3 local vars</span>
+<span class="line-numbers"><a href="#n294" name="n294">294</a></span>f = -&gt;(x,y; i,j,k) { ... }
+<span class="line-numbers"><a href="#n295" name="n295">295</a></span>---------------------------
+<span class="line-numbers"><a href="#n296" name="n296">296</a></span>zoom = -&gt;(x,y,factor=<span style="color:#00D">2</span>) { [x*factor, y*factor] }
+<span class="line-numbers"><a href="#n297" name="n297">297</a></span>---------------------------
+<span class="line-numbers"><a href="#n298" name="n298">298</a></span>succ = -&gt;x { x+<span style="color:#00D">1</span> }
+<span class="line-numbers"><a href="#n299" name="n299">299</a></span>f = -&gt; x,y; i,j,k { ... }
+<span class="line-numbers"><strong><a href="#n300" name="n300">300</a></strong></span>zoom = -&gt;x,y,factor=<span style="color:#00D">2</span> { [x*factor, y*factor] }
+<span class="line-numbers"><a href="#n301" name="n301">301</a></span>---------------------------
+<span class="line-numbers"><a href="#n302" name="n302">302</a></span>-&gt;{}
+<span class="line-numbers"><a href="#n303" name="n303">303</a></span>---------------------------
+<span class="line-numbers"><a href="#n304" name="n304">304</a></span><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">compose</span>(f,g)            <span style="color:#777"># Compose 2 lambdas </span>
+<span class="line-numbers"><a href="#n305" name="n305">305</a></span>  -&gt;(x) { f.call(g.call(x)) }
+<span class="line-numbers"><a href="#n306" name="n306">306</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n307" name="n307">307</a></span>succOfSquare = compose(-&gt;x{x+<span style="color:#00D">1</span>}, -&gt;x{x*x})
+<span class="line-numbers"><a href="#n308" name="n308">308</a></span>succOfSquare.call(<span style="color:#00D">4</span>)        <span style="color:#777"># =&gt; 17: Computes (4*4)+1</span>
+<span class="line-numbers"><a href="#n309" name="n309">309</a></span>---------------------------
+<span class="line-numbers"><strong><a href="#n310" name="n310">310</a></strong></span>data.sort {|a,b| b-a }   <span style="color:#777"># The block version</span>
+<span class="line-numbers"><a href="#n311" name="n311">311</a></span>data.sort &amp;-&gt;(a,b){ b-a } <span style="color:#777"># The lambda literal version</span>
+<span class="line-numbers"><a href="#n312" name="n312">312</a></span>---------------------------
+<span class="line-numbers"><a href="#n313" name="n313">313</a></span><span style="color:#60E">6.5</span>.<span style="color:#F00;background-color:#FAA">2</span> <span style="color:#036;font-weight:bold">Invoking</span> <span style="color:#036;font-weight:bold">Procs</span> <span style="color:#080;font-weight:bold">and</span> <span style="color:#036;font-weight:bold">Lambdas</span>
+<span class="line-numbers"><a href="#n314" name="n314">314</a></span>
+<span class="line-numbers"><a href="#n315" name="n315">315</a></span>f = <span style="color:#036;font-weight:bold">Proc</span>.new {|x,y| <span style="color:#60E">1.0</span>/(<span style="color:#60E">1.0</span>/x + <span style="color:#60E">1.0</span>/y) }
+<span class="line-numbers"><a href="#n316" name="n316">316</a></span>z = f.call(x,y)
+<span class="line-numbers"><a href="#n317" name="n317">317</a></span>---------------------------
+<span class="line-numbers"><a href="#n318" name="n318">318</a></span>z = f[x,y]
+<span class="line-numbers"><a href="#n319" name="n319">319</a></span>---------------------------
+<span class="line-numbers"><strong><a href="#n320" name="n320">320</a></strong></span>z = f.(x,y)
+<span class="line-numbers"><a href="#n321" name="n321">321</a></span>---------------------------
+<span class="line-numbers"><a href="#n322" name="n322">322</a></span><span style="color:#60E">6.5</span>.<span style="color:#F00;background-color:#FAA">3</span> <span style="color:#036;font-weight:bold">The</span> <span style="color:#036;font-weight:bold">Arity</span> of a <span style="color:#036;font-weight:bold">Proc</span>
+<span class="line-numbers"><a href="#n323" name="n323">323</a></span>
+<span class="line-numbers"><a href="#n324" name="n324">324</a></span>lambda{||}.arity        <span style="color:#777"># =&gt; 0. No arguments expected</span>
+<span class="line-numbers"><a href="#n325" name="n325">325</a></span>lambda{|x| x}.arity     <span style="color:#777"># =&gt; 1. One argument expected</span>
+<span class="line-numbers"><a href="#n326" name="n326">326</a></span>lambda{|x,y| x+y}.arity <span style="color:#777"># =&gt; 2. Two arguments expected</span>
+<span class="line-numbers"><a href="#n327" name="n327">327</a></span>---------------------------
+<span class="line-numbers"><a href="#n328" name="n328">328</a></span>lambda {|*args|}.arity        <span style="color:#777"># =&gt; -1.  ~-1 = -(-1)-1 = 0 arguments required</span>
+<span class="line-numbers"><a href="#n329" name="n329">329</a></span>lambda {|first, *rest|}.arity <span style="color:#777"># =&gt; -2.  ~-2 = -(-2)-1 = 1 argument required</span>
+<span class="line-numbers"><strong><a href="#n330" name="n330">330</a></strong></span>---------------------------
+<span class="line-numbers"><a href="#n331" name="n331">331</a></span>puts lambda {}.arity  <span style="color:#777"># &amp;#x2013;1 in Ruby 1.8; 0 in Ruby 1.9</span>
+<span class="line-numbers"><a href="#n332" name="n332">332</a></span>---------------------------
+<span class="line-numbers"><a href="#n333" name="n333">333</a></span><span style="color:#60E">6.5</span>.<span style="color:#F00;background-color:#FAA">4</span> <span style="color:#036;font-weight:bold">Proc</span> <span style="color:#036;font-weight:bold">Equality</span>
+<span class="line-numbers"><a href="#n334" name="n334">334</a></span>
+<span class="line-numbers"><a href="#n335" name="n335">335</a></span>lambda {|x| x*x } == lambda {|x| x*x }  <span style="color:#777"># =&gt; false</span>
+<span class="line-numbers"><a href="#n336" name="n336">336</a></span>---------------------------
+<span class="line-numbers"><a href="#n337" name="n337">337</a></span>p = lambda {|x| x*x }
+<span class="line-numbers"><a href="#n338" name="n338">338</a></span>q = p.dup
+<span class="line-numbers"><a href="#n339" name="n339">339</a></span>p == q                      <span style="color:#777"># =&gt; true: the two procs are equal</span>
+<span class="line-numbers"><strong><a href="#n340" name="n340">340</a></strong></span>p.object_id == q.object_id  <span style="color:#777"># =&gt; false: they are not the same object</span>
+<span class="line-numbers"><a href="#n341" name="n341">341</a></span>---------------------------
+<span class="line-numbers"><a href="#n342" name="n342">342</a></span><span style="color:#60E">6.5</span>.<span style="color:#F00;background-color:#FAA">5.1</span> <span style="color:#036;font-weight:bold">Return</span> <span style="color:#080;font-weight:bold">in</span> blocks, procs, <span style="color:#080;font-weight:bold">and</span> lambdas
+<span class="line-numbers"><a href="#n343" name="n343">343</a></span>
+<span class="line-numbers"><a href="#n344" name="n344">344</a></span><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">test</span>
+<span class="line-numbers"><a href="#n345" name="n345">345</a></span>  puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">entering method</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"><a href="#n346" name="n346">346</a></span>  <span style="color:#00D">1</span>.times { puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">entering block</span><span style="color:#710">&quot;</span></span>; <span style="color:#080;font-weight:bold">return</span> }  <span style="color:#777"># Makes test method return</span>
+<span class="line-numbers"><a href="#n347" name="n347">347</a></span>  puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">exiting method</span><span style="color:#710">&quot;</span></span>  <span style="color:#777"># This line is never executed</span>
+<span class="line-numbers"><a href="#n348" name="n348">348</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n349" name="n349">349</a></span>test
+<span class="line-numbers"><strong><a href="#n350" name="n350">350</a></strong></span>---------------------------
+<span class="line-numbers"><a href="#n351" name="n351">351</a></span><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">test</span>
+<span class="line-numbers"><a href="#n352" name="n352">352</a></span>  puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">entering method</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"><a href="#n353" name="n353">353</a></span>  p = <span style="color:#036;font-weight:bold">Proc</span>.new { puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">entering proc</span><span style="color:#710">&quot;</span></span>; <span style="color:#080;font-weight:bold">return</span> } 
+<span class="line-numbers"><a href="#n354" name="n354">354</a></span>  p.call                 <span style="color:#777"># Invoking the proc makes method return</span>
+<span class="line-numbers"><a href="#n355" name="n355">355</a></span>  puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">exiting method</span><span style="color:#710">&quot;</span></span>  <span style="color:#777"># This line is never executed</span>
+<span class="line-numbers"><a href="#n356" name="n356">356</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n357" name="n357">357</a></span>test
+<span class="line-numbers"><a href="#n358" name="n358">358</a></span>---------------------------
+<span class="line-numbers"><a href="#n359" name="n359">359</a></span><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">procBuilder</span>(message)            <span style="color:#777"># Create and return a proc</span>
+<span class="line-numbers"><strong><a href="#n360" name="n360">360</a></strong></span>  <span style="color:#036;font-weight:bold">Proc</span>.new { puts message; <span style="color:#080;font-weight:bold">return</span> } <span style="color:#777"># return returns from procBuilder</span>
+<span class="line-numbers"><a href="#n361" name="n361">361</a></span>  <span style="color:#777"># but procBuilder has already returned here!</span>
+<span class="line-numbers"><a href="#n362" name="n362">362</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n363" name="n363">363</a></span>
+<span class="line-numbers"><a href="#n364" name="n364">364</a></span><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">test</span>
+<span class="line-numbers"><a href="#n365" name="n365">365</a></span>  puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">entering method</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"><a href="#n366" name="n366">366</a></span>  p = procBuilder(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">entering proc</span><span style="color:#710">&quot;</span></span>)
+<span class="line-numbers"><a href="#n367" name="n367">367</a></span>  p.call                 <span style="color:#777"># Prints &quot;entering proc&quot; and raises LocalJumpError!</span>
+<span class="line-numbers"><a href="#n368" name="n368">368</a></span>  puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">exiting method</span><span style="color:#710">&quot;</span></span>  <span style="color:#777"># This line is never executed</span>
+<span class="line-numbers"><a href="#n369" name="n369">369</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><strong><a href="#n370" name="n370">370</a></strong></span>test
+<span class="line-numbers"><a href="#n371" name="n371">371</a></span>---------------------------
+<span class="line-numbers"><a href="#n372" name="n372">372</a></span><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">test</span>
+<span class="line-numbers"><a href="#n373" name="n373">373</a></span>  puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">entering method</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"><a href="#n374" name="n374">374</a></span>  p = lambda { puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">entering lambda</span><span style="color:#710">&quot;</span></span>; <span style="color:#080;font-weight:bold">return</span> } 
+<span class="line-numbers"><a href="#n375" name="n375">375</a></span>  p.call                 <span style="color:#777"># Invoking the lambda does not make the method return</span>
+<span class="line-numbers"><a href="#n376" name="n376">376</a></span>  puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">exiting method</span><span style="color:#710">&quot;</span></span>  <span style="color:#777"># This line *is* executed now</span>
+<span class="line-numbers"><a href="#n377" name="n377">377</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n378" name="n378">378</a></span>test
+<span class="line-numbers"><a href="#n379" name="n379">379</a></span>---------------------------
+<span class="line-numbers"><strong><a href="#n380" name="n380">380</a></strong></span><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">lambdaBuilder</span>(message)        <span style="color:#777"># Create and return a lambda</span>
+<span class="line-numbers"><a href="#n381" name="n381">381</a></span>  lambda { puts message; <span style="color:#080;font-weight:bold">return</span> } <span style="color:#777"># return returns from the lambda</span>
+<span class="line-numbers"><a href="#n382" name="n382">382</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n383" name="n383">383</a></span>
+<span class="line-numbers"><a href="#n384" name="n384">384</a></span><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">test</span>
+<span class="line-numbers"><a href="#n385" name="n385">385</a></span>  puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">entering method</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"><a href="#n386" name="n386">386</a></span>  l = lambdaBuilder(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">entering lambda</span><span style="color:#710">&quot;</span></span>)
+<span class="line-numbers"><a href="#n387" name="n387">387</a></span>  l.call                 <span style="color:#777"># Prints &quot;entering lambda&quot; </span>
+<span class="line-numbers"><a href="#n388" name="n388">388</a></span>  puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">exiting method</span><span style="color:#710">&quot;</span></span>  <span style="color:#777"># This line is executed</span>
+<span class="line-numbers"><a href="#n389" name="n389">389</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><strong><a href="#n390" name="n390">390</a></strong></span>test
+<span class="line-numbers"><a href="#n391" name="n391">391</a></span>---------------------------
+<span class="line-numbers"><a href="#n392" name="n392">392</a></span><span style="color:#60E">6.5</span>.<span style="color:#F00;background-color:#FAA">5.2</span> <span style="color:#036;font-weight:bold">Break</span> <span style="color:#080;font-weight:bold">in</span> blocks, procs <span style="color:#080;font-weight:bold">and</span> lambdas
+<span class="line-numbers"><a href="#n393" name="n393">393</a></span>
+<span class="line-numbers"><a href="#n394" name="n394">394</a></span><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">test</span>
+<span class="line-numbers"><a href="#n395" name="n395">395</a></span>  puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">entering test method</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"><a href="#n396" name="n396">396</a></span>  proc = <span style="color:#036;font-weight:bold">Proc</span>.new { puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">entering proc</span><span style="color:#710">&quot;</span></span>; <span style="color:#080;font-weight:bold">break</span> }
+<span class="line-numbers"><a href="#n397" name="n397">397</a></span>  proc.call                    <span style="color:#777"># LocalJumpError: iterator has already returned</span>
+<span class="line-numbers"><a href="#n398" name="n398">398</a></span>  puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">exiting test method</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"><a href="#n399" name="n399">399</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><strong><a href="#n400" name="n400">400</a></strong></span>test
+<span class="line-numbers"><a href="#n401" name="n401">401</a></span>---------------------------
+<span class="line-numbers"><a href="#n402" name="n402">402</a></span><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">iterator</span>(&amp;proc)
+<span class="line-numbers"><a href="#n403" name="n403">403</a></span>  puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">entering iterator</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"><a href="#n404" name="n404">404</a></span>  proc.call  <span style="color:#777"># invoke the proc</span>
+<span class="line-numbers"><a href="#n405" name="n405">405</a></span>  puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">exiting iterator</span><span style="color:#710">&quot;</span></span>   <span style="color:#777"># Never executed if the proc breaks</span>
+<span class="line-numbers"><a href="#n406" name="n406">406</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n407" name="n407">407</a></span>
+<span class="line-numbers"><a href="#n408" name="n408">408</a></span><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">test</span>
+<span class="line-numbers"><a href="#n409" name="n409">409</a></span>  iterator { puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">entering proc</span><span style="color:#710">&quot;</span></span>; <span style="color:#080;font-weight:bold">break</span> }
+<span class="line-numbers"><strong><a href="#n410" name="n410">410</a></strong></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n411" name="n411">411</a></span>test
+<span class="line-numbers"><a href="#n412" name="n412">412</a></span>---------------------------
+<span class="line-numbers"><a href="#n413" name="n413">413</a></span><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">test</span>
+<span class="line-numbers"><a href="#n414" name="n414">414</a></span>  puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">entering test method</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"><a href="#n415" name="n415">415</a></span>  lambda = lambda { puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">entering lambda</span><span style="color:#710">&quot;</span></span>; <span style="color:#080;font-weight:bold">break</span>; puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">exiting lambda</span><span style="color:#710">&quot;</span></span> }
+<span class="line-numbers"><a href="#n416" name="n416">416</a></span>  lambda.call  
+<span class="line-numbers"><a href="#n417" name="n417">417</a></span>  puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">exiting test method</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"><a href="#n418" name="n418">418</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n419" name="n419">419</a></span>test
+<span class="line-numbers"><strong><a href="#n420" name="n420">420</a></strong></span>---------------------------
+<span class="line-numbers"><a href="#n421" name="n421">421</a></span><span style="color:#60E">6.5</span>.<span style="color:#F00;background-color:#FAA">5.4</span> <span style="color:#036;font-weight:bold">Argument</span> passing to procs <span style="color:#080;font-weight:bold">and</span> lambdas
+<span class="line-numbers"><a href="#n422" name="n422">422</a></span>
+<span class="line-numbers"><a href="#n423" name="n423">423</a></span>p = <span style="color:#036;font-weight:bold">Proc</span>.new {|x,y| print x,y }
+<span class="line-numbers"><a href="#n424" name="n424">424</a></span>p.call(<span style="color:#00D">1</span>)       <span style="color:#777"># x,y=1:     nil used for missing rvalue:  Prints 1nil</span>
+<span class="line-numbers"><a href="#n425" name="n425">425</a></span>p.call(<span style="color:#00D">1</span>,<span style="color:#00D">2</span>)     <span style="color:#777"># x,y=1,2:   2 lvalues, 2 rvalues:         Prints 12</span>
+<span class="line-numbers"><a href="#n426" name="n426">426</a></span>p.call(<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">3</span>)   <span style="color:#777"># x,y=1,2,3: extra rvalue discarded:       Prints 12</span>
+<span class="line-numbers"><a href="#n427" name="n427">427</a></span>p.call([<span style="color:#00D">1</span>,<span style="color:#00D">2</span>])   <span style="color:#777"># x,y=[1,2]: array automatically unpacked: Prints 12</span>
+<span class="line-numbers"><a href="#n428" name="n428">428</a></span>---------------------------
+<span class="line-numbers"><a href="#n429" name="n429">429</a></span>l = lambda {|x,y| print x,y }
+<span class="line-numbers"><strong><a href="#n430" name="n430">430</a></strong></span>l.call(<span style="color:#00D">1</span>,<span style="color:#00D">2</span>)     <span style="color:#777"># This works</span>
+<span class="line-numbers"><a href="#n431" name="n431">431</a></span>l.call(<span style="color:#00D">1</span>)       <span style="color:#777"># Wrong number of arguments</span>
+<span class="line-numbers"><a href="#n432" name="n432">432</a></span>l.call(<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">3</span>)   <span style="color:#777"># Wrong number of arguments</span>
+<span class="line-numbers"><a href="#n433" name="n433">433</a></span>l.call([<span style="color:#00D">1</span>,<span style="color:#00D">2</span>])   <span style="color:#777"># Wrong number of arguments</span>
+<span class="line-numbers"><a href="#n434" name="n434">434</a></span>l.call(*[<span style="color:#00D">1</span>,<span style="color:#00D">2</span>])  <span style="color:#777"># Works: explicit splat to unpack the array</span>
+<span class="line-numbers"><a href="#n435" name="n435">435</a></span>---------------------------
+<span class="line-numbers"><a href="#n436" name="n436">436</a></span><span style="color:#60E">6.6</span> <span style="color:#036;font-weight:bold">Closures</span>
+<span class="line-numbers"><a href="#n437" name="n437">437</a></span>
+<span class="line-numbers"><a href="#n438" name="n438">438</a></span><span style="color:#777"># multiply each element of the data array by n</span>
+<span class="line-numbers"><a href="#n439" name="n439">439</a></span><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">multiply</span>(data, n)
+<span class="line-numbers"><strong><a href="#n440" name="n440">440</a></strong></span>  data.collect {|x| x*n }
+<span class="line-numbers"><a href="#n441" name="n441">441</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n442" name="n442">442</a></span>
+<span class="line-numbers"><a href="#n443" name="n443">443</a></span>puts multiply([<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">3</span>], <span style="color:#00D">2</span>)   <span style="color:#777"># Prints 2,4,6</span>
+<span class="line-numbers"><a href="#n444" name="n444">444</a></span>---------------------------
+<span class="line-numbers"><a href="#n445" name="n445">445</a></span><span style="color:#777"># Return a lambda that retains or &quot;closes over&quot; the argument n</span>
+<span class="line-numbers"><a href="#n446" name="n446">446</a></span><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">multiplier</span>(n) 
+<span class="line-numbers"><a href="#n447" name="n447">447</a></span>  lambda {|data| data.collect{|x| x*n } }
+<span class="line-numbers"><a href="#n448" name="n448">448</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n449" name="n449">449</a></span>doubler = multiplier(<span style="color:#00D">2</span>)     <span style="color:#777"># Get a lambda that knows how to double</span>
+<span class="line-numbers"><strong><a href="#n450" name="n450">450</a></strong></span>puts doubler.call([<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">3</span>])  <span style="color:#777"># Prints 2,4,6</span>
+<span class="line-numbers"><a href="#n451" name="n451">451</a></span>---------------------------
+<span class="line-numbers"><a href="#n452" name="n452">452</a></span><span style="color:#60E">6.6</span>.<span style="color:#F00;background-color:#FAA">1</span> <span style="color:#036;font-weight:bold">Closures</span> <span style="color:#080;font-weight:bold">and</span> <span style="color:#036;font-weight:bold">Shared</span> <span style="color:#036;font-weight:bold">Variables</span>
+<span class="line-numbers"><a href="#n453" name="n453">453</a></span>
+<span class="line-numbers"><a href="#n454" name="n454">454</a></span><span style="color:#777"># Return a pair of lambdas that share access to a local variable.</span>
+<span class="line-numbers"><a href="#n455" name="n455">455</a></span><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">accessor_pair</span>(initialValue=<span style="color:#069">nil</span>)
+<span class="line-numbers"><a href="#n456" name="n456">456</a></span>  value = initialValue  <span style="color:#777"># A local variable shared by the returned lambdas.</span>
+<span class="line-numbers"><a href="#n457" name="n457">457</a></span>  getter = lambda { value }          <span style="color:#777"># Return value of local variable.</span>
+<span class="line-numbers"><a href="#n458" name="n458">458</a></span>  setter = lambda {|x| value = x }   <span style="color:#777"># Change value of local variable.</span>
+<span class="line-numbers"><a href="#n459" name="n459">459</a></span>  <span style="color:#080;font-weight:bold">return</span> getter,setter               <span style="color:#777"># Return pair of lambdas to caller.</span>
+<span class="line-numbers"><strong><a href="#n460" name="n460">460</a></strong></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n461" name="n461">461</a></span>
+<span class="line-numbers"><a href="#n462" name="n462">462</a></span>getX, setX = accessor_pair(<span style="color:#00D">0</span>) <span style="color:#777"># Create accessor lambdas for initial value 0.</span>
+<span class="line-numbers"><a href="#n463" name="n463">463</a></span>puts getX[]        <span style="color:#777"># Prints 0. Note square brackets instead of call.</span>
+<span class="line-numbers"><a href="#n464" name="n464">464</a></span>setX[<span style="color:#00D">10</span>]           <span style="color:#777"># Change the value through one closure.</span>
+<span class="line-numbers"><a href="#n465" name="n465">465</a></span>puts getX[]        <span style="color:#777"># Prints 10. The change is visible through the other.</span>
+<span class="line-numbers"><a href="#n466" name="n466">466</a></span>---------------------------
+<span class="line-numbers"><a href="#n467" name="n467">467</a></span><span style="color:#777"># Return an array of lambdas that multiply by the arguments</span>
+<span class="line-numbers"><a href="#n468" name="n468">468</a></span><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">multipliers</span>(*args)
+<span class="line-numbers"><a href="#n469" name="n469">469</a></span>  x = <span style="color:#069">nil</span>
+<span class="line-numbers"><strong><a href="#n470" name="n470">470</a></strong></span>  args.map {|x| lambda {|y| x*y }}
+<span class="line-numbers"><a href="#n471" name="n471">471</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n472" name="n472">472</a></span>
+<span class="line-numbers"><a href="#n473" name="n473">473</a></span>double,triple = multipliers(<span style="color:#00D">2</span>,<span style="color:#00D">3</span>)
+<span class="line-numbers"><a href="#n474" name="n474">474</a></span>puts double.call(<span style="color:#00D">2</span>)    <span style="color:#777"># Prints 6 in Ruby 1.8</span>
+<span class="line-numbers"><a href="#n475" name="n475">475</a></span>---------------------------
+<span class="line-numbers"><a href="#n476" name="n476">476</a></span><span style="color:#60E">6.6</span>.<span style="color:#F00;background-color:#FAA">2</span> <span style="color:#036;font-weight:bold">Closures</span> <span style="color:#080;font-weight:bold">and</span> <span style="color:#036;font-weight:bold">Bindings</span>
+<span class="line-numbers"><a href="#n477" name="n477">477</a></span>
+<span class="line-numbers"><a href="#n478" name="n478">478</a></span><span style="color:#777"># Return a lambda that retains or &quot;closes over&quot; the argument n</span>
+<span class="line-numbers"><a href="#n479" name="n479">479</a></span><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">multiplier</span>(n) 
+<span class="line-numbers"><strong><a href="#n480" name="n480">480</a></strong></span>  lambda {|data| data.collect{|x| x*n } }
+<span class="line-numbers"><a href="#n481" name="n481">481</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n482" name="n482">482</a></span>doubler = multiplier(<span style="color:#00D">2</span>)     <span style="color:#777"># Get a lambda that knows how to double</span>
+<span class="line-numbers"><a href="#n483" name="n483">483</a></span>puts doubler.call([<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">3</span>])  <span style="color:#777"># Prints 2,4,6</span>
+<span class="line-numbers"><a href="#n484" name="n484">484</a></span>---------------------------
+<span class="line-numbers"><a href="#n485" name="n485">485</a></span>eval(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">n=3</span><span style="color:#710">&quot;</span></span>, doubler.binding) <span style="color:#777"># Or doubler.binding.eval(&quot;n=3&quot;) in Ruby 1.9</span>
+<span class="line-numbers"><a href="#n486" name="n486">486</a></span>puts doubler.call([<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">3</span>])   <span style="color:#777"># Now this prints 3,6,9!</span>
+<span class="line-numbers"><a href="#n487" name="n487">487</a></span>---------------------------
+<span class="line-numbers"><a href="#n488" name="n488">488</a></span>eval(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">n=3</span><span style="color:#710">&quot;</span></span>, doubler)
+<span class="line-numbers"><a href="#n489" name="n489">489</a></span>---------------------------
+<span class="line-numbers"><strong><a href="#n490" name="n490">490</a></strong></span><span style="color:#60E">6.7</span> <span style="color:#036;font-weight:bold">Method</span> <span style="color:#036;font-weight:bold">Objects</span>
+<span class="line-numbers"><a href="#n491" name="n491">491</a></span>
+<span class="line-numbers"><a href="#n492" name="n492">492</a></span>m = <span style="color:#00D">0</span>.method(<span style="color:#A60">:succ</span>)  <span style="color:#777"># A Method representing the succ method of Fixnum 0</span>
+<span class="line-numbers"><a href="#n493" name="n493">493</a></span>---------------------------
+<span class="line-numbers"><a href="#n494" name="n494">494</a></span>puts m.call    <span style="color:#777"># Same as puts 0.succ. Or use puts m[].</span>
+<span class="line-numbers"><a href="#n495" name="n495">495</a></span>---------------------------
+<span class="line-numbers"><a href="#n496" name="n496">496</a></span><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">square</span>(x); x*x; <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n497" name="n497">497</a></span>puts (<span style="color:#00D">1</span>..<span style="color:#00D">10</span>).map(&amp;method(<span style="color:#A60">:square</span>))
+<span class="line-numbers"><a href="#n498" name="n498">498</a></span>---------------------------
+<span class="line-numbers"><a href="#n499" name="n499">499</a></span><span style="color:#60E">6.7</span>.<span style="color:#F00;background-color:#FAA">1</span> <span style="color:#036;font-weight:bold">Unbound</span> <span style="color:#036;font-weight:bold">Method</span> <span style="color:#036;font-weight:bold">Objects</span>
+<span class="line-numbers"><strong><a href="#n500" name="n500">500</a></strong></span>
+<span class="line-numbers"><a href="#n501" name="n501">501</a></span>unbound_plus = <span style="color:#036;font-weight:bold">Fixnum</span>.instance_method(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">+</span><span style="color:#710">&quot;</span></span>)
+<span class="line-numbers"><a href="#n502" name="n502">502</a></span>---------------------------
+<span class="line-numbers"><a href="#n503" name="n503">503</a></span>plus_2 = unbound_plus.bind(<span style="color:#00D">2</span>)   <span style="color:#777"># Bind the method to the object 2</span>
+<span class="line-numbers"><a href="#n504" name="n504">504</a></span>---------------------------
+<span class="line-numbers"><a href="#n505" name="n505">505</a></span>sum = plus_2.call(<span style="color:#00D">2</span>)    <span style="color:#777"># =&gt; 4</span>
+<span class="line-numbers"><a href="#n506" name="n506">506</a></span>---------------------------
+<span class="line-numbers"><a href="#n507" name="n507">507</a></span>plus_3 = plus_2.unbind.bind(<span style="color:#00D">3</span>)
+<span class="line-numbers"><a href="#n508" name="n508">508</a></span>---------------------------
+<span class="line-numbers"><a href="#n509" name="n509">509</a></span><span style="color:#60E">6.8</span> <span style="color:#036;font-weight:bold">Functional</span> <span style="color:#036;font-weight:bold">Programming</span>
+<span class="line-numbers"><strong><a href="#n510" name="n510">510</a></strong></span>
+<span class="line-numbers"><a href="#n511" name="n511">511</a></span><span style="color:#777"># Compute the average and standard deviation of an array of numbers</span>
+<span class="line-numbers"><a href="#n512" name="n512">512</a></span>mean = a.inject {|x,y| x+y } / a.size
+<span class="line-numbers"><a href="#n513" name="n513">513</a></span>sumOfSquares = a.map{|x| (x-mean)**<span style="color:#00D">2</span> }.inject{|x,y| x+y }
+<span class="line-numbers"><a href="#n514" name="n514">514</a></span>standardDeviation = <span style="color:#036;font-weight:bold">Math</span>.sqrt(sumOfSquares/(a.size-<span style="color:#00D">1</span>))
+<span class="line-numbers"><a href="#n515" name="n515">515</a></span>---------------------------
+<span class="line-numbers"><a href="#n516" name="n516">516</a></span><span style="color:#60E">6.8</span>.<span style="color:#F00;background-color:#FAA">1</span> <span style="color:#036;font-weight:bold">Applying</span> a <span style="color:#036;font-weight:bold">Function</span> to an <span style="color:#036;font-weight:bold">Enumerable</span>
+<span class="line-numbers"><a href="#n517" name="n517">517</a></span>
+<span class="line-numbers"><a href="#n518" name="n518">518</a></span><span style="color:#777"># This module defines methods and operators for functional programming.</span>
+<span class="line-numbers"><a href="#n519" name="n519">519</a></span><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Functional</span>
+<span class="line-numbers"><strong><a href="#n520" name="n520">520</a></strong></span>
+<span class="line-numbers"><a href="#n521" name="n521">521</a></span>  <span style="color:#777"># Apply this function to each element of the specified Enumerable,</span>
+<span class="line-numbers"><a href="#n522" name="n522">522</a></span>  <span style="color:#777"># returning an array of results. This is the reverse of Enumerable.map.</span>
+<span class="line-numbers"><a href="#n523" name="n523">523</a></span>  <span style="color:#777"># Use | as an operator alias. Read &quot;|&quot; as &quot;over&quot; or &quot;applied over&quot;.</span>
+<span class="line-numbers"><a href="#n524" name="n524">524</a></span>  <span style="color:#777"># </span>
+<span class="line-numbers"><a href="#n525" name="n525">525</a></span>  <span style="color:#777"># Example:</span>
+<span class="line-numbers"><a href="#n526" name="n526">526</a></span>  <span style="color:#777">#   a = [[1,2],[3,4]]</span>
+<span class="line-numbers"><a href="#n527" name="n527">527</a></span>  <span style="color:#777">#   sum = lambda {|x,y| x+y}</span>
+<span class="line-numbers"><a href="#n528" name="n528">528</a></span>  <span style="color:#777">#   sums = sum|a   # =&gt; [3,7]</span>
+<span class="line-numbers"><a href="#n529" name="n529">529</a></span>  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">apply</span>(enum)
+<span class="line-numbers"><strong><a href="#n530" name="n530">530</a></strong></span>    enum.map &amp;<span style="color:#069">self</span>
+<span class="line-numbers"><a href="#n531" name="n531">531</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n532" name="n532">532</a></span>  <span style="color:#080;font-weight:bold">alias</span> <span style="color:#06B;font-weight:bold">|</span> <span style="color:#06B;font-weight:bold">apply</span>
+<span class="line-numbers"><a href="#n533" name="n533">533</a></span>
+<span class="line-numbers"><a href="#n534" name="n534">534</a></span>  <span style="color:#777"># Use this function to &quot;reduce&quot; an enumerable to a single quantity.</span>
+<span class="line-numbers"><a href="#n535" name="n535">535</a></span>  <span style="color:#777"># This is the inverse of Enumerable.inject.</span>
+<span class="line-numbers"><a href="#n536" name="n536">536</a></span>  <span style="color:#777"># Use &lt;= as an operator alias.</span>
+<span class="line-numbers"><a href="#n537" name="n537">537</a></span>  <span style="color:#777"># Mnemonic: &lt;= looks like a needle for injections</span>
+<span class="line-numbers"><a href="#n538" name="n538">538</a></span>  <span style="color:#777"># Example:</span>
+<span class="line-numbers"><a href="#n539" name="n539">539</a></span>  <span style="color:#777">#   data = [1,2,3,4]</span>
+<span class="line-numbers"><strong><a href="#n540" name="n540">540</a></strong></span>  <span style="color:#777">#   sum = lambda {|x,y| x+y}</span>
+<span class="line-numbers"><a href="#n541" name="n541">541</a></span>  <span style="color:#777">#   total = sum&lt;=data   # =&gt; 10</span>
+<span class="line-numbers"><a href="#n542" name="n542">542</a></span>  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">reduce</span>(enum)
+<span class="line-numbers"><a href="#n543" name="n543">543</a></span>    enum.inject &amp;<span style="color:#069">self</span>
+<span class="line-numbers"><a href="#n544" name="n544">544</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n545" name="n545">545</a></span>  <span style="color:#080;font-weight:bold">alias</span> <span style="color:#06B;font-weight:bold">&lt;=</span> <span style="color:#06B;font-weight:bold">reduce</span>
+<span class="line-numbers"><a href="#n546" name="n546">546</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n547" name="n547">547</a></span>
+<span class="line-numbers"><a href="#n548" name="n548">548</a></span><span style="color:#777"># Add these functional programming methods to Proc and Method classes.</span>
+<span class="line-numbers"><a href="#n549" name="n549">549</a></span><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Proc</span>; include <span style="color:#036;font-weight:bold">Functional</span>; <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><strong><a href="#n550" name="n550">550</a></strong></span><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Method</span>; include <span style="color:#036;font-weight:bold">Functional</span>; <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n551" name="n551">551</a></span>---------------------------
+<span class="line-numbers"><a href="#n552" name="n552">552</a></span>sum = lambda {|x,y| x+y }        <span style="color:#777"># A function to add two numbers</span>
+<span class="line-numbers"><a href="#n553" name="n553">553</a></span>mean = (sum&lt;=a)/a.size           <span style="color:#777"># Or sum.reduce(a) or a.inject(&amp;sum)</span>
+<span class="line-numbers"><a href="#n554" name="n554">554</a></span>deviation = lambda {|x| x-mean } <span style="color:#777"># Function to compute difference from mean</span>
+<span class="line-numbers"><a href="#n555" name="n555">555</a></span>square = lambda {|x| x*x }       <span style="color:#777"># Function to square a number</span>
+<span class="line-numbers"><a href="#n556" name="n556">556</a></span>standardDeviation = <span style="color:#036;font-weight:bold">Math</span>.sqrt((sum&lt;=square|(deviation|a))/(a.size-<span style="color:#00D">1</span>))
+<span class="line-numbers"><a href="#n557" name="n557">557</a></span>---------------------------
+<span class="line-numbers"><a href="#n558" name="n558">558</a></span><span style="color:#60E">6.8</span>.<span style="color:#F00;background-color:#FAA">2</span> <span style="color:#036;font-weight:bold">Composing</span> <span style="color:#036;font-weight:bold">Functions</span>
+<span class="line-numbers"><a href="#n559" name="n559">559</a></span>
+<span class="line-numbers"><strong><a href="#n560" name="n560">560</a></strong></span><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Functional</span>
+<span class="line-numbers"><a href="#n561" name="n561">561</a></span>  <span style="color:#777"># Return a new lambda that computes self[f[args]].</span>
+<span class="line-numbers"><a href="#n562" name="n562">562</a></span>  <span style="color:#777"># Use * as an operator alias for compose.</span>
+<span class="line-numbers"><a href="#n563" name="n563">563</a></span>  <span style="color:#777"># Examples, using the * alias for this method.</span>
+<span class="line-numbers"><a href="#n564" name="n564">564</a></span>  <span style="color:#777"># </span>
+<span class="line-numbers"><a href="#n565" name="n565">565</a></span>  <span style="color:#777"># f = lambda {|x| x*x }</span>
+<span class="line-numbers"><a href="#n566" name="n566">566</a></span>  <span style="color:#777"># g = lambda {|x| x+1 }</span>
+<span class="line-numbers"><a href="#n567" name="n567">567</a></span>  <span style="color:#777"># (f*g)[2]   # =&gt; 9</span>
+<span class="line-numbers"><a href="#n568" name="n568">568</a></span>  <span style="color:#777"># (g*f)[2]   # =&gt; 5</span>
+<span class="line-numbers"><a href="#n569" name="n569">569</a></span>  <span style="color:#777"># </span>
+<span class="line-numbers"><strong><a href="#n570" name="n570">570</a></strong></span>  <span style="color:#777"># def polar(x,y)</span>
+<span class="line-numbers"><a href="#n571" name="n571">571</a></span>  <span style="color:#777">#   [Math.hypot(y,x), Math.atan2(y,x)]</span>
+<span class="line-numbers"><a href="#n572" name="n572">572</a></span>  <span style="color:#777"># end</span>
+<span class="line-numbers"><a href="#n573" name="n573">573</a></span>  <span style="color:#777"># def cartesian(magnitude, angle)</span>
+<span class="line-numbers"><a href="#n574" name="n574">574</a></span>  <span style="color:#777">#   [magnitude*Math.cos(angle), magnitude*Math.sin(angle)]</span>
+<span class="line-numbers"><a href="#n575" name="n575">575</a></span>  <span style="color:#777"># end</span>
+<span class="line-numbers"><a href="#n576" name="n576">576</a></span>  <span style="color:#777"># p,c = method :polar, method :cartesian</span>
+<span class="line-numbers"><a href="#n577" name="n577">577</a></span>  <span style="color:#777"># (c*p)[3,4]  # =&gt; [3,4]</span>
+<span class="line-numbers"><a href="#n578" name="n578">578</a></span>  <span style="color:#777"># </span>
+<span class="line-numbers"><a href="#n579" name="n579">579</a></span>  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">compose</span>(f)
+<span class="line-numbers"><strong><a href="#n580" name="n580">580</a></strong></span>    <span style="color:#080;font-weight:bold">if</span> <span style="color:#069">self</span>.respond_to?(<span style="color:#A60">:arity</span>) &amp;&amp; <span style="color:#069">self</span>.arity == <span style="color:#00D">1</span>
+<span class="line-numbers"><a href="#n581" name="n581">581</a></span>      lambda {|*args| <span style="color:#069">self</span>[f[*args]] }
+<span class="line-numbers"><a href="#n582" name="n582">582</a></span>    <span style="color:#080;font-weight:bold">else</span>
+<span class="line-numbers"><a href="#n583" name="n583">583</a></span>      lambda {|*args| <span style="color:#069">self</span>[*f[*args]] }
+<span class="line-numbers"><a href="#n584" name="n584">584</a></span>    <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n585" name="n585">585</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n586" name="n586">586</a></span>
+<span class="line-numbers"><a href="#n587" name="n587">587</a></span>  <span style="color:#777"># * is the natural operator for function composition.</span>
+<span class="line-numbers"><a href="#n588" name="n588">588</a></span>  <span style="color:#080;font-weight:bold">alias</span> <span style="color:#06B;font-weight:bold">*</span> <span style="color:#06B;font-weight:bold">compose</span>
+<span class="line-numbers"><a href="#n589" name="n589">589</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><strong><a href="#n590" name="n590">590</a></strong></span>---------------------------
+<span class="line-numbers"><a href="#n591" name="n591">591</a></span>standardDeviation = <span style="color:#036;font-weight:bold">Math</span>.sqrt((sum&lt;=square*deviation|a)/(a.size-<span style="color:#00D">1</span>))
+<span class="line-numbers"><a href="#n592" name="n592">592</a></span>---------------------------
+<span class="line-numbers"><a href="#n593" name="n593">593</a></span><span style="color:#60E">6.8</span>.<span style="color:#F00;background-color:#FAA">3</span> <span style="color:#036;font-weight:bold">Partially</span> <span style="color:#036;font-weight:bold">Applying</span> <span style="color:#036;font-weight:bold">Functions</span>
+<span class="line-numbers"><a href="#n594" name="n594">594</a></span>
+<span class="line-numbers"><a href="#n595" name="n595">595</a></span>product = lambda {|x, y| x*y }       <span style="color:#777"># A function of two arguments</span>
+<span class="line-numbers"><a href="#n596" name="n596">596</a></span>double = lambda {|x| product(<span style="color:#00D">2</span>,x) }  <span style="color:#777"># Apply one argument</span>
+<span class="line-numbers"><a href="#n597" name="n597">597</a></span>---------------------------
+<span class="line-numbers"><a href="#n598" name="n598">598</a></span><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Functional</span>
+<span class="line-numbers"><a href="#n599" name="n599">599</a></span>  <span style="color:#777">#</span>
+<span class="line-numbers"><strong><a href="#n600" name="n600">600</a></strong></span>  <span style="color:#777"># Return a lambda equivalent to this one with one or more initial </span>
+<span class="line-numbers"><a href="#n601" name="n601">601</a></span>  <span style="color:#777"># arguments applied. When only a single argument</span>
+<span class="line-numbers"><a href="#n602" name="n602">602</a></span>  <span style="color:#777"># is being specified, the &gt;&gt; alias may be simpler to use.</span>
+<span class="line-numbers"><a href="#n603" name="n603">603</a></span>  <span style="color:#777"># Example:</span>
+<span class="line-numbers"><a href="#n604" name="n604">604</a></span>  <span style="color:#777">#   product = lambda {|x,y| x*y}</span>
+<span class="line-numbers"><a href="#n605" name="n605">605</a></span>  <span style="color:#777">#   doubler = lambda &gt;&gt; 2</span>
+<span class="line-numbers"><a href="#n606" name="n606">606</a></span>  <span style="color:#777">#</span>
+<span class="line-numbers"><a href="#n607" name="n607">607</a></span>  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">apply_head</span>(*first)
+<span class="line-numbers"><a href="#n608" name="n608">608</a></span>    lambda {|*rest| <span style="color:#069">self</span>[*first.concat(rest)]}
+<span class="line-numbers"><a href="#n609" name="n609">609</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><strong><a href="#n610" name="n610">610</a></strong></span>
+<span class="line-numbers"><a href="#n611" name="n611">611</a></span>  <span style="color:#777">#</span>
+<span class="line-numbers"><a href="#n612" name="n612">612</a></span>  <span style="color:#777"># Return a lambda equivalent to this one with one or more final arguments</span>
+<span class="line-numbers"><a href="#n613" name="n613">613</a></span>  <span style="color:#777"># applied. When only a single argument is being specified,</span>
+<span class="line-numbers"><a href="#n614" name="n614">614</a></span>  <span style="color:#777"># the &lt;&lt; alias may be simpler.</span>
+<span class="line-numbers"><a href="#n615" name="n615">615</a></span>  <span style="color:#777"># Example:</span>
+<span class="line-numbers"><a href="#n616" name="n616">616</a></span>  <span style="color:#777">#  difference = lambda {|x,y| x-y }</span>
+<span class="line-numbers"><a href="#n617" name="n617">617</a></span>  <span style="color:#777">#  decrement = difference &lt;&lt; 1</span>
+<span class="line-numbers"><a href="#n618" name="n618">618</a></span>  <span style="color:#777">#</span>
+<span class="line-numbers"><a href="#n619" name="n619">619</a></span>  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">apply_tail</span>(*last)
+<span class="line-numbers"><strong><a href="#n620" name="n620">620</a></strong></span>    lambda {|*rest| <span style="color:#069">self</span>[*rest.concat(last)]}
+<span class="line-numbers"><a href="#n621" name="n621">621</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n622" name="n622">622</a></span>
+<span class="line-numbers"><a href="#n623" name="n623">623</a></span>  <span style="color:#777"># Here are operator alternatives for these methods. The angle brackets</span>
+<span class="line-numbers"><a href="#n624" name="n624">624</a></span>  <span style="color:#777"># point to the side on which the argument is shifted in.</span>
+<span class="line-numbers"><a href="#n625" name="n625">625</a></span>  <span style="color:#080;font-weight:bold">alias</span> <span style="color:#06B;font-weight:bold">&gt;&gt;</span> <span style="color:#06B;font-weight:bold">apply_head</span>    <span style="color:#777"># g = f &gt;&gt; 2 -- set first arg to 2</span>
+<span class="line-numbers"><a href="#n626" name="n626">626</a></span>  <span style="color:#080;font-weight:bold">alias</span> <span style="color:#06B;font-weight:bold">&lt;&lt;</span> <span style="color:#06B;font-weight:bold">apply_tail</span>    <span style="color:#777"># g = f &lt;&lt; 2 -- set last arg to 2</span>
+<span class="line-numbers"><a href="#n627" name="n627">627</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n628" name="n628">628</a></span>---------------------------
+<span class="line-numbers"><a href="#n629" name="n629">629</a></span>difference = lambda {|x,y| x-y }  <span style="color:#777"># Compute difference of two numbers</span>
+<span class="line-numbers"><strong><a href="#n630" name="n630">630</a></strong></span>deviation = difference&lt;&lt;mean      <span style="color:#777"># Apply second argument</span>
+<span class="line-numbers"><a href="#n631" name="n631">631</a></span>---------------------------
+<span class="line-numbers"><a href="#n632" name="n632">632</a></span><span style="color:#60E">6.8</span>.<span style="color:#F00;background-color:#FAA">4</span> <span style="color:#036;font-weight:bold">Memoizing</span> <span style="color:#036;font-weight:bold">Functions</span>
+<span class="line-numbers"><a href="#n633" name="n633">633</a></span>
+<span class="line-numbers"><a href="#n634" name="n634">634</a></span><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Functional</span>
+<span class="line-numbers"><a href="#n635" name="n635">635</a></span>  <span style="color:#777">#</span>
+<span class="line-numbers"><a href="#n636" name="n636">636</a></span>  <span style="color:#777"># Return a new lambda that caches the results of this function and </span>
+<span class="line-numbers"><a href="#n637" name="n637">637</a></span>  <span style="color:#777"># only calls the function when new arguments are supplied.</span>
+<span class="line-numbers"><a href="#n638" name="n638">638</a></span>  <span style="color:#777">#</span>
+<span class="line-numbers"><a href="#n639" name="n639">639</a></span>  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">memoize</span>
+<span class="line-numbers"><strong><a href="#n640" name="n640">640</a></strong></span>    cache = {}  <span style="color:#777"># An empty cache. The lambda captures this in its closure.</span>
+<span class="line-numbers"><a href="#n641" name="n641">641</a></span>    lambda {|*args|
+<span class="line-numbers"><a href="#n642" name="n642">642</a></span>      <span style="color:#777"># notice that the hash key is the entire array of arguments!</span>
+<span class="line-numbers"><a href="#n643" name="n643">643</a></span>      <span style="color:#080;font-weight:bold">unless</span> cache.has_key?(args)  <span style="color:#777"># If no cached result for these args</span>
+<span class="line-numbers"><a href="#n644" name="n644">644</a></span>        cache[args] = <span style="color:#069">self</span>[*args]  <span style="color:#777"># Compute and cache the result</span>
+<span class="line-numbers"><a href="#n645" name="n645">645</a></span>      <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n646" name="n646">646</a></span>      cache[args]                  <span style="color:#777"># Return result from cache</span>
+<span class="line-numbers"><a href="#n647" name="n647">647</a></span>    }
+<span class="line-numbers"><a href="#n648" name="n648">648</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n649" name="n649">649</a></span>  <span style="color:#777"># A (probably unnecessary) unary + operator for memoization</span>
+<span class="line-numbers"><strong><a href="#n650" name="n650">650</a></strong></span>  <span style="color:#777"># Mnemonic: the + operator means &quot;improved&quot;</span>
+<span class="line-numbers"><a href="#n651" name="n651">651</a></span>  <span style="color:#080;font-weight:bold">alias</span> <span style="color:#06B;font-weight:bold">+@</span> <span style="color:#06B;font-weight:bold">memoize</span>        <span style="color:#777"># cached_f = +f</span>
+<span class="line-numbers"><a href="#n652" name="n652">652</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n653" name="n653">653</a></span>---------------------------
+<span class="line-numbers"><a href="#n654" name="n654">654</a></span><span style="color:#777"># A memoized recursive factorial function</span>
+<span class="line-numbers"><a href="#n655" name="n655">655</a></span>factorial = lambda {|x| <span style="color:#080;font-weight:bold">return</span> <span style="color:#00D">1</span> <span style="color:#080;font-weight:bold">if</span> x==<span style="color:#00D">0</span>; x*factorial[x-<span style="color:#00D">1</span>]; }.memoize
+<span class="line-numbers"><a href="#n656" name="n656">656</a></span><span style="color:#777"># Or, using the unary operator syntax</span>
+<span class="line-numbers"><a href="#n657" name="n657">657</a></span>factorial = +lambda {|x| <span style="color:#080;font-weight:bold">return</span> <span style="color:#00D">1</span> <span style="color:#080;font-weight:bold">if</span> x==<span style="color:#00D">0</span>; x*factorial[x-<span style="color:#00D">1</span>]; }
+<span class="line-numbers"><a href="#n658" name="n658">658</a></span>---------------------------
+<span class="line-numbers"><a href="#n659" name="n659">659</a></span>factorial = lambda {|x| <span style="color:#080;font-weight:bold">return</span> <span style="color:#00D">1</span> <span style="color:#080;font-weight:bold">if</span> x==<span style="color:#00D">0</span>; x*factorial[x-<span style="color:#00D">1</span>]; }
+<span class="line-numbers"><strong><a href="#n660" name="n660">660</a></strong></span>cached_factorial = +factorial <span style="color:#777"># Recursive calls aren't cached!</span>
+<span class="line-numbers"><a href="#n661" name="n661">661</a></span>---------------------------
+<span class="line-numbers"><a href="#n662" name="n662">662</a></span><span style="color:#60E">6.8</span>.<span style="color:#F00;background-color:#FAA">5</span> <span style="color:#036;font-weight:bold">Symbols</span>, <span style="color:#036;font-weight:bold">Methods</span>, <span style="color:#080;font-weight:bold">and</span> <span style="color:#036;font-weight:bold">Procs</span>
+<span class="line-numbers"><a href="#n663" name="n663">663</a></span>
+<span class="line-numbers"><a href="#n664" name="n664">664</a></span><span style="color:#777"># Increment an array of integers with the Fixnum.succ method</span>
+<span class="line-numbers"><a href="#n665" name="n665">665</a></span>[<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">3</span>].map(&amp;<span style="color:#A60">:succ</span>)  <span style="color:#777"># =&gt; [2,3,4]</span>
+<span class="line-numbers"><a href="#n666" name="n666">666</a></span>---------------------------
+<span class="line-numbers"><a href="#n667" name="n667">667</a></span>[<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">3</span>].map {|n| n.succ }
+<span class="line-numbers"><a href="#n668" name="n668">668</a></span>---------------------------
+<span class="line-numbers"><a href="#n669" name="n669">669</a></span><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Symbol</span>
+<span class="line-numbers"><strong><a href="#n670" name="n670">670</a></strong></span>  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">to_proc</span>
+<span class="line-numbers"><a href="#n671" name="n671">671</a></span>    lambda {|receiver, *args| receiver.send(<span style="color:#069">self</span>, *args)}
+<span class="line-numbers"><a href="#n672" name="n672">672</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n673" name="n673">673</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n674" name="n674">674</a></span>---------------------------
+<span class="line-numbers"><a href="#n675" name="n675">675</a></span><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Symbol</span>
+<span class="line-numbers"><a href="#n676" name="n676">676</a></span>  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">to_proc</span>
+<span class="line-numbers"><a href="#n677" name="n677">677</a></span>    lambda {|receiver, *args| receiver.method(<span style="color:#069">self</span>)[*args]}
+<span class="line-numbers"><a href="#n678" name="n678">678</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n679" name="n679">679</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><strong><a href="#n680" name="n680">680</a></strong></span>---------------------------
+<span class="line-numbers"><a href="#n681" name="n681">681</a></span><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Module</span>
+<span class="line-numbers"><a href="#n682" name="n682">682</a></span>  <span style="color:#777"># Access instance methods with array notation. Returns UnboundMethod,</span>
+<span class="line-numbers"><a href="#n683" name="n683">683</a></span>  <span style="color:#080;font-weight:bold">alias</span> <span style="color:#06B;font-weight:bold">[]</span> <span style="color:#06B;font-weight:bold">instance_method</span>
+<span class="line-numbers"><a href="#n684" name="n684">684</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n685" name="n685">685</a></span>---------------------------
+<span class="line-numbers"><a href="#n686" name="n686">686</a></span><span style="color:#036;font-weight:bold">String</span>[<span style="color:#A60">:reverse</span>].bind(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">hello</span><span style="color:#710">&quot;</span></span>).call   <span style="color:#777"># =&gt; &quot;olleh&quot;</span>
+<span class="line-numbers"><a href="#n687" name="n687">687</a></span>---------------------------
+<span class="line-numbers"><a href="#n688" name="n688">688</a></span><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">UnboundMethod</span>
+<span class="line-numbers"><a href="#n689" name="n689">689</a></span>  <span style="color:#777"># Allow [] as an alternative to bind.  </span>
+<span class="line-numbers"><strong><a href="#n690" name="n690">690</a></strong></span>  <span style="color:#080;font-weight:bold">alias</span> <span style="color:#06B;font-weight:bold">[]</span> <span style="color:#06B;font-weight:bold">bind</span>
+<span class="line-numbers"><a href="#n691" name="n691">691</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n692" name="n692">692</a></span>---------------------------
+<span class="line-numbers"><a href="#n693" name="n693">693</a></span><span style="color:#036;font-weight:bold">String</span>[<span style="color:#A60">:reverse</span>][<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">hello</span><span style="color:#710">&quot;</span></span>][]   <span style="color:#777"># =&gt; &quot;olleh&quot;</span>
+<span class="line-numbers"><a href="#n694" name="n694">694</a></span>---------------------------
+<span class="line-numbers"><a href="#n695" name="n695">695</a></span><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Module</span>
+<span class="line-numbers"><a href="#n696" name="n696">696</a></span>  <span style="color:#777"># Define a instance method with name sym and body f.</span>
+<span class="line-numbers"><a href="#n697" name="n697">697</a></span>  <span style="color:#777"># Example: String[:backwards] = lambda { reverse }</span>
+<span class="line-numbers"><a href="#n698" name="n698">698</a></span>  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">[]=</span>(sym, f)
+<span class="line-numbers"><a href="#n699" name="n699">699</a></span>    <span style="color:#069">self</span>.instance_eval { define_method(sym, f) }
+<span class="line-numbers"><strong><a href="#n700" name="n700">700</a></strong></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n701" name="n701">701</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n702" name="n702">702</a></span>---------------------------
+<span class="line-numbers"><a href="#n703" name="n703">703</a></span><span style="color:#036;font-weight:bold">Enumerable</span>[<span style="color:#A60">:average</span>] = lambda <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n704" name="n704">704</a></span>  sum, n = <span style="color:#60E">0.0</span>, <span style="color:#00D">0</span>
+<span class="line-numbers"><a href="#n705" name="n705">705</a></span>  <span style="color:#069">self</span>.each {|x| sum += x; n += <span style="color:#00D">1</span> }
+<span class="line-numbers"><a href="#n706" name="n706">706</a></span>  <span style="color:#080;font-weight:bold">if</span> n == <span style="color:#00D">0</span>
+<span class="line-numbers"><a href="#n707" name="n707">707</a></span>    <span style="color:#069">nil</span>
+<span class="line-numbers"><a href="#n708" name="n708">708</a></span>  <span style="color:#080;font-weight:bold">else</span>
+<span class="line-numbers"><a href="#n709" name="n709">709</a></span>    sum/n
+<span class="line-numbers"><strong><a href="#n710" name="n710">710</a></strong></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n711" name="n711">711</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n712" name="n712">712</a></span>---------------------------
+<span class="line-numbers"><a href="#n713" name="n713">713</a></span><span style="color:#777">#</span>
+<span class="line-numbers"><a href="#n714" name="n714">714</a></span><span style="color:#777"># Add [] and []= operators to the Symbol class for accessing and setting</span>
+<span class="line-numbers"><a href="#n715" name="n715">715</a></span><span style="color:#777"># singleton methods of objects. Read : as &quot;method&quot; and [] as &quot;of&quot;.</span>
+<span class="line-numbers"><a href="#n716" name="n716">716</a></span><span style="color:#777"># So :m[o] reads &quot;method m of o&quot;.</span>
+<span class="line-numbers"><a href="#n717" name="n717">717</a></span><span style="color:#777">#</span>
+<span class="line-numbers"><a href="#n718" name="n718">718</a></span><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Symbol</span>
+<span class="line-numbers"><a href="#n719" name="n719">719</a></span>  <span style="color:#777"># Return the Method of obj named by this symbol. This may be a singleton</span>
+<span class="line-numbers"><strong><a href="#n720" name="n720">720</a></strong></span>  <span style="color:#777"># method of obj (such as a class method) or an instance method defined</span>
+<span class="line-numbers"><a href="#n721" name="n721">721</a></span>  <span style="color:#777"># by obj.class or inherited from a superclass.</span>
+<span class="line-numbers"><a href="#n722" name="n722">722</a></span>  <span style="color:#777"># Examples:</span>
+<span class="line-numbers"><a href="#n723" name="n723">723</a></span>  <span style="color:#777">#   creator = :new[Object]  # Class method Object.new</span>
+<span class="line-numbers"><a href="#n724" name="n724">724</a></span>  <span style="color:#777">#   doubler = :*[2]         # * method of Fixnum 2</span>
+<span class="line-numbers"><a href="#n725" name="n725">725</a></span>  <span style="color:#777">#</span>
+<span class="line-numbers"><a href="#n726" name="n726">726</a></span>  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">[]</span>(obj)
+<span class="line-numbers"><a href="#n727" name="n727">727</a></span>    obj.method(<span style="color:#069">self</span>)
+<span class="line-numbers"><a href="#n728" name="n728">728</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n729" name="n729">729</a></span>  
+<span class="line-numbers"><strong><a href="#n730" name="n730">730</a></strong></span>  <span style="color:#777"># Define a singleton method on object o, using Proc or Method f as its body.</span>
+<span class="line-numbers"><a href="#n731" name="n731">731</a></span>  <span style="color:#777"># This symbol is used as the name of the method.</span>
+<span class="line-numbers"><a href="#n732" name="n732">732</a></span>  <span style="color:#777"># Examples:</span>
+<span class="line-numbers"><a href="#n733" name="n733">733</a></span>  <span style="color:#777">#</span>
+<span class="line-numbers"><a href="#n734" name="n734">734</a></span>  <span style="color:#777">#  :singleton[o] = lambda { puts &quot;this is a singleton method of o&quot; }</span>
+<span class="line-numbers"><a href="#n735" name="n735">735</a></span>  <span style="color:#777">#  :class_method[String] = lambda { puts &quot;this is a class method&quot; }</span>
+<span class="line-numbers"><a href="#n736" name="n736">736</a></span>  <span style="color:#777"># </span>
+<span class="line-numbers"><a href="#n737" name="n737">737</a></span>  <span style="color:#777"># Note that you can't create instance methods this way. See Module.[]=</span>
+<span class="line-numbers"><a href="#n738" name="n738">738</a></span>  <span style="color:#777">#</span>
+<span class="line-numbers"><a href="#n739" name="n739">739</a></span>  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">[]=</span>(o,f)
+<span class="line-numbers"><strong><a href="#n740" name="n740">740</a></strong></span>    <span style="color:#777"># We can't use self in the block below, as it is evaluated in the </span>
+<span class="line-numbers"><a href="#n741" name="n741">741</a></span>    <span style="color:#777"># context of a different object. So we have to assign self to a variable.</span>
+<span class="line-numbers"><a href="#n742" name="n742">742</a></span>    sym = <span style="color:#069">self</span>
+<span class="line-numbers"><a href="#n743" name="n743">743</a></span>    <span style="color:#777"># This is the object we define singleton methods on.</span>
+<span class="line-numbers"><a href="#n744" name="n744">744</a></span>    eigenclass = (<span style="color:#080;font-weight:bold">class</span> &lt;&lt; <span style="color:#B06;font-weight:bold">o</span>; <span style="color:#069">self</span> <span style="color:#080;font-weight:bold">end</span>)
+<span class="line-numbers"><a href="#n745" name="n745">745</a></span>    <span style="color:#777"># define_method is private, so we have to use instance_eval to execute it.</span>
+<span class="line-numbers"><a href="#n746" name="n746">746</a></span>    eigenclass.instance_eval { define_method(sym, f) }
+<span class="line-numbers"><a href="#n747" name="n747">747</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n748" name="n748">748</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n749" name="n749">749</a></span>---------------------------
+<span class="line-numbers"><strong><a href="#n750" name="n750">750</a></strong></span>dashes = <span style="color:#A60">:*</span>[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">-</span><span style="color:#710">'</span></span>]       <span style="color:#777"># Method * of '-'</span>
+<span class="line-numbers"><a href="#n751" name="n751">751</a></span>puts dashes[<span style="color:#00D">10</span>]        <span style="color:#777"># Prints &quot;----------&quot;</span>
+<span class="line-numbers"><a href="#n752" name="n752">752</a></span>
+<span class="line-numbers"><a href="#n753" name="n753">753</a></span>y = (<span style="color:#A60">:+</span>[<span style="color:#00D">1</span>]*<span style="color:#A60">:*</span>[<span style="color:#00D">2</span>])[x]   <span style="color:#777"># Another way to write y = 2*x + 1</span>
+<span class="line-numbers"><a href="#n754" name="n754">754</a></span>---------------------------
+</pre></div>
+</div>
+</div>
+
+  </div>
+</body>
+</html>
