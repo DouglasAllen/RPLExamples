@@ -800,7 +800,7 @@ iter.rewind                # Force it to restart now
 print iter.next            # Prints "R" again
 ---------------------------
 # Print "0:R\n1:u\n2:b\n3:y\n"
-"Ruby".each_char.with_index.each {|c,i| puts "#{i}:#{c} }
+"Ruby".each_char.with_index.each {|c,i| puts "#{i}:#{c}" }
 ---------------------------
 9.5.1.3 Sorting collections
 
