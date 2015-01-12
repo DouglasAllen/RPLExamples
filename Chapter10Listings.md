@@ -130,12 +130,11 @@ print if $_ =~ /^A/
 ---------------------------
 10.4.1 Invoking OS Commands
 
-os = `uname`             # String literal and method invocation in one
-os = %x{uname}           # Another quoting syntax```
-os = Kernel.`("uname")   # Invoke the method explicitly
-```
+os = `` `uname` ``             # String literal and method invocation in one
+os = %x{uname}           # Another quoting syntax
+os = Kernel.`` ` ``("uname")   # Invoke the method explicitly
 ---------------------------
-files = `echo *.xml`
+files = `` ` ``echo *.xml`` ` ``
 ---------------------------
 pipe = open("|echo *.xml")
 files = pipe.readline
