@@ -160,7 +160,7 @@ x,*y = 1        # x=1; y=[]
 *x,y = 1        # x=[]; y=1
 
 x, y, *z = 1, *[2,3,4]  # x=1; y=2; z=[3,4].
-
+```
 4.5.5.6 Parentheses in parallel assignment
 ```ruby
 x,(y,z) = a, b
