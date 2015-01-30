@@ -123,8 +123,8 @@ class Point
   end
 end
 ---------------------------
-NoMethodError: undefined method `x' for 3:Fixnum
-        from ./point.rb:37:in `+'
+NoMethodError: undefined method 'x' for 3:Fixnum
+        from ./point.rb:37:in '+'
 ---------------------------
 def +(other)
   raise TypeError, "Point argument expected" unless other.is_a? Point
