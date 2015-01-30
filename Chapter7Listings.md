@@ -874,7 +874,7 @@ end
 message = "hello"
 message.world
 ---------------------------
-NoMethodError: undefined method `world' for "hello":String
+NoMethodError: undefined method 'world' for "hello":String
 ---------------------------
 7.8.1 Class Method Lookup
 
