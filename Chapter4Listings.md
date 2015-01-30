@@ -190,11 +190,14 @@ puts((x,y=1,2))
 
 (1 + 2) * 3   # => 9
 ```
-$> irb 
+$> irb
+ 
 help
+
 String.*
 
 $> pry
+
 ri String.*
 
 =
