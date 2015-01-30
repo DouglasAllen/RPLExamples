@@ -121,20 +121,20 @@ results = results || []
 4.5.5.1 Same number of lvalues and rvalues
 ```ruby
 x, y, z = 1, 2, 3   # x=1; y=2; z=3
-```
+
 x,y = y,x     # Parallel: swap the value of two variables
 x = y; y = x  # Sequential: both variables have same value
 ```
 4.5.5.2 One lvalue, multiple rvalues
 ```ruby
 x = 1, 2, 3      # x = [1,2,3]
-```
+
 x, = 1, 2, 3     # x = 1; other values are discarded
 ```
 4.5.5.3 Multiple lvalues, single array rvalue
-
+```ruby
 x, y, z = [1, 2, 3]  # Same as x,y,z = 1,2,3
-```
+
 x = [1,2]    # x becomes [1,2]: this is not parallel assignment
 x, = [1,2]   # x becomes 1: the trailing comma makes it parallel
 ```
