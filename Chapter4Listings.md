@@ -1,19 +1,27 @@
-```ruby
+
 The Ruby Programming Language
 CHAPTER 4
 Expressions and Operators
----------------------------
+```ruby
+#---------------------------
+
 2                  # A numeric literal
 x                  # A local variable reference
 Math.sqrt(2)       # A method invocation
 x = Math.sqrt(2)   # Assignment
 x*x                # Multiplication with the * operator
----------------------------
+
+#---------------------------
+```
 4.2 Variable References
+```ruby
+#---------------------------
 
 one = 1.0     # This is an assignment expression
 one           # This variable reference expression evaluates to 1.0
----------------------------
+
+#---------------------------
+```
 4.2.1 Uninitialized Variables
 
 a = 0.0 if false    # This assignment is never executed
@@ -190,7 +198,12 @@ puts((x,y=1,2))
 ---------------------------
 (1 + 2) * 3   # => 9
 ---------------------------
-ri 'String.*'
+$> irb 
+help
+String.*
+
+$> pry
+ri String.*
 ---------------------------
 =
 **= *= /= %= += -=
