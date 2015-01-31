@@ -1,9 +1,11 @@
+# The Ruby Programming Language
 
-The Ruby Programming Language
-CHAPTER 1
-Introduction
+## CHAPTER 1
 
-1.1.1 Ruby Is Object-Oriented
+### Introduction
+
+#### 1.1.1 Ruby Is Object-Oriented
+
 ```ruby
 1.class      # => Fixnum: the number 1 is a Fixnum
 0.0.class    # => Float: floating-point numbers have class Float
@@ -11,7 +13,9 @@ true.class   # => TrueClass: true is a the singleton instance of TrueClass
 false.class  # => FalseClass
 nil.class    # => NilClass
 ```
-1.1.2 Blocks and Iterators
+
+#### 1.1.2 Blocks and Iterators
+
 ```ruby
 3.times { print "Ruby! " }   # Prints "Ruby! Ruby! Ruby! "
 1.upto(9) {|x| print x }     # Prints "123456789"
@@ -49,7 +53,9 @@ end                     # File contents available as thread value
 
 print "#{value}:#{key}; "    # Note variables substituted into string 
 ```
-1.1.3 Expressions and Operators in Ruby
+
+#### 1.1.3 Expressions and Operators in Ruby
+
 ```ruby
 minimum = if x < y then x else y end
 
@@ -62,7 +68,9 @@ minimum = if x < y then x else y end
 "%d %s" % [3, "rubies"]  # => "3 Rubies": Python-style, printf formatting
 max = x > y ? x : y      # The conditional operator
 ```
-1.1.4 Methods
+
+#### 1.1.4 Methods
+
 ```ruby
 def square(x)   # Define a method named square with one parameter x
   x*x           # Return x squared
@@ -72,7 +80,9 @@ def Math.square(x)  # Define a class method of the Math module
   x*x
 end
 ```
-1.1.5 Assignment
+
+#### 1.1.5 Assignment
+
 ```ruby
 x = 1
 
@@ -96,7 +106,9 @@ distance, angle = polar(2,2)
 o.x=(1)         # Normal method invocation syntax
 o.x = 1         # Method invocation through assignment
 ```
-1.1.7 Regexp and Range
+
+#### 1.1.7 Regexp and Range
+
 ```ruby
 /[Rr]uby/        # Matches "Ruby" or "ruby"
 /\d{5}/          # Matches 5 consecutive digits
@@ -126,7 +138,9 @@ def are_you_sure?                  # Define a method. Note question mark!
   end
 end
 ```
-1.1.8 Classes and Modules
+
+#### 1.1.8 Classes and Modules
+
 ```ruby
 #
 # This class represents a sequence of numbers characterized by the three
@@ -226,8 +240,10 @@ end                          # End of class modification
 (0..10).by(2) {|x| print x}  # Prints "0246810"
 (0...10).by(2) {|x| print x} # Prints "02468"
 ```
-1.2.1 The Ruby Interpreter
 
+#### 1.2.1 The Ruby Interpreter
+
+```rdoc
 % ruby -e 'puts "hello world!"'
 
 hello world!
@@ -235,19 +251,25 @@ hello world!
 % ruby hello.rb
 
 hello world!
+```
 
-1.2.2 Displaying Output
+#### 1.2.2 Displaying Output
+
 ```ruby
 9.downto(1) {|n| print n }   # No newline between numbers
 puts " blastoff!"            # End with a newline
 ```
+```rdoc
 % ruby count.rb
 
 987654321 blastoff!
+```
 
-1.2.3 Interactive Ruby with irb
+#### 1.2.3 Interactive Ruby with irb
 
+```rdoc
 $ irb --simple-prompt       # Start irb from the terminal
+```
 ```ruby
 >> 2**3                     # Try exponentiation
 => 8                        # This is the result
@@ -261,9 +283,11 @@ $ irb --simple-prompt       # Start irb from the terminal
 >> quit                     # Exit irb
 ```
 $                           # Back to the terminal prompt
+```rdoc
 
-1.2.4 Viewing Ruby Documentation with ri
+#### 1.2.4 Viewing Ruby Documentation with ri
 
+```rdoc
 ri Array
 
 ri Array.sort
@@ -271,9 +295,11 @@ ri Array.sort
 ri Hash#each
 
 ri Math::sqrt
+```
 
-1.2.5 Ruby Package Management with gem
+#### 1.2.5 Ruby Package Management with gem
 
+```rdoc
 gem install rails
 
 Successfully installed activesupport-1.4.4
@@ -307,12 +333,15 @@ gem update             # Update all installed gems
 gem update --system    # Update RubyGems itself
 
 gem uninstall rails    # Remove an installed gem
+```
 ```ruby
 require 'rubygems'               # Not necessary in Ruby 1.9
 gem 'RedCloth', '> 2.0', '< 4.0' # Activate RedCloth version 2.x or 3.x
 require 'RedCloth'               # And now load it
 ```
-1.4 A Sudoku Solver in Ruby
+
+#### 1.4 A Sudoku Solver in Ruby
+
 ```ruby
 #
 # This module defines a Sudoku::Puzzle class to represent a 9x9

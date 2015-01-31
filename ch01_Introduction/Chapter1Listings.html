@@ -414,14 +414,13 @@
 <body>
   <div id="containter">
     
-    
-<p>The Ruby Programming Language</p>
+    <h1 id="the-ruby-programming-language">The Ruby Programming Language</h1>
 
-<p>CHAPTER 1</p>
+<h2 id="chapter-1">CHAPTER 1</h2>
 
-<p>Introduction</p>
+<h3 id="introduction">Introduction</h3>
 
-<p>1.1.1 Ruby Is Object-Oriented</p>
+<h4 id="ruby-is-object-oriented">1.1.1 Ruby Is Object-Oriented</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="color:#00D">1</span>.class      <span style="color:#777"># =&gt; Fixnum: the number 1 is a Fixnum</span>
@@ -432,7 +431,8 @@
 </pre></div>
 </div>
 </div>
-<p>1.1.2 Blocks and Iterators</p>
+
+<h4 id="blocks-and-iterators">1.1.2 Blocks and Iterators</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="color:#00D">3</span>.times { print <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Ruby! </span><span style="color:#710">&quot;</span></span> }   <span style="color:#777"># Prints &quot;Ruby! Ruby! Ruby! &quot;</span>
@@ -473,7 +473,8 @@ print <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#7
 </pre></div>
 </div>
 </div>
-<p>1.1.3 Expressions and Operators in Ruby</p>
+
+<h4 id="expressions-and-operators-in-ruby">1.1.3 Expressions and Operators in Ruby</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>minimum = <span style="color:#080;font-weight:bold">if</span> x &lt; y <span style="color:#080;font-weight:bold">then</span> x <span style="color:#080;font-weight:bold">else</span> y <span style="color:#080;font-weight:bold">end</span>
@@ -489,7 +490,8 @@ max = x &gt; y ? x : y      <span style="color:#777"># The conditional operator<
 </pre></div>
 </div>
 </div>
-<p>1.1.4 Methods</p>
+
+<h4 id="methods">1.1.4 Methods</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">square</span>(x)   <span style="color:#777"># Define a method named square with one parameter x</span>
@@ -502,7 +504,8 @@ max = x &gt; y ? x : y      <span style="color:#777"># The conditional operator<
 </pre></div>
 </div>
 </div>
-<p>1.1.5 Assignment</p>
+
+<h4 id="assignment">1.1.5 Assignment</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>x = <span style="color:#00D">1</span>
@@ -529,7 +532,8 @@ o.x = <span style="color:#00D">1</span>         <span style="color:#777"># Metho
 </pre></div>
 </div>
 </div>
-<p>1.1.7 Regexp and Range</p>
+
+<h4 id="regexp-and-range">1.1.7 Regexp and Range</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">[Rr]uby</span><span style="color:#404">/</span></span>        <span style="color:#777"># Matches &quot;Ruby&quot; or &quot;ruby&quot;</span>
@@ -562,7 +566,8 @@ generation = <span style="color:#080;font-weight:bold">case</span> birthyear
 </pre></div>
 </div>
 </div>
-<p>1.1.8 Classes and Modules</p>
+
+<h4 id="classes-and-modules">1.1.8 Classes and Modules</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="color:#777">#</span>
@@ -665,17 +670,22 @@ t = (s+<span style="color:#00D">1</span>)*<span style="color:#00D">2</span>     
 </pre></div>
 </div>
 </div>
-<p>1.2.1 The Ruby Interpreter</p>
 
-<p>% ruby -e ‘puts “hello world!”’</p>
+<h4 id="the-ruby-interpreter">1.2.1 The Ruby Interpreter</h4>
 
-<p>hello world!</p>
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>% ruby -e 'puts &quot;hello world!&quot;'
 
-<p>% ruby hello.rb</p>
+hello world!
 
-<p>hello world!</p>
+% ruby hello.rb
 
-<p>1.2.2 Displaying Output</p>
+hello world!
+</pre></div>
+</div>
+</div>
+
+<h4 id="displaying-output">1.2.2 Displaying Output</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="color:#00D">9</span>.downto(<span style="color:#00D">1</span>) {|n| print n }   <span style="color:#777"># No newline between numbers</span>
@@ -683,76 +693,93 @@ puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#71
 </pre></div>
 </div>
 </div>
-<p>% ruby count.rb</p>
-
-<p>987654321 blastoff!</p>
-
-<p>1.2.3 Interactive Ruby with irb</p>
-
-<p>$ irb –simple-prompt       # Start irb from the terminal</p>
-
 <div class="highlighter-coderay"><div class="CodeRay">
-  <div class="code"><pre>&gt;&gt; <span style="color:#00D">2</span>**<span style="color:#00D">3</span>                     <span style="color:#777"># Try exponentiation</span>
-=&gt; <span style="color:#00D">8</span>                        <span style="color:#777"># This is the result</span>
-&gt;&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Ruby! </span><span style="color:#710">&quot;</span></span> * <span style="color:#00D">3</span>             <span style="color:#777"># Try string repetition</span>
-=&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Ruby! Ruby! Ruby! </span><span style="color:#710">&quot;</span></span>     <span style="color:#777"># The result</span>
-&gt;&gt; <span style="color:#00D">1</span>.upto(<span style="color:#00D">3</span>){|x| puts x }   <span style="color:#777"># Try an iterator</span>
-<span style="color:#00D">1</span>                           <span style="color:#777"># Three lines of output </span>
-<span style="color:#00D">2</span>                           <span style="color:#777"># Because we called puts 3 times</span>
-<span style="color:#00D">3</span>
-=&gt; <span style="color:#00D">1</span>                        <span style="color:#777"># The return value of 1.upto(3)</span>
-&gt;&gt; quit                     <span style="color:#777"># Exit irb</span>
+  <div class="code"><pre>% ruby count.rb
+
+987654321 blastoff!
 </pre></div>
 </div>
 </div>
-<p>$                           # Back to the terminal prompt</p>
 
-<p>1.2.4 Viewing Ruby Documentation with ri</p>
+<h4 id="interactive-ruby-with-irb">1.2.3 Interactive Ruby with irb</h4>
 
-<p>ri Array</p>
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>$ irb --simple-prompt       # Start irb from the terminal
+</pre></div>
+</div>
+</div>
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#00D">2</span>**<span style="color:#00D">3</span>                     <span style="color:#777"># Try exponentiation =&gt; 8</span>
 
-<p>ri Array.sort</p>
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Ruby! </span><span style="color:#710">&quot;</span></span> * <span style="color:#00D">3</span>             <span style="color:#777"># Try string repetition =&gt; &quot;Ruby! Ruby! Ruby! &quot; </span>
 
-<p>ri Hash#each</p>
+<span style="color:#00D">1</span>.upto(<span style="color:#00D">3</span>){|x| puts x }   <span style="color:#777"># Try an iterator</span>
+<span style="color:#777"># 1                      # Three lines of output </span>
+<span style="color:#777"># 2                      # Because we called puts 3 times</span>
+<span style="color:#777"># 3                      # The return value of 1.upto(3) =&gt; 1 </span>
+quit                     <span style="color:#777"># Exit irb</span>
+</pre></div>
+</div>
+</div>
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>$                           # Back to the terminal prompt
+</pre></div>
+</div>
+</div>
 
-<p>ri Math::sqrt</p>
+<h4 id="viewing-ruby-documentation-with-ri">1.2.4 Viewing Ruby Documentation with ri</h4>
 
-<p>1.2.5 Ruby Package Management with gem</p>
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>ri Array
 
-<p>gem install rails</p>
+ri Array.sort
 
-<p>Successfully installed activesupport-1.4.4</p>
+ri Hash#each
 
-<p>Successfully installed activerecord-1.15.5</p>
+ri Math::sqrt
+</pre></div>
+</div>
+</div>
 
-<p>Successfully installed actionpack-1.13.5</p>
+<h4 id="ruby-package-management-with-gem">1.2.5 Ruby Package Management with gem</h4>
 
-<p>Successfully installed actionmailer-1.3.5</p>
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>gem install rails
 
-<p>Successfully installed actionwebservice-1.2.5</p>
+Successfully installed activesupport-1.4.4
 
-<p>Successfully installed rails-1.2.5</p>
+Successfully installed activerecord-1.15.5
 
-<p>6 gems installed</p>
+Successfully installed actionpack-1.13.5
 
-<p>Installing ri documentation for activesupport-1.4.4…</p>
+Successfully installed actionmailer-1.3.5
 
-<p>Installing ri documentation for activerecord-1.15.5…</p>
+Successfully installed actionwebservice-1.2.5
 
-<p>…etc…</p>
+Successfully installed rails-1.2.5
 
-<p>gem list               # List installed gems</p>
+6 gems installed
 
-<p>gem enviroment         # Display RubyGems configuration information</p>
+Installing ri documentation for activesupport-1.4.4...
 
-<p>gem update rails       # Update a named gem</p>
+Installing ri documentation for activerecord-1.15.5...
 
-<p>gem update             # Update all installed gems</p>
+...etc...
 
-<p>gem update –system    # Update RubyGems itself</p>
+gem list               # List installed gems
 
-<p>gem uninstall rails    # Remove an installed gem</p>
+gem enviroment         # Display RubyGems configuration information
 
+gem update rails       # Update a named gem
+
+gem update             # Update all installed gems
+
+gem update --system    # Update RubyGems itself
+
+gem uninstall rails    # Remove an installed gem
+</pre></div>
+</div>
+</div>
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">rubygems</span><span style="color:#710">'</span></span>               <span style="color:#777"># Not necessary in Ruby 1.9</span>
 gem <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">RedCloth</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">&gt; 2.0</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">&lt; 4.0</span><span style="color:#710">'</span></span> <span style="color:#777"># Activate RedCloth version 2.x or 3.x</span>
@@ -760,7 +787,8 @@ require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:
 </pre></div>
 </div>
 </div>
-<p>1.4 A Sudoku Solver in Ruby</p>
+
+<h4 id="a-sudoku-solver-in-ruby">1.4 A Sudoku Solver in Ruby</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="color:#777">#</span>
