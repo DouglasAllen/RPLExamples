@@ -267,7 +267,7 @@ end                                   # End the module body
 ```
 2.3 File Structure
 
-```ruby
+```rdoc
 #!/usr/bin/ruby -w          <lineannotation>shebang comment</lineannotation>
 # -*- coding: utf-8 -*-     <lineannotation>coding comment</lineannotation>
 require 'socket'            <lineannotation>load networking library</lineannotation>
