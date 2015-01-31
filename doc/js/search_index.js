@@ -1,1 +1,0 @@
-var search_data = {"index":{"searchIndex":["chapter2listings"],"longSearchIndex":[""],"info":[["Chapter2Listings","","Chapter2Listings_md.html","","<p>The Ruby Programming Language\nCHAPTER 2\nThe Structure and Execution of Ruby\nPrograms\n<p>2.1.1 Comments\n```ruby ...\n"]]}}
