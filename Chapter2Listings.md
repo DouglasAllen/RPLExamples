@@ -25,7 +25,7 @@ y = /#This is a regular expression/   # Here's another comment
 # =end
 ```
 2.1.1.2 Documentation comments
-
+```ruby
 #
 # Rdoc comments use a simple markup grammar like those used in wikis.
 # 
@@ -72,7 +72,7 @@ y = /#This is a regular expression/   # Here's another comment
 # [item 2]  This is a description of item 2
 [item 2]  This is a description of item 2
 # 
-
+```
 2.1.2 Literals
 ```ruby
 1                      # An integer literal
