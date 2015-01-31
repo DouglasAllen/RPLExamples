@@ -271,16 +271,16 @@ puts " blastoff!"            # End with a newline
 $ irb --simple-prompt       # Start irb from the terminal
 ```
 ```ruby
->> 2**3                     # Try exponentiation
-=> 8                        # This is the result
->> "Ruby! " * 3             # Try string repetition
-=> "Ruby! Ruby! Ruby! "     # The result
->> 1.upto(3){|x| puts x }   # Try an iterator
-1                           # Three lines of output 
-2                           # Because we called puts 3 times
-3
-=> 1                        # The return value of 1.upto(3)
->> quit                     # Exit irb
+2**3                     # Try exponentiation
+# => 8 
+"Ruby! " * 3             # Try string repetition => "Ruby! Ruby! Ruby! "
+
+1.upto(3){|x| puts x }   # Try an iterator
+# 1                           # Three lines of output 
+# 2                           # Because we called puts 3 times
+# 3
+# => 1                        # The return value of 1.upto(3)
+quit                     # Exit irb
 ```
 $                           # Back to the terminal prompt
 ```rdoc
