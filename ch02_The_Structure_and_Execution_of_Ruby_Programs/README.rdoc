@@ -5,7 +5,7 @@
 
 = Headings
  
-  Headings begin with an equals sign
+  Headings begin with one equals sign = Headings
 
 == Sub-Headings
    The line above produces a subheading.
