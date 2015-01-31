@@ -420,7 +420,7 @@
 
 <h3 id="datatypes-and-objects">Datatypes and Objects</h3>
 
-<h3 id="integer-literals">3.1.1 Integer Literals</h3>
+<h4 id="integer-literals">3.1.1 Integer Literals</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="color:#00D">0</span>
@@ -430,7 +430,7 @@
 </div>
 </div>
 
-<h3 id="integer-literals-1">3.1.1 Integer Literals</h3>
+<h4 id="integer-literals-1">3.1.1 Integer Literals</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="color:#00D">1_000_000_000</span>     <span style="color:#777"># One billion (or 1,000 million in the UK)</span>
@@ -438,14 +438,14 @@
 </div>
 </div>
 
-<h3 id="integer-literals-2">3.1.1 Integer Literals</h3>
+<h4 id="integer-literals-2">3.1.1 Integer Literals</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="color:#00D">0377</span>           <span style="color:#777"># Octal representation of 255</span>
 <span style="color:#00D">0b1111_1111</span>    <span style="color:#777"># Binary representation of 255</span>
 <span style="color:#00D">0xFF</span>           <span style="color:#777"># Hexadecimal representation of 255</span>
 
-<span style="color:#777">### 3.1.2 Floating-Point Literals</span>
+<span style="color:#777">#### 3.1.2 Floating-Point Literals</span>
 
 ~~~ruby
 <span style="color:#60E">0.0</span>      
@@ -456,7 +456,7 @@
 </div>
 </div>
 
-<h3 id="arithmetic-in-ruby">3.1.3 Arithmetic in Ruby</h3>
+<h4 id="arithmetic-in-ruby">3.1.3 Arithmetic in Ruby</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>x = <span style="color:#00D">5</span>/<span style="color:#00D">2</span>     <span style="color:#777"># result is 2</span>
@@ -466,7 +466,7 @@ z = <span style="color:#00D">5</span>/<span style="color:#60E">2.0</span>   <spa
 </div>
 </div>
 
-<h3 id="arithmetic-in-ruby-1">3.1.3 Arithmetic in Ruby</h3>
+<h4 id="arithmetic-in-ruby-1">3.1.3 Arithmetic in Ruby</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>x = <span style="color:#00D">5</span>%<span style="color:#00D">2</span>     <span style="color:#777"># result is 1</span>
@@ -474,7 +474,7 @@ z = <span style="color:#00D">5</span>/<span style="color:#60E">2.0</span>   <spa
 </div>
 </div>
 
-<h3 id="arithmetic-in-ruby-2">3.1.3 Arithmetic in Ruby</h3>
+<h4 id="arithmetic-in-ruby-2">3.1.3 Arithmetic in Ruby</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>x = <span style="color:#60E">1.5</span>%<span style="color:#60E">0.4</span>   <span style="color:#777"># result is 0.3</span>
@@ -482,7 +482,7 @@ z = <span style="color:#00D">5</span>/<span style="color:#60E">2.0</span>   <spa
 </div>
 </div>
 
-<h3 id="arithmetic-in-ruby-3">3.1.3 Arithmetic in Ruby</h3>
+<h4 id="arithmetic-in-ruby-3">3.1.3 Arithmetic in Ruby</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>x**<span style="color:#00D">4</span>          <span style="color:#777"># This is the same thing as x*x*x*x</span>
@@ -494,7 +494,7 @@ x**(<span style="color:#60E">1.0</span>/<span style="color:#60E">4.0</span>)  <s
 </div>
 </div>
 
-<h3 id="arithmetic-in-ruby-4">3.1.3 Arithmetic in Ruby</h3>
+<h4 id="arithmetic-in-ruby-4">3.1.3 Arithmetic in Ruby</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>even = (x[<span style="color:#00D">0</span>] == <span style="color:#00D">0</span>)  <span style="color:#777"># A number is even if the least-significant bit is 0</span>
@@ -502,7 +502,7 @@ x**(<span style="color:#60E">1.0</span>/<span style="color:#60E">4.0</span>)  <s
 </div>
 </div>
 
-<h3 id="binary-floating-point-and-rounding-errors">3.1.4 Binary Floating-Point and Rounding Errors</h3>
+<h4 id="binary-floating-point-and-rounding-errors">3.1.4 Binary Floating-Point and Rounding Errors</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="color:#60E">0.4</span> - <span style="color:#60E">0.3</span> == <span style="color:#60E">0.1</span>    <span style="color:#777"># Evaluates to false in most implementations</span>
@@ -510,7 +510,7 @@ x**(<span style="color:#60E">1.0</span>/<span style="color:#60E">4.0</span>)  <s
 </div>
 </div>
 
-<h3 id="single-quoted-string-literals">3.2.1.1 Single-quoted string literals</h3>
+<h4 id="single-quoted-string-literals">3.2.1.1 Single-quoted string literals</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">This is a simple Ruby string literal</span><span style="color:#710">'</span></span>
@@ -518,7 +518,7 @@ x**(<span style="color:#60E">1.0</span>/<span style="color:#60E">4.0</span>)  <s
 </div>
 </div>
 
-<h3 id="single-quoted-string-literals-1">3.2.1.1 Single-quoted string literals</h3>
+<h4 id="single-quoted-string-literals-1">3.2.1.1 Single-quoted string literals</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Won</span><span style="color:#b0b">\'</span><span style="color:#D20">t you read O</span><span style="color:#b0b">\'</span><span style="color:#D20">Reilly</span><span style="color:#b0b">\'</span><span style="color:#D20">s book?</span><span style="color:#710">'</span></span>
@@ -526,7 +526,7 @@ x**(<span style="color:#60E">1.0</span>/<span style="color:#60E">4.0</span>)  <s
 </div>
 </div>
 
-<h3 id="single-quoted-string-literals-2">3.2.1.1 Single-quoted string literals</h3>
+<h4 id="single-quoted-string-literals-2">3.2.1.1 Single-quoted string literals</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">This string literal ends with a single backslash: </span><span style="color:#b0b">\\</span><span style="color:#710">'</span></span>
@@ -536,7 +536,7 @@ x**(<span style="color:#60E">1.0</span>/<span style="color:#60E">4.0</span>)  <s
 </div>
 </div>
 
-<h3 id="single-quoted-string-literals-3">3.2.1.1 Single-quoted string literals</h3>
+<h4 id="single-quoted-string-literals-3">3.2.1.1 Single-quoted string literals</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">a</span><span style="color:#D20">\b</span><span style="color:#710">'</span></span> == <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">a</span><span style="color:#b0b">\\</span><span style="color:#D20">b</span><span style="color:#710">'</span></span>
@@ -544,7 +544,7 @@ x**(<span style="color:#60E">1.0</span>/<span style="color:#60E">4.0</span>)  <s
 </div>
 </div>
 
-<h3 id="single-quoted-string-literals-4">3.2.1.1 Single-quoted string literals</h3>
+<h4 id="single-quoted-string-literals-4">3.2.1.1 Single-quoted string literals</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">This is a long string literal </span><span style="color:#D20">\
@@ -553,7 +553,7 @@ x**(<span style="color:#60E">1.0</span>/<span style="color:#60E">4.0</span>)  <s
 </div>
 </div>
 
-<h3 id="single-quoted-string-literals-5">3.2.1.1 Single-quoted string literals</h3>
+<h4 id="single-quoted-string-literals-5">3.2.1.1 Single-quoted string literals</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>message = 
@@ -564,7 +564,7 @@ x**(<span style="color:#60E">1.0</span>/<span style="color:#60E">4.0</span>)  <s
 </div>
 </div>
 
-<h3 id="double-quoted-string-literals">3.2.1.2 Double-quoted string literals</h3>
+<h4 id="double-quoted-string-literals">3.2.1.2 Double-quoted string literals</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\t</span><span style="color:#b0b">\&quot;</span><span style="color:#D20">This quote begins with a tab and ends with a newline</span><span style="color:#b0b">\&quot;</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>
@@ -573,7 +573,7 @@ x**(<span style="color:#60E">1.0</span>/<span style="color:#60E">4.0</span>)  <s
 </div>
 </div>
 
-<h3 id="double-quoted-string-literals-1">3.2.1.2 Double-quoted string literals</h3>
+<h4 id="double-quoted-string-literals-1">3.2.1.2 Double-quoted string literals</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">360 degrees=</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#00D">2</span>*<span style="color:#036;font-weight:bold">Math</span>::<span style="color:#036;font-weight:bold">PI</span><span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> radians</span><span style="color:#710">&quot;</span></span> <span style="color:#777"># &quot;360 degrees=6.28318530717959 radians&quot;</span>
@@ -581,7 +581,7 @@ x**(<span style="color:#60E">1.0</span>/<span style="color:#60E">4.0</span>)  <s
 </div>
 </div>
 
-<h3 id="double-quoted-string-literals-2">3.2.1.2 Double-quoted string literals</h3>
+<h4 id="double-quoted-string-literals-2">3.2.1.2 Double-quoted string literals</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="color:#d70">$salutation</span> = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">hello</span><span style="color:#710">'</span></span>     <span style="color:#777"># Define a global variable</span>
@@ -590,7 +590,7 @@ x**(<span style="color:#60E">1.0</span>/<span style="color:#60E">4.0</span>)  <s
 </div>
 </div>
 
-<h3 id="double-quoted-string-literals-3">3.2.1.2 Double-quoted string literals</h3>
+<h4 id="double-quoted-string-literals-3">3.2.1.2 Double-quoted string literals</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">My phone #: 555-1234</span><span style="color:#710">&quot;</span></span>                <span style="color:#777"># No escape needed</span>
@@ -599,7 +599,7 @@ x**(<span style="color:#60E">1.0</span>/<span style="color:#60E">4.0</span>)  <s
 </div>
 </div>
 
-<h3 id="double-quoted-string-literals-4">3.2.1.2 Double-quoted string literals</h3>
+<h4 id="double-quoted-string-literals-4">3.2.1.2 Double-quoted string literals</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>sprintf(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">pi is about %.4f</span><span style="color:#710">&quot;</span></span>, <span style="color:#036;font-weight:bold">Math</span>::<span style="color:#036;font-weight:bold">PI</span>) <span style="color:#777"># Returns &quot;pi is about 3.1416&quot;</span>
@@ -607,7 +607,7 @@ x**(<span style="color:#60E">1.0</span>/<span style="color:#60E">4.0</span>)  <s
 </div>
 </div>
 
-<h3 id="double-quoted-string-literals-5">3.2.1.2 Double-quoted string literals</h3>
+<h4 id="double-quoted-string-literals-5">3.2.1.2 Double-quoted string literals</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">pi is about %.4f</span><span style="color:#710">&quot;</span></span> % <span style="color:#036;font-weight:bold">Math</span>::<span style="color:#036;font-weight:bold">PI</span> <span style="color:#777"># Same as example above</span>
@@ -616,7 +616,7 @@ x**(<span style="color:#60E">1.0</span>/<span style="color:#60E">4.0</span>)  <s
 </div>
 </div>
 
-<h3 id="double-quoted-string-literals-6">3.2.1.2 Double-quoted string literals</h3>
+<h4 id="double-quoted-string-literals-6">3.2.1.2 Double-quoted string literals</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">This string literal
@@ -626,7 +626,7 @@ has two lines </span><span style="color:#b0b">\
 </div>
 </div>
 
-<h3 id="double-quoted-string-literals-7">3.2.1.2 Double-quoted string literals</h3>
+<h4 id="double-quoted-string-literals-7">3.2.1.2 Double-quoted string literals</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">This string has three lines.</span><span style="color:#b0b">\r</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span> \
@@ -636,7 +636,7 @@ has two lines </span><span style="color:#b0b">\
 </div>
 </div>
 
-<h3 id="unicode-escapes">3.2.1.3 Unicode escapes</h3>
+<h4 id="unicode-escapes">3.2.1.3 Unicode escapes</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\u</span><span style="color:#D20">00D7</span><span style="color:#710">&quot;</span></span>       <span style="color:#777"># =&gt; &quot;&amp;#xD7;&quot;: leading zeros cannot be dropped</span>
@@ -645,7 +645,7 @@ has two lines </span><span style="color:#b0b">\
 </div>
 </div>
 
-<h3 id="unicode-escapes-1">3.2.1.3 Unicode escapes</h3>
+<h4 id="unicode-escapes-1">3.2.1.3 Unicode escapes</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\u</span><span style="color:#D20">{A5}</span><span style="color:#710">&quot;</span></span>      <span style="color:#777"># =&gt; &quot;&amp;#xA5;&quot;: same as &quot;\u00A5&quot;</span>
@@ -655,7 +655,7 @@ has two lines </span><span style="color:#b0b">\
 </div>
 </div>
 
-<h3 id="unicode-escapes-2">3.2.1.3 Unicode escapes</h3>
+<h4 id="unicode-escapes-2">3.2.1.3 Unicode escapes</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>money = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\u</span><span style="color:#D20">{20AC A3 A5}</span><span style="color:#710">&quot;</span></span>  <span style="color:#777"># =&gt; &quot;&amp;#x20AC;&amp;#xA3;&amp;#xA5;&quot;</span>
@@ -663,7 +663,7 @@ has two lines </span><span style="color:#b0b">\
 </div>
 </div>
 
-<h3 id="unicode-escapes-3">3.2.1.3 Unicode escapes</h3>
+<h4 id="unicode-escapes-3">3.2.1.3 Unicode escapes</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>money = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\u</span><span style="color:#D20">{20AC 20 A3 20 A5}</span><span style="color:#710">&quot;</span></span>  <span style="color:#777"># =&gt; &quot;&amp;#x20AC; &amp;#xA3; &amp;#xA5;&quot;</span>
@@ -671,7 +671,7 @@ has two lines </span><span style="color:#b0b">\
 </div>
 </div>
 
-<h3 id="arbitrary-delimiters-for-string-literals">3.2.1.4 Arbitrary delimiters for string literals</h3>
+<h4 id="arbitrary-delimiters-for-string-literals">3.2.1.4 Arbitrary delimiters for string literals</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">%q(</span><span style="color:#D20">Don't worry about escaping ' characters!</span><span style="color:#710">)</span></span>
@@ -681,7 +681,7 @@ has two lines </span><span style="color:#b0b">\
 </div>
 </div>
 
-<h3 id="arbitrary-delimiters-for-string-literals-1">3.2.1.4 Arbitrary delimiters for string literals</h3>
+<h4 id="arbitrary-delimiters-for-string-literals-1">3.2.1.4 Arbitrary delimiters for string literals</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">%q_</span><span style="color:#D20">This string literal contains </span><span style="color:#b0b">\_</span><span style="color:#D20">underscores</span><span style="color:#b0b">\_</span><span style="color:#710">_</span></span>
@@ -690,7 +690,7 @@ has two lines </span><span style="color:#b0b">\
 </div>
 </div>
 
-<h3 id="arbitrary-delimiters-for-string-literals-2">3.2.1.4 Arbitrary delimiters for string literals</h3>
+<h4 id="arbitrary-delimiters-for-string-literals-2">3.2.1.4 Arbitrary delimiters for string literals</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="color:#777"># XML uses paired angle brackets:</span>
@@ -702,7 +702,7 @@ has two lines </span><span style="color:#b0b">\
 </div>
 </div>
 
-<h3 id="here-documents">3.2.1.5 Here documents</h3>
+<h4 id="here-documents">3.2.1.5 Here documents</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>document = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&lt;&lt;HERE</span></span>        <span style="color:#777"># This is how we begin a here document</span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">
@@ -713,7 +713,7 @@ HERE</span></span>
 </div>
 </div>
 
-<h3 id="here-documents-1">3.2.1.5 Here documents</h3>
+<h4 id="here-documents-1">3.2.1.5 Here documents</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>greeting = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&lt;&lt;HERE</span></span> + <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&lt;&lt;THERE</span></span> + <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">World</span><span style="color:#710">&quot;</span></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">
@@ -725,7 +725,7 @@ THERE</span></span>
 </div>
 </div>
 
-<h3 id="here-documents-2">3.2.1.5 Here documents</h3>
+<h4 id="here-documents-2">3.2.1.5 Here documents</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>empty = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&lt;&lt;END</span></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">
@@ -734,7 +734,7 @@ END</span></span>
 </div>
 </div>
 
-<h3 id="here-documents-3">3.2.1.5 Here documents</h3>
+<h4 id="here-documents-3">3.2.1.5 Here documents</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>document = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&lt;&lt;'THIS IS THE END, MY ONLY FRIEND, THE END'</span></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">
@@ -747,7 +747,7 @@ THIS IS THE END, MY ONLY FRIEND, THE END</span></span>
 </div>
 </div>
 
-<h3 id="here-documents-4">3.2.1.5 Here documents</h3>
+<h4 id="here-documents-4">3.2.1.5 Here documents</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>document = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&lt;&lt;-&quot;# # #&quot;</span></span>    <span style="color:#777"># This is the only place we can put a comment</span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">
@@ -762,7 +762,7 @@ THIS IS THE END, MY ONLY FRIEND, THE END</span></span>
 </div>
 </div>
 
-<h3 id="backtick-command-execution">3.2.1.6 Backtick command execution</h3>
+<h4 id="backtick-command-execution">3.2.1.6 Backtick command execution</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="background-color:hsla(120,100%,50%,0.06)"><span style="color:#161">`</span><span style="color:#2B2">ls</span><span style="color:#161">`</span></span>
@@ -770,7 +770,7 @@ THIS IS THE END, MY ONLY FRIEND, THE END</span></span>
 </div>
 </div>
 
-<h3 id="backtick-command-execution-1">3.2.1.6 Backtick command execution</h3>
+<h4 id="backtick-command-execution-1">3.2.1.6 Backtick command execution</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="background-color:hsla(120,100%,50%,0.06)"><span style="color:#161">%x[</span><span style="color:#2B2">ls</span><span style="color:#161">]</span></span>
@@ -778,7 +778,7 @@ THIS IS THE END, MY ONLY FRIEND, THE END</span></span>
 </div>
 </div>
 
-<h3 id="backtick-command-execution-2">3.2.1.6 Backtick command execution</h3>
+<h4 id="backtick-command-execution-2">3.2.1.6 Backtick command execution</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="color:#080;font-weight:bold">if</span> windows
@@ -791,7 +791,7 @@ listing = <span style="background-color:hsla(120,100%,50%,0.06)"><span style="co
 </div>
 </div>
 
-<h3 id="backtick-command-execution-3">3.2.1.6 Backtick command execution</h3>
+<h4 id="backtick-command-execution-3">3.2.1.6 Backtick command execution</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>listing = <span style="color:#036;font-weight:bold">Kernel</span>.`(listcmd)
@@ -799,7 +799,7 @@ listing = <span style="background-color:hsla(120,100%,50%,0.06)"><span style="co
 </div>
 </div>
 
-<h3 id="string-literals-and-mutability">3.2.1.7 String literals and mutability</h3>
+<h4 id="string-literals-and-mutability">3.2.1.7 String literals and mutability</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="color:#00D">10</span>.times { puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">test</span><span style="color:#710">&quot;</span></span>.object_id }
@@ -807,7 +807,7 @@ listing = <span style="background-color:hsla(120,100%,50%,0.06)"><span style="co
 </div>
 </div>
 
-<h3 id="character-literals">3.2.2 Character Literals</h3>
+<h4 id="character-literals">3.2.2 Character Literals</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="color:#00D">?A</span>   <span style="color:#777"># Character literal for the ASCII character A</span>
@@ -817,7 +817,7 @@ listing = <span style="background-color:hsla(120,100%,50%,0.06)"><span style="co
 </div>
 </div>
 
-<h3 id="character-literals-1">3.2.2 Character Literals</h3>
+<h4 id="character-literals-1">3.2.2 Character Literals</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="color:#00D">?\u</span><span style="color:#00D">20</span><span style="color:#036;font-weight:bold">AC</span> == <span style="color:#00D">?&amp;</span><span style="color:#777">#x20AC;    # =&gt; true: Ruby 1.9 only</span>
@@ -826,7 +826,7 @@ listing = <span style="background-color:hsla(120,100%,50%,0.06)"><span style="co
 </div>
 </div>
 
-<h3 id="character-literals-2">3.2.2 Character Literals</h3>
+<h4 id="character-literals-2">3.2.2 Character Literals</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="color:#00D">?\t</span>      <span style="color:#777"># Character literal for the TAB character</span>
@@ -836,7 +836,7 @@ listing = <span style="background-color:hsla(120,100%,50%,0.06)"><span style="co
 </div>
 </div>
 
-<h3 id="string-operators">3.2.3 String Operators</h3>
+<h4 id="string-operators">3.2.3 String Operators</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>planet = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Earth</span><span style="color:#710">&quot;</span></span>
@@ -845,7 +845,7 @@ listing = <span style="background-color:hsla(120,100%,50%,0.06)"><span style="co
 </div>
 </div>
 
-<h3 id="string-operators-1">3.2.3 String Operators</h3>
+<h4 id="string-operators-1">3.2.3 String Operators</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello planet #</span><span style="color:#710">&quot;</span></span> + planet_number.to_s  <span style="color:#777"># to_s converts to a string</span>
@@ -853,7 +853,7 @@ listing = <span style="background-color:hsla(120,100%,50%,0.06)"><span style="co
 </div>
 </div>
 
-<h3 id="string-operators-2">3.2.3 String Operators</h3>
+<h4 id="string-operators-2">3.2.3 String Operators</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello planet #</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>planet_number<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
@@ -861,7 +861,7 @@ listing = <span style="background-color:hsla(120,100%,50%,0.06)"><span style="co
 </div>
 </div>
 
-<h3 id="string-operators-3">3.2.3 String Operators</h3>
+<h4 id="string-operators-3">3.2.3 String Operators</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>greeting = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello</span><span style="color:#710">&quot;</span></span>
@@ -871,7 +871,7 @@ puts greeting   <span style="color:#777"># Outputs &quot;Hello World&quot;</span
 </div>
 </div>
 
-<h3 id="string-operators-4">3.2.3 String Operators</h3>
+<h4 id="string-operators-4">3.2.3 String Operators</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>alphabet = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">A</span><span style="color:#710">&quot;</span></span>
@@ -882,7 +882,7 @@ alphabet &lt;&lt; <span style="color:#00D">256</span>  <span style="color:#777">
 </div>
 </div>
 
-<h3 id="string-operators-5">3.2.3 String Operators</h3>
+<h4 id="string-operators-5">3.2.3 String Operators</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>ellipsis = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">.</span><span style="color:#710">'</span></span>*<span style="color:#00D">3</span>    <span style="color:#777"># Evaluates to '...'</span>
@@ -890,7 +890,7 @@ alphabet &lt;&lt; <span style="color:#00D">256</span>  <span style="color:#777">
 </div>
 </div>
 
-<h3 id="string-operators-6">3.2.3 String Operators</h3>
+<h4 id="string-operators-6">3.2.3 String Operators</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>a = <span style="color:#00D">0</span>;
@@ -899,7 +899,7 @@ alphabet &lt;&lt; <span style="color:#00D">256</span>  <span style="color:#777">
 </div>
 </div>
 
-<h3 id="accessing-characters-and-substrings">3.2.4 Accessing Characters and Substrings</h3>
+<h4 id="accessing-characters-and-substrings">3.2.4 Accessing Characters and Substrings</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>s = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">hello</span><span style="color:#710">'</span></span>;   <span style="color:#777"># Ruby 1.8</span>
@@ -913,7 +913,7 @@ s[s.length]    <span style="color:#777"># nil: there is no character at that ind
 </div>
 </div>
 
-<h3 id="accessing-characters-and-substrings-1">3.2.4 Accessing Characters and Substrings</h3>
+<h4 id="accessing-characters-and-substrings-1">3.2.4 Accessing Characters and Substrings</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>s = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">hello</span><span style="color:#710">'</span></span>;   <span style="color:#777"># Ruby 1.9</span>
@@ -927,7 +927,7 @@ s[s.length]    <span style="color:#777"># nil: there is no character at that ind
 </div>
 </div>
 
-<h3 id="accessing-characters-and-substrings-2">3.2.4 Accessing Characters and Substrings</h3>
+<h4 id="accessing-characters-and-substrings-2">3.2.4 Accessing Characters and Substrings</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>s[<span style="color:#00D">0</span>] = <span style="color:#00D">?H</span>        <span style="color:#777"># Replace first character with a capital H</span>
@@ -937,7 +937,7 @@ s[s.length] = <span style="color:#00D">?!</span> <span style="color:#777"># ERRO
 </div>
 </div>
 
-<h3 id="accessing-characters-and-substrings-3">3.2.4 Accessing Characters and Substrings</h3>
+<h4 id="accessing-characters-and-substrings-3">3.2.4 Accessing Characters and Substrings</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>s = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">hello</span><span style="color:#710">&quot;</span></span>      <span style="color:#777"># Begin with a greeting</span>
@@ -947,7 +947,7 @@ s[<span style="color:#00D">-1</span>] = <span style="background-color:hsla(0,100
 </div>
 </div>
 
-<h3 id="accessing-characters-and-substrings-4">3.2.4 Accessing Characters and Substrings</h3>
+<h4 id="accessing-characters-and-substrings-4">3.2.4 Accessing Characters and Substrings</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>s = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">hello</span><span style="color:#710">&quot;</span></span>
@@ -962,7 +962,7 @@ s[<span style="color:#00D">0</span>,<span style="color:#00D">-1</span>]         
 </div>
 </div>
 
-<h3 id="accessing-characters-and-substrings-5">3.2.4 Accessing Characters and Substrings</h3>
+<h4 id="accessing-characters-and-substrings-5">3.2.4 Accessing Characters and Substrings</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>s = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">hello</span><span style="color:#710">&quot;</span></span>
@@ -974,7 +974,7 @@ s[<span style="color:#00D">5</span>,<span style="color:#00D">6</span>] = <span s
 </div>
 </div>
 
-<h3 id="accessing-characters-and-substrings-6">3.2.4 Accessing Characters and Substrings</h3>
+<h4 id="accessing-characters-and-substrings-6">3.2.4 Accessing Characters and Substrings</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>s = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">hello</span><span style="color:#710">&quot;</span></span>
@@ -991,7 +991,7 @@ s[<span style="color:#00D">6</span>..<span style="color:#00D">10</span>] = <span
 </div>
 </div>
 
-<h3 id="accessing-characters-and-substrings-7">3.2.4 Accessing Characters and Substrings</h3>
+<h4 id="accessing-characters-and-substrings-7">3.2.4 Accessing Characters and Substrings</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>s = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">hello</span><span style="color:#710">&quot;</span></span>       <span style="color:#777"># Start with the word &quot;hello&quot;</span>
@@ -1002,14 +1002,14 @@ s[<span style="color:#00D">6</span>..<span style="color:#00D">10</span>] = <span
 </div>
 </div>
 
-<h3 id="accessing-characters-and-substrings-8">3.2.4 Accessing Characters and Substrings</h3>
+<h4 id="accessing-characters-and-substrings-8">3.2.4 Accessing Characters and Substrings</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>s[<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">[aeiou]</span><span style="color:#404">/</span></span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">*</span><span style="color:#710">'</span></span>      <span style="color:#777"># Replace first vowel with an asterisk</span>
 </pre></div>
 </div>
 </div>
-<p>### 3.2.5 Iterating Strings</p>
+<p>#### 3.2.5 Iterating Strings</p>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>s = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">&amp;#xA5;1000</span><span style="color:#710">&quot;</span></span>
@@ -1019,7 +1019,7 @@ s.each_char {|x| print <span style="background-color:hsla(0,100%,50%,0.05)"><spa
 </div>
 </div>
 
-<h3 id="multibyte-characters-in-ruby-19">3.2.6.1 Multibyte characters in Ruby 1.9</h3>
+<h4 id="multibyte-characters-in-ruby-19">3.2.6.1 Multibyte characters in Ruby 1.9</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="color:#777"># -*- coding: utf-8 -*-   # Specify Unicode UTF-8 characters</span>
@@ -1034,7 +1034,7 @@ s.bytesize      <span style="color:#777"># =&gt; 6: Bytes (hex): 32   c3 97  32 
 </div>
 </div>
 
-<h3 id="multibyte-characters-in-ruby-19-1">3.2.6.1 Multibyte characters in Ruby 1.9</h3>
+<h4 id="multibyte-characters-in-ruby-19-1">3.2.6.1 Multibyte characters in Ruby 1.9</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="color:#777"># -*- coding: utf-8 -*-</span>
@@ -1046,7 +1046,7 @@ t.encoding      <span style="color:#777"># =&gt; &lt;Encoding: ASCII-8BIT&gt;</s
 </div>
 </div>
 
-<h3 id="multibyte-characters-in-ruby-19-2">3.2.6.1 Multibyte characters in Ruby 1.9</h3>
+<h4 id="multibyte-characters-in-ruby-19-2">3.2.6.1 Multibyte characters in Ruby 1.9</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>text = stream.readline.force_encoding(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">utf-8</span><span style="color:#710">&quot;</span></span>)
@@ -1055,7 +1055,7 @@ bytes = text.dup.force_encoding(<span style="color:#069">nil</span>)   <span sty
 </div>
 </div>
 
-<h3 id="multibyte-characters-in-ruby-19-3">3.2.6.1 Multibyte characters in Ruby 1.9</h3>
+<h4 id="multibyte-characters-in-ruby-19-3">3.2.6.1 Multibyte characters in Ruby 1.9</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>s = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\xa4</span><span style="color:#710">&quot;</span></span>.force_encoding(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">utf-8</span><span style="color:#710">&quot;</span></span>)  <span style="color:#777"># This is not a valid UTF-8 string</span>
@@ -1064,7 +1064,7 @@ s.valid_encoding?                   <span style="color:#777"># =&gt; false</span
 </div>
 </div>
 
-<h3 id="multibyte-characters-in-ruby-19-4">3.2.6.1 Multibyte characters in Ruby 1.9</h3>
+<h4 id="multibyte-characters-in-ruby-19-4">3.2.6.1 Multibyte characters in Ruby 1.9</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="color:#777"># -*- coding: utf-8 -*-</span>
@@ -1084,7 +1084,7 @@ euro1 == euro3                       <span style="color:#777"># =&gt; true</span
 </div>
 </div>
 
-<h3 id="multibyte-characters-in-ruby-19-5">3.2.6.1 Multibyte characters in Ruby 1.9</h3>
+<h4 id="multibyte-characters-in-ruby-19-5">3.2.6.1 Multibyte characters in Ruby 1.9</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="color:#777"># Interpret a byte as an iso-8859-15 codepoint, and transcode to UTF-8</span>
@@ -1094,7 +1094,7 @@ char = byte.encode(<span style="background-color:hsla(0,100%,50%,0.05)"><span st
 </div>
 </div>
 
-<h3 id="multibyte-characters-in-ruby-19-6">3.2.6.1 Multibyte characters in Ruby 1.9</h3>
+<h4 id="multibyte-characters-in-ruby-19-6">3.2.6.1 Multibyte characters in Ruby 1.9</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>text = bytes.encode(to, from)
@@ -1103,7 +1103,7 @@ text = bytes.dup.force_encoding(from).encode(to)
 </div>
 </div>
 
-<h3 id="multibyte-characters-in-ruby-19-7">3.2.6.1 Multibyte characters in Ruby 1.9</h3>
+<h4 id="multibyte-characters-in-ruby-19-7">3.2.6.1 Multibyte characters in Ruby 1.9</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="color:#777"># The iso-8859-1 encoding doesn't have a Euro sign, so this raises an exception</span>
@@ -1112,7 +1112,7 @@ text = bytes.dup.force_encoding(from).encode(to)
 </div>
 </div>
 
-<h3 id="the-encoding-class">3.2.6.2 The Encoding class</h3>
+<h4 id="the-encoding-class">3.2.6.2 The Encoding class</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="color:#036;font-weight:bold">Encoding</span>::<span style="color:#036;font-weight:bold">ASCII_8BIT</span>     <span style="color:#777"># Also ::BINARY</span>
@@ -1123,7 +1123,7 @@ text = bytes.dup.force_encoding(from).encode(to)
 </div>
 </div>
 
-<h3 id="the-encoding-class-1">3.2.6.2 The Encoding class</h3>
+<h4 id="the-encoding-class-1">3.2.6.2 The Encoding class</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>encoding = <span style="color:#036;font-weight:bold">Encoding</span>.find(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">utf-8</span><span style="color:#710">&quot;</span></span>)
@@ -1131,7 +1131,7 @@ text = bytes.dup.force_encoding(from).encode(to)
 </div>
 </div>
 
-<h3 id="multibyte-characters-in-ruby-18">3.2.6.3 Multibyte characters in Ruby 1.8</h3>
+<h4 id="multibyte-characters-in-ruby-18">3.2.6.3 Multibyte characters in Ruby 1.8</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="color:#d70">$KCODE</span> = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">u</span><span style="color:#710">&quot;</span></span>        <span style="color:#777"># Specify Unicode UTF-8, or start Ruby with -Ku option</span>
@@ -1151,7 +1151,7 @@ mb.each_char <span style="color:#080;font-weight:bold">do</span> |c| <span style
 </div>
 </div>
 
-<h3 id="arrays">3.3 Arrays</h3>
+<h4 id="arrays">3.3 Arrays</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>[<span style="color:#00D">1</span>, <span style="color:#00D">2</span>, <span style="color:#00D">3</span>]         <span style="color:#777"># An array that holds three Fixnum objects</span>
@@ -1163,7 +1163,7 @@ mb.each_char <span style="color:#080;font-weight:bold">do</span> |c| <span style
 </div>
 </div>
 
-<h3 id="arrays-1">3.3 Arrays</h3>
+<h4 id="arrays-1">3.3 Arrays</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>words = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">%w[</span><span style="color:#D20">this is a test</span><span style="color:#710">]</span></span>  <span style="color:#777"># Same as: ['this', 'is', 'a', 'test']</span>
@@ -1173,7 +1173,7 @@ white = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:
 </div>
 </div>
 
-<h3 id="arrays-2">3.3 Arrays</h3>
+<h4 id="arrays-2">3.3 Arrays</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>empty = <span style="color:#036;font-weight:bold">Array</span>.new       <span style="color:#777"># []: returns a new empty array</span>
@@ -1185,7 +1185,7 @@ count = <span style="color:#036;font-weight:bold">Array</span>.new(<span style="
 </div>
 </div>
 
-<h3 id="arrays-3">3.3 Arrays</h3>
+<h4 id="arrays-3">3.3 Arrays</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>a = [<span style="color:#00D">0</span>, <span style="color:#00D">1</span>, <span style="color:#00D">4</span>, <span style="color:#00D">9</span>, <span style="color:#00D">16</span>]   <span style="color:#777"># Array holds the squares of the indexes</span>
@@ -1200,7 +1200,7 @@ a[<span style="color:#00D">-8</span>]       <span style="color:#777"># Querying 
 </div>
 </div>
 
-<h3 id="arrays-4">3.3 Arrays</h3>
+<h4 id="arrays-4">3.3 Arrays</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>a[<span style="color:#00D">0</span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">zero</span><span style="color:#710">&quot;</span></span>   <span style="color:#777"># a is [&quot;zero&quot;, 1, 4, 9, 16]</span>
@@ -1211,7 +1211,7 @@ a[<span style="color:#00D">-9</span>] = <span style="color:#00D">81</span>      
 </div>
 </div>
 
-<h3 id="arrays-5">3.3 Arrays</h3>
+<h4 id="arrays-5">3.3 Arrays</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>a = (<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">a</span><span style="color:#710">'</span></span>..<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">e</span><span style="color:#710">'</span></span>).to_a   <span style="color:#777"># Range converted to ['a', 'b', 'c', 'd', 'e']</span>
@@ -1225,7 +1225,7 @@ a[<span style="color:#00D">0</span>...<span style="color:#00D">-1</span>]       
 </div>
 </div>
 
-<h3 id="arrays-6">3.3 Arrays</h3>
+<h4 id="arrays-6">3.3 Arrays</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>a[<span style="color:#00D">0</span>,<span style="color:#00D">2</span>] = [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">A</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">B</span><span style="color:#710">'</span></span>]      <span style="color:#777"># a becomes ['A', 'B', 'c', 'd', 'e']</span>
@@ -1239,7 +1239,7 @@ a[<span style="color:#00D">-2</span>,<span style="color:#00D">2</span>] = <span 
 </div>
 </div>
 
-<h3 id="arrays-7">3.3 Arrays</h3>
+<h4 id="arrays-7">3.3 Arrays</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>a = [<span style="color:#00D">1</span>, <span style="color:#00D">2</span>, <span style="color:#00D">3</span>] + [<span style="color:#00D">4</span>, <span style="color:#00D">5</span>]    <span style="color:#777"># [1, 2, 3, 4, 5]</span>
@@ -1250,7 +1250,7 @@ a + <span style="color:#00D">9</span>                 <span style="color:#777">#
 </div>
 </div>
 
-<h3 id="arrays-8">3.3 Arrays</h3>
+<h4 id="arrays-8">3.3 Arrays</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">a</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">b</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">c</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">b</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">a</span><span style="color:#710">'</span></span>] - [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">b</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">c</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">d</span><span style="color:#710">'</span></span>]    <span style="color:#777"># ['a', 'a']</span>
@@ -1258,7 +1258,7 @@ a + <span style="color:#00D">9</span>                 <span style="color:#777">#
 </div>
 </div>
 
-<h3 id="arrays-9">3.3 Arrays</h3>
+<h4 id="arrays-9">3.3 Arrays</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>a = []        <span style="color:#777"># Start with an empty array</span>
@@ -1269,7 +1269,7 @@ a &lt;&lt; [<span style="color:#00D">4</span>,<span style="color:#00D">5</span>,
 </div>
 </div>
 
-<h3 id="arrays-10">3.3 Arrays</h3>
+<h4 id="arrays-10">3.3 Arrays</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>a = [<span style="color:#00D">0</span>] * <span style="color:#00D">8</span>    <span style="color:#777"># [0, 0, 0, 0, 0, 0, 0, 0]</span>
@@ -1277,7 +1277,7 @@ a &lt;&lt; [<span style="color:#00D">4</span>,<span style="color:#00D">5</span>,
 </div>
 </div>
 
-<h3 id="arrays-11">3.3 Arrays</h3>
+<h4 id="arrays-11">3.3 Arrays</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>a = [<span style="color:#00D">1</span>, <span style="color:#00D">1</span>, <span style="color:#00D">2</span>, <span style="color:#00D">2</span>, <span style="color:#00D">3</span>, <span style="color:#00D">3</span>, <span style="color:#00D">4</span>]
@@ -1290,7 +1290,7 @@ b &amp; a    <span style="color:#777"># [4, 3, 2]</span>
 </div>
 </div>
 
-<h3 id="arrays-12">3.3 Arrays</h3>
+<h4 id="arrays-12">3.3 Arrays</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>a = (<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">A</span><span style="color:#710">'</span></span>..<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Z</span><span style="color:#710">'</span></span>).to_a    <span style="color:#777"># Begin with an array of letters</span>
@@ -1299,7 +1299,7 @@ a.each {|x| print x }  <span style="color:#777"># Print the alphabet, one letter
 </div>
 </div>
 
-<h3 id="hashes">3.4 Hashes</h3>
+<h4 id="hashes">3.4 Hashes</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="color:#777"># This hash will map the names of digits to the digits themselves</span>
@@ -1313,7 +1313,7 @@ sum = numbers[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="
 </div>
 </div>
 
-<h3 id="hash-literals">3.4.1 Hash Literals</h3>
+<h4 id="hash-literals">3.4.1 Hash Literals</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>numbers = { <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">one</span><span style="color:#710">&quot;</span></span> =&gt; <span style="color:#00D">1</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">two</span><span style="color:#710">&quot;</span></span> =&gt; <span style="color:#00D">2</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">three</span><span style="color:#710">&quot;</span></span> =&gt; <span style="color:#00D">3</span> }
@@ -1321,7 +1321,7 @@ sum = numbers[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="
 </div>
 </div>
 
-<h3 id="hash-literals-1">3.4.1 Hash Literals</h3>
+<h4 id="hash-literals-1">3.4.1 Hash Literals</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>numbers = { <span style="color:#A60">:one</span> =&gt; <span style="color:#00D">1</span>, <span style="color:#A60">:two</span> =&gt; <span style="color:#00D">2</span>, <span style="color:#A60">:three</span> =&gt; <span style="color:#00D">3</span> }
@@ -1329,7 +1329,7 @@ sum = numbers[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="
 </div>
 </div>
 
-<h3 id="hash-literals-2">3.4.1 Hash Literals</h3>
+<h4 id="hash-literals-2">3.4.1 Hash Literals</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>numbers = { <span style="color:#A60">:one</span>, <span style="color:#00D">1</span>, <span style="color:#A60">:two</span>, <span style="color:#00D">2</span>, <span style="color:#A60">:three</span>, <span style="color:#00D">3</span> } <span style="color:#777"># Same, but harder to read</span>
@@ -1337,7 +1337,7 @@ sum = numbers[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="
 </div>
 </div>
 
-<h3 id="hash-literals-3">3.4.1 Hash Literals</h3>
+<h4 id="hash-literals-3">3.4.1 Hash Literals</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>numbers = { <span style="color:#A60">:one</span> =&gt; <span style="color:#00D">1</span>, <span style="color:#A60">:two</span> =&gt; <span style="color:#00D">2</span>, } <span style="color:#777"># Extra comma ignored</span>
@@ -1345,7 +1345,7 @@ sum = numbers[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="
 </div>
 </div>
 
-<h3 id="hash-literals-4">3.4.1 Hash Literals</h3>
+<h4 id="hash-literals-4">3.4.1 Hash Literals</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>numbers = { <span style="color:#606">one</span>: <span style="color:#00D">1</span>, <span style="color:#606">two</span>: <span style="color:#00D">2</span>, <span style="color:#606">three</span>: <span style="color:#00D">3</span> }
@@ -1353,7 +1353,7 @@ sum = numbers[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="
 </div>
 </div>
 
-<h3 id="ranges">3.5 Ranges</h3>
+<h4 id="ranges">3.5 Ranges</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="color:#00D">1</span>..<span style="color:#00D">10</span>      <span style="color:#777"># The integers 1 through 10, including 10</span>
@@ -1362,7 +1362,7 @@ sum = numbers[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="
 </div>
 </div>
 
-<h3 id="ranges-1">3.5 Ranges</h3>
+<h4 id="ranges-1">3.5 Ranges</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>cold_war = <span style="color:#00D">1945</span>..<span style="color:#00D">1989</span>
@@ -1371,7 +1371,7 @@ cold_war.include? birthdate.year
 </div>
 </div>
 
-<h3 id="ranges-2">3.5 Ranges</h3>
+<h4 id="ranges-2">3.5 Ranges</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>r = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">a</span><span style="color:#710">'</span></span>..<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">c</span><span style="color:#710">'</span></span>
@@ -1382,7 +1382,7 @@ r.to_a                          <span style="color:#777"># =&gt; ['a','b','c']: 
 </div>
 </div>
 
-<h3 id="ranges-3">3.5 Ranges</h3>
+<h4 id="ranges-3">3.5 Ranges</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="color:#00D">1</span>..<span style="color:#00D">3</span>.to_a    <span style="color:#777"># Tries to call to_a on the number 3</span>
@@ -1391,7 +1391,7 @@ r.to_a                          <span style="color:#777"># =&gt; ['a','b','c']: 
 </div>
 </div>
 
-<h3 id="testing-membership-in-a-range">3.5.1 Testing Membership in a Range</h3>
+<h4 id="testing-membership-in-a-range">3.5.1 Testing Membership in a Range</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="color:#080;font-weight:bold">begin</span> &lt;= x &lt;= <span style="color:#080;font-weight:bold">end</span>
@@ -1399,7 +1399,7 @@ r.to_a                          <span style="color:#777"># =&gt; ['a','b','c']: 
 </div>
 </div>
 
-<h3 id="testing-membership-in-a-range-1">3.5.1 Testing Membership in a Range</h3>
+<h4 id="testing-membership-in-a-range-1">3.5.1 Testing Membership in a Range</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="color:#080;font-weight:bold">begin</span> &lt;= x &lt; <span style="color:#080;font-weight:bold">end</span>
@@ -1407,7 +1407,7 @@ r.to_a                          <span style="color:#777"># =&gt; ['a','b','c']: 
 </div>
 </div>
 
-<h3 id="testing-membership-in-a-range-2">3.5.1 Testing Membership in a Range</h3>
+<h4 id="testing-membership-in-a-range-2">3.5.1 Testing Membership in a Range</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>r = <span style="color:#00D">0</span>...<span style="color:#00D">100</span>      <span style="color:#777"># The range of integers 0 through 99</span>
@@ -1418,7 +1418,7 @@ r.include? <span style="color:#60E">99.9</span>  <span style="color:#777"># =&gt
 </div>
 </div>
 
-<h3 id="testing-membership-in-a-range-3">3.5.1 Testing Membership in a Range</h3>
+<h4 id="testing-membership-in-a-range-3">3.5.1 Testing Membership in a Range</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>triples = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">AAA</span><span style="color:#710">&quot;</span></span>..<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ZZZ</span><span style="color:#710">&quot;</span></span>
@@ -1430,7 +1430,7 @@ triples.to_a.include? <span style="background-color:hsla(0,100%,50%,0.05)"><span
 </div>
 </div>
 
-<h3 id="symbols">3.6 Symbols</h3>
+<h4 id="symbols">3.6 Symbols</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="color:#A60">:symbol</span>                   <span style="color:#777"># A Symbol literal</span>
@@ -1442,7 +1442,7 @@ sym = <span style="color:#A60"><span style="color:#A60">:</span><span style="col
 </div>
 </div>
 
-<h3 id="symbols-1">3.6 Symbols</h3>
+<h4 id="symbols-1">3.6 Symbols</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="color:#A60"><span style="color:#740">%s[</span><span style="color:#A60">&quot;</span><span style="color:#740">]</span></span>     <span style="color:#777"># Same as :'&quot;'</span>
@@ -1450,7 +1450,7 @@ sym = <span style="color:#A60"><span style="color:#A60">:</span><span style="col
 </div>
 </div>
 
-<h3 id="symbols-2">3.6 Symbols</h3>
+<h4 id="symbols-2">3.6 Symbols</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>o.respond_to? <span style="color:#A60">:each</span>
@@ -1458,7 +1458,7 @@ sym = <span style="color:#A60"><span style="color:#A60">:</span><span style="col
 </div>
 </div>
 
-<h3 id="symbols-3">3.6 Symbols</h3>
+<h4 id="symbols-3">3.6 Symbols</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>name = <span style="color:#A60">:size</span>
@@ -1469,7 +1469,7 @@ sym = <span style="color:#A60"><span style="color:#A60">:</span><span style="col
 </pre></div>
 </div>
 </div>
-<p>### 3.6 Symbols</p>
+<p>#### 3.6 Symbols</p>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>str = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">string</span><span style="color:#710">&quot;</span></span>     <span style="color:#777"># Begin with a string</span>
@@ -1481,7 +1481,7 @@ str = sym.id2name  <span style="color:#777"># Another way to do it</span>
 </div>
 </div>
 
-<h3 id="true-false-and-nil">3.7 True, False, and Nil</h3>
+<h4 id="true-false-and-nil">3.7 True, False, and Nil</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>o == <span style="color:#069">nil</span>   <span style="color:#777"># Is o nil?</span>
@@ -1490,7 +1490,7 @@ il?     <span style="color:#777"># Another way to test</span>
 </pre></div>
 </div>
 </div>
-<p>### 3.8.1 Object References</p>
+<p>#### 3.8.1 Object References</p>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>s = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Ruby</span><span style="color:#710">&quot;</span></span> <span style="color:#777"># Create a String object. Store a reference to it in s.</span>
@@ -1503,7 +1503,7 @@ print s,t  <span style="color:#777"># Prints &quot;RubJava&quot;.</span>
 </div>
 </div>
 
-<h3 id="object-lifetime">3.8.2 Object Lifetime</h3>
+<h4 id="object-lifetime">3.8.2 Object Lifetime</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>myObject = myClass.new
@@ -1511,7 +1511,7 @@ print s,t  <span style="color:#777"># Prints &quot;RubJava&quot;.</span>
 </div>
 </div>
 
-<h3 id="object-class-and-object-type">3.8.4 Object Class and Object Type</h3>
+<h4 id="object-class-and-object-type">3.8.4 Object Class and Object Type</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>o = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">test</span><span style="color:#710">&quot;</span></span>  <span style="color:#777"># This is a value</span>
@@ -1520,7 +1520,7 @@ o.class     <span style="color:#777"># Returns an object representing the String
 </div>
 </div>
 
-<h3 id="object-class-and-object-type-1">3.8.4 Object Class and Object Type</h3>
+<h4 id="object-class-and-object-type-1">3.8.4 Object Class and Object Type</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>o.class                       <span style="color:#777"># String: o is a String object</span>
@@ -1530,7 +1530,7 @@ o.class.superclass.superclass <span style="color:#777"># nil: Object has no supe
 </div>
 </div>
 
-<h3 id="object-class-and-object-type-2">3.8.4 Object Class and Object Type</h3>
+<h4 id="object-class-and-object-type-2">3.8.4 Object Class and Object Type</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="color:#777"># Ruby 1.9 only</span>
@@ -1540,7 +1540,7 @@ o.class.superclass.superclass <span style="color:#777"># nil: Object has no supe
 </div>
 </div>
 
-<h3 id="object-class-and-object-type-3">3.8.4 Object Class and Object Type</h3>
+<h4 id="object-class-and-object-type-3">3.8.4 Object Class and Object Type</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>o.class == <span style="color:#036;font-weight:bold">String</span>       <span style="color:#777"># true if is o a String</span>
@@ -1548,7 +1548,7 @@ o.class.superclass.superclass <span style="color:#777"># nil: Object has no supe
 </div>
 </div>
 
-<h3 id="object-class-and-object-type-4">3.8.4 Object Class and Object Type</h3>
+<h4 id="object-class-and-object-type-4">3.8.4 Object Class and Object Type</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>o.instance_of? <span style="color:#036;font-weight:bold">String</span>   <span style="color:#777"># true if o is a String</span>
@@ -1556,7 +1556,7 @@ o.class.superclass.superclass <span style="color:#777"># nil: Object has no supe
 </div>
 </div>
 
-<h3 id="object-class-and-object-type-5">3.8.4 Object Class and Object Type</h3>
+<h4 id="object-class-and-object-type-5">3.8.4 Object Class and Object Type</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>x = <span style="color:#00D">1</span>                    <span style="color:#777"># This is the value we're working with</span>
@@ -1571,14 +1571,14 @@ x.is_a? <span style="color:#036;font-weight:bold">Object</span>           <span 
 </div>
 </div>
 
-<h3 id="object-class-and-object-type-6">3.8.4 Object Class and Object Type</h3>
+<h4 id="object-class-and-object-type-6">3.8.4 Object Class and Object Type</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="color:#036;font-weight:bold">Numeric</span> === x            <span style="color:#777"># true: x is_a Numeric </span>
 </pre></div>
 </div>
 </div>
-<p>### 3.8.4 Object Class and Object Type</p>
+<p>#### 3.8.4 Object Class and Object Type</p>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>o.respond_to? <span style="color:#A60"><span style="color:#A60">:</span><span style="color:#740">&quot;</span><span style="color:#A60">&lt;&lt;</span><span style="color:#740">&quot;</span></span>  <span style="color:#777"># true if o has an &lt;&lt; operator</span>
@@ -1586,14 +1586,14 @@ x.is_a? <span style="color:#036;font-weight:bold">Object</span>           <span 
 </div>
 </div>
 
-<h3 id="object-class-and-object-type-7">3.8.4 Object Class and Object Type</h3>
+<h4 id="object-class-and-object-type-7">3.8.4 Object Class and Object Type</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>o.respond_to? <span style="color:#A60"><span style="color:#A60">:</span><span style="color:#740">&quot;</span><span style="color:#A60">&lt;&lt;</span><span style="color:#740">&quot;</span></span> <span style="color:#080;font-weight:bold">and</span> <span style="color:#080;font-weight:bold">not</span> o.is_a? <span style="color:#036;font-weight:bold">Numeric</span> 
 </pre></div>
 </div>
 </div>
-<p>### 3.8.5.1 The equal? method</p>
+<p>#### 3.8.5.1 The equal? method</p>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>a = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Ruby</span><span style="color:#710">&quot;</span></span>       <span style="color:#777"># One reference to one String object</span>
@@ -1604,7 +1604,7 @@ b.equal?(c)      <span style="color:#777"># true: b and c refer to the same obje
 </div>
 </div>
 
-<h3 id="the-equal-method">3.8.5.1 The equal? method</h3>
+<h4 id="the-equal-method">3.8.5.1 The equal? method</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>a.object_id == b.object_id   <span style="color:#777"># Works like a.equal?(b)</span>
@@ -1612,7 +1612,7 @@ b.equal?(c)      <span style="color:#777"># true: b and c refer to the same obje
 </div>
 </div>
 
-<h3 id="the--operator">3.8.5.2 The == operator</h3>
+<h4 id="the--operator">3.8.5.2 The == operator</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>a = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Ruby</span><span style="color:#710">&quot;</span></span>    <span style="color:#777"># One String object</span>
@@ -1623,7 +1623,7 @@ a == b        <span style="color:#777"># true: but these two distinct objects ha
 </div>
 </div>
 
-<h3 id="the-eql-method">3.8.5.3 The eql? method</h3>
+<h4 id="the-eql-method">3.8.5.3 The eql? method</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="color:#00D">1</span> == <span style="color:#60E">1.0</span>    <span style="color:#777"># true: Fixnum and Float objects can be ==</span>
@@ -1632,7 +1632,7 @@ a == b        <span style="color:#777"># true: but these two distinct objects ha
 </div>
 </div>
 
-<h3 id="the--operator-1">3.8.5.4 The === operator</h3>
+<h4 id="the--operator-1">3.8.5.4 The === operator</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>(<span style="color:#00D">1</span>..<span style="color:#00D">10</span>) === <span style="color:#00D">5</span>    <span style="color:#777"># true: 5 is in the range 1..10</span>
@@ -1643,7 +1643,7 @@ a == b        <span style="color:#777"># true: but these two distinct objects ha
 </div>
 </div>
 
-<h3 id="object-order">3.8.6 Object Order</h3>
+<h4 id="object-order">3.8.6 Object Order</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="color:#00D">1</span> &lt;=&gt; <span style="color:#00D">5</span>     <span style="color:#777"># -1</span>
@@ -1654,7 +1654,7 @@ a == b        <span style="color:#777"># true: but these two distinct objects ha
 </div>
 </div>
 
-<h3 id="object-order-1">3.8.6 Object Order</h3>
+<h4 id="object-order-1">3.8.6 Object Order</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="color:#00D">1</span>.between?(<span style="color:#00D">0</span>,<span style="color:#00D">10</span>)  <span style="color:#777"># true: 0 &lt;= 1 &lt;= 10</span>
@@ -1662,7 +1662,7 @@ a == b        <span style="color:#777"># true: but these two distinct objects ha
 </div>
 </div>
 
-<h3 id="object-order-2">3.8.6 Object Order</h3>
+<h4 id="object-order-2">3.8.6 Object Order</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>nan = <span style="color:#60E">0.0</span>/<span style="color:#60E">0.0</span>;     <span style="color:#777"># zero divided by zero is not-a-number</span>
@@ -1675,7 +1675,7 @@ nan.equal?(nan)    <span style="color:#777"># this is true, of course</span>
 </div>
 </div>
 
-<h3 id="implicit-conversions">3.8.7.2 Implicit conversions</h3>
+<h4 id="implicit-conversions">3.8.7.2 Implicit conversions</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="color:#777"># Ruby 1.8 only</span>
@@ -1685,7 +1685,7 @@ msg = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#7
 </div>
 </div>
 
-<h3 id="arithmetic-operator-type-coercions">3.8.7.4 Arithmetic operator type coercions</h3>
+<h4 id="arithmetic-operator-type-coercions">3.8.7.4 Arithmetic operator type coercions</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="color:#60E">1.1</span>.coerce(<span style="color:#00D">1</span>)      <span style="color:#777"># [1.0, 1.1]: coerce Fixnum to Float</span>
@@ -1696,7 +1696,7 @@ r.coerce(<span style="color:#00D">2</span>)        <span style="color:#777"># [R
 </div>
 </div>
 
-<h3 id="boolean-type-conversions">3.8.7.5 Boolean type conversions</h3>
+<h4 id="boolean-type-conversions">3.8.7.5 Boolean type conversions</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="color:#080;font-weight:bold">if</span> x != <span style="color:#069">nil</span>   <span style="color:#777"># Expression &quot;x != nil&quot; returns true or false to the if</span>
@@ -1706,7 +1706,7 @@ r.coerce(<span style="color:#00D">2</span>)        <span style="color:#777"># [R
 </div>
 </div>
 
-<h3 id="boolean-type-conversions-1">3.8.7.5 Boolean type conversions</h3>
+<h4 id="boolean-type-conversions-1">3.8.7.5 Boolean type conversions</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="color:#080;font-weight:bold">if</span> x       <span style="color:#777"># If x is non-nil</span>
@@ -1716,7 +1716,7 @@ r.coerce(<span style="color:#00D">2</span>)        <span style="color:#777"># [R
 </div>
 </div>
 
-<h3 id="marshaling-objects">3.8.9 Marshaling Objects</h3>
+<h4 id="marshaling-objects">3.8.9 Marshaling Objects</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">deepcopy</span>(o)
@@ -1726,7 +1726,7 @@ r.coerce(<span style="color:#00D">2</span>)        <span style="color:#777"># [R
 </div>
 </div>
 
-<h3 id="freezing-objects">3.8.10 Freezing Objects</h3>
+<h4 id="freezing-objects">3.8.10 Freezing Objects</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>s = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ice</span><span style="color:#710">&quot;</span></span>      <span style="color:#777"># Strings are mutable objects</span>
@@ -1738,7 +1738,7 @@ s[<span style="color:#00D">0</span>] = <span style="background-color:hsla(0,100%
 </div>
 </div>
 
-<h3 id="tainting-objects">3.8.11 Tainting Objects</h3>
+<h4 id="tainting-objects">3.8.11 Tainting Objects</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>s = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">untrusted</span><span style="color:#710">&quot;</span></span>   <span style="color:#777"># Objects are normally untainted</span>

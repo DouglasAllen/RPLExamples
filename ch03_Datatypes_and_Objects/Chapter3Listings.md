@@ -4,7 +4,7 @@
 
 ### Datatypes and Objects
 
-### 3.1.1 Integer Literals
+#### 3.1.1 Integer Literals
 
 ```ruby
 0
@@ -12,20 +12,20 @@
 12345678901234567890
 ```
 
-### 3.1.1 Integer Literals
+#### 3.1.1 Integer Literals
 
 ```ruby
 1_000_000_000     # One billion (or 1,000 million in the UK)
 ```
 
-### 3.1.1 Integer Literals
+#### 3.1.1 Integer Literals
 
 ```ruby
 0377           # Octal representation of 255
 0b1111_1111    # Binary representation of 255
 0xFF           # Hexadecimal representation of 255
 
-### 3.1.2 Floating-Point Literals
+#### 3.1.2 Floating-Point Literals
 
 ```ruby
 0.0      
@@ -34,7 +34,7 @@
 1_000_000.01  # One million and a little bit more
 ```
 
-### 3.1.3 Arithmetic in Ruby
+#### 3.1.3 Arithmetic in Ruby
 
 ```ruby
 x = 5/2     # result is 2
@@ -42,19 +42,19 @@ y = 5.0/2   # result is 2.5
 z = 5/2.0   # result is 2.5
 ```
 
-### 3.1.3 Arithmetic in Ruby
+#### 3.1.3 Arithmetic in Ruby
 
 ```ruby
 x = 5%2     # result is 1
 ```
 
-### 3.1.3 Arithmetic in Ruby
+#### 3.1.3 Arithmetic in Ruby
 
 ```ruby
 x = 1.5%0.4   # result is 0.3
 ```
 
-### 3.1.3 Arithmetic in Ruby
+#### 3.1.3 Arithmetic in Ruby
 
 ```ruby
 x**4          # This is the same thing as x*x*x*x
@@ -64,31 +64,31 @@ x**(1/4)      # Oops! Integer division means this is x**0, which is always 1
 x**(1.0/4.0)  # This is the fourth-root of x
 ```
 
-### 3.1.3 Arithmetic in Ruby
+#### 3.1.3 Arithmetic in Ruby
 
 ```ruby
 even = (x[0] == 0)  # A number is even if the least-significant bit is 0
 ```
 
-### 3.1.4 Binary Floating-Point and Rounding Errors
+#### 3.1.4 Binary Floating-Point and Rounding Errors
 
 ```ruby
 0.4 - 0.3 == 0.1    # Evaluates to false in most implementations
 ```
 
-### 3.2.1.1 Single-quoted string literals
+#### 3.2.1.1 Single-quoted string literals
 
 ```ruby
 'This is a simple Ruby string literal'
 ```
 
-### 3.2.1.1 Single-quoted string literals
+#### 3.2.1.1 Single-quoted string literals
 
 ```ruby
 'Won\'t you read O\'Reilly\'s book?'
 ```
 
-### 3.2.1.1 Single-quoted string literals
+#### 3.2.1.1 Single-quoted string literals
 
 ```ruby
 'This string literal ends with a single backslash: \\'
@@ -96,20 +96,20 @@ even = (x[0] == 0)  # A number is even if the least-significant bit is 0
 'Two backslashes: \\\\'
 ```
 
-### 3.2.1.1 Single-quoted string literals
+#### 3.2.1.1 Single-quoted string literals
 
 ```ruby
 'a\b' == 'a\\b'
 ```
 
-### 3.2.1.1 Single-quoted string literals
+#### 3.2.1.1 Single-quoted string literals
 
 ```ruby
 'This is a long string literal \
 that includes a backslash and a newline'
 ```
 
-### 3.2.1.1 Single-quoted string literals
+#### 3.2.1.1 Single-quoted string literals
 
 ```ruby
 message = 
@@ -118,47 +118,47 @@ message =
 'The resulting string contains no newlines.'
 ```
 
-### 3.2.1.2 Double-quoted string literals
+#### 3.2.1.2 Double-quoted string literals
 
 ```ruby
 "\t\"This quote begins with a tab and ends with a newline\"\n"
 "\\"  # A single backslash
 ```
 
-### 3.2.1.2 Double-quoted string literals
+#### 3.2.1.2 Double-quoted string literals
 
 ```ruby
 "360 degrees=#{2*Math::PI} radians" # "360 degrees=6.28318530717959 radians"
 ```
 
-### 3.2.1.2 Double-quoted string literals
+#### 3.2.1.2 Double-quoted string literals
 
 ```ruby
 $salutation = 'hello'     # Define a global variable
 "#$salutation world"      # Use it in a double-quoted string
 ```
 
-### 3.2.1.2 Double-quoted string literals
+#### 3.2.1.2 Double-quoted string literals
 
 ```ruby
 "My phone #: 555-1234"                # No escape needed
 "Use \#{ to interpolate expressions"  # Escape #{ with backslash
 ```
 
-### 3.2.1.2 Double-quoted string literals
+#### 3.2.1.2 Double-quoted string literals
 
 ```ruby
 sprintf("pi is about %.4f", Math::PI) # Returns "pi is about 3.1416"
 ```
 
-### 3.2.1.2 Double-quoted string literals
+#### 3.2.1.2 Double-quoted string literals
 
 ```ruby
 "pi is about %.4f" % Math::PI # Same as example above
 "%s: %f" % ["pi", Math::PI]   # Array on righthand side for multiple args
 ```
 
-### 3.2.1.2 Double-quoted string literals
+#### 3.2.1.2 Double-quoted string literals
 
 ```ruby
 "This string literal
@@ -166,7 +166,7 @@ has two lines \
 but is written on three"
 ```
 
-### 3.2.1.2 Double-quoted string literals
+#### 3.2.1.2 Double-quoted string literals
 
 ```ruby
 "This string has three lines.\r\n" \
@@ -174,14 +174,14 @@ but is written on three"
 "separated by escaped newlines\r\n"
 ```
 
-### 3.2.1.3 Unicode escapes
+#### 3.2.1.3 Unicode escapes
 
 ```ruby
 "\u00D7"       # => "&#xD7;": leading zeros cannot be dropped
 "\u20ac"       # => "&#x20AC;": lowercase letters are okay
 ```
 
-### 3.2.1.3 Unicode escapes
+#### 3.2.1.3 Unicode escapes
 
 ```ruby
 "\u{A5}"      # => "&#xA5;": same as "\u00A5"
@@ -189,19 +189,19 @@ but is written on three"
 "\u{10ffff}"  # The largest Unicode codepoint
 ```
 
-### 3.2.1.3 Unicode escapes
+#### 3.2.1.3 Unicode escapes
 
 ```ruby
 money = "\u{20AC A3 A5}"  # => "&#x20AC;&#xA3;&#xA5;"
 ```
 
-### 3.2.1.3 Unicode escapes
+#### 3.2.1.3 Unicode escapes
 
 ```ruby
 money = "\u{20AC 20 A3 20 A5}"  # => "&#x20AC; &#xA3; &#xA5;"
 ```
 
-### 3.2.1.4 Arbitrary delimiters for string literals
+#### 3.2.1.4 Arbitrary delimiters for string literals
 
 ```ruby
 %q(Don't worry about escaping ' characters!)
@@ -209,14 +209,14 @@ money = "\u{20AC 20 A3 20 A5}"  # => "&#x20AC; &#xA3; &#xA5;"
 %-This string literal ends with a newline\n-  # Q omitted in this one
 ```
 
-### 3.2.1.4 Arbitrary delimiters for string literals
+#### 3.2.1.4 Arbitrary delimiters for string literals
 
 ```ruby
 %q_This string literal contains \_underscores\__
 %Q!Just use a _different_ delimiter\!!
 ```
 
-### 3.2.1.4 Arbitrary delimiters for string literals
+#### 3.2.1.4 Arbitrary delimiters for string literals
 
 ```ruby
 # XML uses paired angle brackets:
@@ -226,7 +226,7 @@ money = "\u{20AC 20 A3 20 A5}"  # => "&#x20AC; &#xA3; &#xA5;"
 %(A mismatched paren \( must be escaped)           # Escape needed here
 ```
 
-### 3.2.1.5 Here documents
+#### 3.2.1.5 Here documents
 
 ```ruby
 document = <<HERE        # This is how we begin a here document
@@ -235,7 +235,7 @@ It has two lines and abruptly ends...
 HERE
 ```
 
-### 3.2.1.5 Here documents
+#### 3.2.1.5 Here documents
 
 ```ruby
 greeting = <<HERE + <<THERE + "World"
@@ -245,14 +245,14 @@ There
 THERE
 ```
 
-### 3.2.1.5 Here documents
+#### 3.2.1.5 Here documents
 
 ```ruby
 empty = <<END
 END
 ```
 
-### 3.2.1.5 Here documents
+#### 3.2.1.5 Here documents
 
 ```ruby
 document = <<'THIS IS THE END, MY ONLY FRIEND, THE END'
@@ -263,7 +263,7 @@ document = <<'THIS IS THE END, MY ONLY FRIEND, THE END'
 THIS IS THE END, MY ONLY FRIEND, THE END
 ```
 
-### 3.2.1.5 Here documents
+#### 3.2.1.5 Here documents
 
 ```ruby
 document = <<-"# # #"    # This is the only place we can put a comment
@@ -276,19 +276,19 @@ document = <<-"# # #"    # This is the only place we can put a comment
                # # #
 ```
 
-### 3.2.1.6 Backtick command execution
+#### 3.2.1.6 Backtick command execution
 
 ```ruby
 `ls`
 ```
 
-### 3.2.1.6 Backtick command execution
+#### 3.2.1.6 Backtick command execution
 
 ```ruby
 %x[ls]
 ```
 
-### 3.2.1.6 Backtick command execution
+#### 3.2.1.6 Backtick command execution
 
 ```ruby
 if windows
@@ -299,19 +299,19 @@ end
 listing = `#{listcmd}`
 ```
 
-### 3.2.1.6 Backtick command execution
+#### 3.2.1.6 Backtick command execution
 
 ```ruby
 listing = Kernel.`(listcmd)
 ```
 
-### 3.2.1.7 String literals and mutability
+#### 3.2.1.7 String literals and mutability
 
 ```ruby
 10.times { puts "test".object_id }
 ```
 
-### 3.2.2 Character Literals
+#### 3.2.2 Character Literals
 
 ```ruby
 ?A   # Character literal for the ASCII character A
@@ -319,14 +319,14 @@ listing = Kernel.`(listcmd)
 ??   # Character literal for the question mark character
 ```
 
-### 3.2.2 Character Literals
+#### 3.2.2 Character Literals
 
 ```ruby
 ?\u20AC == ?&#x20AC;    # => true: Ruby 1.9 only
 ?&#x20AC; == "\u20AC"   # => true
 ```
 
-### 3.2.2 Character Literals
+#### 3.2.2 Character Literals
 
 ```ruby
 ?\t      # Character literal for the TAB character
@@ -334,26 +334,26 @@ listing = Kernel.`(listcmd)
 ?\111    # Literal for character whose encoding is 0111 (octal)
 ```
 
-### 3.2.3 String Operators
+#### 3.2.3 String Operators
 
 ```ruby
 planet = "Earth"
 "Hello" + " " + planet    # Produces "Hello Earth"
 ```
 
-### 3.2.3 String Operators
+#### 3.2.3 String Operators
 
 ```ruby
 "Hello planet #" + planet_number.to_s  # to_s converts to a string
 ```
 
-### 3.2.3 String Operators
+#### 3.2.3 String Operators
 
 ```ruby
 "Hello planet ##{planet_number}"
 ```
 
-### 3.2.3 String Operators
+#### 3.2.3 String Operators
 
 ```ruby
 greeting = "Hello"
@@ -361,7 +361,7 @@ greeting << " " << "World"
 puts greeting   # Outputs "Hello World"
 ```
 
-### 3.2.3 String Operators
+#### 3.2.3 String Operators
 
 ```ruby
 alphabet = "A"
@@ -370,20 +370,20 @@ alphabet << 67   # And now it is "ABC"
 alphabet << 256  # Error in Ruby 1.8: codes must be >=0 and < 256
 ```
 
-### 3.2.3 String Operators
+#### 3.2.3 String Operators
 
 ```ruby
 ellipsis = '.'*3    # Evaluates to '...'
 ```
 
-### 3.2.3 String Operators
+#### 3.2.3 String Operators
 
 ```ruby
 a = 0;
 "#{a=a+1} " * 3   # Returns "1 1 1 ", not "1 2 3 "
 ```
 
-### 3.2.4 Accessing Characters and Substrings
+#### 3.2.4 Accessing Characters and Substrings
 
 ```ruby
 s = 'hello';   # Ruby 1.8
@@ -395,7 +395,7 @@ s[-s.length]   # 104: another way of accessing the first character
 s[s.length]    # nil: there is no character at that index
 ```
 
-### 3.2.4 Accessing Characters and Substrings
+#### 3.2.4 Accessing Characters and Substrings
 
 ```ruby
 s = 'hello';   # Ruby 1.9
@@ -407,7 +407,7 @@ s[-s.length]   # 'h': another way of accessing the first character
 s[s.length]    # nil: there is no character at that index
 ```
 
-### 3.2.4 Accessing Characters and Substrings
+#### 3.2.4 Accessing Characters and Substrings
 
 ```ruby
 s[0] = ?H        # Replace first character with a capital H
@@ -415,7 +415,7 @@ s[-1] = ?O       # Replace last character with a capital O
 s[s.length] = ?! # ERROR! Can't assign beyond the end of the string
 ```
 
-### 3.2.4 Accessing Characters and Substrings
+#### 3.2.4 Accessing Characters and Substrings
 
 ```ruby
 s = "hello"      # Begin with a greeting
@@ -423,7 +423,7 @@ s[-1] = ""       # Delete the last character; s is now "hell"
 s[-1] = "p!"     # Change new last character and add one; s is now "help!"
 ```
 
-### 3.2.4 Accessing Characters and Substrings
+#### 3.2.4 Accessing Characters and Substrings
 
 ```ruby
 s = "hello"
@@ -436,7 +436,7 @@ s[s.length+1,1] # nil: it is an error to read past that
 s[0,-1]         # nil: negative lengths don't make any sense
 ```
 
-### 3.2.4 Accessing Characters and Substrings
+#### 3.2.4 Accessing Characters and Substrings
 
 ```ruby
 s = "hello"
@@ -446,7 +446,7 @@ s[5,0] = ","              # Insert a comma, without deleting anything
 s[5,6] = ""               # Delete with no insertion; s == "Hellod"
 ```
 
-### 3.2.4 Accessing Characters and Substrings
+#### 3.2.4 Accessing Characters and Substrings
 
 ```ruby
 s = "hello"
@@ -461,7 +461,7 @@ s[0...0] = "Please " # Insertion: s becomes "Please help!"
 s[6..10] = ""        # Deletion: s becomes "Please!"
 ```
 
-### 3.2.4 Accessing Characters and Substrings
+#### 3.2.4 Accessing Characters and Substrings
 
 ```ruby
 s = "hello"       # Start with the word "hello"
@@ -470,12 +470,12 @@ while(s["l"])     # While the string contains the substring "l"
 end               # Now we have "heLLo"
 ```
 
-### 3.2.4 Accessing Characters and Substrings
+#### 3.2.4 Accessing Characters and Substrings
 
 ```ruby
 s[/[aeiou]/] = '*'      # Replace first vowel with an asterisk
 ```
-### 3.2.5 Iterating Strings
+#### 3.2.5 Iterating Strings
 
 ```ruby
 s = "&#xA5;1000"
@@ -483,7 +483,7 @@ s.each_char {|x| print "#{x} " }         # Prints "&#xA5; 1 0 0 0". Ruby 1.9
 0.upto(s.size-1) {|i| print "#{s[i]} "}  # Inefficient with multibyte chars
 ```
 
-### 3.2.6.1 Multibyte characters in Ruby 1.9
+#### 3.2.6.1 Multibyte characters in Ruby 1.9
 
 ```ruby
 # -*- coding: utf-8 -*-   # Specify Unicode UTF-8 characters
@@ -496,7 +496,7 @@ s.length        # => 5: Characters:  '2'   '&#xD7;'   '2'   '='   '4'
 s.bytesize      # => 6: Bytes (hex): 32   c3 97  32    3d    34 
 ```
 
-### 3.2.6.1 Multibyte characters in Ruby 1.9
+#### 3.2.6.1 Multibyte characters in Ruby 1.9
 
 ```ruby
 # -*- coding: utf-8 -*-
@@ -506,21 +506,21 @@ t = "2+2=4"     # All characters are in the ASCII subset of UTF-8
 t.encoding      # => <Encoding: ASCII-8BIT>
 ```
 
-### 3.2.6.1 Multibyte characters in Ruby 1.9
+#### 3.2.6.1 Multibyte characters in Ruby 1.9
 
 ```ruby
 text = stream.readline.force_encoding("utf-8")
 bytes = text.dup.force_encoding(nil)   # nil encoding means binary
 ```
 
-### 3.2.6.1 Multibyte characters in Ruby 1.9
+#### 3.2.6.1 Multibyte characters in Ruby 1.9
 
 ```ruby
 s = "\xa4".force_encoding("utf-8")  # This is not a valid UTF-8 string
 s.valid_encoding?                   # => false
 ```
 
-### 3.2.6.1 Multibyte characters in Ruby 1.9
+#### 3.2.6.1 Multibyte characters in Ruby 1.9
 
 ```ruby
 # -*- coding: utf-8 -*-
@@ -538,7 +538,7 @@ euro3 = euro2.encode("utf-8")        # Transcode back to UTF-8
 euro1 == euro3                       # => true
 ```
 
-### 3.2.6.1 Multibyte characters in Ruby 1.9
+#### 3.2.6.1 Multibyte characters in Ruby 1.9
 
 ```ruby
 # Interpret a byte as an iso-8859-15 codepoint, and transcode to UTF-8
@@ -546,21 +546,21 @@ byte = "\xA4"
 char = byte.encode("utf-8", "iso-8859-15")
 ```
 
-### 3.2.6.1 Multibyte characters in Ruby 1.9
+#### 3.2.6.1 Multibyte characters in Ruby 1.9
 
 ```ruby
 text = bytes.encode(to, from)
 text = bytes.dup.force_encoding(from).encode(to)
 ```
 
-### 3.2.6.1 Multibyte characters in Ruby 1.9
+#### 3.2.6.1 Multibyte characters in Ruby 1.9
 
 ```ruby
 # The iso-8859-1 encoding doesn't have a Euro sign, so this raises an exception
 "\u20AC".encode("iso-8859-1")
 ```
 
-### 3.2.6.2 The Encoding class
+#### 3.2.6.2 The Encoding class
 
 ```ruby
 Encoding::ASCII_8BIT     # Also ::BINARY
@@ -569,13 +569,13 @@ Encoding::EUC_JP         # EUC-encoded Japanese
 Encoding::SHIFT_JIS      # Japanese: also ::SJIS, ::WINDOWS_31J, ::CP932
 ```
 
-### 3.2.6.2 The Encoding class
+#### 3.2.6.2 The Encoding class
 
 ```ruby
 encoding = Encoding.find("utf-8")
 ```
 
-### 3.2.6.3 Multibyte characters in Ruby 1.8
+#### 3.2.6.3 Multibyte characters in Ruby 1.8
 
 ```ruby
 $KCODE = "u"        # Specify Unicode UTF-8, or start Ruby with -Ku option
@@ -593,7 +593,7 @@ mb.each_char do |c| # Iterate through the characters of the string
 end                 # Outputs "2 &#xD7; 2 = 4 "
 ```
 
-### 3.3 Arrays
+#### 3.3 Arrays
 
 ```ruby
 [1, 2, 3]         # An array that holds three Fixnum objects
@@ -603,7 +603,7 @@ end                 # Outputs "2 &#xD7; 2 = 4 "
 []                # The empty array has size 0
 ```
 
-### 3.3 Arrays
+#### 3.3 Arrays
 
 ```ruby
 words = %w[this is a test]  # Same as: ['this', 'is', 'a', 'test']
@@ -611,7 +611,7 @@ open = %w| ( [ { < |        # Same as: ['(', '[', '{', '<']
 white = %W(\s \t \r \n)     # Same as: ["\s", "\t", "\r", "\n"]
 ```
 
-### 3.3 Arrays
+#### 3.3 Arrays
 
 ```ruby
 empty = Array.new       # []: returns a new empty array
@@ -621,7 +621,7 @@ copy = Array.new(nils)  # Make a new copy of an existing array
 count = Array.new(3) {|i| i+1}  # [1,2,3]: 3 elements computed from index
 ```
 
-### 3.3 Arrays
+#### 3.3 Arrays
 
 ```ruby
 a = [0, 1, 4, 9, 16]   # Array holds the squares of the indexes
@@ -634,7 +634,7 @@ a[8]        # Querying beyond the end returns nil
 a[-8]       # Querying before the start returns nil, too
 ```
 
-### 3.3 Arrays
+#### 3.3 Arrays
 
 ```ruby
 a[0] = "zero"   # a is ["zero", 1, 4, 9, 16]
@@ -643,7 +643,7 @@ a[8] = 64       # a is ["zero", 1, 4, 9, 1..16, nil, nil, nil, 64]
 a[-9] = 81      # Error: can't assign before the start of an array
 ```
 
-### 3.3 Arrays
+#### 3.3 Arrays
 
 ```ruby
 a = ('a'..'e').to_a   # Range converted to ['a', 'b', 'c', 'd', 'e']
@@ -655,7 +655,7 @@ a[-2..-1]             # ['d','e']: the last two elements of the array
 a[0...-1]             # ['a', 'b', 'c', 'd']: all but the last element
 ```
 
-### 3.3 Arrays
+#### 3.3 Arrays
 
 ```ruby
 a[0,2] = ['A', 'B']      # a becomes ['A', 'B', 'c', 'd', 'e']
@@ -667,7 +667,7 @@ a[-1,1] = 'Z'            # For single elements, the array is optional
 a[-2,2] = nil  # Delete last 2 elements in 1.8; replace with nil in 1.9
 ```
 
-### 3.3 Arrays
+#### 3.3 Arrays
 
 ```ruby
 a = [1, 2, 3] + [4, 5]    # [1, 2, 3, 4, 5]
@@ -676,13 +676,13 @@ a =
 a + 9                 # Error: righthand side must be an array
 ```
 
-### 3.3 Arrays
+#### 3.3 Arrays
 
 ```ruby
 ['a', 'b', 'c', 'b', 'a'] - ['b', 'c', 'd']    # ['a', 'a']
 ```
 
-### 3.3 Arrays
+#### 3.3 Arrays
 
 ```ruby
 a = []        # Start with an empty array
@@ -691,13 +691,13 @@ a << 2 << 3   # a is [1, 2, 3]
 a << [4,5,6]  # a is [1, 2, 3, [4, 5, 6]]
 ```
 
-### 3.3 Arrays
+#### 3.3 Arrays
 
 ```ruby
 a = [0] * 8    # [0, 0, 0, 0, 0, 0, 0, 0]
 ```
 
-### 3.3 Arrays
+#### 3.3 Arrays
 
 ```ruby
 a = [1, 1, 2, 2, 3, 3, 4]
@@ -708,14 +708,14 @@ a & b    # [2, 3, 4]
 b & a    # [4, 3, 2]
 ```
 
-### 3.3 Arrays
+#### 3.3 Arrays
 
 ```ruby
 a = ('A'..'Z').to_a    # Begin with an array of letters
 a.each {|x| print x }  # Print the alphabet, one letter at a time
 ```
 
-### 3.4 Hashes
+#### 3.4 Hashes
 
 ```ruby
 # This hash will map the names of digits to the digits themselves
@@ -727,51 +727,51 @@ numbers["three"] = 3
 sum = numbers["one"] + numbers["two"]  # Retrieve values like this
 ```
 
-### 3.4.1 Hash Literals
+#### 3.4.1 Hash Literals
 
 ```ruby
 numbers = { "one" => 1, "two" => 2, "three" => 3 }
 ```
 
-### 3.4.1 Hash Literals
+#### 3.4.1 Hash Literals
 
 ```ruby
 numbers = { :one => 1, :two => 2, :three => 3 }
 ```
 
-### 3.4.1 Hash Literals
+#### 3.4.1 Hash Literals
 
 ```ruby
 numbers = { :one, 1, :two, 2, :three, 3 } # Same, but harder to read
 ```
 
-### 3.4.1 Hash Literals
+#### 3.4.1 Hash Literals
 
 ```ruby
 numbers = { :one => 1, :two => 2, } # Extra comma ignored
 ```
 
-### 3.4.1 Hash Literals
+#### 3.4.1 Hash Literals
 
 ```ruby
 numbers = { one: 1, two: 2, three: 3 }
 ```
 
-### 3.5 Ranges
+#### 3.5 Ranges
 
 ```ruby
 1..10      # The integers 1 through 10, including 10
 1.0...10.0 # The numbers between 1.0 and 10.0, excluding 10.0 itself
 ```
 
-### 3.5 Ranges
+#### 3.5 Ranges
 
 ```ruby
 cold_war = 1945..1989
 cold_war.include? birthdate.year
 ```
 
-### 3.5 Ranges
+#### 3.5 Ranges
 
 ```ruby
 r = 'a'..'c'
@@ -780,26 +780,26 @@ r.step(2) { |l| print "[#{l}]"} # Prints "[a][c]"
 r.to_a                          # => ['a','b','c']: Enumerable defines to_a
 ```
 
-### 3.5 Ranges
+#### 3.5 Ranges
 
 ```ruby
 1..3.to_a    # Tries to call to_a on the number 3
 (1..3).to_a  # => [1,2,3]
 ```
 
-### 3.5.1 Testing Membership in a Range
+#### 3.5.1 Testing Membership in a Range
 
 ```ruby
 begin <= x <= end
 ```
 
-### 3.5.1 Testing Membership in a Range
+#### 3.5.1 Testing Membership in a Range
 
 ```ruby
 begin <= x < end
 ```
 
-### 3.5.1 Testing Membership in a Range
+#### 3.5.1 Testing Membership in a Range
 
 ```ruby
 r = 0...100      # The range of integers 0 through 99
@@ -808,7 +808,7 @@ r.include? 100   # => false: 100 is excluded from the range
 r.include? 99.9  # => true: 99.9 is less than 100
 ```
 
-### 3.5.1 Testing Membership in a Range
+#### 3.5.1 Testing Membership in a Range
 
 ```ruby
 triples = "AAA".."ZZZ"
@@ -818,7 +818,7 @@ triples.cover?   "ABCD"       # true and fast in 1.9
 triples.to_a.include? "ABCD"  # false and slow in 1.8 and 1.9
 ```
 
-### 3.6 Symbols
+#### 3.6 Symbols
 
 ```ruby
 :symbol                   # A Symbol literal
@@ -828,19 +828,19 @@ s = "string"
 sym = :"#{s}"             # The Symbol :string
 ```
 
-### 3.6 Symbols
+#### 3.6 Symbols
 
 ```ruby
 %s["]     # Same as :'"'
 ```
 
-### 3.6 Symbols
+#### 3.6 Symbols
 
 ```ruby
 o.respond_to? :each
 ```
 
-### 3.6 Symbols
+#### 3.6 Symbols
 
 ```ruby
 name = :size
@@ -849,7 +849,7 @@ if o.respond_to? name
 end
 
 ```
-### 3.6 Symbols
+#### 3.6 Symbols
 
 ```ruby
 str = "string"     # Begin with a string
@@ -859,14 +859,14 @@ str = sym.to_s     # Convert back to a string
 str = sym.id2name  # Another way to do it
 ```
 
-### 3.7 True, False, and Nil
+#### 3.7 True, False, and Nil
 
 ```ruby
 o == nil   # Is o nil?
 o.n
 il?     # Another way to test
 ```
-### 3.8.1 Object References
+#### 3.8.1 Object References
 
 ```ruby
 s = "Ruby" # Create a String object. Store a reference to it in s.
@@ -877,20 +877,20 @@ t = "Java" # t now refers to a different object.
 print s,t  # Prints "RubJava".
 ```
 
-### 3.8.2 Object Lifetime
+#### 3.8.2 Object Lifetime
 
 ```ruby
 myObject = myClass.new
 ```
 
-### 3.8.4 Object Class and Object Type
+#### 3.8.4 Object Class and Object Type
 
 ```ruby
 o = "test"  # This is a value
 o.class     # Returns an object representing the String class
 ```
 
-### 3.8.4 Object Class and Object Type
+#### 3.8.4 Object Class and Object Type
 
 ```ruby
 o.class                       # String: o is a String object
@@ -898,7 +898,7 @@ o.class.superclass            # Object: superclass of String is Object
 o.class.superclass.superclass # nil: Object has no superclass
 ```
 
-### 3.8.4 Object Class and Object Type
+#### 3.8.4 Object Class and Object Type
 
 ```ruby
 # Ruby 1.9 only
@@ -906,19 +906,19 @@ Object.superclass             # BasicObject: Object has a superclass in 1.9
 BasicObject.superclass        # nil: BasicObject has no superclass
 ```
 
-### 3.8.4 Object Class and Object Type
+#### 3.8.4 Object Class and Object Type
 
 ```ruby
 o.class == String       # true if is o a String
 ```
 
-### 3.8.4 Object Class and Object Type
+#### 3.8.4 Object Class and Object Type
 
 ```ruby
 o.instance_of? String   # true if o is a String
 ```
 
-### 3.8.4 Object Class and Object Type
+#### 3.8.4 Object Class and Object Type
 
 ```ruby
 x = 1                    # This is the value we're working with
@@ -931,23 +931,23 @@ x.is_a? Comparable       # true: works with mixin modules, too
 x.is_a? Object           # true for any value of x
 ```
 
-### 3.8.4 Object Class and Object Type
+#### 3.8.4 Object Class and Object Type
 
 ```ruby
 Numeric === x            # true: x is_a Numeric 
 ```
-### 3.8.4 Object Class and Object Type
+#### 3.8.4 Object Class and Object Type
 
 ```ruby
 o.respond_to? :"<<"  # true if o has an << operator
 ```
 
-### 3.8.4 Object Class and Object Type
+#### 3.8.4 Object Class and Object Type
 
 ```ruby
 o.respond_to? :"<<" and not o.is_a? Numeric 
 ```
-### 3.8.5.1 The equal? method
+#### 3.8.5.1 The equal? method
 
 ```ruby
 a = "Ruby"       # One reference to one String object
@@ -956,13 +956,13 @@ a.equal?(b)      # false: a and b are different objects
 b.equal?(c)      # true: b and c refer to the same object
 ```
 
-### 3.8.5.1 The equal? method
+#### 3.8.5.1 The equal? method
 
 ```ruby
 a.object_id == b.object_id   # Works like a.equal?(b)
 ```
 
-### 3.8.5.2 The == operator
+#### 3.8.5.2 The == operator
 
 ```ruby
 a = "Ruby"    # One String object
@@ -971,14 +971,14 @@ a.equal?(b)   # false: a and b do not refer to the same object
 a == b        # true: but these two distinct objects have equal values
 ```
 
-### 3.8.5.3 The eql? method
+#### 3.8.5.3 The eql? method
 
 ```ruby
 1 == 1.0    # true: Fixnum and Float objects can be ==
 1.eql?(1.0) # false: but they are never eql!
 ```
 
-### 3.8.5.4 The === operator
+#### 3.8.5.4 The === operator
 
 ```ruby
 (1..10) === 5    # true: 5 is in the range 1..10
@@ -987,7 +987,7 @@ String === "s"   # true: "s" is an instance of the class String
 :s === "s"       # true in Ruby 1.9
 ```
 
-### 3.8.6 Object Order
+#### 3.8.6 Object Order
 
 ```ruby
 1 <=> 5     # -1
@@ -996,13 +996,13 @@ String === "s"   # true: "s" is an instance of the class String
 "1" <=> 5   # nil: integers and strings are not comparable
 ```
 
-### 3.8.6 Object Order
+#### 3.8.6 Object Order
 
 ```ruby
 1.between?(0,10)  # true: 0 <= 1 <= 10
 ```
 
-### 3.8.6 Object Order
+#### 3.8.6 Object Order
 
 ```ruby
 nan = 0.0/0.0;     # zero divided by zero is not-a-number
@@ -1013,7 +1013,7 @@ nan == nan         # false: it is not even equal to itself!
 nan.equal?(nan)    # this is true, of course
 ```
 
-### 3.8.7.2 Implicit conversions
+#### 3.8.7.2 Implicit conversions
 
 ```ruby
 # Ruby 1.8 only
@@ -1021,7 +1021,7 @@ e = Exception.new("not really an exception")
 msg = "Error: " + e  # String concatenation with an Exception
 ```
 
-### 3.8.7.4 Arithmetic operator type coercions
+#### 3.8.7.4 Arithmetic operator type coercions
 
 ```ruby
 1.1.coerce(1)      # [1.0, 1.1]: coerce Fixnum to Float
@@ -1030,7 +1030,7 @@ r = Rational(1,3)  # One third as a Rational number
 r.coerce(2)        # [Rational(2,1), Rational(1,3)]: Fixnum to Rational
 ```
 
-### 3.8.7.5 Boolean type conversions
+#### 3.8.7.5 Boolean type conversions
 
 ```ruby
 if x != nil   # Expression "x != nil" returns true or false to the if
@@ -1038,7 +1038,7 @@ if x != nil   # Expression "x != nil" returns true or false to the if
 end
 ```
 
-### 3.8.7.5 Boolean type conversions
+#### 3.8.7.5 Boolean type conversions
 
 ```ruby
 if x       # If x is non-nil
@@ -1046,7 +1046,7 @@ if x       # If x is non-nil
 end
 ```
 
-### 3.8.9 Marshaling Objects
+#### 3.8.9 Marshaling Objects
 
 ```ruby
 def deepcopy(o)
@@ -1054,7 +1054,7 @@ def deepcopy(o)
 end
 ```
 
-### 3.8.10 Freezing Objects
+#### 3.8.10 Freezing Objects
 
 ```ruby
 s = "ice"      # Strings are mutable objects
@@ -1064,7 +1064,7 @@ s.upcase!      # TypeError: can't modify frozen string
 s[0] = "ni"    # TypeError: can't modify frozen string
 ```
 
-### 3.8.11 Tainting Objects
+#### 3.8.11 Tainting Objects
 
 ```ruby
 s = "untrusted"   # Objects are normally untainted
