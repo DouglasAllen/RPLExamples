@@ -1,34 +1,34 @@
-```ruby
+
 The Ruby Programming Language
 CHAPTER 1
 Introduction
----------------------------
-1.1.1 Ruby Is Object-Oriented
 
+1.1.1 Ruby Is Object-Oriented
+```ruby
 1.class      # => Fixnum: the number 1 is a Fixnum
 0.0.class    # => Float: floating-point numbers have class Float
 true.class   # => TrueClass: true is a the singleton instance of TrueClass
 false.class  # => FalseClass
 nil.class    # => NilClass
----------------------------
+```
 1.1.2 Blocks and Iterators
-
+```ruby
 3.times { print "Ruby! " }   # Prints "Ruby! Ruby! Ruby! "
 1.upto(9) {|x| print x }     # Prints "123456789"
----------------------------
+
 a = [3, 2, 1]     # This is an array literal
 a[3] = a[2] - 1   # Use square brackets to query and set array elements
 a.each do |elt|   # each is an iterator. The block has a parameter elt
   print elt+1     # Prints "4321"
 end               # This block was delimited with do/end instead of {}
----------------------------
+
 a = [1,2,3,4]                # Start with an array
 b = a.map {|x| x*x }         # Square elements: b is [1,4,9,16]
 c = a.select {|x| x%2==0 }   # Select even elements: c is [2,4]
 a.inject do |sum,x|          # Compute the sum of the elements => 10
   sum + x 
 end
----------------------------
+
 h = {                         # A hash that maps number names to digits
   :one => 1,                  # The "arrows" show mappings: key=>value
   :two => 2                   # The colons indicate Symbol literals
@@ -38,7 +38,7 @@ h[:three] = 3                 # Add a new key/value pair to the hash
 h.each do |key,value|         # Iterate through the key/value pairs
   print "#{value}:#{key}; "   # Note variables substituted into string 
 end                           # Prints "1:one; 2:two; 3:three; "
----------------------------
+
 File.open("data.txt") do |f| # Open named file and pass stream to block
   line = f.readline          # Use the stream to read from the file
 end                          # Stream automatically closed at block end
@@ -46,13 +46,13 @@ end                          # Stream automatically closed at block end
 t = Thread.new do       # Run this block in a new thread
   File.read("data.txt") # Read a file in the background
 end                     # File contents available as thread value
----------------------------
-print "#{value}:#{key}; "    # Note variables substituted into string 
----------------------------
-1.1.3 Expressions and Operators in Ruby
 
+print "#{value}:#{key}; "    # Note variables substituted into string 
+```
+1.1.3 Expressions and Operators in Ruby
+```ruby
 minimum = if x < y then x else y end
----------------------------
+
 1 + 2                    # => 3: addition
 1 * 2                    # => 2: multiplication
 1 + 2 == 3               # => true: == tests equality
@@ -61,28 +61,28 @@ minimum = if x < y then x else y end
 "Ruby! " * 3             # => "Ruby! Ruby! Ruby! ": string repetition
 "%d %s" % [3, "rubies"]  # => "3 Rubies": Python-style, printf formatting
 max = x > y ? x : y      # The conditional operator
----------------------------
+```
 1.1.4 Methods
-
+```ruby
 def square(x)   # Define a method named square with one parameter x
   x*x           # Return x squared
 end             # End of the method
----------------------------
+
 def Math.square(x)  # Define a class method of the Math module
   x*x
 end
----------------------------
+```
 1.1.5 Assignment
-
+```ruby
 x = 1
----------------------------
+
 x += 1          # Increment x: note Ruby does not have ++.
 y -= 1          # Decrement y: no -- operator, either.
----------------------------
+
 x, y = 1, 2     # Same as x = 1; y = 2
 a, b = b, a     # Swap the value of two variables
 x,y,z = [1,2,3] # Array elements automatically assigned to variables
----------------------------
+
 # Define a method to convert Cartesian (x,y) coordinates to Polar
 def polar(x,y)
   theta = Math.atan2(y,x)   # Compute the angle
@@ -92,17 +92,17 @@ end
 
 # Here's how we use this method with parallel assignment
 distance, angle = polar(2,2)
----------------------------
+
 o.x=(1)         # Normal method invocation syntax
 o.x = 1         # Method invocation through assignment
----------------------------
+```
 1.1.7 Regexp and Range
-
+```ruby
 /[Rr]uby/        # Matches "Ruby" or "ruby"
 /\d{5}/          # Matches 5 consecutive digits
 1..3             # All x where 1 <= x <= 3
 1...3            # All x where 1 <= x < 3
----------------------------
+
 # Determine US generation name based on birth year
 # Case expression tests ranges with ===
 generation = case birthyear
@@ -125,9 +125,9 @@ def are_you_sure?                  # Define a method. Note question mark!
     end
   end
 end
----------------------------
+```
 1.1.8 Classes and Modules
-
+```ruby
 #
 # This class represents a sequence of numbers characterized by the three
 # parameters from, to, and by. The numbers x in the sequence obey the
@@ -187,12 +187,12 @@ class Sequence
     Sequence.new(@from+offset, @to+offset, @by)
   end
 end
----------------------------
+
 s = Sequence.new(1, 10, 2)  # From 1 to 10 by 2's
 s.each {|x| print x }       # Prints "13579"
 print s[s.size-1]           # Prints 9
 t = (s+1)*2                 # From 4 to 22 by 4's
----------------------------
+
 module Sequences                   # Begin a new module
   def self.fromtoby(from, to, by)  # A singleton method of the module
     x = from
@@ -202,9 +202,9 @@ module Sequences                   # Begin a new module
     end
   end
 end
----------------------------
+
 Sequences.fromtoby(1, 10, 2) {|x| print x }  # Prints "13579"
----------------------------
+
 class Range                  # Open an existing class for additions
   def by(step)               # Define an iterator named by
     x = self.begin           # Start at one endpoint of the range
@@ -225,27 +225,30 @@ end                          # End of class modification
 # Examples
 (0..10).by(2) {|x| print x}  # Prints "0246810"
 (0...10).by(2) {|x| print x} # Prints "02468"
----------------------------
+```
 1.2.1 The Ruby Interpreter
 
 % ruby -e 'puts "hello world!"'
-hello world!
----------------------------
-% ruby hello.rb
-hello world!
----------------------------
-1.2.2 Displaying Output
 
+hello world!
+
+% ruby hello.rb
+
+hello world!
+
+1.2.2 Displaying Output
+```ruby
 9.downto(1) {|n| print n }   # No newline between numbers
 puts " blastoff!"            # End with a newline
----------------------------
+```
 % ruby count.rb
----------------------------
+
 987654321 blastoff!
----------------------------
+
 1.2.3 Interactive Ruby with irb
 
 $ irb --simple-prompt       # Start irb from the terminal
+```ruby
 >> 2**3                     # Try exponentiation
 => 8                        # This is the result
 >> "Ruby! " * 3             # Try string repetition
@@ -256,42 +259,61 @@ $ irb --simple-prompt       # Start irb from the terminal
 3
 => 1                        # The return value of 1.upto(3)
 >> quit                     # Exit irb
+```
 $                           # Back to the terminal prompt
----------------------------
+
 1.2.4 Viewing Ruby Documentation with ri
 
 ri Array
-ri Array.sort
-ri Hash#each
-ri Math::sqrt
----------------------------
-1.2.5 Ruby Package Management with gem
 
-# gem install rails
+ri Array.sort
+
+ri Hash#each
+
+ri Math::sqrt
+
+1.2.5 Ruby Package Management with gem
+```ruby
+gem install rails
+
 Successfully installed activesupport-1.4.4
+
 Successfully installed activerecord-1.15.5
+
 Successfully installed actionpack-1.13.5
+
 Successfully installed actionmailer-1.3.5
+
 Successfully installed actionwebservice-1.2.5
+
 Successfully installed rails-1.2.5
+
 6 gems installed
+
 Installing ri documentation for activesupport-1.4.4...
+
 Installing ri documentation for activerecord-1.15.5...
+
 ...etc...
----------------------------
+
 gem list               # List installed gems
+
 gem enviroment         # Display RubyGems configuration information
+
 gem update rails       # Update a named gem
+
 gem update             # Update all installed gems
+
 gem update --system    # Update RubyGems itself
+
 gem uninstall rails    # Remove an installed gem
----------------------------
+```ruby
 require 'rubygems'               # Not necessary in Ruby 1.9
 gem 'RedCloth', '> 2.0', '< 4.0' # Activate RedCloth version 2.x or 3.x
 require 'RedCloth'               # And now load it
----------------------------
+```
 1.4 A Sudoku Solver in Ruby
-
+```ruby
 #
 # This module defines a Sudoku::Puzzle class to represent a 9x9
 # Sudoku puzzle and also defines exception classes raised for 
@@ -637,5 +659,5 @@ module Sudoku
     raise Impossible
   end
 end
----------------------------
+
 ```
