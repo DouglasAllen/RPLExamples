@@ -23,6 +23,7 @@
 = Lists and Fonts
 
 # List items begin with * or -. Indicate fonts with punctuation or HTML:
+
 # * _italic_ or <i>multi-word italic</i>
 * _italic_ or <i>multi-word italic</i>
 # * *bold* or <b>multi-word bold</b>
