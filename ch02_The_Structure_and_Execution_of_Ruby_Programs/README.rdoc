@@ -8,9 +8,12 @@
   Headings begin with one equals sign = Headings
 
 == Sub-Headings
-   The line above produces a subheading.
+
+   The line above produces a subheading. == Sub-Headings
+
 === Sub-Sub-Heading
-    And so on.
+
+    And so on. === Sub-Sub-Heading
 
 = Examples
  
