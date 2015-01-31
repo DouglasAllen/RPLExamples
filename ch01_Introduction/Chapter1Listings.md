@@ -273,8 +273,8 @@ $ irb --simple-prompt       # Start irb from the terminal
 ```ruby
 2**3                     # Try exponentiation
 # => 8 
-"Ruby! " * 3             # Try string repetition => "Ruby! Ruby! Ruby! "
-
+"Ruby! " * 3             # Try string repetition
+# => "Ruby! Ruby! Ruby! "
 1.upto(3){|x| puts x }   # Try an iterator
 # 1                           # Three lines of output 
 # 2                           # Because we called puts 3 times
