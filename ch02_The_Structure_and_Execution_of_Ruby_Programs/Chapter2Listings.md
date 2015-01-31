@@ -291,7 +291,7 @@ __END__                     <lineannotation>mark end of code</lineannotation>
 ```
 2.4.2 Source Encoding and Default External Encoding
 
-```ruby
+```rdoc
 ruby -E utf-8            # Encoding name follows -E
 ruby -Eutf-8             # The space is optional
 ruby --encoding utf-8    # Encoding following --encoding with a space
