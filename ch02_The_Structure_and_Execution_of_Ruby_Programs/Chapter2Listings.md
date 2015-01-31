@@ -115,7 +115,7 @@ sort!           # An in-place alternative to the regular sort method
 timeout=        # A method invoked by assignment
 ```
 2.1.5 Keywords
-
+```rdoc
 __LINE__      case         ensure       not          then
 
 __ENCODING__  class        false        or           true
@@ -198,7 +198,7 @@ equal?         instance_of?   respond_to?    untaint
 
 extend         is_a?          send
            
-
+```
 2.1.6.1 Newlines as statement terminators
 
 ```ruby
