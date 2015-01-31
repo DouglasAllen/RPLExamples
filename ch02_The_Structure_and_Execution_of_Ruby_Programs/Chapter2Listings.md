@@ -1,11 +1,11 @@
 
-The Ruby Programming Language
+# The Ruby Programming Language
 
-CHAPTER 2
+## CHAPTER 2
 
-The Structure and Execution of Ruby Programs
+### The Structure and Execution of Ruby Programs
 
-2.1.1 Comments
+#### 2.1.1 Comments
 
 ```ruby
 # This entire line is a comment
@@ -17,7 +17,8 @@ y = /#This is a regular expression/   # Here's another comment
 # Despite its name, it is not complex at all.
 #
 ```
-2.1.1.1 Embedded documents
+
+####2.1.1.1 Embedded documents
 
 ```ruby
 =begin Someone needs to fix the broken code below!
@@ -28,58 +29,96 @@ y = /#This is a regular expression/   # Here's another comment
     <emphasis>The code that goes here is no longer commented out</emphasis>
 # =end
 ```
-2.1.1.2 Documentation comments
+
+#### 2.1.1.2 Documentation comments
 
 ```rdoc
-#
-# Rdoc comments use a simple markup grammar like those used in wikis.
-# 
-# Separate paragraphs with a blank line.
-# 
-# = Headings
-= Headings
-# 
-# Headings begin with an equals sign
-# 
-# == Sub-Headings
-== Sub-Headings
-# The line above produces a subheading.
-# === Sub-Sub-Heading
-=== Sub-Sub-Heading
-# And so on.
-# 
-# = Examples
-= Examples
-# 
-#   Indented lines are displayed verbatim in code font.
-#     Be careful not to indent your headings and lists, though.
-# 
-# = Lists and Fonts
-= Lists and Fonts
-# 
-# List items begin with * or -. Indicate fonts with punctuation or HTML:
-# * _italic_ or <i>multi-word italic</i>
-* _italic_ or <i>multi-word italic</i>
-# * *bold* or <b>multi-word bold</b>
-* *bold* or <b>multi-word bold</b>
-# * +code+ or <tt>multi-word code</tt>
-* +code+ or <tt>multi-word code</tt>
-# 
-# 1. Numbered lists begin with numbers.
-1. Numbered lists begin with numbers.
-# 99. Any number will do; they don't have to be sequential.
-99. Any number will do; they don't have to be sequential.
-# 1. There is no way to do nested lists.
-1. There is no way to do nested lists.
-# 
-# The terms of a description list are bracketed:
-# [item 1]  This is a description of item 1
-[item 1]  This is a description of item 1
-# [item 2]  This is a description of item 2
-[item 2]  This is a description of item 2
-# 
+
+   Rdoc comments use a simple markup grammar like those used in wikis.
+ 
+   Separate paragraphs with a blank line.
+
+   Headings begin with an equals sign
+ 
+   = Headings
 ```
-2.1.2 Literals
+
+# Headings
+
+```rdoc 
+   == Sub-Headings
+```
+
+## Sub-Headings
+
+```rdoc
+    The line above produces a subheading.
+    === Sub-Sub-Heading
+```
+
+### Sub-Sub-Heading
+
+```rdoc
+    And so on.
+ 
+    = Examples
+```
+
+# Examples
+
+```rdoc
+ 
+   Indented lines are displayed verbatim in code font.
+     Be careful not to indent your headings and lists, though.
+ 
+   = Lists and Fonts
+```
+
+# Lists and Fonts
+
+```rdoc 
+    List items begin with * or -. Indicate fonts with punctuation or HTML:
+    * _italic_ or <i>multi-word italic</i>
+```
+
+* _italic_ or <i>multi-word italic</i>
+
+```rdoc
+    * *bold* or <b>multi-word bold</b>
+```
+
+* **bold** or <b>multi-word bold</b>
+
+```rdoc
+    * +code+ or <tt>multi-word code</tt>
+```
+
+* `code` or <tt>multi-word code</tt>
+ 
+```rdoc
+    1. Numbered lists begin with numbers.
+    99. Any number will do; they don't have to be sequential.
+    1. There is no way to do nested lists.
+```
+
+1. Numbered lists begin with numbers.
+99. Any number will do; they don't have to be sequential.
+1. There is no way to do nested lists.
+
+```rdoc
+    The terms of a description list are bracketed:
+
+    [item 1]  This is a description of item 1
+    [item 2]  This is a description of item 2
+```
+<dl>
+  <dt><strong>item 1</strong></dt>
+  <dd>This is a description of item 1</dd>
+  <dt><strong>item 2</strong></dt>
+  <dd>This is a description of item 2</dd>
+</dl> 
+
+#### 2.1.2 Literals
 
 ```ruby
 1                      # An integer literal
@@ -88,7 +127,8 @@ y = /#This is a regular expression/   # Here's another comment
 "two"                  # Another string literal
 /three/                # A regular expression literal
 ```
-2.1.4 Identifiers
+
+#### 2.1.4 Identifiers
 
 ```ruby
 i
@@ -97,14 +137,16 @@ old_value
 _internal    # Identifiers may begin with underscores
 PI           # Constant
 ```
-2.1.4.2 Unicode characters in identifiers
+
+#### 2.1.4.2 Unicode characters in identifiers
 
 ```ruby
 def &#xD7;(x,y)  # The name of this method is the Unicode multiplication sign
   x*y       # The body of this method multiplies its arguments
 end         
 ```
-2.1.4.3 Punctuation in identifiers
+
+#### 2.1.4.3 Punctuation in identifiers
 
 ```ruby
 $files          # A global variable
@@ -114,7 +156,9 @@ empty?          # A Boolean-valued method or predicate
 sort!           # An in-place alternative to the regular sort method
 timeout=        # A method invoked by assignment
 ```
-2.1.5 Keywords
+
+#### 2.1.5 Keywords
+
 ```rdoc
 __LINE__      case         ensure       not          then
 
@@ -196,10 +240,10 @@ eql?           inspect        object_id      to_s
 
 equal?         instance_of?   respond_to?    untaint
 
-extend         is_a?          send
-           
+extend         is_a?          send           
 ```
-2.1.6.1 Newlines as statement terminators
+
+#### 2.1.6.1 Newlines as statement terminators
 
 ```ruby
 total = x +     # Incomplete expression, parsing continues
@@ -217,13 +261,15 @@ animals = Array.new
   .push("cat")
   .sort
 ```
-2.1.6.2 Spaces and method invocations
+
+#### 2.1.6.2 Spaces and method invocations
 
 ```ruby
 f(3+2)+1
 f (3+2)+1
 ```
-2.2 Syntactic Structure
+
+#### 2.2 Syntactic Structure
 
 ```ruby
 [1,2,3]                # An Array literal
@@ -244,7 +290,8 @@ while x < 10 do  # While this expression is true...
   x = x + 1      # Then execute this statement
 end              # Marks the end of the loop
 ```
-2.2.1 Block Structure in Ruby
+
+#### 2.2.1 Block Structure in Ruby
 
 ```ruby
 3.times { print "Ruby! " }
@@ -265,7 +312,8 @@ module Stats                          # A module
   end                                 # End the class body
 end                                   # End the module body
 ```
-2.3 File Structure
+
+#### 2.3 File Structure
 
 ```rdoc
 #!/usr/bin/ruby -w          <lineannotation>shebang comment</lineannotation>
@@ -277,7 +325,8 @@ require 'socket'            <lineannotation>load networking library</lineannotat
 __END__                     <lineannotation>mark end of code</lineannotation>
   ...                       <lineannotation>program data goes here</lineannotation>
 ```
-2.4.1 Specifying Program Encoding
+
+#### 2.4.1 Specifying Program Encoding
 
 ```rdoc
 # coding: utf-8
@@ -289,7 +338,8 @@ __END__                     <lineannotation>mark end of code</lineannotation>
 #!/usr/bin/ruby -w
 # coding: utf-8
 ```
-2.4.2 Source Encoding and Default External Encoding
+
+#### 2.4.2 Source Encoding and Default External Encoding
 
 ```rdoc
 ruby -E utf-8            # Encoding name follows -E

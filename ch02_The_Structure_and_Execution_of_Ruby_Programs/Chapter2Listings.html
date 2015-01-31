@@ -415,13 +415,13 @@
   <div id="containter">
     
     
-<p>The Ruby Programming Language</p>
+<h1 id="the-ruby-programming-language">The Ruby Programming Language</h1>
 
-<p>CHAPTER 2</p>
+<h2 id="chapter-2">CHAPTER 2</h2>
 
-<p>The Structure and Execution of Ruby Programs</p>
+<h3 id="the-structure-and-execution-of-ruby-programs">The Structure and Execution of Ruby Programs</h3>
 
-<p>2.1.1 Comments</p>
+<h4 id="comments">2.1.1 Comments</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="color:#777"># This entire line is a comment</span>
@@ -435,7 +435,8 @@ y = <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#4
 </pre></div>
 </div>
 </div>
-<p>2.1.1.1 Embedded documents</p>
+
+<h4 id="embedded-documents">2.1.1.1 Embedded documents</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="color:#777">=begin Someone needs to fix the broken code below!
@@ -448,59 +449,124 @@ y = <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#4
 </span></span></pre></div>
 </div>
 </div>
-<p>2.1.1.2 Documentation comments</p>
+
+<h4 id="documentation-comments">2.1.1.2 Documentation comments</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
-  <div class="code"><pre><span style="color:#777">#</span>
-<span style="color:#777"># Rdoc comments use a simple markup grammar like those used in wikis.</span>
-<span style="color:#777"># </span>
-<span style="color:#777"># Separate paragraphs with a blank line.</span>
-<span style="color:#777"># </span>
-<span style="color:#777"># = Headings</span>
-= <span style="color:#036;font-weight:bold">Headings</span>
-<span style="color:#777"># </span>
-<span style="color:#777"># Headings begin with an equals sign</span>
-<span style="color:#777"># </span>
-<span style="color:#777"># == Sub-Headings</span>
-== <span style="color:#036;font-weight:bold">Sub</span>-<span style="color:#036;font-weight:bold">Headings</span>
-<span style="color:#777"># The line above produces a subheading.</span>
-<span style="color:#777"># === Sub-Sub-Heading</span>
-=== <span style="color:#036;font-weight:bold">Sub</span>-<span style="color:#036;font-weight:bold">Sub</span>-<span style="color:#036;font-weight:bold">Heading</span>
-<span style="color:#777"># And so on.</span>
-<span style="color:#777"># </span>
-<span style="color:#777"># = Examples</span>
-= <span style="color:#036;font-weight:bold">Examples</span>
-<span style="color:#777"># </span>
-<span style="color:#777">#   Indented lines are displayed verbatim in code font.</span>
-<span style="color:#777">#     Be careful not to indent your headings and lists, though.</span>
-<span style="color:#777"># </span>
-<span style="color:#777"># = Lists and Fonts</span>
-= <span style="color:#036;font-weight:bold">Lists</span> <span style="color:#080;font-weight:bold">and</span> <span style="color:#036;font-weight:bold">Fonts</span>
-<span style="color:#777"># </span>
-<span style="color:#777"># List items begin with * or -. Indicate fonts with punctuation or HTML:</span>
-<span style="color:#777"># * _italic_ or &lt;i&gt;multi-word italic&lt;/i&gt;</span>
-* _italic_ <span style="color:#080;font-weight:bold">or</span> &lt;i&gt;multi-word italic&lt;<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">i&gt;
-# * *bold* or &lt;b&gt;multi-word bold&lt;</span><span style="color:#404">/</span></span>b&gt;
-* *bold* <span style="color:#080;font-weight:bold">or</span> &lt;b&gt;multi-word bold&lt;<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">b&gt;
-# * +code+ or &lt;tt&gt;multi-word code&lt;</span><span style="color:#404">/</span></span>tt&gt;
-* +code+ <span style="color:#080;font-weight:bold">or</span> &lt;tt&gt;multi-word code&lt;<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">tt&gt;
-# 
-# 1. Numbered lists begin with numbers.
-# 99. Any number will do; they don't have to be sequential.
-99. Any number will do; they don't have to be sequential.
-# 1. There is no way to do nested lists.
-1. There is no way to do nested lists.
-# 
-# The terms of a description list are bracketed:
-# [item 1]  This is a description of item 1
-[item 1]  This is a description of item 1
-# [item 2]  This is a description of item 2
-[item 2]  This is a description of item 2
-# 
-</span></span></pre></div>
+  <div class="code"><pre>
+   Rdoc comments use a simple markup grammar like those used in wikis.
+ 
+   Separate paragraphs with a blank line.
+
+   Headings begin with an equals sign
+ 
+   = Headings
+</pre></div>
 </div>
 </div>
-<p>2.1.2 Literals</p>
+
+<h1 id="headings">Headings</h1>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>   == Sub-Headings
+</pre></div>
+</div>
+</div>
+
+<h2 id="sub-headings">Sub-Headings</h2>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>    The line above produces a subheading.
+    === Sub-Sub-Heading
+</pre></div>
+</div>
+</div>
+
+<h3 id="sub-sub-heading">Sub-Sub-Heading</h3>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>    And so on.
+ 
+    = Examples
+</pre></div>
+</div>
+</div>
+
+<h1 id="examples">Examples</h1>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre> 
+   Indented lines are displayed verbatim in code font.
+     Be careful not to indent your headings and lists, though.
+ 
+   = Lists and Fonts
+</pre></div>
+</div>
+</div>
+
+<h1 id="lists-and-fonts">Lists and Fonts</h1>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>    List items begin with * or -. Indicate fonts with punctuation or HTML:
+    * _italic_ or &lt;i&gt;multi-word italic&lt;/i&gt;
+</pre></div>
+</div>
+</div>
+
+<ul>
+  <li><em>italic</em> or <i>multi-word italic</i></li>
+</ul>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>    * *bold* or &lt;b&gt;multi-word bold&lt;/b&gt;
+</pre></div>
+</div>
+</div>
+
+<ul>
+  <li><strong>bold</strong> or <b>multi-word bold</b></li>
+</ul>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>    * +code+ or &lt;tt&gt;multi-word code&lt;/tt&gt;
+</pre></div>
+</div>
+</div>
+
+<ul>
+  <li><code>code</code> or <tt>multi-word code</tt></li>
+</ul>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>    1. Numbered lists begin with numbers.
+    99. Any number will do; they don't have to be sequential.
+    1. There is no way to do nested lists.
+</pre></div>
+</div>
+</div>
+
+<ol>
+  <li>Numbered lists begin with numbers.</li>
+  <li>Any number will do; they don’t have to be sequential.</li>
+  <li>There is no way to do nested lists.</li>
+</ol>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>    The terms of a description list are bracketed:
+
+    [item 1]  This is a description of item 1
+    [item 2]  This is a description of item 2
+</pre></div>
+</div>
+</div>
+<dl>
+  <dt><strong>item 1</strong></dt>
+  <dd>This is a description of item 1</dd>
+  <dt><strong>item 2</strong></dt>
+  <dd>This is a description of item 2</dd>
+</dl>
+
+<h4 id="literals">2.1.2 Literals</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="color:#00D">1</span>                      <span style="color:#777"># An integer literal</span>
@@ -511,7 +577,8 @@ y = <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#4
 </pre></div>
 </div>
 </div>
-<p>2.1.4 Identifiers</p>
+
+<h4 id="identifiers">2.1.4 Identifiers</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>i
@@ -522,7 +589,8 @@ _internal    <span style="color:#777"># Identifiers may begin with underscores</
 </pre></div>
 </div>
 </div>
-<p>2.1.4.2 Unicode characters in identifiers</p>
+
+<h4 id="unicode-characters-in-identifiers">2.1.4.2 Unicode characters in identifiers</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">&amp;</span><span style="color:#777">#xD7;(x,y)  # The name of this method is the Unicode multiplication sign</span>
@@ -531,7 +599,8 @@ _internal    <span style="color:#777"># Identifiers may begin with underscores</
 </pre></div>
 </div>
 </div>
-<p>2.1.4.3 Punctuation in identifiers</p>
+
+<h4 id="punctuation-in-identifiers">2.1.4.3 Punctuation in identifiers</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span style="color:#d70">$files</span>          <span style="color:#777"># A global variable</span>
@@ -543,87 +612,96 @@ timeout=        <span style="color:#777"># A method invoked by assignment</span>
 </pre></div>
 </div>
 </div>
-<p>2.1.5 Keywords</p>
 
-<p><strong>LINE</strong>      case         ensure       not          then</p>
+<h4 id="keywords">2.1.5 Keywords</h4>
 
-<p><strong>ENCODING</strong>  class        false        or           true</p>
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>__LINE__      case         ensure       not          then
 
-<p><strong>FILE</strong>      def          for          redo         undef</p>
+__ENCODING__  class        false        or           true
 
-<p>BEGIN         defined?     if           rescue       unless</p>
+__FILE__      def          for          redo         undef
 
-<p>END           do           in           retry        until</p>
+BEGIN         defined?     if           rescue       unless
 
-<p>alias         else         module       return       when</p>
+END           do           in           retry        until
 
-<p>and           elsif        next         self         while</p>
+alias         else         module       return       when
 
-<p>begin         end          nil          super        yield</p>
+and           elsif        next         self         while
 
-<p>break</p>
+begin         end          nil          super        yield
 
-<p>=begin    =end      <strong>END</strong></p>
+break
 
-<h1 id="these-are-methods-that-appear-to-be-statements-or-keywords">These are methods that appear to be statements or keywords</h1>
 
-<p>at_exit        catch          private        require</p>
+=begin    =end      __END__
 
-<p>attr           include        proc           throw</p>
 
-<p>attr_accessor  lambda         protected</p>
+# These are methods that appear to be statements or keywords
 
-<p>attr_reader    load           public</p>
+at_exit        catch          private        require
 
-<p>attr_writer    loop           raise</p>
+attr           include        proc           throw
 
-<h1 id="these-are-commonly-used-global-functions">These are commonly used global functions</h1>
+attr_accessor  lambda         protected
 
-<p>Array          chomp!         gsub!          select</p>
+attr_reader    load           public
 
-<p>Float          chop           iterator?      sleep</p>
+attr_writer    loop           raise
 
-<p>Integer        chop!          load           split</p>
 
-<p>String         eval           open           sprintf</p>
+# These are commonly used global functions
 
-<p>URI            exec           p              srand</p>
+Array          chomp!         gsub!          select
 
-<p>abort          exit           print          sub</p>
+Float          chop           iterator?      sleep
 
-<p>autoload       exit!          printf         sub!</p>
+Integer        chop!          load           split
 
-<p>autoload?      fail           putc           syscall</p>
+String         eval           open           sprintf
 
-<p>binding        fork           puts           system</p>
+URI            exec           p              srand
 
-<p>block_given?   format         rand           test</p>
+abort          exit           print          sub
 
-<p>callcc         getc           readline       trap</p>
+autoload       exit!          printf         sub!
 
-<p>caller         gets           readlines      warn</p>
+autoload?      fail           putc           syscall
 
-<p>chomp          gsub           scan</p>
+binding        fork           puts           system
 
-<h1 id="these-are-commonly-used-object-methods">These are commonly used object methods</h1>
+block_given?   format         rand           test
 
-<p>allocate       freeze         kind_of?       superclass</p>
+callcc         getc           readline       trap
 
-<p>clone          frozen?        method         taint</p>
+caller         gets           readlines      warn
 
-<p>display        hash           methods        tainted?</p>
+chomp          gsub           scan
 
-<p>dup            id             new            to_a</p>
 
-<p>enum_for       inherited      nil?           to_enum</p>
+# These are commonly used object methods
 
-<p>eql?           inspect        object_id      to_s</p>
+allocate       freeze         kind_of?       superclass
 
-<p>equal?         instance_of?   respond_to?    untaint</p>
+clone          frozen?        method         taint
 
-<p>extend         is_a?          send</p>
+display        hash           methods        tainted?
 
-<p>2.1.6.1 Newlines as statement terminators</p>
+dup            id             new            to_a
+
+enum_for       inherited      nil?           to_enum
+
+eql?           inspect        object_id      to_s
+
+equal?         instance_of?   respond_to?    untaint
+
+extend         is_a?          send           
+</pre></div>
+</div>
+</div>
+
+<h4 id="newlines-as-statement-terminators">2.1.6.1 Newlines as statement terminators</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>total = x +     <span style="color:#777"># Incomplete expression, parsing continues</span>
@@ -643,7 +721,8 @@ animals = <span style="color:#036;font-weight:bold">Array</span>.new
 </pre></div>
 </div>
 </div>
-<p>2.1.6.2 Spaces and method invocations</p>
+
+<h4 id="spaces-and-method-invocations">2.1.6.2 Spaces and method invocations</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>f(<span style="color:#00D">3</span>+<span style="color:#00D">2</span>)+<span style="color:#00D">1</span>
@@ -651,7 +730,8 @@ f (<span style="color:#00D">3</span>+<span style="color:#00D">2</span>)+<span st
 </pre></div>
 </div>
 </div>
-<p>2.2 Syntactic Structure</p>
+
+<h4 id="syntactic-structure">2.2 Syntactic Structure</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre>[<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">3</span>]                <span style="color:#777"># An Array literal</span>
@@ -671,11 +751,14 @@ x = x + <span style="color:#00D">1</span> <span style="color:#777"># An expressi
   print x        <span style="color:#777"># Execute this statement</span>
   x = x + <span style="color:#00D">1</span>      <span style="color:#777"># Then execute this statement</span>
 <span style="color:#080;font-weight:bold">end</span>              <span style="color:#777"># Marks the end of the loop</span>
+</pre></div>
+</div>
+</div>
 
-<span style="color:#60E">2.2</span>.<span style="color:#F00;background-color:#FAA">1</span> <span style="color:#036;font-weight:bold">Block</span> <span style="color:#036;font-weight:bold">Structure</span> <span style="color:#080;font-weight:bold">in</span> <span style="color:#036;font-weight:bold">Ruby</span>
+<h4 id="block-structure-in-ruby">2.2.1 Block Structure in Ruby</h4>
 
-~~~ruby
-<span style="color:#00D">3</span>.times { print <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Ruby! </span><span style="color:#710">&quot;</span></span> }
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#00D">3</span>.times { print <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Ruby! </span><span style="color:#710">&quot;</span></span> }
 
 <span style="color:#00D">1</span>.upto(<span style="color:#00D">10</span>) <span style="color:#080;font-weight:bold">do</span> |x|
   print x
@@ -695,41 +778,44 @@ x = x + <span style="color:#00D">1</span> <span style="color:#777"># An expressi
 </pre></div>
 </div>
 </div>
-<p>2.3 File Structure</p>
+
+<h4 id="file-structure">2.3 File Structure</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
-  <div class="code"><pre><span style="color:#34b">#!/usr/bin/ruby -w          &lt;lineannotation&gt;shebang comment&lt;/lineannotation&gt;</span>
-<span style="color:#777"># -*- coding: utf-8 -*-     &lt;lineannotation&gt;coding comment&lt;/lineannotation&gt;</span>
-require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">socket</span><span style="color:#710">'</span></span>            &lt;lineannotation&gt;load networking library&lt;<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">lineannotation&gt;
+  <div class="code"><pre>#!/usr/bin/ruby -w          &lt;lineannotation&gt;shebang comment&lt;/lineannotation&gt;
+# -*- coding: utf-8 -*-     &lt;lineannotation&gt;coding comment&lt;/lineannotation&gt;
+require 'socket'            &lt;lineannotation&gt;load networking library&lt;/lineannotation&gt;
 
-  ...                       &lt;lineannotation&gt;program code goes here&lt;</span><span style="color:#404">/</span></span>lineannotation&gt;
+  ...                       &lt;lineannotation&gt;program code goes here&lt;/lineannotation&gt;
 
-__END__                     &lt;lineannotation&gt;mark <span style="color:#080;font-weight:bold">end</span> of code&lt;<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">lineannotation&gt;
-  ...                       &lt;lineannotation&gt;program data goes here&lt;</span><span style="color:#404">/</span></span>lineannotation&gt;
+__END__                     &lt;lineannotation&gt;mark end of code&lt;/lineannotation&gt;
+  ...                       &lt;lineannotation&gt;program data goes here&lt;/lineannotation&gt;
 </pre></div>
 </div>
 </div>
-<p>2.4.1 Specifying Program Encoding</p>
+
+<h4 id="specifying-program-encoding">2.4.1 Specifying Program Encoding</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
-  <div class="code"><pre><span style="color:#777"># coding: utf-8</span>
+  <div class="code"><pre># coding: utf-8
 
-<span style="color:#777"># -*- coding: utf-8 -*-</span>
+# -*- coding: utf-8 -*-
 
-<span style="color:#777"># vi: set fileencoding=utf-8 :</span>
+# vi: set fileencoding=utf-8 :
 
-<span style="color:#34b">#!/usr/bin/ruby -w</span>
-<span style="color:#777"># coding: utf-8</span>
+#!/usr/bin/ruby -w
+# coding: utf-8
 </pre></div>
 </div>
 </div>
-<p>2.4.2 Source Encoding and Default External Encoding</p>
+
+<h4 id="source-encoding-and-default-external-encoding">2.4.2 Source Encoding and Default External Encoding</h4>
 
 <div class="highlighter-coderay"><div class="CodeRay">
-  <div class="code"><pre>ruby -<span style="color:#036;font-weight:bold">E</span> utf-<span style="color:#00D">8</span>            <span style="color:#777"># Encoding name follows -E</span>
-ruby -<span style="color:#036;font-weight:bold">Eutf</span>-<span style="color:#00D">8</span>             <span style="color:#777"># The space is optional</span>
-ruby --encoding utf-<span style="color:#00D">8</span>    <span style="color:#777"># Encoding following --encoding with a space</span>
-ruby --encoding=utf-<span style="color:#00D">8</span>    <span style="color:#777"># Or use an equals sign with --encoding</span>
+  <div class="code"><pre>ruby -E utf-8            # Encoding name follows -E
+ruby -Eutf-8             # The space is optional
+ruby --encoding utf-8    # Encoding following --encoding with a space
+ruby --encoding=utf-8    # Or use an equals sign with --encoding
 
 </pre></div>
 </div>
