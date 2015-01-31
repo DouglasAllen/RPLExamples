@@ -243,7 +243,7 @@ while x < 10 do  # While this expression is true...
   print x        # Execute this statement
   x = x + 1      # Then execute this statement
 end              # Marks the end of the loop
-
+```
 2.2.1 Block Structure in Ruby
 
 ```ruby
