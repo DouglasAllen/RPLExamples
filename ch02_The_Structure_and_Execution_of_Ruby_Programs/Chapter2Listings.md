@@ -279,7 +279,7 @@ __END__                     <lineannotation>mark end of code</lineannotation>
 ```
 2.4.1 Specifying Program Encoding
 
-```ruby
+```rdoc
 # coding: utf-8
 
 # -*- coding: utf-8 -*-
