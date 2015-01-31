@@ -1,671 +1,1118 @@
-<!DOCTYPE html>
-
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
 
-<title>ch01 list - RDoc Documentation</title>
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
 
-<style media="screen" type="text/css">
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
 
-/* @group Source Code */
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
 
-pre {
-  margin: 0.5em 0;
-  border: 1px dashed #999;
-  padding: 0.5em;
-  background: #262626;
-  color: #80ffff;
-  overflow: auto;
-}
-h1,h2,h3 {
-  margin: 0.5em 0;
-  border: 1px dashed #999;
-  padding: 0.5em;
-  background: #262626;
-  color: #80ff00;
-  overflow: auto;
-}
-</style>
+    a.absent {
+      color: #cc0000;
+    }
 
-<body id="top" role="document" class="file">
-<pre>
----------------------------
-1.1.1 Ruby Is Object-Oriented
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
 
-1.class      # => Fixnum: the number 1 is a Fixnum
-0.0.class    # => Float: floating-point numbers have class Float
-true.class   # => TrueClass: true is a the singleton instance of TrueClass
-false.class  # => FalseClass
-nil.class    # => NilClass
----------------------------
-1.1.2 Blocks and Iterators
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
 
-3.times { print "Ruby! " }   # Prints "Ruby! Ruby! Ruby! "
-1.upto(9) {|x| print x }     # Prints "123456789"
----------------------------
-a = [3, 2, 1]     # This is an array literal
-a[3] = a[2] - 1   # Use square brackets to query and set array elements
-a.each do |elt|   # each is an iterator. The block has a parameter elt
-  print elt+1     # Prints "4321"
-end               # This block was delimited with do/end instead of {}
----------------------------
-a = [1,2,3,4]                # Start with an array
-b = a.map {|x| x*x }         # Square elements: b is [1,4,9,16]
-c = a.select {|x| x%2==0 }   # Select even elements: c is [2,4]
-a.inject do |sum,x|          # Compute the sum of the elements => 10
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    
+    
+<p>The Ruby Programming Language</p>
+
+<p>CHAPTER 1</p>
+
+<p>Introduction</p>
+
+<p>1.1.1 Ruby Is Object-Oriented</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#00D">1</span>.class      <span style="color:#777"># =&gt; Fixnum: the number 1 is a Fixnum</span>
+<span style="color:#60E">0.0</span>.class    <span style="color:#777"># =&gt; Float: floating-point numbers have class Float</span>
+<span style="color:#069">true</span>.class   <span style="color:#777"># =&gt; TrueClass: true is a the singleton instance of TrueClass</span>
+<span style="color:#069">false</span>.class  <span style="color:#777"># =&gt; FalseClass</span>
+<span style="color:#069">nil</span>.class    <span style="color:#777"># =&gt; NilClass</span>
+</pre></div>
+</div>
+</div>
+<p>1.1.2 Blocks and Iterators</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#00D">3</span>.times { print <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Ruby! </span><span style="color:#710">&quot;</span></span> }   <span style="color:#777"># Prints &quot;Ruby! Ruby! Ruby! &quot;</span>
+<span style="color:#00D">1</span>.upto(<span style="color:#00D">9</span>) {|x| print x }     <span style="color:#777"># Prints &quot;123456789&quot;</span>
+
+a = [<span style="color:#00D">3</span>, <span style="color:#00D">2</span>, <span style="color:#00D">1</span>]     <span style="color:#777"># This is an array literal</span>
+a[<span style="color:#00D">3</span>] = a[<span style="color:#00D">2</span>] - <span style="color:#00D">1</span>   <span style="color:#777"># Use square brackets to query and set array elements</span>
+a.each <span style="color:#080;font-weight:bold">do</span> |elt|   <span style="color:#777"># each is an iterator. The block has a parameter elt</span>
+  print elt+<span style="color:#00D">1</span>     <span style="color:#777"># Prints &quot;4321&quot;</span>
+<span style="color:#080;font-weight:bold">end</span>               <span style="color:#777"># This block was delimited with do/end instead of {}</span>
+
+a = [<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">3</span>,<span style="color:#00D">4</span>]                <span style="color:#777"># Start with an array</span>
+b = a.map {|x| x*x }         <span style="color:#777"># Square elements: b is [1,4,9,16]</span>
+c = a.select {|x| x%<span style="color:#00D">2</span>==<span style="color:#00D">0</span> }   <span style="color:#777"># Select even elements: c is [2,4]</span>
+a.inject <span style="color:#080;font-weight:bold">do</span> |sum,x|          <span style="color:#777"># Compute the sum of the elements =&gt; 10</span>
   sum + x 
-end
----------------------------
-h = {                         # A hash that maps number names to digits
-  :one => 1,                  # The "arrows" show mappings: key=>value
-  :two => 2                   # The colons indicate Symbol literals
+<span style="color:#080;font-weight:bold">end</span>
+
+h = {                         <span style="color:#777"># A hash that maps number names to digits</span>
+  <span style="color:#A60">:one</span> =&gt; <span style="color:#00D">1</span>,                  <span style="color:#777"># The &quot;arrows&quot; show mappings: key=&gt;value</span>
+  <span style="color:#A60">:two</span> =&gt; <span style="color:#00D">2</span>                   <span style="color:#777"># The colons indicate Symbol literals</span>
 }  
-h[:one]                       # => 1.  Access a value by key
-h[:three] = 3                 # Add a new key/value pair to the hash
-h.each do |key,value|         # Iterate through the key/value pairs
-  print "#{value}:#{key}; "   # Note variables substituted into string 
-end                           # Prints "1:one; 2:two; 3:three; "
----------------------------
-File.open("data.txt") do |f| # Open named file and pass stream to block
-  line = f.readline          # Use the stream to read from the file
-end                          # Stream automatically closed at block end
+h[<span style="color:#A60">:one</span>]                       <span style="color:#777"># =&gt; 1.  Access a value by key</span>
+h[<span style="color:#A60">:three</span>] = <span style="color:#00D">3</span>                 <span style="color:#777"># Add a new key/value pair to the hash</span>
+h.each <span style="color:#080;font-weight:bold">do</span> |key,value|         <span style="color:#777"># Iterate through the key/value pairs</span>
+  print <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>value<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">:</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>key<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">; </span><span style="color:#710">&quot;</span></span>   <span style="color:#777"># Note variables substituted into string </span>
+<span style="color:#080;font-weight:bold">end</span>                           <span style="color:#777"># Prints &quot;1:one; 2:two; 3:three; &quot;</span>
 
-t = Thread.new do       # Run this block in a new thread
-  File.read("data.txt") # Read a file in the background
-end                     # File contents available as thread value
----------------------------
-print "#{value}:#{key}; "    # Note variables substituted into string 
----------------------------
-1.1.3 Expressions and Operators in Ruby
+<span style="color:#036;font-weight:bold">File</span>.open(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">data.txt</span><span style="color:#710">&quot;</span></span>) <span style="color:#080;font-weight:bold">do</span> |f| <span style="color:#777"># Open named file and pass stream to block</span>
+  line = f.readline          <span style="color:#777"># Use the stream to read from the file</span>
+<span style="color:#080;font-weight:bold">end</span>                          <span style="color:#777"># Stream automatically closed at block end</span>
 
-minimum = if x < y then x else y end
----------------------------
-1 + 2                    # => 3: addition
-1 * 2                    # => 2: multiplication
-1 + 2 == 3               # => true: == tests equality
-2 ** 1024                # 2 to the power 1024: Ruby has arbitrary size ints
-"Ruby" + " rocks!"       # => "Ruby rocks!": string concatenation
-"Ruby! " * 3             # => "Ruby! Ruby! Ruby! ": string repetition
-"%d %s" % [3, "rubies"]  # => "3 Rubies": Python-style, printf formatting
-max = x > y ? x : y      # The conditional operator
----------------------------
-1.1.4 Methods
+t = <span style="color:#036;font-weight:bold">Thread</span>.new <span style="color:#080;font-weight:bold">do</span>       <span style="color:#777"># Run this block in a new thread</span>
+  <span style="color:#036;font-weight:bold">File</span>.read(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">data.txt</span><span style="color:#710">&quot;</span></span>) <span style="color:#777"># Read a file in the background</span>
+<span style="color:#080;font-weight:bold">end</span>                     <span style="color:#777"># File contents available as thread value</span>
 
-def square(x)   # Define a method named square with one parameter x
-  x*x           # Return x squared
-end             # End of the method
----------------------------
-def Math.square(x)  # Define a class method of the Math module
+print <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>value<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">:</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>key<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">; </span><span style="color:#710">&quot;</span></span>    <span style="color:#777"># Note variables substituted into string </span>
+</pre></div>
+</div>
+</div>
+<p>1.1.3 Expressions and Operators in Ruby</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>minimum = <span style="color:#080;font-weight:bold">if</span> x &lt; y <span style="color:#080;font-weight:bold">then</span> x <span style="color:#080;font-weight:bold">else</span> y <span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#00D">1</span> + <span style="color:#00D">2</span>                    <span style="color:#777"># =&gt; 3: addition</span>
+<span style="color:#00D">1</span> * <span style="color:#00D">2</span>                    <span style="color:#777"># =&gt; 2: multiplication</span>
+<span style="color:#00D">1</span> + <span style="color:#00D">2</span> == <span style="color:#00D">3</span>               <span style="color:#777"># =&gt; true: == tests equality</span>
+<span style="color:#00D">2</span> ** <span style="color:#00D">1024</span>                <span style="color:#777"># 2 to the power 1024: Ruby has arbitrary size ints</span>
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Ruby</span><span style="color:#710">&quot;</span></span> + <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20"> rocks!</span><span style="color:#710">&quot;</span></span>       <span style="color:#777"># =&gt; &quot;Ruby rocks!&quot;: string concatenation</span>
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Ruby! </span><span style="color:#710">&quot;</span></span> * <span style="color:#00D">3</span>             <span style="color:#777"># =&gt; &quot;Ruby! Ruby! Ruby! &quot;: string repetition</span>
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">%d %s</span><span style="color:#710">&quot;</span></span> % [<span style="color:#00D">3</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">rubies</span><span style="color:#710">&quot;</span></span>]  <span style="color:#777"># =&gt; &quot;3 Rubies&quot;: Python-style, printf formatting</span>
+max = x &gt; y ? x : y      <span style="color:#777"># The conditional operator</span>
+</pre></div>
+</div>
+</div>
+<p>1.1.4 Methods</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">square</span>(x)   <span style="color:#777"># Define a method named square with one parameter x</span>
+  x*x           <span style="color:#777"># Return x squared</span>
+<span style="color:#080;font-weight:bold">end</span>             <span style="color:#777"># End of the method</span>
+
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#036;font-weight:bold">Math</span>.<span style="color:#06B;font-weight:bold">square</span>(x)  <span style="color:#777"># Define a class method of the Math module</span>
   x*x
-end
----------------------------
-1.1.5 Assignment
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+<p>1.1.5 Assignment</p>
 
-x = 1
----------------------------
-x += 1          # Increment x: note Ruby does not have ++.
-y -= 1          # Decrement y: no -- operator, either.
----------------------------
-x, y = 1, 2     # Same as x = 1; y = 2
-a, b = b, a     # Swap the value of two variables
-x,y,z = [1,2,3] # Array elements automatically assigned to variables
----------------------------
-# Define a method to convert Cartesian (x,y) coordinates to Polar
-def polar(x,y)
-  theta = Math.atan2(y,x)   # Compute the angle
-  r = Math.hypot(x,y)       # Compute the distance
-  [r, theta]                # The last expression is the return value
-end
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>x = <span style="color:#00D">1</span>
 
-# Here's how we use this method with parallel assignment
-distance, angle = polar(2,2)
----------------------------
-o.x=(1)         # Normal method invocation syntax
-o.x = 1         # Method invocation through assignment
----------------------------
-1.1.7 Regexp and Range
+x += <span style="color:#00D">1</span>          <span style="color:#777"># Increment x: note Ruby does not have ++.</span>
+y -= <span style="color:#00D">1</span>          <span style="color:#777"># Decrement y: no -- operator, either.</span>
 
-/[Rr]uby/        # Matches "Ruby" or "ruby"
-/\d{5}/          # Matches 5 consecutive digits
-1..3             # All x where 1 <= x <= 3
-1...3            # All x where 1 <= x < 3
----------------------------
-# Determine US generation name based on birth year
-# Case expression tests ranges with ===
-generation = case birthyear
-             when 1946..1963: "Baby Boomer"
-             when 1964..1976: "Generation X"
-             when 1978..2000: "Generation Y"
-             else nil
-             end
+x, y = <span style="color:#00D">1</span>, <span style="color:#00D">2</span>     <span style="color:#777"># Same as x = 1; y = 2</span>
+a, b = b, a     <span style="color:#777"># Swap the value of two variables</span>
+x,y,z = [<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">3</span>] <span style="color:#777"># Array elements automatically assigned to variables</span>
 
-# A method to ask the user to confirm something
-def are_you_sure?                  # Define a method. Note question mark!
-  while true                       # Loop until we explicitly return
-    print "Are you sure? [y/n]: "  # Ask the user a question
-    response = gets                # Get her answer
-    case response                  # Begin case conditional
-    when /^[yY]/                   # If response begins with y or Y
-      return true                  # Return true from the method
-    when /^[nN]/, /^$/             # If response begins with n,N or is empty
-      return false                 # Return false
-    end
-  end
-end
----------------------------
-1.1.8 Classes and Modules
+<span style="color:#777"># Define a method to convert Cartesian (x,y) coordinates to Polar</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">polar</span>(x,y)
+  theta = <span style="color:#036;font-weight:bold">Math</span>.atan2(y,x)   <span style="color:#777"># Compute the angle</span>
+  r = <span style="color:#036;font-weight:bold">Math</span>.hypot(x,y)       <span style="color:#777"># Compute the distance</span>
+  [r, theta]                <span style="color:#777"># The last expression is the return value</span>
+<span style="color:#080;font-weight:bold">end</span>
 
-#
-# This class represents a sequence of numbers characterized by the three
-# parameters from, to, and by. The numbers x in the sequence obey the
-# following two constraints:
-#
-#    from <= x <= to
-#    x = from + n*by, where n is an integer
-# 
-class Sequence
-  # This is an enumerable class; it defines an each iterator below.
-  include Enumerable   # Include the methods of this module in this class
+<span style="color:#777"># Here's how we use this method with parallel assignment</span>
+distance, angle = polar(<span style="color:#00D">2</span>,<span style="color:#00D">2</span>)
 
-  # The initialize method is special; it is automatically invoked to
-  # initialize newly created instances of the class
-  def initialize(from, to, by)
-    # Just save our parameters into instance variables for later use
-    @from, @to, @by = from, to, by  # Note parallel assignment and @ prefix
-  end
+o.x=(<span style="color:#00D">1</span>)         <span style="color:#777"># Normal method invocation syntax</span>
+o.x = <span style="color:#00D">1</span>         <span style="color:#777"># Method invocation through assignment</span>
+</pre></div>
+</div>
+</div>
+<p>1.1.7 Regexp and Range</p>
 
-  # This is the iterator required by the Enumerable module
-  def each
-    x = @from       # Start at the starting point
-    while x <= @to  # While we haven't reached the end
-      yield x       # Pass x to the block associated with the iterator
-      x += @by      # Increment x
-    end
-  end
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">[Rr]uby</span><span style="color:#404">/</span></span>        <span style="color:#777"># Matches &quot;Ruby&quot; or &quot;ruby&quot;</span>
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#D20">\d</span><span style="color:#808">{5}</span><span style="color:#404">/</span></span>          <span style="color:#777"># Matches 5 consecutive digits</span>
+<span style="color:#00D">1</span>..<span style="color:#00D">3</span>             <span style="color:#777"># All x where 1 &lt;= x &lt;= 3</span>
+<span style="color:#00D">1</span>...<span style="color:#00D">3</span>            <span style="color:#777"># All x where 1 &lt;= x &lt; 3</span>
 
-  # Define the length method (following arrays) to return the number of
-  # values in the sequence
-  def length
-    return 0 if @from > @to       # Note if used as a statement modifier 
-    Integer((@to-@from)/@by) + 1  # Compute and return length of sequence
-  end
+<span style="color:#777"># Determine US generation name based on birth year</span>
+<span style="color:#777"># Case expression tests ranges with ===</span>
+generation = <span style="color:#080;font-weight:bold">case</span> birthyear
+             <span style="color:#080;font-weight:bold">when</span> <span style="color:#00D">1946</span>..<span style="color:#00D">1963</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Baby Boomer</span><span style="color:#710">&quot;</span></span>
+             <span style="color:#080;font-weight:bold">when</span> <span style="color:#00D">1964</span>..<span style="color:#00D">1976</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Generation X</span><span style="color:#710">&quot;</span></span>
+             <span style="color:#080;font-weight:bold">when</span> <span style="color:#00D">1978</span>..<span style="color:#00D">2000</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Generation Y</span><span style="color:#710">&quot;</span></span>
+             <span style="color:#080;font-weight:bold">else</span> <span style="color:#069">nil</span>
+             <span style="color:#080;font-weight:bold">end</span>
 
-  # Define another name for the same method.
-  # It is common for methods to have multiple names in Ruby
-  alias size length  # size is now a synonym for length
+<span style="color:#777"># A method to ask the user to confirm something</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">are_you_sure?</span>                  <span style="color:#777"># Define a method. Note question mark!</span>
+  <span style="color:#080;font-weight:bold">while</span> <span style="color:#069">true</span>                       <span style="color:#777"># Loop until we explicitly return</span>
+    print <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Are you sure? [y/n]: </span><span style="color:#710">&quot;</span></span>  <span style="color:#777"># Ask the user a question</span>
+    response = gets                <span style="color:#777"># Get her answer</span>
+    <span style="color:#080;font-weight:bold">case</span> response                  <span style="color:#777"># Begin case conditional</span>
+    <span style="color:#080;font-weight:bold">when</span> <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">^[yY]</span><span style="color:#404">/</span></span>                   <span style="color:#777"># If response begins with y or Y</span>
+      <span style="color:#080;font-weight:bold">return</span> <span style="color:#069">true</span>                  <span style="color:#777"># Return true from the method</span>
+    <span style="color:#080;font-weight:bold">when</span> <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">^[nN]</span><span style="color:#404">/</span></span>, <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">^$</span><span style="color:#404">/</span></span>             <span style="color:#777"># If response begins with n,N or is empty</span>
+      <span style="color:#080;font-weight:bold">return</span> <span style="color:#069">false</span>                 <span style="color:#777"># Return false</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+<p>1.1.8 Classes and Modules</p>
 
-  # Override the array-access operator to give random access to the sequence
-  def[](index)
-    return nil if index < 0 # Return nil for negative indexes
-    v = @from + index*@by   # Compute the value
-    if v <= @to             # If it is part of the sequence
-      v                     # Return it
-    else                    # Otherwise...
-      nil                   # Return nil
-    end
-  end
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777">#</span>
+<span style="color:#777"># This class represents a sequence of numbers characterized by the three</span>
+<span style="color:#777"># parameters from, to, and by. The numbers x in the sequence obey the</span>
+<span style="color:#777"># following two constraints:</span>
+<span style="color:#777">#</span>
+<span style="color:#777">#    from &lt;= x &lt;= to</span>
+<span style="color:#777">#    x = from + n*by, where n is an integer</span>
+<span style="color:#777"># </span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Sequence</span>
+  <span style="color:#777"># This is an enumerable class; it defines an each iterator below.</span>
+  include <span style="color:#036;font-weight:bold">Enumerable</span>   <span style="color:#777"># Include the methods of this module in this class</span>
 
-  # Override arithmetic operators to return new Sequence objects
-  def *(factor)
-    Sequence.new(@from*factor, @to*factor, @by*factor)
-  end
+  <span style="color:#777"># The initialize method is special; it is automatically invoked to</span>
+  <span style="color:#777"># initialize newly created instances of the class</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(from, to, by)
+    <span style="color:#777"># Just save our parameters into instance variables for later use</span>
+    <span style="color:#33B">@from</span>, <span style="color:#33B">@to</span>, <span style="color:#33B">@by</span> = from, to, by  <span style="color:#777"># Note parallel assignment and @ prefix</span>
+  <span style="color:#080;font-weight:bold">end</span>
 
-  def +(offset)
-    Sequence.new(@from+offset, @to+offset, @by)
-  end
-end
----------------------------
-s = Sequence.new(1, 10, 2)  # From 1 to 10 by 2's
-s.each {|x| print x }       # Prints "13579"
-print s[s.size-1]           # Prints 9
-t = (s+1)*2                 # From 4 to 22 by 4's
----------------------------
-module Sequences                   # Begin a new module
-  def self.fromtoby(from, to, by)  # A singleton method of the module
+  <span style="color:#777"># This is the iterator required by the Enumerable module</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">each</span>
+    x = <span style="color:#33B">@from</span>       <span style="color:#777"># Start at the starting point</span>
+    <span style="color:#080;font-weight:bold">while</span> x &lt;= <span style="color:#33B">@to</span>  <span style="color:#777"># While we haven't reached the end</span>
+      <span style="color:#080;font-weight:bold">yield</span> x       <span style="color:#777"># Pass x to the block associated with the iterator</span>
+      x += <span style="color:#33B">@by</span>      <span style="color:#777"># Increment x</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#777"># Define the length method (following arrays) to return the number of</span>
+  <span style="color:#777"># values in the sequence</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">length</span>
+    <span style="color:#080;font-weight:bold">return</span> <span style="color:#00D">0</span> <span style="color:#080;font-weight:bold">if</span> <span style="color:#33B">@from</span> &gt; <span style="color:#33B">@to</span>       <span style="color:#777"># Note if used as a statement modifier </span>
+    Integer((<span style="color:#33B">@to</span>-<span style="color:#33B">@from</span>)/<span style="color:#33B">@by</span>) + <span style="color:#00D">1</span>  <span style="color:#777"># Compute and return length of sequence</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#777"># Define another name for the same method.</span>
+  <span style="color:#777"># It is common for methods to have multiple names in Ruby</span>
+  <span style="color:#080;font-weight:bold">alias</span> <span style="color:#06B;font-weight:bold">size</span> <span style="color:#06B;font-weight:bold">length</span>  <span style="color:#777"># size is now a synonym for length</span>
+
+  <span style="color:#777"># Override the array-access operator to give random access to the sequence</span>
+  <span style="color:#080;font-weight:bold">def</span><span style="color:#06B;font-weight:bold">[]</span>(index)
+    <span style="color:#080;font-weight:bold">return</span> <span style="color:#069">nil</span> <span style="color:#080;font-weight:bold">if</span> index &lt; <span style="color:#00D">0</span> <span style="color:#777"># Return nil for negative indexes</span>
+    v = <span style="color:#33B">@from</span> + index*<span style="color:#33B">@by</span>   <span style="color:#777"># Compute the value</span>
+    <span style="color:#080;font-weight:bold">if</span> v &lt;= <span style="color:#33B">@to</span>             <span style="color:#777"># If it is part of the sequence</span>
+      v                     <span style="color:#777"># Return it</span>
+    <span style="color:#080;font-weight:bold">else</span>                    <span style="color:#777"># Otherwise...</span>
+      <span style="color:#069">nil</span>                   <span style="color:#777"># Return nil</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#777"># Override arithmetic operators to return new Sequence objects</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">*</span>(factor)
+    <span style="color:#036;font-weight:bold">Sequence</span>.new(<span style="color:#33B">@from</span>*factor, <span style="color:#33B">@to</span>*factor, <span style="color:#33B">@by</span>*factor)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">+</span>(offset)
+    <span style="color:#036;font-weight:bold">Sequence</span>.new(<span style="color:#33B">@from</span>+offset, <span style="color:#33B">@to</span>+offset, <span style="color:#33B">@by</span>)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+s = <span style="color:#036;font-weight:bold">Sequence</span>.new(<span style="color:#00D">1</span>, <span style="color:#00D">10</span>, <span style="color:#00D">2</span>)  <span style="color:#777"># From 1 to 10 by 2's</span>
+s.each {|x| print x }       <span style="color:#777"># Prints &quot;13579&quot;</span>
+print s[s.size-<span style="color:#00D">1</span>]           <span style="color:#777"># Prints 9</span>
+t = (s+<span style="color:#00D">1</span>)*<span style="color:#00D">2</span>                 <span style="color:#777"># From 4 to 22 by 4's</span>
+
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Sequences</span>                   <span style="color:#777"># Begin a new module</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">fromtoby</span>(from, to, by)  <span style="color:#777"># A singleton method of the module</span>
     x = from
-    while x <= to
-      yield x
+    <span style="color:#080;font-weight:bold">while</span> x &lt;= to
+      <span style="color:#080;font-weight:bold">yield</span> x
       x += by
-    end
-  end
-end
----------------------------
-Sequences.fromtoby(1, 10, 2) {|x| print x }  # Prints "13579"
----------------------------
-class Range                  # Open an existing class for additions
-  def by(step)               # Define an iterator named by
-    x = self.begin           # Start at one endpoint of the range
-    if exclude_end?          # For ... ranges that exclude the end
-      while x < self.end     # Test with the < operator
-        yield x
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#036;font-weight:bold">Sequences</span>.fromtoby(<span style="color:#00D">1</span>, <span style="color:#00D">10</span>, <span style="color:#00D">2</span>) {|x| print x }  <span style="color:#777"># Prints &quot;13579&quot;</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Range</span>                  <span style="color:#777"># Open an existing class for additions</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">by</span>(step)               <span style="color:#777"># Define an iterator named by</span>
+    x = <span style="color:#069">self</span>.begin           <span style="color:#777"># Start at one endpoint of the range</span>
+    <span style="color:#080;font-weight:bold">if</span> exclude_end?          <span style="color:#777"># For ... ranges that exclude the end</span>
+      <span style="color:#080;font-weight:bold">while</span> x &lt; <span style="color:#069">self</span>.end     <span style="color:#777"># Test with the &lt; operator</span>
+        <span style="color:#080;font-weight:bold">yield</span> x
         x += step
-      end
-    else                     # Otherwise, for .. ranges that include the end
-      while x <= self.end    # Test with <= operator
-        yield x
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">else</span>                     <span style="color:#777"># Otherwise, for .. ranges that include the end</span>
+      <span style="color:#080;font-weight:bold">while</span> x &lt;= <span style="color:#069">self</span>.end    <span style="color:#777"># Test with &lt;= operator</span>
+        <span style="color:#080;font-weight:bold">yield</span> x
         x += step
-      end
-    end
-  end                        # End of method definition
-end                          # End of class modification
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>                        <span style="color:#777"># End of method definition</span>
+<span style="color:#080;font-weight:bold">end</span>                          <span style="color:#777"># End of class modification</span>
 
-# Examples
-(0..10).by(2) {|x| print x}  # Prints "0246810"
-(0...10).by(2) {|x| print x} # Prints "02468"
----------------------------
-1.2.1 The Ruby Interpreter
+<span style="color:#777"># Examples</span>
+(<span style="color:#00D">0</span>..<span style="color:#00D">10</span>).by(<span style="color:#00D">2</span>) {|x| print x}  <span style="color:#777"># Prints &quot;0246810&quot;</span>
+(<span style="color:#00D">0</span>...<span style="color:#00D">10</span>).by(<span style="color:#00D">2</span>) {|x| print x} <span style="color:#777"># Prints &quot;02468&quot;</span>
+</pre></div>
+</div>
+</div>
+<p>1.2.1 The Ruby Interpreter</p>
 
-% ruby -e 'puts "hello world!"'
-hello world!
----------------------------
-% ruby hello.rb
-hello world!
----------------------------
-1.2.2 Displaying Output
+<p>% ruby -e ‘puts “hello world!”’</p>
 
-9.downto(1) {|n| print n }   # No newline between numbers
-puts " blastoff!"            # End with a newline
----------------------------
-% ruby count.rb
----------------------------
-987654321 blastoff!
----------------------------
-1.2.3 Interactive Ruby with irb
+<p>hello world!</p>
 
-$ irb --simple-prompt       # Start irb from the terminal
->> 2**3                     # Try exponentiation
-=> 8                        # This is the result
->> "Ruby! " * 3             # Try string repetition
-=> "Ruby! Ruby! Ruby! "     # The result
->> 1.upto(3){|x| puts x }   # Try an iterator
-1                           # Three lines of output 
-2                           # Because we called puts 3 times
-3
-=> 1                        # The return value of 1.upto(3)
->> quit                     # Exit irb
-$                           # Back to the terminal prompt
----------------------------
-1.2.4 Viewing Ruby Documentation with ri
+<p>% ruby hello.rb</p>
 
-ri Array
-ri Array.sort
-ri Hash#each
-ri Math::sqrt
----------------------------
-1.2.5 Ruby Package Management with gem
+<p>hello world!</p>
 
-# gem install rails
-Successfully installed activesupport-1.4.4
-Successfully installed activerecord-1.15.5
-Successfully installed actionpack-1.13.5
-Successfully installed actionmailer-1.3.5
-Successfully installed actionwebservice-1.2.5
-Successfully installed rails-1.2.5
-6 gems installed
-Installing ri documentation for activesupport-1.4.4...
-Installing ri documentation for activerecord-1.15.5...
-...etc...
----------------------------
-gem list               # List installed gems
-gem enviroment         # Display RubyGems configuration information
-gem update rails       # Update a named gem
-gem update             # Update all installed gems
-gem update --system    # Update RubyGems itself
-gem uninstall rails    # Remove an installed gem
----------------------------
-require 'rubygems'               # Not necessary in Ruby 1.9
-gem 'RedCloth', '> 2.0', '< 4.0' # Activate RedCloth version 2.x or 3.x
-require 'RedCloth'               # And now load it
----------------------------
-1.4 A Sudoku Solver in Ruby
+<p>1.2.2 Displaying Output</p>
 
-#
-# This module defines a Sudoku::Puzzle class to represent a 9x9
-# Sudoku puzzle and also defines exception classes raised for 
-# invalid input and over-constrained puzzles. This module also defines 
-# the method Sudoku.solve to solve a puzzle. The solve method uses
-# the Sudoku.scan method, which is also defined here.
-# 
-# Use this module to solve Sudoku puzzles with code like this:
-#
-#  require 'sudoku'
-#  puts Sudoku.solve(Sudoku::Puzzle.new(ARGF.readlines))
-#
-module Sudoku
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#00D">9</span>.downto(<span style="color:#00D">1</span>) {|n| print n }   <span style="color:#777"># No newline between numbers</span>
+puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20"> blastoff!</span><span style="color:#710">&quot;</span></span>            <span style="color:#777"># End with a newline</span>
+</pre></div>
+</div>
+</div>
+<p>% ruby count.rb</p>
 
-  #
-  # The Sudoku::Puzzle class represents the state of a 9x9 Sudoku puzzle.
-  # 
-  # Some definitions and terminology used in this implementation: 
-  #
-  # - Each element of a puzzle is called a "cell".
-  # - Rows and columns are numbered from 0 to 8, and the coordinates [0,0]
-  #   refer to the cell in the upper-left corner of the puzzle.
-  # - The nine 3x3 subgrids are known as "boxes" and are also numbered from
-  #   0 to 8, ordered from left to right and top to bottom. The box in
-  #   the upper-left is box 0. The box in the upper-right is box 2. The
-  #   box in the middle is box 4. The box in the lower-right is box 8.
-  # 
-  # Create a new puzzle with Sudoku::Puzzle.new, specifying the initial
-  # state as a string or as an array of strings. The string(s) should use
-  # the characters 1 through 9 for the given values, and '.' for cells
-  # whose value is unspecified. Whitespace in the input is ignored.
-  #
-  # Read and write access to individual cells of the puzzle is through the
-  # [] and []= operators, which expect two-dimensional [row,column] indexing.
-  # These methods use numbers (not characters) 0 to 9 for cell contents.
-  # 0 represents an unknown value.
-  # 
-  # The has_duplicates? predicate returns true if the puzzle is invalid
-  # because any row, column, or box includes the same digit twice.
-  #
-  # The each_unknown method is an iterator that loops through the cells of
-  # the puzzle and invokes the associated block once for each cell whose
-  # value is unknown.
-  #
-  # The possible method returns an array of integers in the range 1..9.
-  # The elements of the array are the only values allowed in the specified
-  # cell. If this array is empty, then the puzzle is over-specified and 
-  # cannot be solved. If the array has only one element, then that element
-  # must be the value for that cell of the puzzle.
-  #
-  class Puzzle
+<p>987654321 blastoff!</p>
 
-    # These constants are used for translating between the external 
-    # string representation of a puzzle and the internal representation.
-    ASCII = ".123456789"
-    BIN = "\000\001\002\003\004\005\006\007\010\011"
+<p>1.2.3 Interactive Ruby with irb</p>
 
-    # This is the initialization method for the class. It is automatically
-    # invoked on new Puzzle instances created with Puzzle.new. Pass the input
-    # puzzle as an array of lines or as a single string. Use ASCII digits 1
-    # to 9 and use the '.' character for unknown cells. Whitespace, 
-    # including newlines, will be stripped.
-    def initialize(lines)
-      if (lines.respond_to? :join)  # If argument looks like an array of lines
-        s = lines.join              # Then join them into a single string
-      else                          # Otherwise, assume we have a string
-        s = lines.dup               # And make a private copy of it
-      end
+<p>$ irb –simple-prompt       # Start irb from the terminal</p>
 
-      # Remove whitespace (including newlines) from the data
-      # The '!' in gsub! indicates that this is a mutator method that
-      # alters the string directly rather than making a copy.
-      s.gsub!(/\s/, "")  # /\s/ is a Regexp that matches any whitespace
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>&gt;&gt; <span style="color:#00D">2</span>**<span style="color:#00D">3</span>                     <span style="color:#777"># Try exponentiation</span>
+=&gt; <span style="color:#00D">8</span>                        <span style="color:#777"># This is the result</span>
+&gt;&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Ruby! </span><span style="color:#710">&quot;</span></span> * <span style="color:#00D">3</span>             <span style="color:#777"># Try string repetition</span>
+=&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Ruby! Ruby! Ruby! </span><span style="color:#710">&quot;</span></span>     <span style="color:#777"># The result</span>
+&gt;&gt; <span style="color:#00D">1</span>.upto(<span style="color:#00D">3</span>){|x| puts x }   <span style="color:#777"># Try an iterator</span>
+<span style="color:#00D">1</span>                           <span style="color:#777"># Three lines of output </span>
+<span style="color:#00D">2</span>                           <span style="color:#777"># Because we called puts 3 times</span>
+<span style="color:#00D">3</span>
+=&gt; <span style="color:#00D">1</span>                        <span style="color:#777"># The return value of 1.upto(3)</span>
+&gt;&gt; quit                     <span style="color:#777"># Exit irb</span>
+</pre></div>
+</div>
+</div>
+<p>$                           # Back to the terminal prompt</p>
 
-      # Raise an exception if the input is the wrong size.
-      # Note that we use unless instead of if, and use it in modifier form.
-      raise Invalid, "Grid is the wrong size" unless s.size == 81
+<p>1.2.4 Viewing Ruby Documentation with ri</p>
+
+<p>ri Array</p>
+
+<p>ri Array.sort</p>
+
+<p>ri Hash#each</p>
+
+<p>ri Math::sqrt</p>
+
+<p>1.2.5 Ruby Package Management with gem</p>
+
+<p>gem install rails</p>
+
+<p>Successfully installed activesupport-1.4.4</p>
+
+<p>Successfully installed activerecord-1.15.5</p>
+
+<p>Successfully installed actionpack-1.13.5</p>
+
+<p>Successfully installed actionmailer-1.3.5</p>
+
+<p>Successfully installed actionwebservice-1.2.5</p>
+
+<p>Successfully installed rails-1.2.5</p>
+
+<p>6 gems installed</p>
+
+<p>Installing ri documentation for activesupport-1.4.4…</p>
+
+<p>Installing ri documentation for activerecord-1.15.5…</p>
+
+<p>…etc…</p>
+
+<p>gem list               # List installed gems</p>
+
+<p>gem enviroment         # Display RubyGems configuration information</p>
+
+<p>gem update rails       # Update a named gem</p>
+
+<p>gem update             # Update all installed gems</p>
+
+<p>gem update –system    # Update RubyGems itself</p>
+
+<p>gem uninstall rails    # Remove an installed gem</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">rubygems</span><span style="color:#710">'</span></span>               <span style="color:#777"># Not necessary in Ruby 1.9</span>
+gem <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">RedCloth</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">&gt; 2.0</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">&lt; 4.0</span><span style="color:#710">'</span></span> <span style="color:#777"># Activate RedCloth version 2.x or 3.x</span>
+require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">RedCloth</span><span style="color:#710">'</span></span>               <span style="color:#777"># And now load it</span>
+</pre></div>
+</div>
+</div>
+<p>1.4 A Sudoku Solver in Ruby</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777">#</span>
+<span style="color:#777"># This module defines a Sudoku::Puzzle class to represent a 9x9</span>
+<span style="color:#777"># Sudoku puzzle and also defines exception classes raised for </span>
+<span style="color:#777"># invalid input and over-constrained puzzles. This module also defines </span>
+<span style="color:#777"># the method Sudoku.solve to solve a puzzle. The solve method uses</span>
+<span style="color:#777"># the Sudoku.scan method, which is also defined here.</span>
+<span style="color:#777"># </span>
+<span style="color:#777"># Use this module to solve Sudoku puzzles with code like this:</span>
+<span style="color:#777">#</span>
+<span style="color:#777">#  require 'sudoku'</span>
+<span style="color:#777">#  puts Sudoku.solve(Sudoku::Puzzle.new(ARGF.readlines))</span>
+<span style="color:#777">#</span>
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Sudoku</span>
+
+  <span style="color:#777">#</span>
+  <span style="color:#777"># The Sudoku::Puzzle class represents the state of a 9x9 Sudoku puzzle.</span>
+  <span style="color:#777"># </span>
+  <span style="color:#777"># Some definitions and terminology used in this implementation: </span>
+  <span style="color:#777">#</span>
+  <span style="color:#777"># - Each element of a puzzle is called a &quot;cell&quot;.</span>
+  <span style="color:#777"># - Rows and columns are numbered from 0 to 8, and the coordinates [0,0]</span>
+  <span style="color:#777">#   refer to the cell in the upper-left corner of the puzzle.</span>
+  <span style="color:#777"># - The nine 3x3 subgrids are known as &quot;boxes&quot; and are also numbered from</span>
+  <span style="color:#777">#   0 to 8, ordered from left to right and top to bottom. The box in</span>
+  <span style="color:#777">#   the upper-left is box 0. The box in the upper-right is box 2. The</span>
+  <span style="color:#777">#   box in the middle is box 4. The box in the lower-right is box 8.</span>
+  <span style="color:#777"># </span>
+  <span style="color:#777"># Create a new puzzle with Sudoku::Puzzle.new, specifying the initial</span>
+  <span style="color:#777"># state as a string or as an array of strings. The string(s) should use</span>
+  <span style="color:#777"># the characters 1 through 9 for the given values, and '.' for cells</span>
+  <span style="color:#777"># whose value is unspecified. Whitespace in the input is ignored.</span>
+  <span style="color:#777">#</span>
+  <span style="color:#777"># Read and write access to individual cells of the puzzle is through the</span>
+  <span style="color:#777"># [] and []= operators, which expect two-dimensional [row,column] indexing.</span>
+  <span style="color:#777"># These methods use numbers (not characters) 0 to 9 for cell contents.</span>
+  <span style="color:#777"># 0 represents an unknown value.</span>
+  <span style="color:#777"># </span>
+  <span style="color:#777"># The has_duplicates? predicate returns true if the puzzle is invalid</span>
+  <span style="color:#777"># because any row, column, or box includes the same digit twice.</span>
+  <span style="color:#777">#</span>
+  <span style="color:#777"># The each_unknown method is an iterator that loops through the cells of</span>
+  <span style="color:#777"># the puzzle and invokes the associated block once for each cell whose</span>
+  <span style="color:#777"># value is unknown.</span>
+  <span style="color:#777">#</span>
+  <span style="color:#777"># The possible method returns an array of integers in the range 1..9.</span>
+  <span style="color:#777"># The elements of the array are the only values allowed in the specified</span>
+  <span style="color:#777"># cell. If this array is empty, then the puzzle is over-specified and </span>
+  <span style="color:#777"># cannot be solved. If the array has only one element, then that element</span>
+  <span style="color:#777"># must be the value for that cell of the puzzle.</span>
+  <span style="color:#777">#</span>
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Puzzle</span>
+
+    <span style="color:#777"># These constants are used for translating between the external </span>
+    <span style="color:#777"># string representation of a puzzle and the internal representation.</span>
+    <span style="color:#036;font-weight:bold">ASCII</span> = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">.123456789</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#036;font-weight:bold">BIN</span> = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\000</span><span style="color:#b0b">\001</span><span style="color:#b0b">\002</span><span style="color:#b0b">\003</span><span style="color:#b0b">\004</span><span style="color:#b0b">\005</span><span style="color:#b0b">\006</span><span style="color:#b0b">\007</span><span style="color:#b0b">\010</span><span style="color:#b0b">\011</span><span style="color:#710">&quot;</span></span>
+
+    <span style="color:#777"># This is the initialization method for the class. It is automatically</span>
+    <span style="color:#777"># invoked on new Puzzle instances created with Puzzle.new. Pass the input</span>
+    <span style="color:#777"># puzzle as an array of lines or as a single string. Use ASCII digits 1</span>
+    <span style="color:#777"># to 9 and use the '.' character for unknown cells. Whitespace, </span>
+    <span style="color:#777"># including newlines, will be stripped.</span>
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(lines)
+      <span style="color:#080;font-weight:bold">if</span> (lines.respond_to? <span style="color:#A60">:join</span>)  <span style="color:#777"># If argument looks like an array of lines</span>
+        s = lines.join              <span style="color:#777"># Then join them into a single string</span>
+      <span style="color:#080;font-weight:bold">else</span>                          <span style="color:#777"># Otherwise, assume we have a string</span>
+        s = lines.dup               <span style="color:#777"># And make a private copy of it</span>
+      <span style="color:#080;font-weight:bold">end</span>
+
+      <span style="color:#777"># Remove whitespace (including newlines) from the data</span>
+      <span style="color:#777"># The '!' in gsub! indicates that this is a mutator method that</span>
+      <span style="color:#777"># alters the string directly rather than making a copy.</span>
+      s.gsub!(<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#D20">\s</span><span style="color:#404">/</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>)  <span style="color:#777"># /\s/ is a Regexp that matches any whitespace</span>
+
+      <span style="color:#777"># Raise an exception if the input is the wrong size.</span>
+      <span style="color:#777"># Note that we use unless instead of if, and use it in modifier form.</span>
+      raise <span style="color:#036;font-weight:bold">Invalid</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Grid is the wrong size</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">unless</span> s.size == <span style="color:#00D">81</span>
       
-      # Check for invalid characters, and save the location of the first.
-      # Note that we assign and test the value assigned at the same time.
-      if i = s.index(/[^123456789\.]/)
-        # Include the invalid character in the error message.
-        # Note the Ruby expression inside #{} in string literal.
-        raise Invalid, "Illegal character #{s[i,1]} in puzzle"
-      end
+      <span style="color:#777"># Check for invalid characters, and save the location of the first.</span>
+      <span style="color:#777"># Note that we assign and test the value assigned at the same time.</span>
+      <span style="color:#080;font-weight:bold">if</span> i = s.index(<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">[^123456789</span><span style="color:#D20">\.</span><span style="color:#808">]</span><span style="color:#404">/</span></span>)
+        <span style="color:#777"># Include the invalid character in the error message.</span>
+        <span style="color:#777"># Note the Ruby expression inside #{} in string literal.</span>
+        raise <span style="color:#036;font-weight:bold">Invalid</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Illegal character </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>s[i,<span style="color:#00D">1</span>]<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> in puzzle</span><span style="color:#710">&quot;</span></span>
+      <span style="color:#080;font-weight:bold">end</span>
 
-      # The following two lines convert our string of ASCII characters
-      # to an array of integers, using two powerful String methods.
-      # The resulting array is stored in the instance variable @grid
-      # The number 0 is used to represent an unknown value.
-      s.tr!(ASCII, BIN)      # Translate ASCII characters into bytes
-      @grid = s.unpack('c*') # Now unpack the bytes into an array of numbers
+      <span style="color:#777"># The following two lines convert our string of ASCII characters</span>
+      <span style="color:#777"># to an array of integers, using two powerful String methods.</span>
+      <span style="color:#777"># The resulting array is stored in the instance variable @grid</span>
+      <span style="color:#777"># The number 0 is used to represent an unknown value.</span>
+      s.tr!(<span style="color:#036;font-weight:bold">ASCII</span>, <span style="color:#036;font-weight:bold">BIN</span>)      <span style="color:#777"># Translate ASCII characters into bytes</span>
+      <span style="color:#33B">@grid</span> = s.unpack(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">c*</span><span style="color:#710">'</span></span>) <span style="color:#777"># Now unpack the bytes into an array of numbers</span>
 
-      # Make sure that the rows, columns, and boxes have no duplicates.
-      raise Invalid, "Initial puzzle has duplicates" if has_duplicates?
-    end
+      <span style="color:#777"># Make sure that the rows, columns, and boxes have no duplicates.</span>
+      raise <span style="color:#036;font-weight:bold">Invalid</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Initial puzzle has duplicates</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">if</span> has_duplicates?
+    <span style="color:#080;font-weight:bold">end</span>
 
-    # Return the state of the puzzle as a string of 9 lines with 9 
-    # characters (plus newline) each.  
-    def to_s
-      # This method is implemented with a single line of Ruby magic that
-      # reverses the steps in the initialize() method. Writing dense code
-      # like this is probably not good coding style, but it demonstrates
-      # the power and expressiveness of the language.
-      #
-      # Broken down, the line below works like this:
-      # (0..8).collect invokes the code in curly braces 9 times--once
-      # for each row--and collects the return value of that code into an
-      # array. The code in curly braces takes a subarray of the grid
-      # representing a single row and packs its numbers into a string.
-      # The join() method joins the elements of the array into a single
-      # string with newlines between them. Finally, the tr() method
-      # translates the binary string representation into ASCII digits.
-      (0..8).collect{|r| @grid[r*9,9].pack('c9')}.join("\n").tr(BIN,ASCII)
-    end
+    <span style="color:#777"># Return the state of the puzzle as a string of 9 lines with 9 </span>
+    <span style="color:#777"># characters (plus newline) each.  </span>
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">to_s</span>
+      <span style="color:#777"># This method is implemented with a single line of Ruby magic that</span>
+      <span style="color:#777"># reverses the steps in the initialize() method. Writing dense code</span>
+      <span style="color:#777"># like this is probably not good coding style, but it demonstrates</span>
+      <span style="color:#777"># the power and expressiveness of the language.</span>
+      <span style="color:#777">#</span>
+      <span style="color:#777"># Broken down, the line below works like this:</span>
+      <span style="color:#777"># (0..8).collect invokes the code in curly braces 9 times--once</span>
+      <span style="color:#777"># for each row--and collects the return value of that code into an</span>
+      <span style="color:#777"># array. The code in curly braces takes a subarray of the grid</span>
+      <span style="color:#777"># representing a single row and packs its numbers into a string.</span>
+      <span style="color:#777"># The join() method joins the elements of the array into a single</span>
+      <span style="color:#777"># string with newlines between them. Finally, the tr() method</span>
+      <span style="color:#777"># translates the binary string representation into ASCII digits.</span>
+      (<span style="color:#00D">0</span>..<span style="color:#00D">8</span>).collect{|r| <span style="color:#33B">@grid</span>[r*<span style="color:#00D">9</span>,<span style="color:#00D">9</span>].pack(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">c9</span><span style="color:#710">'</span></span>)}.join(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>).tr(<span style="color:#036;font-weight:bold">BIN</span>,<span style="color:#036;font-weight:bold">ASCII</span>)
+    <span style="color:#080;font-weight:bold">end</span>
 
-    # Return a duplicate of this Puzzle object.
-    # This method overrides Object.dup to copy the @grid array.
-    def dup
-      copy = super       # Make a shallow copy by calling Object.dup
-      @grid = @grid.dup  # Make a new copy of the internal data 
-      copy               # Return the copied object
-    end
+    <span style="color:#777"># Return a duplicate of this Puzzle object.</span>
+    <span style="color:#777"># This method overrides Object.dup to copy the @grid array.</span>
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">dup</span>
+      copy = <span style="color:#080;font-weight:bold">super</span>       <span style="color:#777"># Make a shallow copy by calling Object.dup</span>
+      <span style="color:#33B">@grid</span> = <span style="color:#33B">@grid</span>.dup  <span style="color:#777"># Make a new copy of the internal data </span>
+      copy               <span style="color:#777"># Return the copied object</span>
+    <span style="color:#080;font-weight:bold">end</span>
 
-    # We override the array access operator to allow access to the 
-    # individual cells of a puzzle. Puzzles are two-dimensional,
-    # and must be indexed with row and column coordinates.
-    def [](row, col)
-      # Convert two-dimensional (row,col) coordinates into a one-dimensional
-      # array index and get and return the cell value at that index
-      @grid[row*9 + col]
-    end
+    <span style="color:#777"># We override the array access operator to allow access to the </span>
+    <span style="color:#777"># individual cells of a puzzle. Puzzles are two-dimensional,</span>
+    <span style="color:#777"># and must be indexed with row and column coordinates.</span>
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">[]</span>(row, col)
+      <span style="color:#777"># Convert two-dimensional (row,col) coordinates into a one-dimensional</span>
+      <span style="color:#777"># array index and get and return the cell value at that index</span>
+      <span style="color:#33B">@grid</span>[row*<span style="color:#00D">9</span> + col]
+    <span style="color:#080;font-weight:bold">end</span>
 
-    # This method allows the array access operator to be used on the 
-    # lefthand side of an assignment operation. It sets the value of 
-    # the cell at (row, col) to newvalue.
-    def []=(row, col, newvalue)
-      # Raise an exception unless the new value is in the range 0 to 9.
-      unless (0..9).include? newvalue
-        raise Invalid, "illegal cell value" 
-      end
-      # Set the appropriate element of the internal array to the value.
-      @grid[row*9 + col] = newvalue
-    end
+    <span style="color:#777"># This method allows the array access operator to be used on the </span>
+    <span style="color:#777"># lefthand side of an assignment operation. It sets the value of </span>
+    <span style="color:#777"># the cell at (row, col) to newvalue.</span>
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">[]=</span>(row, col, newvalue)
+      <span style="color:#777"># Raise an exception unless the new value is in the range 0 to 9.</span>
+      <span style="color:#080;font-weight:bold">unless</span> (<span style="color:#00D">0</span>..<span style="color:#00D">9</span>).include? newvalue
+        raise <span style="color:#036;font-weight:bold">Invalid</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">illegal cell value</span><span style="color:#710">&quot;</span></span> 
+      <span style="color:#080;font-weight:bold">end</span>
+      <span style="color:#777"># Set the appropriate element of the internal array to the value.</span>
+      <span style="color:#33B">@grid</span>[row*<span style="color:#00D">9</span> + col] = newvalue
+    <span style="color:#080;font-weight:bold">end</span>
 
-    # This array maps from one-dimensional grid index to box number.
-    # It is used in the method below. The name BoxOfIndex begins with a 
-    # capital letter, so this is a constant. Also, the array has been
-    # frozen, so it cannot be modified.
-    BoxOfIndex = [
-      0,0,0,1,1,1,2,2,2,0,0,0,1,1,1,2,2,2,0,0,0,1,1,1,2,2,2,
-      3,3,3,4,4,4,5,5,5,3,3,3,4,4,4,5,5,5,3,3,3,4,4,4,5,5,5,
-      6,6,6,7,7,7,8,8,8,6,6,6,7,7,7,8,8,8,6,6,6,7,7,7,8,8,8
+    <span style="color:#777"># This array maps from one-dimensional grid index to box number.</span>
+    <span style="color:#777"># It is used in the method below. The name BoxOfIndex begins with a </span>
+    <span style="color:#777"># capital letter, so this is a constant. Also, the array has been</span>
+    <span style="color:#777"># frozen, so it cannot be modified.</span>
+    <span style="color:#036;font-weight:bold">BoxOfIndex</span> = [
+      <span style="color:#00D">0</span>,<span style="color:#00D">0</span>,<span style="color:#00D">0</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">0</span>,<span style="color:#00D">0</span>,<span style="color:#00D">0</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">0</span>,<span style="color:#00D">0</span>,<span style="color:#00D">0</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,
+      <span style="color:#00D">3</span>,<span style="color:#00D">3</span>,<span style="color:#00D">3</span>,<span style="color:#00D">4</span>,<span style="color:#00D">4</span>,<span style="color:#00D">4</span>,<span style="color:#00D">5</span>,<span style="color:#00D">5</span>,<span style="color:#00D">5</span>,<span style="color:#00D">3</span>,<span style="color:#00D">3</span>,<span style="color:#00D">3</span>,<span style="color:#00D">4</span>,<span style="color:#00D">4</span>,<span style="color:#00D">4</span>,<span style="color:#00D">5</span>,<span style="color:#00D">5</span>,<span style="color:#00D">5</span>,<span style="color:#00D">3</span>,<span style="color:#00D">3</span>,<span style="color:#00D">3</span>,<span style="color:#00D">4</span>,<span style="color:#00D">4</span>,<span style="color:#00D">4</span>,<span style="color:#00D">5</span>,<span style="color:#00D">5</span>,<span style="color:#00D">5</span>,
+      <span style="color:#00D">6</span>,<span style="color:#00D">6</span>,<span style="color:#00D">6</span>,<span style="color:#00D">7</span>,<span style="color:#00D">7</span>,<span style="color:#00D">7</span>,<span style="color:#00D">8</span>,<span style="color:#00D">8</span>,<span style="color:#00D">8</span>,<span style="color:#00D">6</span>,<span style="color:#00D">6</span>,<span style="color:#00D">6</span>,<span style="color:#00D">7</span>,<span style="color:#00D">7</span>,<span style="color:#00D">7</span>,<span style="color:#00D">8</span>,<span style="color:#00D">8</span>,<span style="color:#00D">8</span>,<span style="color:#00D">6</span>,<span style="color:#00D">6</span>,<span style="color:#00D">6</span>,<span style="color:#00D">7</span>,<span style="color:#00D">7</span>,<span style="color:#00D">7</span>,<span style="color:#00D">8</span>,<span style="color:#00D">8</span>,<span style="color:#00D">8</span>
     ].freeze
 
-    # This method defines a custom looping construct (an "iterator") for
-    # Sudoku puzzles.  For each cell whose value is unknown, this method
-    # passes ("yields") the row number, column number, and box number to the 
-    # block associated with this iterator.
-    def each_unknown
-      0.upto 8 do |row|             # For each row
-        0.upto 8 do |col|           # For each column
-          index = row*9+col         # Cell index for (row,col)
-          next if @grid[index] != 0 # Move on if we know the cell's value 
-          box = BoxOfIndex[index]   # Figure out the box for this cell
-          yield row, col, box       # Invoke the associated block
-        end
-      end
-    end
+    <span style="color:#777"># This method defines a custom looping construct (an &quot;iterator&quot;) for</span>
+    <span style="color:#777"># Sudoku puzzles.  For each cell whose value is unknown, this method</span>
+    <span style="color:#777"># passes (&quot;yields&quot;) the row number, column number, and box number to the </span>
+    <span style="color:#777"># block associated with this iterator.</span>
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">each_unknown</span>
+      <span style="color:#00D">0</span>.upto <span style="color:#00D">8</span> <span style="color:#080;font-weight:bold">do</span> |row|             <span style="color:#777"># For each row</span>
+        <span style="color:#00D">0</span>.upto <span style="color:#00D">8</span> <span style="color:#080;font-weight:bold">do</span> |col|           <span style="color:#777"># For each column</span>
+          index = row*<span style="color:#00D">9</span>+col         <span style="color:#777"># Cell index for (row,col)</span>
+          <span style="color:#080;font-weight:bold">next</span> <span style="color:#080;font-weight:bold">if</span> <span style="color:#33B">@grid</span>[index] != <span style="color:#00D">0</span> <span style="color:#777"># Move on if we know the cell's value </span>
+          box = <span style="color:#036;font-weight:bold">BoxOfIndex</span>[index]   <span style="color:#777"># Figure out the box for this cell</span>
+          <span style="color:#080;font-weight:bold">yield</span> row, col, box       <span style="color:#777"># Invoke the associated block</span>
+        <span style="color:#080;font-weight:bold">end</span>
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
 
-    # Returns true if any row, column, or box has duplicates.
-    # Otherwise returns false. Duplicates in rows, columns, or boxes are not
-    # allowed in Sudoku, so a return value of true means an invalid puzzle.
-    def has_duplicates?
-      # uniq! returns nil if all the elements in an array are unique.
-      # So if uniq! returns something then the board has duplicates.
-      0.upto(8) {|row| return true if rowdigits(row).uniq! }
-      0.upto(8) {|col| return true if coldigits(col).uniq! }
-      0.upto(8) {|box| return true if boxdigits(box).uniq! }
+    <span style="color:#777"># Returns true if any row, column, or box has duplicates.</span>
+    <span style="color:#777"># Otherwise returns false. Duplicates in rows, columns, or boxes are not</span>
+    <span style="color:#777"># allowed in Sudoku, so a return value of true means an invalid puzzle.</span>
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">has_duplicates?</span>
+      <span style="color:#777"># uniq! returns nil if all the elements in an array are unique.</span>
+      <span style="color:#777"># So if uniq! returns something then the board has duplicates.</span>
+      <span style="color:#00D">0</span>.upto(<span style="color:#00D">8</span>) {|row| <span style="color:#080;font-weight:bold">return</span> <span style="color:#069">true</span> <span style="color:#080;font-weight:bold">if</span> rowdigits(row).uniq! }
+      <span style="color:#00D">0</span>.upto(<span style="color:#00D">8</span>) {|col| <span style="color:#080;font-weight:bold">return</span> <span style="color:#069">true</span> <span style="color:#080;font-weight:bold">if</span> coldigits(col).uniq! }
+      <span style="color:#00D">0</span>.upto(<span style="color:#00D">8</span>) {|box| <span style="color:#080;font-weight:bold">return</span> <span style="color:#069">true</span> <span style="color:#080;font-weight:bold">if</span> boxdigits(box).uniq! }
       
-      false  # If all the tests have passed, then the board has no duplicates
-    end
+      <span style="color:#069">false</span>  <span style="color:#777"># If all the tests have passed, then the board has no duplicates</span>
+    <span style="color:#080;font-weight:bold">end</span>
 
-    # This array holds a set of all Sudoku digits. Used below.
-    AllDigits = [1, 2, 3, 4, 5, 6, 7, 8, 9].freeze
+    <span style="color:#777"># This array holds a set of all Sudoku digits. Used below.</span>
+    <span style="color:#036;font-weight:bold">AllDigits</span> = [<span style="color:#00D">1</span>, <span style="color:#00D">2</span>, <span style="color:#00D">3</span>, <span style="color:#00D">4</span>, <span style="color:#00D">5</span>, <span style="color:#00D">6</span>, <span style="color:#00D">7</span>, <span style="color:#00D">8</span>, <span style="color:#00D">9</span>].freeze
 
-    # Return an array of all values that could be placed in the cell 
-    # at (row,col) without creating a duplicate in the row, column, or box.
-    # Note that the + operator on arrays does concatenation but that the - 
-    # operator performs a set difference operation.
-    def possible(row, col, box)
-      AllDigits - (rowdigits(row) + coldigits(col) + boxdigits(box))
-    end
+    <span style="color:#777"># Return an array of all values that could be placed in the cell </span>
+    <span style="color:#777"># at (row,col) without creating a duplicate in the row, column, or box.</span>
+    <span style="color:#777"># Note that the + operator on arrays does concatenation but that the - </span>
+    <span style="color:#777"># operator performs a set difference operation.</span>
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">possible</span>(row, col, box)
+      <span style="color:#036;font-weight:bold">AllDigits</span> - (rowdigits(row) + coldigits(col) + boxdigits(box))
+    <span style="color:#080;font-weight:bold">end</span>
 
-    private  # All methods after this line are private to the class
+    private  <span style="color:#777"># All methods after this line are private to the class</span>
 
-    # Return an array of all known values in the specified row.
-    def rowdigits(row)
-      # Extract the subarray that represents the row and remove all zeros.
-      # Array subtraction is set difference, with duplicate removal.
-      @grid[row*9,9] - [0]
-    end
+    <span style="color:#777"># Return an array of all known values in the specified row.</span>
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">rowdigits</span>(row)
+      <span style="color:#777"># Extract the subarray that represents the row and remove all zeros.</span>
+      <span style="color:#777"># Array subtraction is set difference, with duplicate removal.</span>
+      <span style="color:#33B">@grid</span>[row*<span style="color:#00D">9</span>,<span style="color:#00D">9</span>] - [<span style="color:#00D">0</span>]
+    <span style="color:#080;font-weight:bold">end</span>
 
-    # Return an array of all known values in the specified column.
-    def coldigits(col)
-      result = []                # Start with an empty array
-      col.step(80, 9) {|i|       # Loop from col by nines up to 80
-        v = @grid[i]             # Get value of cell at that index
-        result << v if (v != 0)  # Add it to the array if non-zero
+    <span style="color:#777"># Return an array of all known values in the specified column.</span>
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">coldigits</span>(col)
+      result = []                <span style="color:#777"># Start with an empty array</span>
+      col.step(<span style="color:#00D">80</span>, <span style="color:#00D">9</span>) {|i|       <span style="color:#777"># Loop from col by nines up to 80</span>
+        v = <span style="color:#33B">@grid</span>[i]             <span style="color:#777"># Get value of cell at that index</span>
+        result &lt;&lt; v <span style="color:#080;font-weight:bold">if</span> (v != <span style="color:#00D">0</span>)  <span style="color:#777"># Add it to the array if non-zero</span>
       }
-      result                     # Return the array
-    end
+      result                     <span style="color:#777"># Return the array</span>
+    <span style="color:#080;font-weight:bold">end</span>
 
-    # Map box number to the index of the upper-left corner of the box.
-    BoxToIndex = [0, 3, 6, 27, 30, 33, 54, 57, 60].freeze
+    <span style="color:#777"># Map box number to the index of the upper-left corner of the box.</span>
+    <span style="color:#036;font-weight:bold">BoxToIndex</span> = [<span style="color:#00D">0</span>, <span style="color:#00D">3</span>, <span style="color:#00D">6</span>, <span style="color:#00D">27</span>, <span style="color:#00D">30</span>, <span style="color:#00D">33</span>, <span style="color:#00D">54</span>, <span style="color:#00D">57</span>, <span style="color:#00D">60</span>].freeze
 
-    # Return an array of all the known values in the specified box.
-    def boxdigits(b)
-      # Convert box number to index of upper-left corner of the box.
-      i = BoxToIndex[b]
-      # Return an array of values, with 0 elements removed.
+    <span style="color:#777"># Return an array of all the known values in the specified box.</span>
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">boxdigits</span>(b)
+      <span style="color:#777"># Convert box number to index of upper-left corner of the box.</span>
+      i = <span style="color:#036;font-weight:bold">BoxToIndex</span>[b]
+      <span style="color:#777"># Return an array of values, with 0 elements removed.</span>
       [
-        @grid[i],    @grid[i+1],  @grid[i+2],
-        @grid[i+9],  @grid[i+10], @grid[i+11],
-        @grid[i+18], @grid[i+19], @grid[i+20]
-      ] - [0]
-    end
-  end  # This is the end of the Puzzle class
+        <span style="color:#33B">@grid</span>[i],    <span style="color:#33B">@grid</span>[i+<span style="color:#00D">1</span>],  <span style="color:#33B">@grid</span>[i+<span style="color:#00D">2</span>],
+        <span style="color:#33B">@grid</span>[i+<span style="color:#00D">9</span>],  <span style="color:#33B">@grid</span>[i+<span style="color:#00D">10</span>], <span style="color:#33B">@grid</span>[i+<span style="color:#00D">11</span>],
+        <span style="color:#33B">@grid</span>[i+<span style="color:#00D">18</span>], <span style="color:#33B">@grid</span>[i+<span style="color:#00D">19</span>], <span style="color:#33B">@grid</span>[i+<span style="color:#00D">20</span>]
+      ] - [<span style="color:#00D">0</span>]
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>  <span style="color:#777"># This is the end of the Puzzle class</span>
 
-  # An exception of this class indicates invalid input,
-  class Invalid < StandardError
-  end
+  <span style="color:#777"># An exception of this class indicates invalid input,</span>
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Invalid</span> &lt; <span style="color:#036;font-weight:bold">StandardError</span>
+  <span style="color:#080;font-weight:bold">end</span>
 
-  # An exception of this class indicates that a puzzle is over-constrained
-  # and that no solution is possible.
-  class Impossible < StandardError
-  end
+  <span style="color:#777"># An exception of this class indicates that a puzzle is over-constrained</span>
+  <span style="color:#777"># and that no solution is possible.</span>
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Impossible</span> &lt; <span style="color:#036;font-weight:bold">StandardError</span>
+  <span style="color:#080;font-weight:bold">end</span>
 
-  #
-  # This method scans a Puzzle, looking for unknown cells that have only
-  # a single possible value. If it finds any, it sets their value. Since
-  # setting a cell alters the possible values for other cells, it 
-  # continues scanning until it has scanned the entire puzzle without 
-  # finding any cells whose value it can set.
-  #
-  # This method returns three values. If it solves the puzzle, all three 
-  # values are nil. Otherwise, the first two values returned are the row and
-  # column of a cell whose value is still unknown. The third value is the
-  # set of values possible at that row and column. This is a minimal set of
-  # possible values: there is no unknown cell in the puzzle that has fewer
-  # possible values. This complex return value enables a useful heuristic 
-  # in the solve() method: that method can guess at values for cells where
-  # the guess is most likely to be correct.
-  # 
-  # This method raises Impossible if it finds a cell for which there are
-  # no possible values. This can happen if the puzzle is over-constrained,
-  # or if the solve() method below has made an incorrect guess.
-  #
-  # This method mutates the specified Puzzle object in place.
-  # If has_duplicates? is false on entry, then it will be false on exit.
-  #
-  def Sudoku.scan(puzzle)
-    unchanged = false  # This is our loop variable
+  <span style="color:#777">#</span>
+  <span style="color:#777"># This method scans a Puzzle, looking for unknown cells that have only</span>
+  <span style="color:#777"># a single possible value. If it finds any, it sets their value. Since</span>
+  <span style="color:#777"># setting a cell alters the possible values for other cells, it </span>
+  <span style="color:#777"># continues scanning until it has scanned the entire puzzle without </span>
+  <span style="color:#777"># finding any cells whose value it can set.</span>
+  <span style="color:#777">#</span>
+  <span style="color:#777"># This method returns three values. If it solves the puzzle, all three </span>
+  <span style="color:#777"># values are nil. Otherwise, the first two values returned are the row and</span>
+  <span style="color:#777"># column of a cell whose value is still unknown. The third value is the</span>
+  <span style="color:#777"># set of values possible at that row and column. This is a minimal set of</span>
+  <span style="color:#777"># possible values: there is no unknown cell in the puzzle that has fewer</span>
+  <span style="color:#777"># possible values. This complex return value enables a useful heuristic </span>
+  <span style="color:#777"># in the solve() method: that method can guess at values for cells where</span>
+  <span style="color:#777"># the guess is most likely to be correct.</span>
+  <span style="color:#777"># </span>
+  <span style="color:#777"># This method raises Impossible if it finds a cell for which there are</span>
+  <span style="color:#777"># no possible values. This can happen if the puzzle is over-constrained,</span>
+  <span style="color:#777"># or if the solve() method below has made an incorrect guess.</span>
+  <span style="color:#777">#</span>
+  <span style="color:#777"># This method mutates the specified Puzzle object in place.</span>
+  <span style="color:#777"># If has_duplicates? is false on entry, then it will be false on exit.</span>
+  <span style="color:#777">#</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#036;font-weight:bold">Sudoku</span>.<span style="color:#06B;font-weight:bold">scan</span>(puzzle)
+    unchanged = <span style="color:#069">false</span>  <span style="color:#777"># This is our loop variable</span>
 
-    # Loop until we've scanned the whole board without making a change.
-    until unchanged 
-      unchanged = true      # Assume no cells will be changed this time
-      rmin,cmin,pmin = nil  # Track cell with minimal possible set
-      min = 10              # More than the maximal number of possibilities
+    <span style="color:#777"># Loop until we've scanned the whole board without making a change.</span>
+    <span style="color:#080;font-weight:bold">until</span> unchanged 
+      unchanged = <span style="color:#069">true</span>      <span style="color:#777"># Assume no cells will be changed this time</span>
+      rmin,cmin,pmin = <span style="color:#069">nil</span>  <span style="color:#777"># Track cell with minimal possible set</span>
+      min = <span style="color:#00D">10</span>              <span style="color:#777"># More than the maximal number of possibilities</span>
 
-      # Loop through cells whose value is unknown.
-      puzzle.each_unknown do |row, col, box|
-        # Find the set of values that could go in this cell
+      <span style="color:#777"># Loop through cells whose value is unknown.</span>
+      puzzle.each_unknown <span style="color:#080;font-weight:bold">do</span> |row, col, box|
+        <span style="color:#777"># Find the set of values that could go in this cell</span>
         p = puzzle.possible(row, col, box)
         
-        # Branch based on the size of the set p. 
-        # We care about 3 cases: p.size==0, p.size==1, and p.size > 1.
-        case p.size
-        when 0  # No possible values means the puzzle is over-constrained
-          raise Impossible
-        when 1  # We've found a unique value, so set it in the grid
-          puzzle[row,col] = p[0] # Set that position on the grid to the value
-          unchanged = false      # Note that we've made a change
-        else    # For any other number of possibilities
-          # Keep track of the smallest set of possibilities.
-          # But don't bother if we're going to repeat this loop.
-          if unchanged && p.size < min
-            min = p.size                    # Current smallest size
-            rmin, cmin, pmin = row, col, p  # Note parallel assignment
-          end
-        end
-      end
-    end
+        <span style="color:#777"># Branch based on the size of the set p. </span>
+        <span style="color:#777"># We care about 3 cases: p.size==0, p.size==1, and p.size &gt; 1.</span>
+        <span style="color:#080;font-weight:bold">case</span> p.size
+        <span style="color:#080;font-weight:bold">when</span> <span style="color:#00D">0</span>  <span style="color:#777"># No possible values means the puzzle is over-constrained</span>
+          raise <span style="color:#036;font-weight:bold">Impossible</span>
+        <span style="color:#080;font-weight:bold">when</span> <span style="color:#00D">1</span>  <span style="color:#777"># We've found a unique value, so set it in the grid</span>
+          puzzle[row,col] = p[<span style="color:#00D">0</span>] <span style="color:#777"># Set that position on the grid to the value</span>
+          unchanged = <span style="color:#069">false</span>      <span style="color:#777"># Note that we've made a change</span>
+        <span style="color:#080;font-weight:bold">else</span>    <span style="color:#777"># For any other number of possibilities</span>
+          <span style="color:#777"># Keep track of the smallest set of possibilities.</span>
+          <span style="color:#777"># But don't bother if we're going to repeat this loop.</span>
+          <span style="color:#080;font-weight:bold">if</span> unchanged &amp;&amp; p.size &lt; min
+            min = p.size                    <span style="color:#777"># Current smallest size</span>
+            rmin, cmin, pmin = row, col, p  <span style="color:#777"># Note parallel assignment</span>
+          <span style="color:#080;font-weight:bold">end</span>
+        <span style="color:#080;font-weight:bold">end</span>
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
       
-    # Return the cell with the minimal set of possibilities.
-    # Note multiple return values.
-    return rmin, cmin, pmin
-  end
+    <span style="color:#777"># Return the cell with the minimal set of possibilities.</span>
+    <span style="color:#777"># Note multiple return values.</span>
+    <span style="color:#080;font-weight:bold">return</span> rmin, cmin, pmin
+  <span style="color:#080;font-weight:bold">end</span>
 
-  # Solve a Sudoku puzzle using simple logic, if possible, but fall back
-  # on brute-force when necessary. This is a recursive method. It either
-  # returns a solution or raises an exception. The solution is returned
-  # as a new Puzzle object with no unknown cells. This method does not 
-  # modify the Puzzle it is passed. Note that this method cannot detect
-  # an under-constrained puzzle.
-  def Sudoku.solve(puzzle)
-    # Make a private copy of the puzzle that we can modify.
+  <span style="color:#777"># Solve a Sudoku puzzle using simple logic, if possible, but fall back</span>
+  <span style="color:#777"># on brute-force when necessary. This is a recursive method. It either</span>
+  <span style="color:#777"># returns a solution or raises an exception. The solution is returned</span>
+  <span style="color:#777"># as a new Puzzle object with no unknown cells. This method does not </span>
+  <span style="color:#777"># modify the Puzzle it is passed. Note that this method cannot detect</span>
+  <span style="color:#777"># an under-constrained puzzle.</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#036;font-weight:bold">Sudoku</span>.<span style="color:#06B;font-weight:bold">solve</span>(puzzle)
+    <span style="color:#777"># Make a private copy of the puzzle that we can modify.</span>
     puzzle = puzzle.dup
 
-    # Use logic to fill in as much of the puzzle as we can.
-    # This method mutates the puzzle we give it, but always leaves it valid.
-    # It returns a row, a column, and set of possible values at that cell.
-    # Note parallel assignment of these return values to three variables.
+    <span style="color:#777"># Use logic to fill in as much of the puzzle as we can.</span>
+    <span style="color:#777"># This method mutates the puzzle we give it, but always leaves it valid.</span>
+    <span style="color:#777"># It returns a row, a column, and set of possible values at that cell.</span>
+    <span style="color:#777"># Note parallel assignment of these return values to three variables.</span>
     r,c,p = scan(puzzle)
 
-    # If we solved it with logic, return the solved puzzle.
-    return puzzle if r == nil
+    <span style="color:#777"># If we solved it with logic, return the solved puzzle.</span>
+    <span style="color:#080;font-weight:bold">return</span> puzzle <span style="color:#080;font-weight:bold">if</span> r == <span style="color:#069">nil</span>
     
-    # Otherwise, try each of the values in p for cell [r,c].
-    # Since we're picking from a set of possible values, the guess leaves
-    # the puzzle in a valid state. The guess will either lead to a solution
-    # or to an impossible puzzle. We'll know we have an impossible
-    # puzzle if a recursive call to scan throws an exception. If this happens
-    # we need to try another guess, or re-raise an exception if we've tried
-    # all the options we've got.
-    p.each do |guess|        # For each value in the set of possible values
-      puzzle[r,c] = guess    # Guess the value
+    <span style="color:#777"># Otherwise, try each of the values in p for cell [r,c].</span>
+    <span style="color:#777"># Since we're picking from a set of possible values, the guess leaves</span>
+    <span style="color:#777"># the puzzle in a valid state. The guess will either lead to a solution</span>
+    <span style="color:#777"># or to an impossible puzzle. We'll know we have an impossible</span>
+    <span style="color:#777"># puzzle if a recursive call to scan throws an exception. If this happens</span>
+    <span style="color:#777"># we need to try another guess, or re-raise an exception if we've tried</span>
+    <span style="color:#777"># all the options we've got.</span>
+    p.each <span style="color:#080;font-weight:bold">do</span> |guess|        <span style="color:#777"># For each value in the set of possible values</span>
+      puzzle[r,c] = guess    <span style="color:#777"># Guess the value</span>
       
-      begin
-        # Now try (recursively) to solve the modified puzzle.
-        # This recursive invocation will call scan() again to apply logic
-        # to the modified board, and will then guess another cell if needed.
-        # Remember that solve() will either return a valid solution or 
-        # raise an exception.  
-        return solve(puzzle)  # If it returns, we just return the solution
-      rescue Impossible
-        next                  # If it raises an exception, try the next guess
-      end
-    end
+      <span style="color:#080;font-weight:bold">begin</span>
+        <span style="color:#777"># Now try (recursively) to solve the modified puzzle.</span>
+        <span style="color:#777"># This recursive invocation will call scan() again to apply logic</span>
+        <span style="color:#777"># to the modified board, and will then guess another cell if needed.</span>
+        <span style="color:#777"># Remember that solve() will either return a valid solution or </span>
+        <span style="color:#777"># raise an exception.  </span>
+        <span style="color:#080;font-weight:bold">return</span> solve(puzzle)  <span style="color:#777"># If it returns, we just return the solution</span>
+      <span style="color:#080;font-weight:bold">rescue</span> <span style="color:#036;font-weight:bold">Impossible</span>
+        <span style="color:#080;font-weight:bold">next</span>                  <span style="color:#777"># If it raises an exception, try the next guess</span>
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
 
-    # If we get here, then none of our guesses worked out
-    # so we must have guessed wrong sometime earlier.
-    raise Impossible
-  end
-end
----------------------------
-</pre>
+    <span style="color:#777"># If we get here, then none of our guesses worked out</span>
+    <span style="color:#777"># so we must have guessed wrong sometime earlier.</span>
+    raise <span style="color:#036;font-weight:bold">Impossible</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+</pre></div>
+</div>
+</div>
+
+  </div>
 </body>
 </html>

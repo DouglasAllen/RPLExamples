@@ -1,9 +1,12 @@
 
 The Ruby Programming Language
+
 CHAPTER 2
+
 The Structure and Execution of Ruby Programs
 
 2.1.1 Comments
+
 ```ruby
 # This entire line is a comment
 x = "#This is a string"               # And this is a comment
@@ -15,6 +18,7 @@ y = /#This is a regular expression/   # Here's another comment
 #
 ```
 2.1.1.1 Embedded documents
+
 ```ruby
 =begin Someone needs to fix the broken code below!
     <emphasis>Any code here is commented out</emphasis>
@@ -25,6 +29,7 @@ y = /#This is a regular expression/   # Here's another comment
 # =end
 ```
 2.1.1.2 Documentation comments
+
 ```ruby
 #
 # Rdoc comments use a simple markup grammar like those used in wikis.
@@ -74,6 +79,7 @@ y = /#This is a regular expression/   # Here's another comment
 # 
 ```
 2.1.2 Literals
+
 ```ruby
 1                      # An integer literal
 1.0                    # A floating-point literal
@@ -82,6 +88,7 @@ y = /#This is a regular expression/   # Here's another comment
 /three/                # A regular expression literal
 ```
 2.1.4 Identifiers
+
 ```ruby
 i
 x2
@@ -90,12 +97,14 @@ _internal    # Identifiers may begin with underscores
 PI           # Constant
 ```
 2.1.4.2 Unicode characters in identifiers
+
 ```ruby
 def &#xD7;(x,y)  # The name of this method is the Unicode multiplication sign
   x*y       # The body of this method multiplies its arguments
 end         
 ```
 2.1.4.3 Punctuation in identifiers
+
 ```ruby
 $files          # A global variable
 @data           # An instance variable
@@ -190,6 +199,7 @@ extend         is_a?          send
            
 
 2.1.6.1 Newlines as statement terminators
+
 ```ruby
 total = x +     # Incomplete expression, parsing continues
   y
@@ -207,11 +217,13 @@ animals = Array.new
   .sort
 ```
 2.1.6.2 Spaces and method invocations
+
 ```ruby
 f(3+2)+1
 f (3+2)+1
 ```
 2.2 Syntactic Structure
+
 ```ruby
 [1,2,3]                # An Array literal
 {1=>"one", 2=>"two"}   # A Hash literal
@@ -232,6 +244,7 @@ while x < 10 do  # While this expression is true...
 end              # Marks the end of the loop
 
 2.2.1 Block Structure in Ruby
+
 ```ruby
 3.times { print "Ruby! " }
 
@@ -252,6 +265,7 @@ module Stats                          # A module
 end                                   # End the module body
 ```
 2.3 File Structure
+
 ```ruby
 #!/usr/bin/ruby -w          <lineannotation>shebang comment</lineannotation>
 # -*- coding: utf-8 -*-     <lineannotation>coding comment</lineannotation>
@@ -263,6 +277,7 @@ __END__                     <lineannotation>mark end of code</lineannotation>
   ...                       <lineannotation>program data goes here</lineannotation>
 ```
 2.4.1 Specifying Program Encoding
+
 ```ruby
 # coding: utf-8
 
@@ -274,6 +289,7 @@ __END__                     <lineannotation>mark end of code</lineannotation>
 # coding: utf-8
 ```
 2.4.2 Source Encoding and Default External Encoding
+
 ```ruby
 ruby -E utf-8            # Encoding name follows -E
 ruby -Eutf-8             # The space is optional
