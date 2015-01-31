@@ -273,7 +273,7 @@ ri Hash#each
 ri Math::sqrt
 
 1.2.5 Ruby Package Management with gem
-```ruby
+
 gem install rails
 
 Successfully installed activesupport-1.4.4
