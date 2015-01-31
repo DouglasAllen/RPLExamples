@@ -282,8 +282,9 @@ $ irb --simple-prompt       # Start irb from the terminal
 # => 1                        # The return value of 1.upto(3)
 quit                     # Exit irb
 ```
-$                           # Back to the terminal prompt
 ```rdoc
+$                           # Back to the terminal prompt
+```
 
 #### 1.2.4 Viewing Ruby Documentation with ri
 
