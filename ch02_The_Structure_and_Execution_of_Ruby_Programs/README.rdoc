@@ -33,11 +33,21 @@
 
 1. Numbered lists begin with numbers.
     # 1. Numbered lists begin with numbers.
+
 99. Any number will do; they don't have to be sequential.
+
     # 99. Any number will do; they don't have to be sequential.
+
 1. There is no way to do nested lists.
+
     # 1. There is no way to do nested lists.
 
 # The terms of a description list are bracketed:
+
 [item 1]  This is a description of item 1
+
+    # [item 1]  This is a description of item 1
+
 [item 2]  This is a description of item 2
+
+    # [item 2]  This is a description of item 2
