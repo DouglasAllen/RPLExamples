@@ -24,16 +24,19 @@
 
 # List items begin with * or -. Indicate fonts with punctuation or HTML:
 
-              # * _italic_ or <i>multi-word italic</i>
 * _italic_ or <i>multi-word italic</i>
-              # * *bold* or <b>multi-word bold</b>
+    # * _italic_ or <i>multi-word italic</i>
 * *bold* or <b>multi-word bold</b>
-              # * +code+ or <tt>multi-word code</tt>
+    # * *bold* or <b>multi-word bold</b>
 * +code+ or <tt>multi-word code</tt>
- 
+    # * +code+ or <tt>multi-word code</tt>
+
 1. Numbered lists begin with numbers.
+    # 1. Numbered lists begin with numbers.
 99. Any number will do; they don't have to be sequential.
+    # 99. Any number will do; they don't have to be sequential.
 1. There is no way to do nested lists.
+    # 1. There is no way to do nested lists.
 
 # The terms of a description list are bracketed:
 [item 1]  This is a description of item 1
