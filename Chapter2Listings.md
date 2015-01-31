@@ -25,42 +25,54 @@ y = /#This is a regular expression/   # Here's another comment
 # =end
 ```
 2.1.1.2 Documentation comments
-```ruby
+
 #
 # Rdoc comments use a simple markup grammar like those used in wikis.
 # 
 # Separate paragraphs with a blank line.
 # 
 # = Headings
+= Headings
 # 
 # Headings begin with an equals sign
 # 
 # == Sub-Headings
+== Sub-Headings
 # The line above produces a subheading.
 # === Sub-Sub-Heading
+=== Sub-Sub-Heading
 # And so on.
 # 
 # = Examples
+= Examples
 # 
 #   Indented lines are displayed verbatim in code font.
 #     Be careful not to indent your headings and lists, though.
 # 
 # = Lists and Fonts
+= Lists and Fonts
 # 
 # List items begin with * or -. Indicate fonts with punctuation or HTML:
 # * _italic_ or <i>multi-word italic</i>
+* _italic_ or <i>multi-word italic</i>
 # * *bold* or <b>multi-word bold</b>
+* *bold* or <b>multi-word bold</b>
 # * +code+ or <tt>multi-word code</tt>
+* +code+ or <tt>multi-word code</tt>
 # 
 # 1. Numbered lists begin with numbers.
 # 99. Any number will do; they don't have to be sequential.
+99. Any number will do; they don't have to be sequential.
 # 1. There is no way to do nested lists.
+1. There is no way to do nested lists.
 # 
 # The terms of a description list are bracketed:
 # [item 1]  This is a description of item 1
+[item 1]  This is a description of item 1
 # [item 2]  This is a description of item 2
+[item 2]  This is a description of item 2
 # 
-```
+
 2.1.2 Literals
 ```ruby
 1                      # An integer literal
