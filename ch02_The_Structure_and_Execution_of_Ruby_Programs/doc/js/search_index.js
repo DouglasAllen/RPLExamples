@@ -1,1 +1,0 @@
-var search_data = {"index":{"searchIndex":["readme"],"longSearchIndex":[""],"info":[["README","","README_txt.html","","<p># Rdoc comments use a simple markup grammar like those used in wikis.\n<p># Separate paragraphs with a blank …\n"]]}}
