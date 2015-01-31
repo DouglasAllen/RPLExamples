@@ -30,7 +30,7 @@ y = /#This is a regular expression/   # Here's another comment
 ```
 2.1.1.2 Documentation comments
 
-```ruby
+```rdoc
 #
 # Rdoc comments use a simple markup grammar like those used in wikis.
 # 
@@ -66,6 +66,7 @@ y = /#This is a regular expression/   # Here's another comment
 * +code+ or <tt>multi-word code</tt>
 # 
 # 1. Numbered lists begin with numbers.
+1. Numbered lists begin with numbers.
 # 99. Any number will do; they don't have to be sequential.
 99. Any number will do; they don't have to be sequential.
 # 1. There is no way to do nested lists.
