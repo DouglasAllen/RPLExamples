@@ -1,7 +1,9 @@
+# The Ruby Programming Language
 
-The Ruby Programming Language
-CHAPTER 4
-Expressions and Operators
+## CHAPTER 4
+
+### Expressions and Operators
+
 ```ruby
 2                  # A numeric literal
 x                  # A local variable reference
@@ -9,18 +11,24 @@ Math.sqrt(2)       # A method invocation
 x = Math.sqrt(2)   # Assignment
 x*x                # Multiplication with the * operator
 ```
-4.2 Variable References
+
+#### 4.2 Variable References
+
 ```ruby
 one = 1.0     # This is an assignment expression
 one           # This variable reference expression evaluates to 1.0
 ```
-4.2.1 Uninitialized Variables
+
+#### 4.2.1 Uninitialized Variables
+
 ```ruby
 a = 0.0 if false    # This assignment is never executed
 print a             # Prints nil: the variable exists but is not assigned
 print b             # NameError: no variable or method named b exists
 ```
-4.3 Constant References
+
+#### 4.3 Constant References
+
 ```ruby
 CM_PER_INCH = 2.54  # Define a constant.
 CM_PER_INCH         # Refer to the constant. Evaluates to 2.54.
@@ -32,7 +40,9 @@ Conversions::Area::HECTARES_PER_ACRE
 
 ::ARGV      # The global constant ARGV
 ```
-4.4 Method Invocations
+
+#### 4.4 Method Invocations
+
 ```ruby
 puts "hello world"  # "puts" invoked on self, with one string arg
 Math.sqrt(2)        # "sqrt" invoked on object Math with one arg
@@ -50,7 +60,9 @@ a.[](0)
 
 x
 ```
-4.5 Assignments
+
+#### 4.5 Assignments
+
 ```ruby
 x = 1     # Set the lvalue x to the value 1
 
@@ -66,7 +78,9 @@ Math.sqrt(2)
 x = 1       # Affects the value of other expressions that use x
 x += 1      # Returns a different value each time it is evaluated
 ```
-4.5.1 Assigning to Variables
+
+#### 4.5.1 Assigning to Variables
+
 ```ruby
 point.x, point.y = 1, 2
 
@@ -87,11 +101,15 @@ class Ambiguous
   end
 end
 ```
-4.5.2 Assigning to Constants
+
+#### 4.5.2 Assigning to Constants
+
 ```ruby
 N = 100 if false
 ```
-4.5.3 Assigning to Attributes and Array Elements
+
+#### 4.5.3 Assigning to Attributes and Array Elements
+
 ```ruby
 o.m = v
 
@@ -102,7 +120,9 @@ o.[]=(x,y)
 o[x,y] = z
 o.[]=(x,y,z)
 ```
-4.5.4 Abbreviated Assignment
+
+#### 4.5.4 Abbreviated Assignment
+
 ```ruby
 x += 1
 
@@ -118,33 +138,43 @@ results ||= []
 
 results = results || []
 ```
-4.5.5.1 Same number of lvalues and rvalues
+
+#### 4.5.5.1 Same number of lvalues and rvalues
+
 ```ruby
 x, y, z = 1, 2, 3   # x=1; y=2; z=3
 
 x,y = y,x     # Parallel: swap the value of two variables
 x = y; y = x  # Sequential: both variables have same value
 ```
-4.5.5.2 One lvalue, multiple rvalues
+
+#### 4.5.5.2 One lvalue, multiple rvalues
+
 ```ruby
 x = 1, 2, 3      # x = [1,2,3]
 
 x, = 1, 2, 3     # x = 1; other values are discarded
 ```
-4.5.5.3 Multiple lvalues, single array rvalue
+
+#### 4.5.5.3 Multiple lvalues, single array rvalue
+
 ```ruby
 x, y, z = [1, 2, 3]  # Same as x,y,z = 1,2,3
 
 x = [1,2]    # x becomes [1,2]: this is not parallel assignment
 x, = [1,2]   # x becomes 1: the trailing comma makes it parallel
 ```
-4.5.5.4 Different numbers of lvalues and rvalues
+
+#### 4.5.5.4 Different numbers of lvalues and rvalues
+
 ```ruby
 x, y, z = 1, 2  # x=1; y=2; z=nil
 
 x, y = 1, 2, 3 # x=1; y=2; 3 is not assigned anywhere
 ```
-4.5.5.5 The splat operator
+
+#### 4.5.5.5 The splat operator
+
 ```ruby
 x, y, z = 1, *[2,3]  # Same as x,y,z = 1,2,3
 
@@ -161,7 +191,9 @@ x,*y = 1        # x=1; y=[]
 
 x, y, *z = 1, *[2,3,4]  # x=1; y=2; z=[3,4].
 ```
-4.5.5.6 Parentheses in parallel assignment
+
+#### 4.5.5.6 Parentheses in parallel assignment
+
 ```ruby
 x,(y,z) = a, b
 
@@ -174,7 +206,9 @@ x,(y,z) = 1,[2,3]           # Parens: x=1;y=2;z=3
 a,b,c,d = [1,[2,[3,4]]]     # No parens: a=1;b=[2,[3,4]];c=d=nil
 a,(b,(c,d)) = [1,[2,[3,4]]] # Parens: a=1;b=2;c=3;d=4
 ```
-4.5.5.7 The value of parallel assignment
+
+#### 4.5.5.7 The value of parallel assignment
+
 ```ruby
 puts x,y=1,2
 
@@ -182,7 +216,9 @@ puts (x,y=1,2)
 
 puts((x,y=1,2))
 ```
-4.6 Operators
+
+#### 4.6 Operators
+
 ```ruby
 2 * Math.sqrt(2) < limit
 
@@ -190,6 +226,7 @@ puts((x,y=1,2))
 
 (1 + 2) * 3   # => 9
 ```
+```rdoc
 $> irb
  
 help
@@ -204,8 +241,10 @@ ri String.*
 **= *= /= %= += -=
 <<= >>=
 &&= &= ||= |= ^=
+```
 
-4.6.4 Shift and Append: << and >>
+#### 4.6.4 Shift and Append: << and >>
+
 ```ruby
 (0b1011 << 1).to_s(2)   # => "10110"   11 << 1 => 22
 (0b10110 >> 2).to_s(2)  # => "101"     22 >> 2 => 5
@@ -216,7 +255,9 @@ message << " world"      # Append to the string
 messages << message      # Append message to the array
 STDOUT << message        # Print the message to standard output stream
 ```
-4.6.5 Complement, Union, Intersection: ~, &, |, and ^
+
+#### 4.6.5 Complement, Union, Intersection: ~, &, |, and ^
+
 ```ruby
 (0b1010 & 0b1100).to_s(2)  # => "1000"
 
@@ -224,7 +265,9 @@ STDOUT << message        # Print the message to standard output stream
 
 (0b1010 ^ 0b1100).to_s(2)  # => "110"
 ```
-4.6.6 Comparison: <, <=, >, >=, and <=>
+
+#### 4.6.6 Comparison: <, <=, >, >=, and <=>
+
 ```ruby
 # Declare class A as a subclass of B
 class A < B
@@ -235,7 +278,9 @@ Object > Numeric       # true: Object is more general than Numeric
 Numeric < Integer      # false: Numeric is not more specialized than Integer
 String < Numeric       # nil: String and Numeric are not related
 ```
-4.6.8 Boolean Operators: &&, ||, !, and, or, not
+
+#### 4.6.8 Boolean Operators: &&, ||, !, and, or, not
+
 ```ruby
 x == 0 && y > 1
 
@@ -281,7 +326,9 @@ if a = f(x) and b = f(y) and c = f(z) then d = g(a,b,c) end
 x || y && nil        # && is performed first   => x
 x or y and nil       # evaluated left-to-right => nil 
 ```
-4.6.9 Ranges and Flip-Flops: .. and ...
+
+#### 4.6.9 Ranges and Flip-Flops: .. and ...
+
 ```ruby
 x+1..x*x
 
@@ -289,7 +336,9 @@ Range.new(x,y)
 
 Range.new(x,y,true)
 ```
-4.6.9.1 Boolean flip-flops
+
+#### 4.6.9.1 Boolean flip-flops
+
 ```ruby
 (1..10).each {|x| print x if x==3..x==5 }
 
@@ -332,7 +381,9 @@ end
 (1..10).each {|x| print x if x==3...x>=3 }  # Prints "34" 
 (1..10).each {|x| print x if flipflop2(x) } # Prints "34" 
 ```
-4.6.10 Conditional: ?:
+
+#### 4.6.10 Conditional: ?:
+
 ```ruby
 "You have #{n} #{n==1 ? 'message' : 'messages'}"
 
@@ -348,12 +399,16 @@ a ? b : (c ? d : e)  # is evaluated like this..
 max = x>y ? x>z ? x : z : y>z ? y : z
 max = x>y ? (x>z ? x : z) : (y>z ? y : z)  # With explicit parentheses
 ```
-4.6.11 Assignment Operators
+
+#### 4.6.11 Assignment Operators
+
 ```ruby
 x = y = z = 0      # Assign zero to variables x, y, and z
 x = (y = (z = 0))  # This equivalent expression shows order of evaluation
 ```
-4.6.12 The defined? Operator
+
+#### 4.6.12 The defined? Operator
+
 ```ruby
 # Compute f(x), but only if f and x are both defined
 y = f(x) if defined? f(x)
@@ -361,7 +416,9 @@ y = f(x) if defined? f(x)
 defined? a and defined? b    # This works
 defined? a && defined? b     # Evaluated as: defined?((a && defined? b))
 ```
-4.6.13 Statement Modifiers
+
+#### 4.6.13 Statement Modifiers
+
 ```ruby
 print x if x
 ```
