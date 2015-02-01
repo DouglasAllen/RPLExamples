@@ -1,23 +1,25 @@
-```ruby
-The Ruby Programming Language
-CHAPTER 9
-The Ruby Platform
----------------------------
-9.1 Strings
+# The Ruby Programming Language
 
+## CHAPTER 9
+
+### The Ruby Platform
+
+#### 9.1 Strings
+
+```ruby
 s = "hello"
 s.concat(" world")    # Synonym for <<. Mutating append to s. Returns new s.
 s.insert(5, " there") # Same as s[5] = " there". Alters s. Returns new s.
 s.slice(0,5)          # Same as s[0,5]. Returns a substring.
 s.slice!(5,6)         # Deletion. Same as s[5,6]="". Returns deleted substring.
 s.eql?("hello world") # True. Same as ==.
----------------------------
+###########################
 s.length         # => 5: counts characters in 1.9, bytes in 1.8
 s.size           # => 5: size is a synonym
 s.bytesize       # => 5: length in bytes; Ruby 1.9 only
 s.empty?         # => false
 "".empty?        # => true
----------------------------
+###########################
 s = "hello"
 # Finding the position of a substring or pattern match
 s.index('l')         # => 2: index of first l in string
@@ -62,7 +64,7 @@ s.sub!(/(.)(.)/, "\\2\\1") # => "hello": Double backslashes for double quotes
 # sub and gsub can also compute a replacement string with a block
 # Match the first letter of each word and capitalize it
 "hello world".gsub(/\b./) {|match| match.upcase } # => "Hello World"
----------------------------
+###########################
 # Case modification methods
 s = "world"   # These methods work with ASCII characters only
 s.upcase      # => "WORLD"
@@ -76,7 +78,7 @@ s.swapcase    # => "wORLD": alter case of each letter
 # casecmp works like <=> and returns -1 for less, 0 for equal, +1 for greater
 "world".casecmp("WORLD")  # => 0 
 "a".casecmp("B")          # => -1 (<=> returns 1 in this case)
----------------------------
+###########################
 s = "hello\r\n"      # A string with a line terminator
 s.chomp!             # => "hello": remove one line terminator from end
 s.chomp              # => "hello": no line terminator so no change
@@ -107,7 +109,7 @@ s.rjust(3)          # => "  x"
 s.center(3)         # => " x "
 s.center(5, '-')    # => "--x--": padding other than space are allowed
 s.center(7, '-=')   # => "-=-x-=-": multicharacter padding allowed
----------------------------
+###########################
 s = "A\nB"                       # Three ASCII characters on two lines
 s.each_byte {|b| print b, " " }  # Prints "65 10 66 "
 s.each_line {|l| print l.chomp}  # Prints "AB"
@@ -125,7 +127,7 @@ s.each_char { |c| print c, " " } # Prints "A \n B "
 s.bytes.to_a                     # => [65,10,66]: alias for each_byte
 s.lines.to_a                     # => ["A\n","B"]: alias for each_line
 s.chars.to_a                     # => ["A", "\n", "B"] alias for each_char
----------------------------
+###########################
 "10".to_i          # => 10: convert string to integer
 "10".to_i(2)       # => 2: argument is radix: between base-2 and base-36
 "10x".to_i         # => 10: nonnumeric suffix is ignored. Same for oct, hex
@@ -139,7 +141,7 @@ s.chars.to_a                     # => ["A", "\n", "B"] alias for each_char
 
 "one".to_sym       # => :one -- string to symbol conversion
 "two".intern       # => :two -- intern is a synonym for to_sym
----------------------------
+###########################
 # Increment a string:
 "a".succ                      # => "b": the successor of "a". Also, succ!
 "aaz".next                    # => "aba": next is a synonym. Also, next!
@@ -172,12 +174,14 @@ s.chars.to_a                     # => ["A", "\n", "B"] alias for each_char
 # Arguments that begin with ^ are negated.
 "hello".count('a-z', '^aeiou')   # => 3: count lowercase consonants
 "hello".delete('a-z', '^aeiou')  # => "eo: delete lowercase consonants
----------------------------
-9.1.1 Formatting Text
+```
 
+#### 9.1.1 Formatting Text
+
+```ruby
 n, animal = 2, "mice"
 "#{n+1} blind #{animal}"  # => '3 blind mice'
----------------------------
+###########################
 # Alternatives to the interpolation above
 printf('%d blind %s', n+1, animal)  # Prints '3 blind mice', returns nil
 sprintf('%d blind %s', n+1, animal) # => '3 blind mice'
@@ -216,9 +220,11 @@ args = ['Syntax Error', 'test.rb', 20]  # An array of arguments
 "%s: in '%s' line %d" % args    # => "Syntax Error: in 'test.rb' line 20" 
 # Same args, interpolated in different order!  Good for internationalization.
 "%2$s:%3$d: %1$s" % args        # => "test.rb:20: Syntax Error"
----------------------------
-9.1.2 Packing and Unpacking Binary Strings
+```
 
+#### 9.1.2 Packing and Unpacking Binary Strings
+
+```ruby
 a = [1,2,3,4,5,6,7,8,9,10]  # An array of 10 integers
 b = a.pack('i10')           # Pack 10 4-byte integers (i) into binary string b
 c = b.unpack('i*')          # Decode all (*) the 4-byte integers from b
@@ -229,45 +235,51 @@ data = [m.size, m]          # Length first, then the bytes
 template = 'Sa*'            # Unsigned short, any number of ASCII chars
 b = data.pack(template)     # => "\v\000hello world"
 b.unpack(template)          # => [11, "hello world"]
----------------------------
-9.2.1 Regexp Literals
+```
 
+#### 9.2.1 Regexp Literals
+
+```ruby
 /Ruby?/  # Matches the text "Rub" followed by an optional "y"
----------------------------
+###########################
 /ruby?/i  # Case-insensitive: matches "ruby" or "RUB", etc.
 /./mu     # Matches Unicode characters in Multiline mode
----------------------------
+###########################
 %r|/|         # Matches a single slash character, no escape required
 %r[</(.*)>]i  # Flag characters are allowed with this syntax, too
----------------------------
+###########################
 /\(\)/     # Matches open and close parentheses
 /\\/       # Matches a single backslash
----------------------------
+###########################
 money = /[$\u20AC\u{a3}\u{a5}]/ # match dollar,euro,pound, or yen sign
----------------------------
+###########################
 prefix = ","
 /#{prefix}\t/   # Matches a comma followed by an ASCII TAB character
----------------------------
+###########################
 [1,2].map{|x| /#{x}/}   # => [/1/, /2/]
 [1,2].map{|x| /#{x}/o}  # => [/1/, /1/]
----------------------------
-9.2.2 Regexp Factory Methods
+```
 
+#### 9.2.2 Regexp Factory Methods
+
+```ruby
 Regexp.new("Ruby?")                          # /Ruby?/
 Regexp.new("ruby?", Regexp::IGNORECASE)      # /ruby?/i
 Regexp.compile(".", Regexp::MULTILINE, "u")  # /./mu
----------------------------
+###########################
 pattern = "[a-z]+"                # One or more letters
 suffix = Regexp.escape("()")      # Treat these characters literally
 r = Regexp.new(pattern + suffix)  # /[a-z]+\(\)/
----------------------------
+###########################
 # Match any one of five language names.
 pattern = Regexp.union("Ruby", "Perl", "Python", /Java(Script)?/)
 # Match empty parens, brackets, or braces. Escaping is automatic:
 Regexp.union("()", "[]", "{}")   # => /\(\)|\[\]|\{\}/
----------------------------
-9.2.3 Regular Expression Syntax
+```
 
+#### 9.2.3 Regular Expression Syntax
+
+```ruby
 # Literal characters
 /ruby/             # Match "ruby". Most characters simply match themselves.
 /&#xA5;/                # Matches Yen sign. Multibyte characters are suported
@@ -351,20 +363,22 @@ Regexp.union("()", "[]", "{}")   # => /\(\)|\[\]|\{\}/
    (uby)+ # Followed by one or more "uby"s
    \      # Use backslash for a nonignored space
 /x                 # Closing delimiter. Don't forget the x option!
----------------------------
-9.2.4 Pattern Matching with Regular Expressions
+```
 
+#### 9.2.4 Pattern Matching with Regular Expressions
+
+```ruby
 pattern = /Ruby?/i      # Match "Rub" or "Ruby", case-insensitive
 pattern =~ "backrub"    # Returns 4.
 "rub ruby" =~ pattern   # 0
 pattern =~ "r"          # nil
----------------------------
+###########################
 "hello" =~ /e\w{2}/     # 1: Match an e followed by 2 word characters
 $~.string               # "hello": the complete string
 $~.to_s                 # "ell": the portion that matched
 $~.pre_match            # "h": the portion before the match
 $~.post_match           # "o": the portion after the match
----------------------------
+###########################
 # This is a pattern with three subpatterns
 pattern = /(Ruby|Perl)(\s+)(rocks|sucks)!/ 
 text = "Ruby\trocks!"     # Text that matches the pattern    
@@ -386,7 +400,7 @@ data.begin(0)             # => 0: start index of entire match
 data.begin(2)             # => 4: start index of second subpattern
 data.end(2)               # => 5: end index of second subpattern
 data.offset(3)            # => [5,10]: start and end of third subpattern
----------------------------
+###########################
 # Ruby 1.9 only
 pattern = /(?<lang>Ruby|Perl) (?<ver>\d(\.\d)+) (?<review>rocks|sucks)!/ 
 if (pattern =~ "Ruby 1.9.1 rocks!")
@@ -398,64 +412,68 @@ end
 # Names of capturing groups and a map of group names to group numbers
 pattern.names          # => ["lang", "ver", "review"]
 pattern.named_captures # => {"lang"=>[1],"ver"=>[2],"review"=>[3]}
----------------------------
+###########################
 # Ruby 1.9 only
 if /(?<lang>\w+) (?<ver>\d+\.(\d+)+) (?<review>\w+)/ =~ "Ruby 1.9 rules!"
   lang     # => "Ruby"
   ver      # => "1.9"
   review   # => "rules"
 end
----------------------------
+###########################
 if data = pattern.match(text)  # Or: data = text.match(pattern)
   handle_match(data)
 end
----------------------------
+###########################
 pattern.match(text) {|data| handle_match(data) }
----------------------------
-9.2.4.2 Pattern matching with strings
+```
 
+#### 9.2.4.2 Pattern matching with strings
+
+```ruby
 "ruby123"[/\d+/]              # "123"
 "ruby123"[/([a-z]+)(\d+)/,1]  # "ruby"
 "ruby123"[/([a-z]+)(\d+)/,2]  # "123"
----------------------------
+###########################
 r = "ruby123"
 r.slice!(/\d+/)  # Returns "123", changes r to "ruby"
----------------------------
+###########################
 s = "one, two, three"
 s.split            # ["one,","two,","three"]: whitespace delimiter by default
 s.split(", ")      # ["one","two","three"]: hardcoded delimiter
 s.split(/\s*,\s*/) # ["one","two","three"]: space is optional around comma
----------------------------
+###########################
 text = "hello world"
 pattern = /l/
 first = text.index(pattern)       # 2: first match starts at char 2
 n = Regexp.last_match.end(0)      # 3: end position of first match
 second = text.index(pattern, n)   # 3: search again from there
 last = text.rindex(pattern)       # 9: rindex searches backward from end
----------------------------
-9.2.4.3 Search and replace
+```
 
+#### 9.2.4.3 Search and replace
+
+```ruby
 phone = gets                    # Read a phone number
 phone.sub!(/#.*$/, "")          # Delete Ruby-style comments
 phone.gsub!(/\D/, "")           # Remove anything other than digits
----------------------------
+###########################
 text.gsub!("rails", "Rails")     # Change "rails" to "Rails" throughout
----------------------------
+###########################
 text.gsub!(/\brails\b/, "Rails") # Capitalize the word "Rails" throughout
----------------------------
+###########################
 text.gsub(/\bruby\b/i, '<b>\0</b>')
----------------------------
+###########################
 text.gsub(/\bruby\b/i, "<b>#{$&}</b>")
----------------------------
+###########################
 # Strip pairs of quotes from a string
 re = /(?<quote>['"])(?<body>[^'"]*)\k<quote>/
 puts "These are 'quotes'".gsub(re, '\k<body>')
----------------------------
+###########################
 # Use consistent capitalization for the names of programming languages
 text = "RUBY Java perl PyThOn"         # Text to modify
 lang = /ruby|java|perl|python/i        # Pattern to match
 text.gsub!(lang) {|l| l.capitalize }   # Fix capitalization
----------------------------
+###########################
 pattern = /(['"])([^\1]*)\1/   # Single- or double-quoted string
 text.gsub!(pattern) do
   if ($1 == '"')   # If it was a double-quoted string
@@ -464,9 +482,11 @@ text.gsub!(pattern) do
     "\"#$2\""      # replace with double-quoted
   end
 end
----------------------------
-9.3.1 Numeric Methods
+```
 
+#### 9.3.1 Numeric Methods
+
+```ruby
 # General Predicates
 0.zero?        # => true (is this number zero?)
 1.0.zero?      # => false
@@ -497,7 +517,7 @@ NAN.infinite?  # => nil
 ZERO.nan?      # => false: is this number not-a-number?
 INF.nan?       # => false
 NAN.nan?       # => true
----------------------------
+###########################
 # Rounding methods
 1.1.ceil     # =>  2: ceiling: smallest integer >= its argument
 -1.1.ceil    # => -1: ceiling: smallest integer >= its argument
@@ -508,7 +528,7 @@ NAN.nan?       # => true
 -0.5.round   # => -1: or round toward negative infinity
 1.1.truncate # =>  1: chop off fractional part: round toward zero
 -1.1.to_i    # => -1: synonym for truncate
----------------------------
+###########################
 # Absolute value and sign
 -2.0.abs     # => 2.0: absolute value
 -2.0<=>0.0   # => -1: use <=> operator to compute sign of a number
@@ -517,9 +537,11 @@ NAN.nan?       # => true
 Float::MAX     # => 1.79769313486232e+308: may be platform dependent
 Float::MIN     # => 2.2250738585072e-308
 Float::EPSILON # => 2.22044604925031e-16: difference between adjacent floats
----------------------------
-9.3.2 The Math Module
+```
 
+#### 9.3.2 The Math Module
+
+```ruby
 # Constants
 Math::PI               # => 3.14159265358979
 Math::E                # => 2.71828182845905
@@ -555,9 +577,11 @@ x = ldexp(f, e)        # => 1024: compute x = f*2**e
 # Error function
 erf(0.0)               # => 0.0: error function
 erfc(0.0)              # => 1.0: 1-erf(x): complementary error function
----------------------------
-9.3.3 Decimal Arithmetic
+```
 
+#### 9.3.3 Decimal Arithmetic
+
+```ruby
 require "bigdecimal"      # Load standard library
 dime = BigDecimal("0.1")  # Pass a string to constructor, not a Float
 4*dime-3*dime == dime     # true with BigDecimal, but false if we use Float
@@ -575,9 +599,11 @@ x = (interest+1)**payments        # Note exponentiation with BigDecimal
 monthly = (principal * interest * x)/(x-1)  # Compute monthly payment
 monthly = monthly.round(2)        # Round to two decimal places
 monthly = monthly.to_s("f")       # Convert to human-readable string
----------------------------
-9.3.4 Complex Numbers
+```
 
+#### 9.3.4 Complex Numbers
+
+```ruby
 require "complex"           # Complex is part of the standard library
 c = Complex(0.5,-0.2)       # .5-.2i.  
 z = Complex.new(0.0, 0.0)   # Complex.new also works, but is not required
@@ -586,9 +612,11 @@ magnitude = z.abs           # Magnitude of a complex number
 x = Math.sin(z)             # Trig functions work with Complex numbers
 Math.sqrt(-1.0).to_s        # => "1.0i": square root of -1
 Math.sqrt(-1.0)==Complex::I # => true
----------------------------
-9.3.5 Rational Numbers
+```
 
+#### 9.3.5 Rational Numbers
+
+```ruby
 require "rational"           # Load the library
 penny = Rational(1, 100)     # A penny is 1/100th
 require "mathn"              # Makes integer division produce Rational values
@@ -597,9 +625,11 @@ dime = 10/100
 quarter = 1/4
 change = 2*quarter + 3*penny # Rational result: 53/100
 (1/2 * 1/3).to_s             # "1/6": mathn prints Rationals as fractions
----------------------------
-9.3.6 Vectors and Matrices
+```
 
+#### 9.3.6 Vectors and Matrices
+
+```ruby
 require "matrix"
 
 # Represent the point (1,1) as the vector [1,1]
@@ -622,21 +652,25 @@ rotate*unit            # [-1.0, 1.0]: 90 degree rotation
 
 # Two transformations in one
 scale * (rotate*unit)  # [-2.0, 3.0]
----------------------------
-9.3.7 Random Numbers
+```
 
+#### 9.3.7 Random Numbers
+
+```ruby
 rand       # => 0.964395196505186
 rand       # => 0.390523655919935
 rand(100)  # => 81
 rand(100)  # => 32
----------------------------
+###########################
 srand(0)                # Known seed
 [rand(100),rand(100)]   # => [44,47]: pseudorandom sequence
 srand(0)                # Reset the seed to repeat the sequence
 [rand(100),rand(100)]   # => [44,47]
----------------------------
-9.4 Dates and Times
+```
 
+#### 9.4 Dates and Times
+
+```ruby
 # Creating Time objects
 Time.now        # Returns a time object that represents the current time
 Time.new        # A synonym for Time.now
@@ -761,115 +795,127 @@ t = Time.now.to_i    # => 1184036194 seconds since epoch
 Time.at(t)           # => seconds since epoch to Time object
 t = Time.now.to_f    # => 1184036322.90872: includes 908720 microseconds
 Time.at(0)           # => Wed Dec 31 16:00:00 -0800 1969: epoch in local time
----------------------------
-9.5.1.1 Iterating and converting collections
+```
 
+#### 9.5.1.1 Iterating and converting collections
+
+```ruby
 (5..7).each {|x| print x }                 # Prints "567"
 (5..7).each_with_index {|x,i| print x,i }  # Prints "506172"
----------------------------
+###########################
 (1..10).each_slice(4) {|x| print x } # Prints "[1,2,3,4][5,6,7,8][9,10]"
----------------------------
+###########################
 (1..5).each_cons(3) {|x| print x }    # Prints "[1,2,3][2,3,4][3,4,5]"
----------------------------
+###########################
 data = [1,2,3,4]                        # An enumerable collection
 roots = data.collect {|x| Math.sqrt(x)} # Collect roots of our data
 words = %w[hello world]                 # Another collection
 upper = words.map {|x| x.upcase }       # Map to uppercase
----------------------------
+###########################
 (1..3).zip([4,5,6]) {|x| print x.inspect } # Prints "[1,4][2,5][3,6]"
 (1..3).zip([4,5,6],[7,8]) {|x| print x}    # Prints "14725836"
 (1..3).zip('a'..'c') {|x,y| print x,y }    # Prints "1a2b3c"
----------------------------
+###########################
 (1..3).to_a       # => [1,2,3]
 (1..3).entries    # => [1,2,3]
----------------------------
+###########################
 require 'set'
 (1..3).to_set     # => #<Set: {1, 2, 3}>
----------------------------
-9.5.1.2 Enumerators and external iterators
+```
 
+#### 9.5.1.2 Enumerators and external iterators
+
+```ruby
 e = [1..10].to_enum              # Uses Range.each
 e = "test".enum_for(:each_byte)  # Uses String.each_byte
 e = "test".each_byte             # Uses String.each_byte
----------------------------
+###########################
 "Ruby".each_char.max       # => "y"; Enumerable method of Enumerator
 iter = "Ruby".each_char    # Create an Enumerator
 loop { print iter.next }   # Prints "Ruby"; use it as external iterator
 print iter.next            # Prints "R": iterator restarts automatically
 iter.rewind                # Force it to restart now
 print iter.next            # Prints "R" again
----------------------------
+###########################
 # print "0:R\n1:u\n2:b\n3:y\n"
 "Ruby".each_char.with_index.each {|c,i| puts "#{i}:#{c}" }
----------------------------
-9.5.1.3 Sorting collections
+```
 
+#### 9.5.1.3 Sorting collections
+
+```ruby
 w = Set['apple','Beet','carrot']  # A set of words to sort
 w.sort                         # ['Beet','apple','carrot']: alphabetical
 w.sort {|a,b| b<=>a }          # ['carrot','apple','Beet']: reverse
 w.sort {|a,b| a.casecmp(b) }   # ['apple','Beet','carrot']: ignore case
 w.sort {|a,b| b.size<=>a.size} # ['carrot','apple','Beet']: reverse length
----------------------------
+###########################
 # Case-insensitive sort
 words = ['carrot', 'Beet', 'apple']
 words.sort_by {|x| x.downcase}       # => ['apple', 'Beet', 'carrot']
----------------------------
-9.5.1.4 Searching collections
+```
 
+#### 9.5.1.4 Searching collections
+
+```ruby
 primes = Set[2, 3, 5, 7]
 primes.include? 2        # => true
 primes.member? 1         # => false
----------------------------
+###########################
 # Find the first subarray that includes the number 1
 data = [[1,2], [0,1], [7,8]]
 data.find {|x| x.include? 1}     # => [1,2]
 data.detect {|x| x.include? 3}   # => nil: no such element
----------------------------
+###########################
 data.find_index {|x| x.include? 1} # => 0: the first element matches
 data.find_index {|x| x.include? 3} # => nil: no such element
----------------------------
-9.5.1.5 Selecting subcollections
+```
 
+#### 9.5.1.5 Selecting subcollections
+
+```ruby
 (1..8).select {|x| x%2==0}    # => [2,4,6,8]: select even elements
 (1..8).find_all {|x| x%2==1}  # => [1,3,5,7]: find all odd elements
----------------------------
+###########################
 primes = [2,3,5,7]
 primes.reject {|x| x%2==0}  # => [3,5,7]: reject the even ones
----------------------------
+###########################
 (1..8).partition {|x| x%2==0}  # => [[2, 4, 6, 8], [1, 3, 5, 7]]
----------------------------
+###########################
 # Group programming languages by their first letter
 langs = %w[ java perl python ruby ]
 groups = langs.group_by {|lang| lang[0] }
 groups # => {"j"=>["java"], "p"=>["perl", "python"], "r"=>["ruby"]}
----------------------------
+###########################
 langs = %w[ java perl python ruby ]
 langs.grep(/^p/)                    # => [perl, python]: start with 'p'
 langs.grep(/^p/) {|x| x.capitalize} # => [Perl, Python]: fix caps
 data = [1, 17, 3.0, 4]
 ints = data.grep(Integer)           # => [1, 17, 4]: only integers
 small = ints.grep(0..9)             # [1,4]: only in range
----------------------------
+###########################
 p (1..5).first(2)      # => [1,2]
 p (1..5).take(3)       # => [1,2,3]
 p (1..5).drop(3)       # => [4,5]
----------------------------
+###########################
 [1,2,3,nil,4].take_while {|x| x }  # => [1,2,3]: take until nil
 [nil, 1, 2].drop_while {|x| !x }   # => [1,2]: drop leading nils
----------------------------
-9.5.1.6 Reducing collections
+```
 
+#### 9.5.1.6 Reducing collections
+
+```ruby
 [10, 100, 1].min    # => 1
 ['a','c','b'].max   # => 'c'
 [10, 'a', []].min   # => ArgumentError: elements not comparable
----------------------------
+###########################
 langs = %w[java perl python ruby]    # Which has the longest name?
 langs.max {|a,b| a.size <=> b.size } # => "python": block compares 2
 langs.max_by {|word| word.length }   # => "python": Ruby 1.9 only
----------------------------
+###########################
 (1..100).minmax                   # => [1,100] min, max as numbers
 (1..100).minmax_by {|n| n.to_s }  # => [1,99]  min, max as strings
----------------------------
+###########################
 c = -2..2
 c.all? {|x| x>0}    # => false: not all values are > 0
 c.any? {|x| x>0}    # => true: some values are > 0
@@ -880,28 +926,30 @@ c.one? {|x| x==2}   # => true: one value == 2
 [1, 2, 3].all?      # => true: no values are nil or false
 [nil, false].any?   # => false: no true values
 [].none?            # => true: no non-false, non-nil values    
----------------------------
+###########################
 a = [1,1,2,3,5,8]
 a.count(1)                # => 2: two elements equal 1
 a.count {|x| x % 2 == 1}  # => 4: four elements are odd
----------------------------
+###########################
 # How many negative numbers?
 (-2..10).inject(0) {|num, x| x<0 ? num+1 : num }  # => 2
 
 # Sum of word lengths
 %w[pea queue are].inject(0) {|total, word| total + word.length }  # => 11
----------------------------
+###########################
 sum = (1..5).inject {|total,x| total + x}  # => 15
 prod = (1..5).inject {|total,x| total * x} # => 120
 max = [1,3,2].inject {|m,x| m>x ? m : x}   # => 3
 [1].inject {|total,x| total + x}           # => 1: block never called
----------------------------
+###########################
 sum = (1..5).reduce(:+)                    # => 15
 prod = (1..5).reduce(:*)                   # => 120
 letters = ('a'..'e').reduce("-", :concat)  # => "-abcde"
----------------------------
-9.5.2.1 Creating arrays
+```
 
+#### 9.5.2.1 Creating arrays
+
+```ruby
 [1,2,3]             # Basic array literal
 []                  # An empty array
 []                  # Arrays are mutable: this empty array is different
@@ -922,9 +970,11 @@ a                   # => ['A','A','A']: they are all the same string!
 a=Array.new(3){'b'} # => ['b','b','b']: three distinct string objects
 a[0].upcase!;       # Capitalize the first one
 a                   # => ['B','b','b']: the others are still lowercase
----------------------------
-9.5.2.2 Array size and elements
+```
 
+#### 9.5.2.2 Array size and elements
+
+```ruby
 # Array length
 [1,2,3].length     # => 3
 [].size            # => 0: synonym for length
@@ -969,9 +1019,11 @@ a.values_at(0,2)         # => ['a','c']
 a.values_at(4, 3, 2, 1)  # => [nil, 'd','c','b']
 a.values_at(0, 2..3, -1) # => ['a','c','d','d']
 a.values_at(0..2,1..3)   # => ['a','b','c','b','c','d']
----------------------------
-9.5.2.3 Altering array elements
+```
 
+#### 9.5.2.3 Altering array elements
+
+```ruby
 a = [1,2,3]        # Start with this array
 # Changing the value of elements
 a[0] = 0           # Alter an existing element: a is [0,2,3]
@@ -1039,9 +1091,11 @@ a[3].upcase!           # a now holds [0,nil,'b','B','b']
 a.compact              # => [0,'b','B','b']: copy with nils removed
 a.compact!             # Remove nils in place: a now holds [0,'b','B','b']
 a.clear                # a now holds []
----------------------------
-9.5.2.4 Iterating, searching, and sorting arrays
+```
 
+#### 9.5.2.4 Iterating, searching, and sorting arrays
+
+```ruby
 a = ['a','b','c']
 a.each {| elt| print elt }         # The basic each iterator prints "abc"
 a.reverse_each {|e| print e}       # Array-specific: prints "cba" 
@@ -1071,17 +1125,21 @@ a.sort! {|a,b| a%2 <=> b%2}   # Compare elements modulo 2
 # Shuffling arrays: the opposite of sorting; Ruby 1.9 only
 a = [1,2,3]     # Start ordered
 puts a.shuffle  # Shuffle randomly. E.g.: [3,1,2]. Also shuffle!
----------------------------
-9.5.2.5 Array comparison
+```
 
+#### 9.5.2.5 Array comparison
+
+```ruby
 [1,2] <=> [4,5]      # => -1 because 1 < 4
 [1,2] <=> [0,0,0]    # => +1 because 1 > 0
 [1,2] <=> [1,2,3]    # => -1 because first array is shorter
 [1,2] <=> [1,2]      # => 0: they are equal
 [1,2] <=> []         # => +1 [] always less than a nonempty array
----------------------------
-9.5.2.6 Arrays as stacks and queues
+```
 
+#### 9.5.2.6 Arrays as stacks and queues
+
+```ruby
 a = []
 a.push(1)     # => [1]: a is now [1]
 a.push(2,3)   # => [1,2,3]: a is now [1,2,3]
@@ -1089,7 +1147,7 @@ a.pop         # => 3: a is now [1,2]
 a.pop         # => 2: a is now [1]
 a.pop         # => 1: a is now []
 a.pop         # => nil: a is still []
----------------------------
+###########################
 a = []
 a.push(1)     # => [1]: a is [1]
 a.push(2)     # => [1,2]: a is [1,2]
@@ -1098,9 +1156,11 @@ a.push(3)     # => [2,3]: a is [2,3]
 a.shift       # => 2: a is [3]
 a.shift       # => 3: a is []
 a.shift       # => nil: a is []
----------------------------
-9.5.2.7 Arrays as sets
+```
 
+#### 9.5.2.7 Arrays as sets
+
+```ruby
 [1,3,5] & [1,2,3]           # => [1,3]: set intersection
 [1,1,3,5] & [1,2,3]         # => [1,3]: duplicates removed
 [1,3,5] | [2,4,6]           # => [1,3,5,2,4,6]: set union
@@ -1114,7 +1174,7 @@ smalleven = small & even    # Set intersection
 smalleven.include?(8)       # => true: test for set membership
 
 [1, 1, nil, nil].uniq       # => [1, nil]: remove dups. Also uniq!
----------------------------
+###########################
 a = [1,2,3]
 
 # Iterate all possible 2-element subarrays (order matters)
@@ -1126,11 +1186,13 @@ a.combination(2) {|x| print x }  # Prints "[1, 2][1, 3][2, 3]"
 # Return the Cartesian product of the two sets
 a.product(['a','b'])       # => [[1,"a"],[1,"b"],[2,"a"],[2,"b"],[3,"a"],[3,"b"]]
 [1,2].product([3,4],[5,6]) # => [[1,3,5],[1,3,6],[1,4,5],[1,4,6], etc... ] 
----------------------------
-9.5.2.8 Associative array methods
+```
 
+#### 9.5.2.8 Associative array methods
+
+```ruby
 [[key1, value1], [key2, value2], [key3, value3], ...]
----------------------------
+###########################
 h = { :a => 1, :b => 2}   # Start with a hash
 a = h.to_a                # => [[:b,2], [:a,1]]: associative array
 a.assoc(:a)               # => [:a,1]: subarray for key :a
@@ -1139,9 +1201,11 @@ a.rassoc(1)               # => [:a,1]: subarray for value 1
 a.rassoc(2).first         # => :b: key for value 2
 a.assoc(:c)               # => nil
 a.transpose               # => [[:a, :b], [1, 2]]: swap rows and cols
----------------------------
-9.5.2.9 Miscellaneous array methods
+```
 
+#### 9.5.2.9 Miscellaneous array methods
+
+```ruby
 # Conversion to strings
 [1,2,3].join              # => "123": convert elements to string and join
 [1,2,3].join(", ")        # => "1, 2, 3": optional delimiter
@@ -1161,21 +1225,25 @@ a.transpose               # => [[:a, :b], [1, 2]]: swap rows and cols
 [1,2,3].reverse           # => [3,2,1]: also reverse!
 a=[1,2,3].zip([:a,:b,:c]) # => [[1,:a],[2,:b],[3,:c]]: Enumerable method
 a.transpose               # => [[1,2,3],[:a,:b,:c]]: swap rows/cols
----------------------------
-9.5.3.1 Creating hashes
+```
 
+#### 9.5.3.1 Creating hashes
+
+```ruby
 { :one => 1, :two => 2 }  # Basic hash literal syntax
 { :one, 1, :two, 2 }      # Same, with deprecated Ruby 1.8 syntax
 { one: 1, two: 2 }        # Same, Ruby 1.9 syntax. Keys are symbols.
 {}                        # A new, empty, Hash object
 Hash.new                  # => {}: creates empty hash
 Hash[:one, 1, :two, 2]    # => {one:1, two:2}
----------------------------
+###########################
 puts :a=>1, :b=>2   # Curly braces omitted in invocation
 puts a:1, b:2       # Ruby 1.9 syntax works too
----------------------------
-9.5.3.2 Indexing hashes and testing membership
+```
 
+#### 9.5.3.2 Indexing hashes and testing membership
+
+```ruby
 h = { :one => 1, :two => 2 }
 h[:one]       # => 1: find value associated with a key
 h[:three]     # => nil: the key does not exist in the hash
@@ -1184,7 +1252,7 @@ h.assoc :one  # => [:one, 1]: find key/value pair. Ruby 1.9.
 h.index 1     # => :one: search for key associated with a value
 h.index 4     # => nil: no mapping to this value exists
 h.rassoc 2    # => [:two, 2]: key/value pair matching value. Ruby 1.9.
----------------------------
+###########################
 h = { :a => 1, :b => 2 }
 # Checking for the presence of keys in a hash: fast
 h.key?(:a)       # true: :a is a key in h
@@ -1195,31 +1263,33 @@ h.member?(:d)    # false: member? is yet another synonym
 # Checking for the presence of values: slow
 h.value?(1)      # true: 1 is a value in h
 h.has_value?(3)  # false: has_value? is a synonym for value?
----------------------------
+###########################
 h = { :a => 1, :b => 2 }
 h.fetch(:a)      # => 1: works like [] for existing keys
 h.fetch(:c)      # Raises IndexError for nonexistent key
 h.fetch(:c, 33)  # => 33: uses specified value if key is not found
 h.fetch(:c) {|k| k.to_s } # => "c": calls block if key not found
----------------------------
+###########################
 h = { :a => 1, :b => 2, :c => 3 }
 h.values_at(:c)         # => [3]: values returned in an array
 h.values_at(:a, :b)     # => [1, 2]: pass any # of args
 h.values_at(:d, :d, :a) # => [nil, nil, 1]
----------------------------
+###########################
 h = { :a => 1, :b => 2, :c => 3 }
 h.select {|k,v| v % 2 == 0 } # => [:b,2] Ruby 1.8
 h.select {|k,v| v % 2 == 0 } # => {:b=>2} Ruby 1.9
----------------------------
-9.5.3.3 Storing keys and values in a hash
+```
 
+#### 9.5.3.3 Storing keys and values in a hash
+
+```ruby
 h = {}        # Start with an empty hash
 h[:a] = 1     # Map :a=>1.  h is now {:a=>1}
 h.store(:b,2) # More verbose: h is now {:a=>1, :b=>2}
----------------------------
+###########################
 # Replace all of the pairs in h with those from another hash
 h.replace({1=>:a, 2=>;b}  # h is now equal to the argument hash
----------------------------
+###########################
 # Merge hashes h and j into new hash k.  
 # If h and j share keys, use values from j
 k = h.merge(j)
@@ -1234,9 +1304,11 @@ h.merge(j) {|key,h,j| (h+j)/2 } # Use average of two values
 h = {a:1,b:2}     # Using Ruby 1.9 syntax and omitting braces
 h.update(b:4,c:9) {|key,old,new| old }  # h is now {a:1, b:2, c:9}
 h.update(b:4,c:9) # h is now {a:1, b:4, c:9}
----------------------------
-9.5.3.4 Removing hash entries
+```
 
+#### 9.5.3.4 Removing hash entries
+
+```ruby
 h = {:a=>1, :b=>2}
 h[:a] = nil      # h now holds {:a=> nil, :b=>2 }
 h.include? :a    # => true
@@ -1245,18 +1317,20 @@ h.include? :b    # => false
 h.delete :b      # => nil: key not found
 # Invoke block if key not found
 h.delete(:b) {|k| raise IndexError, k.to_s } # IndexError!
----------------------------
+###########################
 h = {:a=>1, :b=>2, :c=>3, :d=>"four"}
 h.reject! {|k,v| v.is_a? String }  # => {:a=>1, :b=>2, :c=>3 }
 h.delete_if {|k,v| k.to_s < 'b' }  # => {:b=>2, :c=>3 }
 h.reject! {|k,v| k.to_s < 'b' }    # => nil: no change
 h.delete_if {|k,v| k.to_s < 'b' }  # => {:b=>2, :c=>3 }: unchanged hash
 h.reject {|k,v| true }             # => {}: h is unchanged
----------------------------
+###########################
 h.clear    # h is now {}
----------------------------
-9.5.3.5 Arrays from hashes
+```
 
+#### 9.5.3.5 Arrays from hashes
+
+```ruby
 h = { :a=>1, :b=>2, :c=>3 }
 # Size of hash: number of key/value pairs
 h.length     # => 3
@@ -1270,9 +1344,11 @@ h.to_a       # => [[:b,2],[:c,3],[:a,1]]: array of pairs
 h.flatten    # => [:b, 2, :c, 3, :a, 1]: flattened array. Ruby 1.9
 h.sort       # => [[:a,1],[:b,2],[:c,3]]: sorted array of pairs
 h.sort {|a,b| a[1]<=>b[1] } # Sort pairs by value instead of key
----------------------------
-9.5.3.6 Hash iterators
+```
 
+#### 9.5.3.6 Hash iterators
+
+```ruby
 h = { :a=>1, :b=>2, :c=>3 }
 
 # The each() iterator iterates [key,value] pairs
@@ -1287,38 +1363,42 @@ end
 h.each_key {|k| print k }      # Prints "abc"
 h.each_value {|v| print v }    # Prints "123"
 h.each_pair {|k,v| print k,v } # Prints "a1b2c3". Like each
----------------------------
+###########################
 h = { :a=> 1, :b=>2 }
 print h.shift[1] while not h.empty?   # Prints "12"
----------------------------
-9.5.3.7 Default values
+```
 
+#### 9.5.3.7 Default values
+
+```ruby
 empty = {}
 empty["one"]   # nil
----------------------------
+###########################
 empty = Hash.new(-1)   # Specify a default value when creating hash
 empty["one"]           # => -1
 empty.default = -2     # Change the default value to something else
 empty["two"]           # => -2
 empty.default          # => -2: return the default value
----------------------------
+###########################
 # If the key is not defined, return the successor of the key.
 plus1 = Hash.new {|hash, key| key.succ }
 plus1[1]      # 2
 plus1["one"]  # "onf": see String.succ
 plus1.default_proc  # Returns the Proc that computes defaults
 plus1.default(10)   # => 11: default returned for key 10
----------------------------
+###########################
 # This lazily initialized hash maps integers to their factorials
 fact = Hash.new {|h,k| h[k] = if k > 1: k*h[k-1] else 1 end }
 fact      # {}: it starts off empty
 fact[4]   # 24: 4! is 24
 fact      # {1=>1, 2=>2, 3=>6, 4=>24}: the hash now has entries
----------------------------
+###########################
 fact.fetch(5)   # IndexError: key not found
----------------------------
-9.5.3.8 Hashcodes, key equality, and mutable keys
+```
 
+#### 9.5.3.8 Hashcodes, key equality, and mutable keys
+
+```ruby
 key = {:a=>1}      # This hash will be a key in another hash!
 h = { key => 2 }   # This hash has a mutable key
 h[key]             # => 2: get value associated with key
@@ -1326,36 +1406,44 @@ key.clear          # Mutate the key
 h[key]             # => nil: no value found for mutated key
 h.rehash           # Fix up the hash after mutation
 h[key]             # => 2: now the value is found again
----------------------------
-9.5.3.9 Miscellaneous hash methods
+```
 
+#### 9.5.3.9 Miscellaneous hash methods
+
+```ruby
 h = {:a=>1, :b=>2}
 h.invert        # => {1=>:a, 2=>:b}: swap keys and values
----------------------------
+###########################
 {:a=>1, :b=>2}.to_s    # => "a1b2" in Ruby 1.8; "{:a=>1, :b=>2}" in 1.9
 {:a=>1, :b=>2}.inspect # => "{:a=>1, :b=>2}" for both versions
----------------------------
-9.5.4 Sets
+```
 
+#### 9.5.4 Sets
+
+```ruby
 require 'set'
----------------------------
-9.5.4.1 Creating sets
+```
 
+#### 9.5.4.1 Creating sets
+
+```ruby
 (1..5).to_set              # => #<Set: {5, 1, 2, 3, 4}>
 [1,2,3].to_set             # => #<Set: {1, 2, 3}>
----------------------------
+###########################
 Set.new(1..5)              # => #<Set: {5, 1, 2, 3, 4}>
 Set.new([1,2,3])           # => #<Set: {1, 2, 3}>
 Set.new([1,2,3]) {|x| x+1} # => #<Set: {2, 3, 4}>
----------------------------
+###########################
 Set["cow", "pig", "hen"]   # => #<Set: {"cow", "pig", "hen"}>
----------------------------
-9.5.4.2 Testing, comparing, and combining Sets
+```
 
+#### 9.5.4.2 Testing, comparing, and combining Sets
+
+```ruby
 s = Set.new(1..3)   # => #<Set: {1, 2, 3}>  
 s.include? 1        # => true
 s.member? 0         # => false: member? is a synonym
----------------------------
+###########################
 s = Set[2, 3, 5]
 t = Set[2, 3, 5, 7]
 s.subset? t            # => true
@@ -1365,13 +1453,13 @@ t.superset? s          # => true
 t.proper_superset? s   # => true
 s.subset? s            # => true
 s.proper_subset? s     # => false
----------------------------
+###########################
 s = Set[2, 3, 5]
 s.length               # => 3
 s.size                 # => 3: a synonym for length
 s.empty?               # => false
 Set.new.empty?         # => true
----------------------------
+###########################
 # Here are two simple sets
 primes = Set[2, 3, 5, 7]
 odds = Set[1, 3, 5, 7, 9]
@@ -1391,9 +1479,11 @@ primes.difference(odds)   # A named method alias
 
 # a^b is the set of values that appear in one set but not both: (a|b)-(a&b)
 primes ^ odds             # => #<Set: {1, 2, 9}>
----------------------------
-9.5.4.3 Adding and deleting set elements
+```
 
+#### 9.5.4.3 Adding and deleting set elements
+
+```ruby
 s = Set[]              # start with an empty set
 s << 1                 # => #<Set: {1}>
 s.add 2                # => #<Set: {1, 2}>: add is a synonym for <<
@@ -1401,19 +1491,19 @@ s << 3 << 4 << 5       # => #<Set: {5, 1, 2, 3, 4}>: can be chained
 s.add 3                # => #<Set: {5, 1, 2, 3, 4}>: value unchanged
 s.add? 6               # => #<Set: {5, 6, 1, 2, 3, 4}>
 s.add? 3               # => nil: the set was not changed 
----------------------------
+###########################
 s = (1..3).to_set   # => #<Set: {1, 2, 3}>
 s.merge(2..5)       # => #<Set: {5, 1, 2, 3, 4}>
----------------------------
+###########################
 s = (1..3).to_set   # => #<Set: {1, 2, 3}>
 s.delete 1          # => #<Set: {2, 3}>
 s.delete 1          # => #<Set: {2, 3}>: unchanged
 s.delete? 1         # => nil: returns nil when no change
 s.delete? 2         # => #<Set: {3}>: otherwise returns set
----------------------------
+###########################
 s = (1..3).to_set   # => #<Set: {1, 2, 3}>
 s.subtract(2..10)   # => #<Set: {1}>
----------------------------
+###########################
 primes = Set[2, 3, 5, 7]       # set of prime numbers
 primes.delete_if {|x| x%2==1}  # => #<Set: {2}>: remove odds
 primes.delete_if {|x| x%2==1}  # => #<Set: {2}>: unchanged
@@ -1423,44 +1513,50 @@ primes.reject! {|x| x%2==1}    # => nil: unchanged
 s = (1..5).to_set
 t = (4..8).to_set
 s.reject! {|x| not t.include? x}  # => #<Set: {5, 4}>
----------------------------
+###########################
 s = Set.new(1..3) # Initial set
 s.replace(3..4)   # Replace all elements.  Argument is any enumerable
 s.clear           # => #<Set: {}>
 s.empty?          # => true
----------------------------
-9.5.4.4 Set iterators
+```
 
+#### 9.5.4.4 Set iterators
+
+```ruby
 s = Set[1, 2, 3, 4, 5] # => #<Set: {5, 1, 2, 3, 4}>
 s.each {|x| print x }  # prints "51234": arbitrary order before Ruby 1.9
 s.map! {|x| x*x }      # => #<Set: {16, 1, 25, 9, 4}>
 s.collect! {|x| x/2 }  # => #<Set: {0, 12, 2, 8, 4}>
----------------------------
-9.5.4.5 Miscellaneous set methods
+```
 
+#### 9.5.4.5 Miscellaneous set methods
+
+```ruby
 s = (1..3).to_set
 s.to_a          # => [1, 2, 3]
 s.to_s          # => "#<Set:0xb7e8f938>": not useful
 s.inspect       # => "#<Set: {1, 2, 3}>": useful       
 s == Set[3,2,1] # => true: uses eql? to compare set elements
----------------------------
+###########################
 # Classify set elements as even or odd
 s = (0..3).to_set     # => #<Set: {0, 1, 2, 3}>
 s.classify {|x| x%2}  # => {0=>#<Set: {0, 2}>, 1=>#<Set: {1, 3}>}
----------------------------
+###########################
 s.divide {|x| x%2}  # => #<Set: {#<Set: {0, 2}>, #<Set: {1, 3}>}>
----------------------------
+###########################
 s = %w[ant ape cow hen hog].to_set # A set of words
 s.divide {|x,y| x[0] == y[0]}      # Divide into subsets by first letter
 # => #<Set:{#<Set:{"hog", "hen"}>, #<Set:{"cow"}>, #<Set:{"ape", "ant"}>}>
----------------------------
+###########################
 s = %w[ant ape cow hen hog].to_set # A set of words
 t = s.divide {|x,y| x[0] == y[0]}  # Divide it into subsets
 t.flatten!                         # Flatten the subsets
 t == s                             # => true
----------------------------
-9.6.1 File and Directory Names
+```
 
+#### 9.6.1 File and Directory Names
+
+```ruby
 full = '/home/matz/bin/ruby.exe'
 file=File.basename(full)     # => 'ruby.exe': just the local filename
 File.basename(full, '.exe')  # => 'ruby': with extension stripped
@@ -1472,7 +1568,7 @@ File.extname(file)           # => '.exe'
 File.extname(dir)            # => ''
 File.join('home','matz')     # => 'home/matz': relative
 File.join('','home','matz')  # => '/home/matz': absolute
----------------------------
+###########################
 Dir.chdir("/usr/bin")      # Current working directory is "/usr/bin"
 File.expand_path("ruby")       # => "/usr/bin/ruby"
 File.expand_path("~/ruby")     # => "/home/david/ruby"
@@ -1480,12 +1576,12 @@ File.expand_path("~matz/ruby") # => "/home/matz/ruby"
 File.expand_path("ruby", "/usr/local/bin") # => "/usr/local/bin/ruby"
 File.expand_path("ruby", "../local/bin")   # => "/usr/local/bin/ruby"
 File.expand_path("ruby", "~/bin")          # => "/home/david/bin/ruby"
----------------------------
+###########################
 File.identical?("ruby", "ruby")          # => true if the file exists
 File.identical?("ruby", "/usr/bin/ruby") # => true if CWD is /usr/bin
 File.identical?("ruby", "../bin/ruby")   # => true if CWD is /usr/bin
 File.identical?("ruby", "ruby1.9")       # => true if there is a link
----------------------------
+###########################
 File.fnmatch("*.rb", "hello.rb")     # => true
 File.fnmatch("*.[ch]", "ruby.c")     # => true
 File.fnmatch("*.[ch]", "ruby.h")     # => true
@@ -1495,13 +1591,15 @@ File.fnmatch("lib/*.rb", "lib/a.rb", flags)      # => true
 File.fnmatch("lib/*.rb", "lib/a/b.rb", flags)    # => false
 File.fnmatch("lib/**/*.rb", "lib/a.rb", flags)   # => true
 File.fnmatch("lib/**/*.rb", "lib/a/b.rb", flags) # => true
----------------------------
-9.6.2 Listing Directories
+```
 
+#### 9.6.2 Listing Directories
+
+```ruby
 # Get the names of all files in the config/ directory 
 filenames = Dir.entries("config")        # Get names as an array
 Dir.foreach("config") {|filename| ... }  # Iterate names
----------------------------
+###########################
 Dir['*.data']       # Files with the "data" extension
 Dir['ruby.*']       # Any filename beginning with "ruby."
 Dir['?']            # Any single-character filename
@@ -1509,20 +1607,22 @@ Dir['*.[ch]']       # Any file that ends with .c or .h
 Dir['*.{java,rb}']  # Any file that ends with .java or .rb
 Dir['*/*.rb']       # Any Ruby program in any direct sub-directory
 Dir['**/*.rb']      # Any Ruby program in any descendant directory
----------------------------
+###########################
 Dir.glob('*.rb') {|f| ... }      # Iterate all Ruby files
 Dir.glob('*')                    # Does not include names beginning with '.'
 Dir.glob('*',File::FNM_DOTMATCH) # Include . files, just like Dir.entries
----------------------------
+###########################
 puts Dir.getwd          # Print current working directory
 Dir.chdir("..")         # Change CWD to the parent directory
 Dir.chdir("../sibling") # Change again to a sibling directory
 Dir.chdir("/home")      # Change to an absolute directory
 Dir.chdir               # Change to user's home directory
 home = Dir.pwd          # pwd is an alias for getwd
----------------------------
-9.6.3 Testing Files
+```
 
+#### 9.6.3 Testing Files
+
+```ruby
 f = "/usr/bin/ruby"      # A filename for the examples below
 
 # File existence and types.
@@ -1546,12 +1646,12 @@ File.world_writable?(f)  # Can everybody write it? Ruby 1.9.
 # File times/dates. Use File.utime to set the times.
 File.mtime(f)            # => Last modification time as a Time object
 File.atime(f)            # => Last access time as a Time object
----------------------------
+###########################
 File.ftype("/usr/bin/ruby")    # => "link"
 File.ftype("/usr/bin/ruby1.9") # => "file"
 File.ftype("/usr/lib/ruby")    # => "directory"
 File.ftype("/usr/bin/ruby3.0") # SystemCallError: No such file or directory
----------------------------
+###########################
 s = File.stat("/usr/bin/ruby")
 s.file?             # => true
 s.directory?        # => false
@@ -1561,7 +1661,7 @@ s.writable?         # => false
 s.executable?       # => true
 s.size              # => 5492
 s.atime             # => Mon Jul 23 13:20:37 -0700 2007
----------------------------
+###########################
 # Testing single files
 test ?e, "/usr/bin/ruby"   # File.exist?("/usr/bin/ruby")
 test ?f, "/usr/bin/ruby"   # File.file?("/usr/bin/ruby")
@@ -1576,70 +1676,80 @@ test ?-, f, g              # File.identical(f,g)
 test ?<, f, g              # File(f).mtime < File(g).mtime
 test ?>, f, g              # File(f).mtime > File(g).mtime
 test ?=, f, g              # File(f).mtime == File(g).mtime
----------------------------
-9.6.4 Creating, Deleting, and Renaming Files and Directories
+```
 
+#### 9.6.4 Creating, Deleting, and Renaming Files and Directories
+
+```ruby
 # Create (or overwrite) a file named "test"
 File.open("test", "w") {}
 # Create (but do not clobber) a file named "test"
 File.open("test", "a") {}
----------------------------
+###########################
 File.rename("test", "test.old")     # Current name, then new name
----------------------------
+###########################
 File.symlink("test.old", "oldtest") # Link target, link name
----------------------------
+###########################
 File.link("test.old", "test2")   # Link target, link name
----------------------------
+###########################
 File.delete("test2")   # May also be called with multiple args
 File.unlink("oldtest") # to delete multiple named files
----------------------------
+###########################
 f = "log.messages"          # Filename
 atime = mtime = Time.now    # New access and modify times
 File.truncate(f, 0)         # Erase all existing content
 File.utime(atime, mtime, f) # Change times
 File.chmod(0600, f)         # Unix permissions -rw-------; note octal arg
----------------------------
+###########################
 Dir.mkdir("temp")                 # Create a directory
 File.open("temp/f", "w") {}       # Create a file in it
 File.open("temp/g", "w") {}       # Create another one
 File.delete(*Dir["temp/*"])       # Delete all files in the directory
 Dir.rmdir("temp")                 # Delete the directory
----------------------------
-9.7.1.1 Opening files
+```
 
+#### 9.7.1.1 Opening files
+
+```ruby
 f = File.open("data.txt", "r")   # Open file data.txt for reading
 out = File.open("out.txt", "w")  # Open file out.txt for writing
----------------------------
+###########################
 File.open("log.txt", "a") do |log|      # Open for appending
   log.puts("INFO: Logging a message")   # Output to the file
 end                                     # Automatically closed
----------------------------
-9.7.1.2 Kernel.open
+```
 
+#### 9.7.1.2 Kernel.open
+
+```ruby
 # How long has the server been up?
 uptime = open("|uptime") {|f| f.gets }
----------------------------
+###########################
 require "open-uri"                         # Required library
 f = open("http://www.davidflanagan.com/")  # Webpage as a file
 webpage = f.read                           # Read it as one big string
 f.close                                    # Don't forget to close!
----------------------------
-9.7.1.3 StringIO
+```
 
+#### 9.7.1.3 StringIO
+
+```ruby
 require "stringio"
 input = StringIO.open("now is the time")  # Read from this string
 buffer = ""
 output = StringIO.open(buffer, "w")       # Write into buffer
----------------------------
-9.7.2 Streams and Encodings
+```
 
+#### 9.7.2 Streams and Encodings
+
+```ruby
 f.set_encoding("iso-8859-1", "utf-8") # Latin-1, transcoded to UTF-8
 f.set_encoding("iso-8859-1:utf-8")    # Same as above
 f.set_encoding(Encoding::UTF-8)       # UTF-8 text
----------------------------
+###########################
 in = File.open("data.txt", "r:utf-8");           # Read UTF-8 text
 out = File.open("log", "a:utf-8");               # Write UTF-8 text
-in = File.open("data.txt", "r:iso8859-1:utf-8"); # Latin-1 transcoded to UTF-8 ---------------------------
+in = File.open("data.txt", "r:iso8859-1:utf-8"); # Latin-1 transcoded to UTF-8 ```
 File.open("data", "r:binary")  # Open a file for reading binary data</programlisting>
 
       <para>On Windows, you should open binary files with mode <literal role="keep-together">"rb:binary"</literal> or call <literal role="keep-together">binmode</literal> <indexterm>
@@ -1685,24 +1795,29 @@ File.open("data", "r:binary")  # Open a file for reading binary data</programlis
 
         <para><literal>IO</literal> defines a number of ways to read lines
         from a stream:</para>
-9.7.3.1 Reading lines
+```
 
+#### 9.7.3.1 Reading lines
+
+```ruby
         <programlisting>lines = ARGF.readlines         # Read all input, return an array of lines
 line = DATA.readline           # Read one line from stream
 print l while l = DATA.gets    # Read until gets returns nil, at EOF
 DATA.each {|line| print line } # Iterate lines from stream until EOF
 DATA.each_line                 # An alias for each
 DATA.lines                     # An enumerator for each_line: Ruby 1.9
----------------------------
+###########################
 print while DATA.gets
----------------------------
+###########################
 DATA.lineno = 0     # Start from line 0, even though data is at end of file
 DATA.readline       # Read one line of data
 DATA.lineno         # => 1
 $.                  # => 1: magic global variable, implicitly set
----------------------------
-9.7.3.2 Reading entire files
+```
 
+#### 9.7.3.2 Reading entire files
+
+```ruby
 data = IO.read("data")         # Read and return the entire file
 data = IO.read("data", 4, 2)   # Read 4 bytes starting at byte 2
 data = IO.read("data", nil, 6) # Read from byte 6 to end-of-file
@@ -1713,37 +1828,41 @@ words = IO.readlines("/usr/share/dict/words")
 # Read lines one at a time and initialize a hash
 words = {}
 IO.foreach("/usr/share/dict/words") {|w| words[w] = true}
----------------------------
+###########################
 # An alternative to text = File.read("data.txt")
 f = File.open("data.txt")  # Open a file
 text = f.read              # Read its contents as text
 f.close                    # Close the file
----------------------------
-9.7.3.3 Reading bytes and characters
+```
 
+#### 9.7.3.3 Reading bytes and characters
+
+```ruby
 f = File.open("data", "r:binary") # Open data file for binary reads 
 c = f.getc                        # Read the first byte as an integer
 f.ungetc(c)                       # Push that byte back
 c = f.readchar                    # Read it back again
----------------------------
+###########################
 f.each_byte {|b| ... }      # Iterate through remaining bytes
 f.bytes                     # An enumerator for each_byte: Ruby 1.9
----------------------------
+###########################
 f = File.open("data.bin", "rb:binary")  # No newline conversion, no encoding
 magic = f.readbytes(4)       # First four bytes identify filetype
 exit unless magic == "INTS"  # Magic number spells "INTS" (ASCII)
 bytes = f.read               # Read the rest of the file
                              # Encoding is binary, so this is a byte string
 data = bytes.unpack("i*")    # Convert bytes to an array of integers
----------------------------
-9.7.4 Writing to a Stream
+```
 
+#### 9.7.4 Writing to a Stream
+
+```ruby
 o = STDOUT
 # Single-character output
 o.putc(65)         # Write single byte 65 (capital A)
 o.putc("B")        # Write single byte 66 (capital B)
 o.putc("CD")       # Write just the first byte of the string
----------------------------
+###########################
 o = STDOUT
 # String output
 o << x             # Output x.to_s 
@@ -1758,9 +1877,11 @@ o.puts x,y         # Output x.to_s.chomp, newline, y.to_s.chomp, newline
 o.puts [x,y]       # Same as above
 o.write s          # Output s.to_s, returns s.to_s.length
 o.syswrite s       # Low-level version of write
----------------------------
-9.7.5 Random Access Methods
+```
 
+#### 9.7.5 Random Access Methods
+
+```ruby
 f = File.open("test.txt")
 f.pos        # => 0: return the current position in bytes
 f.pos = 10   # skip to position 10
@@ -1771,25 +1892,27 @@ f.seek(10, IO::SEEK_CUR)  # Skip 10 bytes from current position
 f.seek(-10, IO::SEEK_END) # Skip to 10 bytes from end
 f.seek(0, IO::SEEK_END)   # Skip to very end of file
 f.eof?                    # => true: we're at the end
----------------------------
+###########################
 pos = f.sysseek(0, IO::SEEK_CUR)  # Get current position
 f.sysseek(0, IO::SEEK_SET)        # Rewind stream
 f.sysseek(pos, IO::SEEK_SET)      # Return to original position
----------------------------
-9.7.6 Closing, Flushing, and Testing Streams
+```
 
+#### 9.7.6 Closing, Flushing, and Testing Streams
+
+```ruby
 File.open("test.txt") do |f|
   # Use stream f here
   # Value of this block becomes return value of the open method
 end # f is automatically closed for us here
----------------------------
+###########################
 begin
   f = File.open("test.txt")
   # use stream f here
 ensure
   f.close if f
 end
----------------------------
+###########################
 out.print 'wait>' # Display a prompt
 out.flush         # Manually flush output buffer to OS
 sleep(1)          # Prompt appears before we go to sleep
@@ -1799,17 +1922,21 @@ out.sync = false  # Don't automatically flush
 out.sync          # Return current sync mode
 out.fsync         # Flush output buffer and ask OS to flush its buffers
                   # Returns nil if unsupported on current platform
----------------------------
+###########################
 f.eof?       # true if stream is at EOF
 f.closed?    # true if stream has been closed
 f.tty?       # true if stream is interactive
----------------------------
-9.8 Networking
+```
 
+#### 9.8 Networking
+
+```ruby
 require 'socket'
----------------------------
-9.8.1 A Very Simple Client
+```
 
+#### 9.8.1 A Very Simple Client
+
+```ruby
 require 'socket'                # Sockets are in standard library
 
 host, port = ARGV               # Host and port from command line
@@ -1819,7 +1946,7 @@ while line = s.gets             # Read lines from the socket
   puts line.chop                # And print with platform line terminator
 end
 s.close                         # Close the socket when done
----------------------------
+###########################
 require 'socket'                  
 host, port = ARGV                 
 TCPSocket.open(host, port) do |s| # Use block form of open
@@ -1827,9 +1954,11 @@ TCPSocket.open(host, port) do |s| # Use block form of open
     puts line.chop                
   end
 end                               # Socket automatically closed
----------------------------
-9.8.2 A Very Simple Server
+```
 
+#### 9.8.2 A Very Simple Server
+
+```ruby
 require 'socket'               # Get sockets from stdlib
 
 server = TCPServer.open(2000)  # Socket to listen on port 2000
@@ -1838,11 +1967,13 @@ loop {                         # Infinite loop: servers run forever
   client.puts(Time.now.ctime)  # Send the time to the client
   client.close                 # Disconnect from the client
 }
----------------------------
+###########################
 ruby client.rb localhost 2000
----------------------------
-9.8.3 Datagrams
+```
 
+#### 9.8.3 Datagrams
+
+```ruby
 require 'socket'                     # Standard library
 
 host, port, request = ARGV           # Get args from command line
@@ -1852,7 +1983,7 @@ ds.connect(host, port)               # Connect to the port on the host
 ds.send(request, 0)                  # Send the request text
 response,address = ds.recvfrom(1024) # Wait for a response (1kb max)
 puts response                        # Print the response
----------------------------
+###########################
 require 'socket'                     # Standard library
 
 port = ARGV[0]                       # The port to listen on
@@ -1870,9 +2001,11 @@ loop do                              # Loop forever
   # Log the client connection
   puts "Connection from: #{clientname} #{clientaddr} #{clientport}"
 end
----------------------------
-9.8.4 A More Complex Client
+```
 
+#### 9.8.4 A More Complex Client
+
+```ruby
 require 'socket'     # Sockets from standard library
 
 host, port = ARGV    # Network host and port on command line
@@ -1919,9 +2052,11 @@ rescue           # If anything goes wrong
 ensure           # And no matter what happens
   s.close if s   # Don't forget to close the socket
 end
----------------------------
-9.8.5 A Multiplexing Server
+```
 
+#### 9.8.5 A Multiplexing Server
+
+```ruby
 # This server reads a line of input from a client, reverses
 # the line and sends it back. If the client sends the string "quit"
 # it disconnects. It uses Kernel.select to handle multiple sessions.
@@ -1966,9 +2101,11 @@ while true                    # Servers loop forever
     end
   end
 end
----------------------------
-9.8.6 Fetching Web Pages
+```
 
+#### 9.8.6 Fetching Web Pages
+
+```ruby
 require 'socket'           # We need sockets
  
 host = 'www.example.com'   # The web server
@@ -1984,7 +2121,7 @@ response = socket.read              # Read complete response
 # Split response at first blank line into headers and body
 headers,body = response.split("\r\n\r\n", 2) 
 print body                          # And display it
----------------------------
+###########################
 require 'net/http'         # The library we need
 host = 'www.example.com'   # The web server
 path = '/index.html'       # The file we want 
@@ -1997,22 +2134,26 @@ if headers.code == "200"        # Check the status code
 else                            # Otherwise
   puts "#{headers.code} #{headers.message}" # Display error message
 end
----------------------------
+###########################
 require 'open-uri'
 open("http://www.example.com/index.html") {|f|
   puts f.read
 }
----------------------------
-9.9 Threads and Concurrency
+```
 
+#### 9.9 Threads and Concurrency
+
+```ruby
 # Thread #1 is running here
 Thread.new {
   # Thread #2 runs this code
 }
 # Thread #1 runs this code
----------------------------
-9.9.1.1 The main thread
+```
 
+#### 9.9.1.1 The main thread
+
+```ruby
 # Wait for all threads (other than the current thread and
 # main thread) to stop running.
 # Assumes that no new threads are started while waiting.
@@ -2023,16 +2164,20 @@ def join_all
   # Now call join on each thread
   all.each {|t| t.join unless t == current or t == main }
 end
----------------------------
-9.9.1.2 Threads and unhandled exceptions
+```
 
+#### 9.9.1.2 Threads and unhandled exceptions
+
+```ruby
 Thread.abort_on_exception = true
----------------------------
+###########################
 t = Thread.new { ... }
 t.abort_on_exception = true
----------------------------
-9.9.2 Threads and Variables
+```
 
+#### 9.9.2 Threads and Variables
+
+```ruby
 x = 0
 
 t1 = Thread.new do
@@ -2043,41 +2188,49 @@ t2 = Thread.new do
   # This thread and also query and set x
   # And it can query and set t1 and t2 as well.   
 end
----------------------------
-9.9.2.1 Thread-private variables
+```
 
+#### 9.9.2.1 Thread-private variables
+
+```ruby
 n = 1
 while n <= 3
   Thread.new { puts n }
   n += 1
 end 
----------------------------
+###########################
 n = 1
 while n <= 3
   # Get a private copy of the current value of n in x
   Thread.new(n) {|x| puts x }
   n += 1
 end 
----------------------------
+###########################
 1.upto(3) {|n| Thread.new { puts n }}
----------------------------
-9.9.2.2 Thread-local variables
+```
 
+#### 9.9.2.2 Thread-local variables
+
+```ruby
 Thread.current[:progress] = bytes_received
----------------------------
+###########################
 total = 0
 download_threads.each {|t| total += t[:progress] }
----------------------------
+###########################
 total = 0
 download_threads.each {|t| total += t[:progress] if t.key?(:progress)}
----------------------------
-9.9.5 Listing Threads and Thread Groups
+```
 
+#### 9.9.5 Listing Threads and Thread Groups
+
+```ruby
 group = ThreadGroup.new
 3.times {|n| group.add(Thread.new { do_task(n) }}
----------------------------
-9.9.6.1 Reading files concurrently
+```
 
+#### 9.9.6.1 Reading files concurrently
+
+```ruby
 # Read files concurrently. Use with the "open-uri" module to fetch URLs.
 # Pass an array of filenames. Returns a hash mapping filenames to content.
 def conread(filenames)
@@ -2100,9 +2253,11 @@ def conread(filenames)
     end
   end
 end
----------------------------
-9.9.6.2 A Multithreaded Server
+```
 
+#### 9.9.6.2 A Multithreaded Server
+
+```ruby
 require 'socket'
 
 # This method expects a socket connected to a client.
@@ -2128,9 +2283,11 @@ while true                    # Servers loop forever
     handle_client(c)          # And handle the client on that thread
   end
 end
----------------------------
-9.9.6.3 Concurrent iterators
+```
 
+#### 9.9.6.3 Concurrent iterators
+
+```ruby
 module Enumerable           # Open the Enumerable module
   def conmap(&block)        # Define a new method that expects a block
     threads = []            # Start with an empty array of threads
@@ -2142,17 +2299,19 @@ module Enumerable           # Open the Enumerable module
     threads.map {|t| t.value } # And return the array of values
   end
 end
----------------------------
+###########################
 module Enumerable
   def concurrently
     map {|item| Thread.new { yield item }}.each {|t| t.join }
   end
 end
----------------------------
+###########################
 h.each_pair.concurrently {|*pair| process(pair)}
----------------------------
-9.9.7 Thread Exclusion and Deadlock
+```
 
+#### 9.9.7 Thread Exclusion and Deadlock
+
+```ruby
 require 'thread'  # For Mutex class in Ruby 1.8
 
 # A BankAccount has a name, a checking amount, and a savings amount.
@@ -2177,9 +2336,11 @@ class BankAccount
     }
   end
 end
----------------------------
-9.9.7.1 Deadlock
+```
 
+#### 9.9.7.1 Deadlock
+
+```ruby
 # Classic deadlock: two threads and two locks
 require 'thread'
 
@@ -2203,14 +2364,16 @@ s = Thread.new {
 
 t.join
 s.join
----------------------------
-9.9.8 Queue and SizedQueue
+```
 
+#### 9.9.8 Queue and SizedQueue
+
+```ruby
 a = [-2,-1,0,1,2]
 mapper = lambda {|x| x*x }             # Compute squares
 injector = lambda {|total,x| total+x } # Compute sum
 a.conject(0, mapper, injector)         # => 10
----------------------------
+###########################
 module Enumerable
   # Concurrent inject: expects an initial value and two Procs
   def conject(initial, mapper, injector)
@@ -2236,9 +2399,11 @@ module Enumerable
     t.value   # Wait for injector thread and return its value
   end
 end
----------------------------
-9.9.9 Condition Variables and Queues
+```
 
+#### 9.9.9 Condition Variables and Queues
+
+```ruby
 require 'thread'
 
 class Exchanger
@@ -2274,5 +2439,4 @@ class Exchanger
     end
   end
 end
----------------------------
 ```

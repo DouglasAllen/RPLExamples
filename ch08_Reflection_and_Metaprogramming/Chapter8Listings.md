@@ -1,10 +1,12 @@
-```ruby
-The Ruby Programming Language
-CHAPTER 8
-Reflection and Metaprogramming
----------------------------
-8.1.1 Ancestry and Modules
+# The Ruby Programming Language
 
+## CHAPTER 8
+
+### Reflection and Metaprogramming
+
+#### 8.1.1 Ancestry and Modules
+
+```ruby
 module A; end                # Empty module
 module B; include A; end;    # Module B includes A
 class C; include B; end;     # Class C includes module B
@@ -32,36 +34,42 @@ A.include?(B)       # => false
 A.included_modules  # => []
 B.included_modules  # => [A]
 C.included_modules  # => [B, A, Kernel]
----------------------------
+###########################
 module Greeter; def hi; "hello"; end; end # A silly module
 s = "string object"
 s.extend(Greeter)       # Add hi as a singleton method to s
 s.hi                    # => "hello"
 String.extend(Greeter)  # Add hi as a class method of String
 String.hi               # => "hello"
----------------------------
+###########################
 module M
   class C
     Module.nesting   # => [M::C, M]
   end
 end
----------------------------
-8.1.2 Defining Classes and Modules
+```
 
+#### 8.1.2 Defining Classes and Modules
+
+```ruby
 M = Module.new      # Define a new module M
 C = Class.new       # Define a new class C
 D = Class.new(C) {  # Define a subclass of C
   include M         # that includes module M
 }
 D.to_s              # => "D": class gets constant name by magic
----------------------------
-8.2 Evaluating Strings and Blocks
+```
 
+#### 8.2 Evaluating Strings and Blocks
+
+```ruby
 x = 1
 eval "x + 1"  # => 2
----------------------------
-8.2.1 Bindings and eval
+```
 
+#### 8.2.1 Bindings and eval
+
+```ruby
 class Object     # Open Object to add a new method
   def bindings   # Note plural on this method
     binding      # This is the predefined Kernel method
@@ -74,9 +82,11 @@ end
 
 t = Test.new(10)       # Create a test object
 eval("@x", t.bindings) # => 10: We've peeked inside t
----------------------------
-8.2.2 instance_eval and class_eval
+```
 
+#### 8.2.2 instance_eval and class_eval
+
+```ruby
 o.instance_eval("@x")  # Return the value of o's instance variable @x
 
 # Define an instance method len of String to return string length
@@ -89,7 +99,7 @@ String.class_eval("alias len size")
 # Use instance_eval to define class method String.empty
 # Note that quotes within quotes get a little tricky...
 String.instance_eval("def empty; ''; end")
----------------------------
+###########################
 o.instance_eval { @x }
 String.class_eval {
   def len
@@ -98,9 +108,11 @@ String.class_eval {
 }
 String.class_eval { alias len size }
 String.instance_eval { def empty; ""; end }
----------------------------
-8.3 Variables and Constants
+```
 
+#### 8.3 Variables and Constants
+
+```ruby
 global_variables   # => ["$DEBUG", "$SAFE", ...]
 x = 1              # Define a local variable
 local_variables    # => ["x"]
@@ -115,16 +127,18 @@ end
 Point::ORIGIN.instance_variables # => ["@y", "@x"]
 Point.class_variables            # => ["@@classvar"]
 Point.constants                  # => ["ORIGIN"]
----------------------------
-8.3.1 Querying, Setting, and Testing Variables
+```
 
+#### 8.3.1 Querying, Setting, and Testing Variables
+
+```ruby
 x = 1
 varname = "x"
 eval(varname)           # => 1
 eval("varname = '$g'")  # Set varname to "$g"
 eval("#{varname} = x")  # Set $g to 1
 eval(varname)           # => 1
----------------------------
+###########################
 o = Object.new
 o.instance_variable_set(:@x, 0)   # Note required @ prefix
 o.instance_variable_get(:@x)      # => 0
@@ -137,21 +151,23 @@ Object.class_variable_defined?(:@@x) # => true; Ruby 1.9 and later
 Math.const_set(:EPI, Math::E*Math::PI)
 Math.const_get(:EPI)             # => 8.53973422267357
 Math.const_defined? :EPI         # => true 
----------------------------
+###########################
 String.class_eval { class_variable_set(:@@x, 1) }  # Set @@x in String
 String.class_eval { class_variable_get(:@@x) }     # => 1
----------------------------
+###########################
 o.instance_eval { remove_instance_variable :@x }
 String.class_eval { remove_class_variable(:@@x) }
 Math.send :remove_const, :EPI  # Use send to invoke private method
----------------------------
+###########################
 def Symbol.const_missing(name)
   name # Return the constant name as a symbol
 end
 Symbol::Test   # => :Test: undefined constant evaluates to a Symbol
----------------------------
-8.4.1 Listing and Testing For Methods
+```
 
+#### 8.4.1 Listing and Testing For Methods
+
+```ruby
 o = "a string"
 o.methods                # => [ names of all public methods ]
 o.public_methods         # => the same thing
@@ -161,37 +177,43 @@ o.private_methods        # => array of all private methods
 o.private_methods(false) # Exclude inherited private methods
 def o.single; 1; end     # Define a singleton method
 o.singleton_methods      # => ["single"] (or [:single] in 1.9)
----------------------------
+###########################
 String.instance_methods == "s".public_methods                # => true
 String.instance_methods(false) == "s".public_methods(false)  # => true
 String.public_instance_methods == String.instance_methods    # => true
 String.protected_instance_methods       # => []
 String.private_instance_methods(false)  # => ["initialize_copy",
                                         #     "initialize"]
----------------------------
+###########################
 Math.singleton_methods  # => ["acos", "log10", "atan2", ... ]
----------------------------
+###########################
 String.public_method_defined? :reverse     # => true
 String.protected_method_defined? :reverse  # => false
 String.private_method_defined? :initialize # => true
 String.method_defined? :upcase!            # => true
----------------------------
-8.4.2 Obtaining Method Objects
+```
 
+#### 8.4.2 Obtaining Method Objects
+
+```ruby
 "s".method(:reverse)             # => Method object 
 String.instance_method(:reverse) # => UnboundMethod object
----------------------------
+```
+
 8.4.3 Invoking Methods
 
+```ruby
 "hello".send :upcase        # => "HELLO": invoke an instance method
 Math.send(:sin, Math::PI/2) # => 1.0: invoke a class method
----------------------------
+###########################
 "hello".send :puts, "world"         # prints "world"
----------------------------
+###########################
 "hello".public_send :puts, "world"  # raises NoMethodError
----------------------------
-8.4.4 Defining, Undefining, and Aliasing Methods
+```
 
+#### 8.4.4 Defining, Undefining, and Aliasing Methods
+
+```ruby
 # Add an instance method named m to class c with body b 
 def add_method(c, m, &b)
   c.class_eval {
@@ -202,7 +224,7 @@ end
 add_method(String, :greet) { "Hello, " + self }
 
 "world".greet   # => "Hello, world"
----------------------------
+###########################
 def add_class_method(c, m, &b)
   eigenclass = class << c; self; end
   eigenclass.class_eval {
@@ -213,11 +235,11 @@ end
 add_class_method(String, :greet) {|name| "Hello, " + name }
 
 String.greet("world")  # => "Hello, world"
----------------------------
+###########################
 String.define_singleton_method(:greet) {|name| "Hello, " + name }
----------------------------
+###########################
 alias plus +         # Make "plus" a synonym for the + operator
----------------------------
+###########################
 # Create an alias for the method m in the class (or module) c
 def backup(c, m, prefix="original")
   n = :"#{prefix}_#{m}"    # Compute the alias
@@ -228,9 +250,11 @@ end
 
 backup(String, :reverse)
 "test".original_reverse # => "tset"
----------------------------
-8.4.5 Handling Undefined Methods
+```
 
+#### 8.4.5 Handling Undefined Methods
+
+```ruby
 class Hash
   # Allow hash values to be queried and set as if they were attributes.
   # We simulate attribute getters and setters for any key.
@@ -248,22 +272,26 @@ end
 h = {}         # Create an empty hash object
 h.one = 1      # Same as h[:one] = 1
 puts h.one     # Prints 1. Same as puts h[:one]
----------------------------
-8.4.6 Setting Method Visibility
+```
 
+#### 8.4.6 Setting Method Visibility
+
+```ruby
 String.class_eval { private :reverse }
 "hello".reverse  # NoMethodError: private method 'reverse'
----------------------------
+###########################
 # Make all Math methods private
 # Now we have to include Math in order to invoke its methods
 Math.private_class_method *Math.singleton_methods
----------------------------
-8.5 Hooks
+```
 
+#### 8.5 Hooks
+
+```ruby
 def Object.inherited(c)
   puts "class #{c} < #{self}"
 end
----------------------------
+###########################
 module Final             # A class that includes Final can't be subclassed
   def self.included(c)   # When included in class c
     c.instance_eval do   # Define a class method of c
@@ -274,15 +302,15 @@ module Final             # A class that includes Final can't be subclassed
     end
   end
 end
----------------------------
+###########################
 def String.method_added(name) 
   puts "New instance method #{name} added to String"
 end
----------------------------
+###########################
 def String.singleton_method_added(name)
   puts "New class method #{name} added to String"
 end
----------------------------
+###########################
 # Including this module in a class prevents instances of that class
 # from having singleton methods added to them. Any singleton methods added
 # are immediately removed again.
@@ -293,29 +321,35 @@ module Strict
     eigenclass.class_eval { remove_method name }
   end
 end
----------------------------
-8.6 Tracing
+```
 
+#### 8.6 Tracing
+
+```ruby
 STDERR.puts "#{__FILE__}:#{__LINE__): invalid data"
----------------------------
+###########################
 raise "Assertion failed in #{__method__} at #{__FILE__}:#{__LINE__}"
----------------------------
+###########################
 SCRIPT_LINES__ = {__FILE__ => File.readlines(__FILE__)}
----------------------------
+###########################
 SCRIPT_LINES__[__FILE__][__LINE__-1]
----------------------------
+###########################
 # Print a message every time $SAFE changes
 trace_var(:$SAFE) {|v|
   puts "$SAFE set to #{v} at #{caller[1]}"
 }
----------------------------
-8.7 ObjectSpace and GC
+```
 
+#### 8.7 ObjectSpace and GC
+
+```ruby
 # Print out a list of all known classes
 ObjectSpace.each_object(Class) {|c| puts c }
----------------------------
-8.8.1 Delaying and Repeating Execution: after and every
+```
 
+#### 8.8.1 Delaying and Repeating Execution: after and every
+
+```ruby
 require 'afterevery'
 
 1.upto(5) {|i| after i { puts i} }  # Slowly print the numbers 1 to 5
@@ -326,7 +360,7 @@ every 1, 6 do |count|               # Now slowly print 6 to 10
   count + 1                         # The next value of count
 end
 sleep(6)                            # Give the above time to run
----------------------------
+###########################
 #
 # Define Kernel methods after and every for deferring blocks of code.
 # Examples:
@@ -362,9 +396,11 @@ def every(seconds, value=nil, &block)
     end                         # Then repeat..
   end                           # every returns the Thread
 end
----------------------------
-8.8.2 Thread Safety with Synchronized Blocks
+```
 
+#### 8.8.2 Thread Safety with Synchronized Blocks
+
+```ruby
 require 'thread'  # Ruby 1.8 keeps Mutex in this library
 
 # Obtain the Mutex associated with the object o, and then evaluate
@@ -404,9 +440,11 @@ end
 # will be locked. In order to prevent infinite recursion, we must
 # ensure that the Class object has a mutex.
 Class.instance_eval { @__mutex = Mutex.new }
----------------------------
-8.9.1 Unicode Codepoint Constants with const_missing
+```
 
+#### 8.9.1 Unicode Codepoint Constants with const_missing
+
+```ruby
 # This module provides constants that define the UTF-8 strings for
 # all Unicode codepoints. It uses const_missing to define them lazily.
 # Examples:
@@ -434,19 +472,21 @@ module Unicode
     end
   end
 end
----------------------------
-8.9.2 Tracing Method Invocations with method_missing
+```
 
+#### 8.9.2 Tracing Method Invocations with method_missing
+
+```ruby
 a = [1,2,3].trace("a")
 a.reverse
 puts a[2]
 puts a.fetch(3)
----------------------------
+###########################
 Invoking: a.reverse() at trace1.rb:66
 Returning: [3, 2, 1] from a.reverse to trace1.rb:66
 Invoking: a.fetch(3) at trace1.rb:67
 Raising: IndexError:index 3 out of array from a.fetch
----------------------------
+###########################
 # Call the trace method of any object to obtain a new object that
 # behaves just like the original, but which traces all method calls
 # on that object. If tracing more than one object, specify a name to
@@ -509,13 +549,15 @@ class TracedObject
     @o
   end
 end
----------------------------
-8.9.3 Synchronized Objects by Delegation
+```
 
+#### 8.9.3 Synchronized Objects by Delegation
+
+```ruby
 def synchronized(o)
   o.mutex.synchronize { yield }
 end
----------------------------
+###########################
 def synchronized(o)
   if block_given?
     o.mutex.synchronize { yield }
@@ -539,9 +581,11 @@ class SynchronizedObject  < BasicObject
     }
   end
 end
----------------------------
-8.10.1 Defining Methods with class_eval
+```
 
+#### 8.10.1 Defining Methods with class_eval
+
+```ruby
 class Module
   private     # The methods that follow are both private
 
@@ -569,17 +613,19 @@ class Module
     class_eval code
   end
 end
----------------------------
-8.10.2 Defining Methods with define_method
+```
 
+#### 8.10.2 Defining Methods with define_method
+
+```ruby
 class Point
   attributes :x => 0, :y => 0
 end
----------------------------
+###########################
 class Point
   attributes x:0, y:0
 end
----------------------------
+###########################
 class Module
   # This method defines attribute reader and writer methods for named
   # attributes, but expects a hash argument mapping attribute names to
@@ -617,13 +663,15 @@ class Module
   # Both methods are private
   private :attributes, :class_attrs
 end
----------------------------
-8.11.1 Tracing Files Loaded and Classes Defined
+```
 
+#### 8.11.1 Tracing Files Loaded and Classes Defined
+
+```ruby
 require 'classtrace'
----------------------------
+###########################
 ruby -rclasstrace my_program.rb  --traceout /tmp/trace
----------------------------
+###########################
 # We define this module to hold the global state we require, so that
 # we don't alter the global namespace any more than necessary.
 module ClassTrace
@@ -676,9 +724,11 @@ at_exit {
     end
   end
 }
----------------------------
-8.11.1 Tracing Files Loaded and Classes Defined
+```
 
+#### 8.11.1 Tracing Files Loaded and Classes Defined
+
+```ruby
 # Define a Module.synchronize_method that alias chains instance methods
 # so they synchronize on the instance before running.
 class Module
@@ -758,9 +808,11 @@ def synchronized(*args)
     raise ArgumentError, "Invalid arguments to synchronize()"
   end
 end
----------------------------
-8.11.3 Chaining Methods for Tracing
+```
 
+#### 8.11.3 Chaining Methods for Tracing
+
+```ruby
 # Define trace! and untrace! instance methods for all objects.
 # trace! "chains" the named methods by defining singleton methods
 # that add tracing functionality and then use super to call the original.
@@ -839,9 +891,11 @@ class Object
     end
   end
 end
----------------------------
-8.12.1 Simple XML Output with method_missing
+```
 
+#### 8.12.1 Simple XML Output with method_missing
+
+```ruby
 pagetitle = "Test Page for XML.generate"
 XML.generate(STDOUT) do 
   html do
@@ -858,7 +912,7 @@ XML.generate(STDOUT) do
     end
   end
 end
---------------------------- 
+###########################
  <html>
  <head>
  <title>Test Page for XML.generate</title>
@@ -871,7 +925,7 @@ end
  </ul>
  </body>
  </html>
----------------------------
+###########################
 class XML
   # Create an instance of this class, specifying a stream or object to
   # hold the output. This can be any object that responds to <<(String).
@@ -925,9 +979,11 @@ class XML
     XML.new(out).instance_eval(&block)
   end
 end
----------------------------
-8.12.2 Validated XML Output with Method Generation
+```
 
+#### 8.12.2 Validated XML Output with Method Generation
+
+```ruby
 class HTMLForm < XMLGrammar
   element :form, :action => REQ,
                  :method => "GET",
@@ -941,7 +997,7 @@ class HTMLForm < XMLGrammar
   element :button, :name => OPT, :value => OPT,
                    :type => "submit", :disabled => OPT
 end
----------------------------
+###########################
 HTMLForm.generate(STDOUT) do
   comment "This is a simple HTML form"
   form :name => "registration",
@@ -955,7 +1011,7 @@ HTMLForm.generate(STDOUT) do
     button { "Submit" }
   end
 end
----------------------------
+###########################
 class XMLGrammar
   # Create an instance of this class, specifying a stream or object to
   # hold the output. This can be any object that responds to <<(String).
@@ -1048,5 +1104,4 @@ class XMLGrammar
     nil # Tags output themselves, so they don't return any content.
   end
 end
----------------------------
 ```
